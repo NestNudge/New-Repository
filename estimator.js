@@ -1,48 +1,48 @@
 // ===============================
-// WAIT FOR GOOGLE TO LOAD
+// CONFIG
 // ===============================
-function waitForGoogle() {
-  if (typeof google !== "undefined" && google.maps && google.maps.places) {
-    initAutocomplete();
-  } else {
-    setTimeout(waitForGoogle, 500);
-  }
-}
+const API_BASE = "https://lead-marketplace.onrender.com";
 
 // ===============================
-// GOOGLE AUTOCOMPLETE
+// GOOGLE AUTOCOMPLETE (SAFE + RELIABLE)
 // ===============================
 function initAutocomplete() {
-  try {
-    const input = document.getElementById("address");
+  const input = document.getElementById("address");
 
-    if (!input) {
-      console.warn("Address input not found");
-      return;
+  if (!input) return;
+
+  const autocomplete = new google.maps.places.Autocomplete(input);
+
+  autocomplete.addListener("place_changed", () => {
+    const place = autocomplete.getPlace();
+    if (place && place.formatted_address) {
+      input.value = place.formatted_address;
     }
+  });
 
-    const autocomplete = new google.maps.places.Autocomplete(input);
+  console.log("✅ Autocomplete initialized");
+}
 
-    autocomplete.addListener("place_changed", () => {
-      const place = autocomplete.getPlace();
-
-      if (place && place.formatted_address) {
-        input.value = place.formatted_address;
-        console.log("✅ Address selected:", place.formatted_address);
-      }
-    });
-
-    console.log("✅ Autocomplete initialized");
-
-  } catch (err) {
-    console.error("Autocomplete error:", err);
+// ===============================
+// WAIT UNTIL GOOGLE IS READY
+// ===============================
+function waitForGoogle() {
+  if (
+    typeof google !== "undefined" &&
+    google.maps &&
+    google.maps.places &&
+    google.maps.places.Autocomplete
+  ) {
+    initAutocomplete();
+  } else {
+    setTimeout(waitForGoogle, 300);
   }
 }
 
 // ===============================
-// FORM SUBMISSION HANDLER
+// FORM SUBMISSION
 // ===============================
-function initFormHandler() {
+function initForm() {
   const form = document.getElementById("leadForm");
 
   if (!form) {
@@ -50,29 +50,19 @@ function initFormHandler() {
     return;
   }
 
-  form.addEventListener("submit", async function (e) {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    console.log("🚀 Form submit triggered");
-
     const data = {
-      address: document.getElementById("address")?.value,
-      projectType: document.getElementById("projectType")?.value,
-      name: document.getElementById("name")?.value,
-      email: document.getElementById("email")?.value,
-      phone: document.getElementById("phone")?.value
+      address: document.getElementById("address").value,
+      projectType: document.getElementById("projectType").value,
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      phone: document.getElementById("phone").value
     };
 
-    console.log("📦 Sending data:", data);
-
-    // Basic validation
-    if (!data.address || !data.projectType || !data.name || !data.email || !data.phone) {
-      alert("Please fill out all fields");
-      return;
-    }
-
     try {
-      const response = await fetch("https://lead-marketplace.onrender.com/submit-lead", {
+      const res = await fetch(`${API_BASE}/submit-lead`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -80,30 +70,25 @@ function initFormHandler() {
         body: JSON.stringify(data)
       });
 
-      const result = await response.json();
-
-      console.log("✅ Server response:", result);
-
-      if (response.ok) {
-        alert("🎉 You're matched! Pros will contact you.");
+      if (res.ok) {
+        alert("🎉 You're matched!");
         form.reset();
       } else {
-        alert("❌ Submission failed");
+        alert("Submission failed");
       }
 
-    } catch (error) {
-      console.error("❌ Network error:", error);
-      alert("Network error — check connection");
+    } catch (err) {
+      alert("Network error");
     }
   });
 }
 
 // ===============================
-// INIT EVERYTHING
+// INIT
 // ===============================
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("✅ JS Loaded");
+  console.log("🚀 Page loaded");
 
-  waitForGoogle();      // 🔥 FIXES AUTOCOMPLETE TIMING
-  initFormHandler();    // 🔥 ENSURES FORM WORKS
+  waitForGoogle();   // 🔥 KEY FIX
+  initForm();
 });
