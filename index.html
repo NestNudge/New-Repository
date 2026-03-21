@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NestNudge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ✅ Google Maps (ASYNC + SAFE LOAD) -->
+  <script async defer 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCT547UlhrGwqolYpou2IZ1hma6UG6thsQ&libraries=places">
+  </script>
+</head>
+
+<body>
+
+<header class="hero">
+  <h1>Find the Right Home Experts — Instantly</h1>
+  <p>Contractors, Realtors, and Lenders compete for your business</p>
+
+  <form id="leadForm" class="lead-form">
+
+    <input id="address" placeholder="Enter your address" required>
+
+    <select id="projectType" required>
+      <option value="">What do you need?</option>
+      <option value="roof">Roofing</option>
+      <option value="solar">Solar</option>
+      <option value="buy">Buy a Home</option>
+      <option value="sell">Sell a Home</option>
+      <option value="loan">Mortgage</option>
+    </select>
+
+    <input id="name" placeholder="Full Name" required>
+    <input id="email" type="email" placeholder="Email" required>
+    <input id="phone" placeholder="Phone" required>
+
+    <button type="submit">Get Matched</button>
+
+  </form>
+</header>
+
+<section class="trust">
+  <h2>How It Works</h2>
+  <div class="steps">
+    <div class="step">1. Enter your project</div>
+    <div class="step">2. Get matched instantly</div>
+    <div class="step">3. Pros compete for your job</div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 NestNudge — All Rights Reserved</p>
+</footer>
+
+<script src="estimator.js"></script>
+
+</body>
+</html>
