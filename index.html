@@ -8,9 +8,9 @@
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- ✅ Google Maps (ASYNC + SAFE LOAD) -->
+  <!-- ✅ Google Maps API (ASYNC) -->
   <script async defer 
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCT547UlhrGwqolYpou2IZ1hma6UG6thsQ&libraries=places">
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_REAL_API_KEY&libraries=places">
   </script>
 </head>
 
@@ -20,6 +20,7 @@
   <h1>Find the Right Home Experts — Instantly</h1>
   <p>Contractors, Realtors, and Lenders compete for your business</p>
 
+  <!-- ✅ IMPORTANT: Correct form ID -->
   <form id="leadForm" class="lead-form">
 
     <input id="address" placeholder="Enter your address" required>
@@ -37,6 +38,7 @@
     <input id="email" type="email" placeholder="Email" required>
     <input id="phone" placeholder="Phone" required>
 
+    <!-- 🔥 CRITICAL FIX -->
     <button type="submit">Get Matched</button>
 
   </form>
@@ -55,6 +57,7 @@
   <p>© 2026 NestNudge — All Rights Reserved</p>
 </footer>
 
+<!-- 🔥 CRITICAL: JS MUST LOAD AT BOTTOM -->
 <script src="estimator.js"></script>
 
 </body>
