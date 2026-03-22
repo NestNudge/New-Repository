@@ -5,6 +5,16 @@ body {
   color: white;
 }
 
+/* 🔥 TOP BAR */
+.top-bar {
+  background: #00b4d8;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* LAYOUT */
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -14,8 +24,9 @@ body {
   gap: 40px;
 }
 
+/* LEFT TEXT */
 .hero-text {
-  max-width: 400px;
+  max-width: 420px;
 }
 
 .hero-text h1 {
@@ -30,9 +41,16 @@ body {
 
 .badges {
   font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.trust-logos {
+  font-size: 14px;
   opacity: 0.7;
 }
 
+/* FORM CARD */
 .form-card {
   background: white;
   color: black;
@@ -42,6 +60,7 @@ body {
   box-shadow: 0 20px 50px rgba(0,0,0,0.3);
 }
 
+/* FORM */
 form {
   display: flex;
   flex-direction: column;
@@ -58,6 +77,7 @@ small {
   margin-bottom: 10px;
 }
 
+/* INPUTS */
 input, select, gmp-place-autocomplete {
   padding: 12px;
   margin-bottom: 12px;
@@ -66,6 +86,7 @@ input, select, gmp-place-autocomplete {
   font-size: 14px;
 }
 
+/* BUTTON */
 button {
   background: #00b4d8;
   color: white;
@@ -82,6 +103,45 @@ button:hover {
   background: #0096c7;
 }
 
+/* TESTIMONIALS */
+.testimonials {
+  background: #f7f7f7;
+  color: black;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.testimonials h2 {
+  margin-bottom: 30px;
+}
+
+.testimonial-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.testimonial {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 280px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.testimonial p {
+  font-style: italic;
+}
+
+.testimonial span {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  color: gray;
+}
+
+/* FOOTER */
 footer {
   text-align: center;
   padding: 20px;
