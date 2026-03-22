@@ -3,44 +3,40 @@
 // ===============================
 const API_BASE = "https://lead-marketplace.onrender.com";
 
+
 // ===============================
-// GOOGLE AUTOCOMPLETE (SAFE + RELIABLE)
+// GLOBAL ADDRESS STORAGE
+// ===============================
+let selectedAddress = "";
+
+
+// ===============================
+// NEW GOOGLE AUTOCOMPLETE (MODERN)
 // ===============================
 function initAutocomplete() {
-  const input = document.getElementById("address");
+  const placeElement = document.querySelector("gmp-place-autocomplete");
 
-  if (!input) return;
+  if (!placeElement) {
+    console.warn("❌ Autocomplete element not found");
+    return;
+  }
 
-  const autocomplete = new google.maps.places.Autocomplete(input);
+  // Listen for place selection
+  placeElement.addEventListener("gmp-placeselect", (event) => {
+    const place = event.detail.place;
 
-  autocomplete.addListener("place_changed", () => {
-    const place = autocomplete.getPlace();
-    if (place && place.formatted_address) {
-      input.value = place.formatted_address;
+    if (place && place.formattedAddress) {
+      selectedAddress = place.formattedAddress;
+      console.log("✅ Address selected:", selectedAddress);
     }
   });
 
-  console.log("✅ Autocomplete initialized");
+  console.log("✅ New Autocomplete initialized");
 }
 
-// ===============================
-// WAIT UNTIL GOOGLE IS READY
-// ===============================
-function waitForGoogle() {
-  if (
-    typeof google !== "undefined" &&
-    google.maps &&
-    google.maps.places &&
-    google.maps.places.Autocomplete
-  ) {
-    initAutocomplete();
-  } else {
-    setTimeout(waitForGoogle, 300);
-  }
-}
 
 // ===============================
-// FORM SUBMISSION
+// FORM HANDLER
 // ===============================
 function initForm() {
   const form = document.getElementById("leadForm");
@@ -53,13 +49,25 @@ function initForm() {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    console.log("🚀 Form submit triggered");
+
+    // Fallback: if user typed but didn’t select suggestion
+    const placeElement = document.querySelector("gmp-place-autocomplete");
+    const fallbackAddress = placeElement?.value || "";
+
     const data = {
-      address: document.getElementById("address").value,
+      address: selectedAddress || fallbackAddress,
       projectType: document.getElementById("projectType").value,
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      phone: document.getElementById("phone").value
+      name: document.getElementById("name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      phone: document.getElementById("phone").value.trim()
     };
+
+    // 🔒 Basic validation
+    if (!data.address || !data.projectType || !data.name || !data.email || !data.phone) {
+      alert("Please complete all fields");
+      return;
+    }
 
     try {
       const res = await fetch(`${API_BASE}/submit-lead`, {
@@ -71,24 +79,33 @@ function initForm() {
       });
 
       if (res.ok) {
-        alert("🎉 You're matched!");
+        alert("🎉 You're matched! Pros will contact you.");
         form.reset();
+        selectedAddress = ""; // reset stored address
       } else {
+        const errorText = await res.text();
+        console.error("❌ Server error:", errorText);
         alert("Submission failed");
       }
 
     } catch (err) {
-      alert("Network error");
+      console.error("❌ Network error:", err);
+      alert("Network error — check connection");
     }
   });
 }
 
+
 // ===============================
-// INIT
+// INIT APP
 // ===============================
 document.addEventListener("DOMContentLoaded", () => {
   console.log("🚀 Page loaded");
 
-  waitForGoogle();   // 🔥 KEY FIX
+  // Wait a tiny bit for Google script to load
+  setTimeout(() => {
+    initAutocomplete();
+  }, 500);
+
   initForm();
 });
