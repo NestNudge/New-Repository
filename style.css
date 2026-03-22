@@ -1,74 +1,89 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f7f7f7;
-}
-
-.hero {
+  font-family: 'Inter', sans-serif;
   background: linear-gradient(135deg, #0d1b2a, #1b263b);
   color: white;
-  text-align: center;
-  padding: 70px 20px;
 }
 
-.hero h1 {
-  font-size: 32px;
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  gap: 40px;
 }
 
-.lead-form {
+.hero-text {
+  max-width: 400px;
+}
+
+.hero-text h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.hero-text p {
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+.badges {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.form-card {
+  background: white;
+  color: black;
+  padding: 30px;
+  border-radius: 16px;
+  width: 340px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+form {
   display: flex;
   flex-direction: column;
-  max-width: 420px;
-  margin: 20px auto;
 }
 
-input, select, button {
-  margin: 10px 0;
-  padding: 14px;
-  font-size: 16px;
-  border-radius: 6px;
-  border: none;
+label {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+small {
+  font-size: 12px;
+  color: gray;
+  margin-bottom: 10px;
+}
+
+input, select, gmp-place-autocomplete {
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
 }
 
 button {
   background: #00b4d8;
   color: white;
-  font-weight: bold;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
   cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
 }
 
 button:hover {
   background: #0096c7;
 }
 
-.trust {
-  text-align: center;
-  padding: 50px 20px;
-}
-
-.steps {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.step {
-  background: white;
-  padding: 15px 20px;
-  border-radius: 8px;
-}
-
 footer {
   text-align: center;
   padding: 20px;
-  background: #0d1b2a;
-  color: white;
-}
-
-.lead-card {
-  background: white;
-  padding: 15px;
-  margin: 15px;
-  border-radius: 8px;
+  opacity: 0.6;
 }
