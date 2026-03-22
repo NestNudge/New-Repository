@@ -8,7 +8,7 @@
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- ✅ NEW Google Maps (modern autocomplete) -->
+  <!-- ✅ Google Maps (Modern Autocomplete) -->
   <script async
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpLNCvzY-QPirPIva1-UrJ4eMejo3cHdQ&libraries=places&v=beta">
   </script>
@@ -20,12 +20,23 @@
   <h1>Find the Right Home Experts — Instantly</h1>
   <p>Contractors, Realtors, and Lenders compete for your business</p>
 
-  <!-- ✅ FORM -->
   <form id="leadForm" class="lead-form">
 
-    <!-- 🔥 NEW AUTOCOMPLETE ELEMENT -->
-    <gmp-place-autocomplete id="address"></gmp-place-autocomplete>
+    <!-- 🔥 BEST PRACTICE (LABEL + PLACEHOLDER + TRUST) -->
+    <label for="address" style="font-weight: bold;">
+      📍 Enter Your Property Address
+    </label>
 
+    <gmp-place-autocomplete 
+      id="address"
+      placeholder="Start typing your address...">
+    </gmp-place-autocomplete>
+
+    <p style="font-size: 14px; color: #ccc;">
+      We use your address to match you with top local professionals.
+    </p>
+
+    <!-- PROJECT TYPE -->
     <select id="projectType" required>
       <option value="">What do you need?</option>
       <option value="roof">Roofing</option>
@@ -35,11 +46,12 @@
       <option value="loan">Mortgage</option>
     </select>
 
+    <!-- USER INFO -->
     <input id="name" placeholder="Full Name" required>
     <input id="email" type="email" placeholder="Email" required>
     <input id="phone" placeholder="Phone" required>
 
-    <!-- 🔥 FIXED SUBMIT -->
+    <!-- SUBMIT -->
     <button type="submit">Get Matched</button>
 
   </form>
