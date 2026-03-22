@@ -105,5 +105,23 @@
 <!-- JS -->
 <script src="estimator.js"></script>
 
+  <!-- 💬 CONVERSION ASSISTANT -->
+<div id="chat-button">💬 Need help?</div>
+
+<div id="chat-box" class="hidden">
+  <div class="chat-header">NestNudge Assistant</div>
+  
+  <div class="chat-body">
+    <p>What are you looking to do?</p>
+
+    <button onclick="selectOption('roof')">Roofing</button>
+    <button onclick="selectOption('solar')">Solar</button>
+    <button onclick="selectOption('buy')">Buy a Home</button>
+    <button onclick="selectOption('sell')">Sell a Home</button>
+    <button onclick="selectOption('loan')">Mortgage</button>
+
+    <div id="chat-response"></div>
+  </div>
+</div>
 </body>
 </html>
