@@ -144,59 +144,78 @@
     </div>
   </section>
 
-  <section id="services">
-    <div class="service-grid">
+  <section id="services" class="services-carousel">
 
+  <h2>Explore Value-Boosting Upgrades</h2>
+
+  <div class="carousel-wrapper">
+
+    <div class="carousel-track">
+
+      <!-- ORIGINAL SET -->
       <div class="service-card" onclick="selectServiceAndScroll('roof')">
-        <img src="/image/roof-1.webp" alt="Roof Replacement">
+        <img src="/image/roof-1.webp">
         <div class="overlay">
           <h3>Roof Replacement</h3>
-          <p>Protect your home and boost value</p>
+          <p>+ $20K–$40K Value</p>
         </div>
       </div>
 
       <div class="service-card" onclick="selectServiceAndScroll('doors')">
-        <img src="/image/landscaping-3.webp" alt="New Entry Doors">
+        <img src="/image/landscaping-3.webp">
         <div class="overlay">
           <h3>New Entry Doors</h3>
-          <p>Improve curb appeal and efficiency</p>
         </div>
       </div>
 
       <div class="service-card" onclick="selectServiceAndScroll('windows')">
-        <img src="/image/home-evaluation1.png" alt="Impact Windows">
+        <img src="/image/home-evaluation1.png">
         <div class="overlay">
           <h3>Impact Windows</h3>
-          <p>Increase protection and resale appeal</p>
         </div>
       </div>
 
       <div class="service-card" onclick="scrollToLoan()">
-        <img src="/image/loan-for-upgrade.jpg" alt="Funding Options">
+        <img src="/image/loan-for-upgrade.jpg">
         <div class="overlay">
           <h3>Funding Options</h3>
-          <p>See flexible ways to finance upgrades</p>
         </div>
       </div>
 
       <div class="service-card" onclick="scrollToRealtor()">
-        <img src="/image/home-rennovation1.png" alt="Home Remodeling">
+        <img src="/image/home-rennovation1.png">
         <div class="overlay">
           <h3>Home Remodeling</h3>
-          <p>Plan higher-ROI improvement projects</p>
         </div>
       </div>
 
+      <!-- DUPLICATE SET (REQUIRED FOR INFINITE LOOP) -->
       <div class="service-card" onclick="selectServiceAndScroll('roof')">
-        <img src="/image/solar-2.webp" alt="More Upgrade Ideas">
+        <img src="/image/roof-1.webp">
         <div class="overlay">
-          <h3>More Upgrade Ideas</h3>
-          <p>Explore additional value-building options</p>
+          <h3>Roof Replacement</h3>
+        </div>
+      </div>
+
+      <div class="service-card" onclick="selectServiceAndScroll('doors')">
+        <img src="/image/landscaping-3.webp">
+        <div class="overlay">
+          <h3>Doors</h3>
+        </div>
+      </div>
+
+      <div class="service-card" onclick="selectServiceAndScroll('windows')">
+        <img src="/image/home-evaluation1.png">
+        <div class="overlay">
+          <h3>Windows</h3>
         </div>
       </div>
 
     </div>
-  </section>
+
+  </div>
+
+</section>
 
   <section class="testimonials">
     <h2>Real Homeowners, Real Results</h2>
@@ -687,4 +706,4 @@
   </script>
 
 </body>
-</html
+</html>
