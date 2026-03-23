@@ -805,3 +805,50 @@ footer p {
 .service-card:hover {
   transform: translateY(-4px) scale(1.01);
 }
+
+.services-carousel {
+  padding: 70px 20px;
+  background: #f9f9f9;
+  text-align: center;
+  overflow: hidden;
+}
+
+.services-carousel h2 {
+  margin-bottom: 30px;
+  color: #1B1B1B;
+}
+
+/* WRAPPER */
+.carousel-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+/* TRACK (MOVING STRIP) */
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: scrollLeft 30s linear infinite;
+}
+
+/* PAUSE ON HOVER (VERY IMPORTANT UX) */
+.carousel-wrapper:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+/* CARD SIZE */
+.carousel-track .service-card {
+  min-width: 260px;
+  flex-shrink: 0;
+}
+
+/* SMOOTH INFINITE SCROLL */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
