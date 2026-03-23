@@ -109,3 +109,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initForm();
 });
+
+// ===============================
+// CHAT ASSISTANT
+// ===============================
+
+// Toggle chat
+document.getElementById("chat-button").addEventListener("click", () => {
+  document.getElementById("chat-box").classList.toggle("hidden");
+});
+
+// Handle selection
+function selectOption(type) {
+  document.getElementById("projectType").value = type;
+
+  const response = document.getElementById("chat-response");
+
+  response.innerHTML = `
+    <p>Great choice 👍</p>
+    <p>Now enter your address above to get matched instantly.</p>
+  `;
+
+  // Scroll to form
+  document.getElementById("address").scrollIntoView({ behavior: "smooth" });
+}
