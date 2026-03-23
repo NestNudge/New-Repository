@@ -752,3 +752,48 @@ footer p {
     width: 190px;
   }
 }
+
+.services-carousel {
+  padding: 70px 20px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.services-carousel h2 {
+  margin-bottom: 30px;
+  color: #1B1B1B;
+}
+
+/* WRAPPER */
+.carousel-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+/* TRACK (moves) */
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  animation: scrollCarousel 25s linear infinite;
+}
+
+/* PAUSE ON HOVER (premium feel) */
+.carousel-wrapper:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+/* CARD SIZE */
+.service-card {
+  min-width: 260px;
+  flex-shrink: 0;
+}
+
+/* ANIMATION */
+@keyframes scrollCarousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
