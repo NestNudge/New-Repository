@@ -1,127 +1,695 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="/nestnudge.ico">
   <meta charset="UTF-8">
-  <title>NestNudge</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
+  <title>NestNudge</title>
   <link rel="stylesheet" href="style.css">
-
-  <!-- Google Maps -->
-  <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpLNCvzY-QPirPIva1-UrJ4eMejo3cHdQ&libraries=places&v=beta">
-  </script>
 </head>
-
 <body>
 
-<!-- 🔥 URGENCY BAR -->
-<div class="top-bar">
-  🔥 3–5 local pros are ready to compete for your job right now
-</div>
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#cost-guide">Estimator</a>
+      <a href="#services">Services</a>
+      <a href="#contact-form">Contact</a>
+    </nav>
+  </header>
 
-<div class="container">
-
-  <!-- LEFT SIDE -->
-  <div class="hero-text">
-    <h1>Get the Best Home Service Pros — Instantly</h1>
-    <p>Roofers, lenders, and agents compete for your business.</p>
-
-    <div class="badges">
-      ⭐ Trusted by homeowners • ⚡ Fast matching • 💰 Free to use
+  <!-- AI CHAT -->
+  <div id="chatWidget">
+    <div id="chatHeader" onclick="toggleChat()">
+      <span>🏡 AI Home Advisor</span>
     </div>
 
-    <div class="trust-logos">
-      🔒 Secure • ✔ Verified Pros • 🏆 Top Rated
+    <div id="chatBox">
+      <div id="chatMessages">
+        <p class="bot">Hi 👋 Want to increase your home value, explore funding, or connect with a local realtor?</p>
+      </div>
+
+      <input
+        type="text"
+        id="chatInput"
+        placeholder="Ask about value, funding, or selling..."
+        onkeypress="handleChat(event)"
+      >
     </div>
   </div>
 
-  <!-- RIGHT SIDE FORM -->
-  <div class="form-card">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-container">
 
-    <form id="leadForm">
+      <div class="hero-text">
+        <h1>Unlock Your Home’s Hidden Value</h1>
+        <p>
+          Discover how upgrades like a new roof, entry doors, or impact windows
+          could affect your home value and ROI based on your location.
+        </p>
 
-      <label>📍 Property Address</label>
-      <gmp-place-autocomplete 
-        id="address"
-        placeholder="Start typing your address...">
-      </gmp-place-autocomplete>
+        <ul class="hero-benefits">
+          <li>✔ Address autocomplete</li>
+          <li>✔ Zip-based property insights</li>
+          <li>✔ Personalized cost and ROI guidance</li>
+        </ul>
+      </div>
 
-      <small>We match you with top-rated local pros</small>
+      <div class="hero-form">
+        <div class="form-logo">
+          <img src="/image/NestNudge-Logo.png" alt="NestNudge Logo">
+        </div>
 
-      <select id="projectType" required>
-        <option value="">What do you need?</option>
-        <option value="roof">Roofing</option>
-        <option value="solar">Solar</option>
-        <option value="buy">Buy a Home</option>
-        <option value="sell">Sell a Home</option>
-        <option value="loan">Mortgage</option>
-      </select>
+        <form action="https://leadbizo.com/home-improvement-lead/index.php" method="POST">
+          <h3>Start Your Free Value Plan</h3>
 
-      <input id="name" placeholder="Full Name" required>
-      <input id="email" type="email" placeholder="Email" required>
-      <input id="phone" placeholder="Phone" required>
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="text" id="address" name="address" placeholder="Property Address" autocomplete="street-address">
+          <input type="text" id="zip" name="zip" placeholder="Zip Code" required>
 
-      <button type="submit">Get Matched →</button>
+          <input type="hidden" name="project_type" value="estimator">
 
-    </form>
+          <button type="submit">See My Home Value Growth</button>
+        </form>
+      </div>
 
-  </div>
-
-</div>
-
-<!-- 💬 TESTIMONIALS -->
-<section class="testimonials">
-  <h2>What Homeowners Are Saying</h2>
-
-  <div class="testimonial-grid">
-
-    <div class="testimonial">
-      <p>"I had 3 roofing companies call me within minutes. Saved me thousands."</p>
-      <span>— Sarah M., Florida</span>
     </div>
+  </section>
 
-    <div class="testimonial">
-      <p>"Way easier than searching Google. I got real quotes fast."</p>
-      <span>— James T., Texas</span>
+  <!-- INFO -->
+  <section class="info-strip">
+    <h2>Why Home Value Planning Matters</h2>
+    <p>
+      Most homeowners overlook simple upgrades that can dramatically increase resale value.
+      NestNudge helps you compare likely project cost, added home value, and estimated ROI
+      before you spend a dollar.
+    </p>
+  </section>
+
+  <!-- PROPERTY INSIGHTS -->
+  <section class="info-strip" id="property-insights-section" style="display:none;">
+    <h2>Property Insights for Your Area</h2>
+    <p id="propertyInsightsText">
+      Based on your location, we’ll use regional pricing and home-value assumptions to guide your estimate.
+    </p>
+  </section>
+
+  <!-- COST GUIDE / ESTIMATOR -->
+  <section class="cost-guide-section" id="cost-guide">
+    <div class="cost-guide-wrap">
+      <h2>Explore Upgrade Costs, Home Value Impact, and ROI</h2>
+      <p>Select a project type to see estimated cost range, added home value, and ROI estimate.</p>
+
+      <div class="upgrade-selector">
+        <button type="button" onclick="showUpgrade('roof')">Roof Replacement</button>
+        <button type="button" onclick="showUpgrade('doors')">New Entry Doors</button>
+        <button type="button" onclick="showUpgrade('windows')">Impact Windows</button>
+      </div>
+
+      <div id="resultsPanel" class="results-panel" style="display:none;">
+        <h3 id="resultsTitle">Cost Guide</h3>
+
+        <div class="results-grid">
+          <div class="result-box">
+            <span class="label">Estimated Cost Range</span>
+            <strong id="costRange">$0 - $0</strong>
+          </div>
+
+          <div class="result-box">
+            <span class="label">Estimated Home Value Increase</span>
+            <strong id="valueRange">$0 - $0</strong>
+          </div>
+
+          <div class="result-box">
+            <span class="label">Estimated ROI</span>
+            <strong id="roiRange">0% - 0%</strong>
+          </div>
+        </div>
+
+        <div class="graph-container">
+          <div class="bar current-bar">
+            <span>Project Cost</span>
+          </div>
+
+          <div class="bar new-bar">
+            <span>Value Added</span>
+          </div>
+        </div>
+
+        <p id="currentValue"></p>
+        <p id="newValue"></p>
+        <h3 id="valueGain"></h3>
+
+        <div class="conversion-cta">
+          <button type="button" onclick="scrollToLoan()">See Financing Options</button>
+          <button type="button" onclick="scrollToRealtor()">See My Home Value Plan</button>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="testimonial">
-      <p>"Felt like companies were competing for me. Highly recommend."</p>
-      <span>— Lisa R., California</span>
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="service-grid">
+
+      <div class="service-card">
+        <img src="/image/roof-1.webp" alt="Roof Replacement">
+        <div class="overlay">
+          <h3>Roof Replacement</h3>
+          <p>Protect your home and boost value</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <img src="/image/landscaping-3.webp" alt="New Entry Doors">
+        <div class="overlay">
+          <h3>New Entry Doors</h3>
+          <p>Improve curb appeal and efficiency</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <img src="/image/home-evaluation1.png" alt="Impact Windows">
+        <div class="overlay">
+          <h3>Impact Windows</h3>
+          <p>Increase protection and resale appeal</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <img src="/image/loan-for-upgrade.jpg" alt="Funding Options">
+        <div class="overlay">
+          <h3>Funding Options</h3>
+          <p>See flexible ways to finance upgrades</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <img src="/image/home-rennovation1.png" alt="Home Remodeling">
+        <div class="overlay">
+          <h3>Home Remodeling</h3>
+          <p>Plan higher-ROI improvement projects</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <img src="/image/solar-2.webp" alt="More Upgrade Ideas">
+        <div class="overlay">
+          <h3>More Upgrade Ideas</h3>
+          <p>Explore additional value-building options</p>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <h2>Real Homeowners, Real Results</h2>
 
-<footer>
-  <p>© 2026 NestNudge — Built for homeowners</p>
-</footer>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <img src="/image/sarah-m.png" alt="Sarah M">
+        <p>⭐⭐⭐⭐⭐ “I increased my home value by $35K just by following the plan.”</p>
+        <strong>Sarah M. – Miami, FL</strong>
+      </div>
 
-<!-- JS -->
-<script src="estimator.js"></script>
+      <div class="testimonial-card">
+        <img src="/image/john-p.png" alt="John P">
+        <p>⭐⭐⭐⭐⭐ “The roof upgrade alone paid for itself.”</p>
+        <strong>John P. – Dallas, TX</strong>
+      </div>
 
-  <!-- 💬 CONVERSION ASSISTANT -->
-<div id="chat-button">💬 Need help?</div>
+      <div class="testimonial-card">
+        <img src="/image/greg-r.png" alt="Greg R">
+        <p>⭐⭐⭐⭐⭐ “I sold my home faster and above asking price.”</p>
+        <strong>Greg R. – San Diego, CA</strong>
+      </div>
+    </div>
+  </section>
 
-<div id="chat-box" class="hidden">
-  <div class="chat-header">NestNudge Assistant</div>
-  
-  <div class="chat-body">
-    <p>What are you looking to do?</p>
+  <!-- FUNDING -->
+  <section class="loan-section" id="loan-section">
+    <div class="loan-container">
 
-    <button onclick="selectOption('roof')">Roofing</button>
-    <button onclick="selectOption('solar')">Solar</button>
-    <button onclick="selectOption('buy')">Buy a Home</button>
-    <button onclick="selectOption('sell')">Sell a Home</button>
-    <button onclick="selectOption('loan')">Mortgage</button>
+      <div class="loan-text">
+        <h2>You May Already Qualify for Funding</h2>
+        <p>Based on your home value growth plan, you may be eligible to fund your upgrades.</p>
 
-    <div id="chat-response"></div>
-  </div>
-</div>
+        <ul>
+          <li>✔ Fast approvals</li>
+          <li>✔ No home equity required</li>
+          <li>✔ Flexible loan options</li>
+        </ul>
+      </div>
+
+      <div class="loan-form">
+        <form action="https://leadbizo.com/home-improvement-lead/index.php" method="POST">
+          <input type="text" name="name" placeholder="Full Name" required>
+          <input type="email" name="email" placeholder="Email Address" required>
+          <input type="tel" name="phone" placeholder="Phone Number" required>
+          <input type="text" name="zip" placeholder="Zip Code" required>
+          <input type="hidden" name="project_type" value="loan">
+          <button type="submit">Check My Options</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SELLING -->
+  <section class="selling-section">
+    <div class="selling-container">
+
+      <div class="selling-text">
+        <h2>Thinking About Selling?</h2>
+        <p>Connect with a trusted local realtor and see how upgrades may improve your sale price.</p>
+        <a href="#contact-form" class="cta-btn">Get Started</a>
+      </div>
+
+      <div class="selling-image">
+        <img src="/image/realtor-4.webp" alt="Local Realtor">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REALTOR CONTACT -->
+  <section class="realtor-contact" id="contact-form">
+    <div class="loan-container">
+
+      <div class="loan-text">
+        <h2>Get Connected With a Local Realtor</h2>
+        <p>Tell us a little about yourself and we’ll connect you with a trusted local expert.</p>
+      </div>
+
+      <div class="loan-form">
+        <form action="/api/realtor-lead.php" method="POST">
+          <input type="text" name="name" placeholder="Full Name" required>
+          <input type="email" name="email" placeholder="Email Address" required>
+          <input type="tel" name="phone" placeholder="Phone Number" required>
+          <input type="text" name="zip" placeholder="Zip Code" required>
+          <input type="hidden" name="lead_type" value="realtor">
+          <input type="hidden" name="source" value="NestNudge Realtor Form">
+          <button type="submit">Get Connected</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© NestNudge</p>
+  </footer>
+
+  <script src="estimator.js"></script>
+
+  <script>
+    function scrollToLoan() {
+      const section = document.getElementById("loan-section");
+      if (section) section.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function scrollToRealtor() {
+      const section = document.getElementById("contact-form");
+      if (section) section.scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
+
+  <script>
+    const regionalMultipliers = {
+      high: 1.18,
+      medium: 1.0,
+      low: 0.88
+    };
+
+    function getRegionTier(zip) {
+      if (!zip || zip.length < 5) return "medium";
+      const firstDigit = parseInt(zip.charAt(0), 10);
+
+      if ([0, 1, 9].includes(firstDigit)) return "high";
+      if ([2, 3, 4, 5, 6].includes(firstDigit)) return "medium";
+      return "low";
+    }
+
+    const upgradeData = {
+      roof: {
+        title: "Roof Replacement",
+        costLow: 12000,
+        costHigh: 22000,
+        valueLow: 15000,
+        valueHigh: 30000
+      },
+      doors: {
+        title: "New Entry Doors",
+        costLow: 2500,
+        costHigh: 9000,
+        valueLow: 3500,
+        valueHigh: 12000
+      },
+      windows: {
+        title: "Impact Windows",
+        costLow: 10000,
+        costHigh: 28000,
+        valueLow: 12000,
+        valueHigh: 35000
+      }
+    };
+
+    function formatMoney(value) {
+      return value.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0
+      });
+    }
+
+    function showPropertyInsights() {
+      const zip = document.getElementById("zip")?.value?.trim() || "";
+      const tier = getRegionTier(zip);
+      const text = document.getElementById("propertyInsightsText");
+      const section = document.getElementById("property-insights-section");
+
+      if (!text || !section) return;
+
+      let message = "Based on your location, we’ll use regional pricing and home-value assumptions to guide your estimate.";
+
+      if (tier === "high") {
+        message = "Your area appears to be in a higher-cost market. Project pricing and value gains may trend above national averages.";
+      } else if (tier === "low") {
+        message = "Your area appears to be in a lower-cost market. Project pricing may be lower, though value gains can still be strong.";
+      }
+
+      text.textContent = message;
+      section.style.display = "block";
+    }
+
+    function showUpgrade(type) {
+      const item = upgradeData[type];
+      if (!item) return;
+
+      const zip = document.getElementById("zip")?.value?.trim() || "";
+      const tier = getRegionTier(zip);
+      const multiplier = regionalMultipliers[tier];
+
+      const costLow = Math.round(item.costLow * multiplier);
+      const costHigh = Math.round(item.costHigh * multiplier);
+      const valueLow = Math.round(item.valueLow * multiplier);
+      const valueHigh = Math.round(item.valueHigh * multiplier);
+
+      document.getElementById("resultsTitle").textContent = item.title + " Cost Guide";
+      document.getElementById("costRange").textContent = formatMoney(costLow) + " - " + formatMoney(costHigh);
+      document.getElementById("valueRange").textContent = formatMoney(valueLow) + " - " + formatMoney(valueHigh);
+
+      const avgCost = (costLow + costHigh) / 2;
+      const avgValue = (valueLow + valueHigh) / 2;
+      const roiLow = Math.round((valueLow / costHigh) * 100);
+      const roiHigh = Math.round((valueHigh / costLow) * 100);
+      const avgROI = Math.round((avgValue / avgCost) * 100);
+
+      document.getElementById("roiRange").textContent = roiLow + "% - " + roiHigh + "%";
+      document.getElementById("resultsPanel").style.display = "block";
+
+      document.getElementById("currentValue").textContent =
+        "Estimated project cost: " + formatMoney(avgCost);
+
+      document.getElementById("newValue").textContent =
+        "Estimated added home value: " + formatMoney(avgValue);
+
+      document.getElementById("valueGain").textContent =
+        "Estimated ROI: " + avgROI + "%";
+
+      const currentBar = document.querySelector(".current-bar");
+      const newBar = document.querySelector(".new-bar");
+
+      if (currentBar && newBar) {
+        currentBar.style.height = Math.max(70, avgCost / 200) + "px";
+        newBar.style.height = Math.max(90, avgValue / 200) + "px";
+      }
+
+      showPropertyInsights();
+    }
+  </script>
+
+  <script>
+    let autocomplete;
+
+    function initAutocomplete() {
+      const addressInput = document.getElementById("address");
+      if (!addressInput || !window.google || !google.maps || !google.maps.places) return;
+
+      autocomplete = new google.maps.places.Autocomplete(addressInput, {
+        types: ["address"],
+        componentRestrictions: { country: "us" },
+        fields: ["address_components", "formatted_address"]
+      });
+
+      autocomplete.addListener("place_changed", handlePlaceSelect);
+    }
+
+    function handlePlaceSelect() {
+      const place = autocomplete.getPlace();
+      if (!place || !place.address_components) return;
+
+      let zipCode = "";
+
+      place.address_components.forEach(component => {
+        if (component.types.includes("postal_code")) {
+          zipCode = component.long_name;
+        }
+      });
+
+      const zipInput = document.getElementById("zip");
+      if (zipInput && zipCode) {
+        zipInput.value = zipCode;
+        showPropertyInsights();
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const zipInput = document.getElementById("zip");
+      if (zipInput) {
+        zipInput.addEventListener("input", showPropertyInsights);
+      }
+    });
+  </script>
+
+  <script>
+    let step = 0;
+    let userData = {};
+    let isSubmitting = false;
+
+    function toggleChat() {
+      const box = document.getElementById("chatBox");
+      if (!box) return;
+      box.style.display = box.style.display === "block" ? "none" : "block";
+    }
+
+    function addMessage(text, sender = "bot") {
+      const messages = document.getElementById("chatMessages");
+      if (!messages) return;
+
+      const msg = document.createElement("p");
+      msg.className = sender;
+      msg.textContent = text;
+      messages.appendChild(msg);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function resetChatFlow() {
+      step = 0;
+      userData = {};
+      isSubmitting = false;
+    }
+
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function isValidPhone(phone) {
+      const digits = phone.replace(/\D/g, "");
+      return digits.length >= 10;
+    }
+
+    function handleChat(e) {
+      if (e.key !== "Enter" || isSubmitting) return;
+
+      const input = document.getElementById("chatInput");
+      if (!input) return;
+
+      const value = input.value.trim();
+      if (!value) return;
+
+      addMessage(value, "user");
+      input.value = "";
+
+      step++;
+      setTimeout(() => nextStep(value), 350);
+    }
+
+    function nextStep(value) {
+      switch (step) {
+        case 1:
+          userData.intent = value.toLowerCase();
+          addMessage("Are you looking to sell, improve, refinance, or just explore options?");
+          break;
+
+        case 2:
+          userData.goal = value.toLowerCase();
+
+          if (userData.goal.includes("sell")) {
+            userData.lead_type = "realtor";
+            addMessage("Great — I can connect you with a local realtor.");
+            addMessage("What’s your full name?");
+            step = 10;
+          } else {
+            userData.lead_type = "funding";
+            addMessage("Great — you may qualify for funding to increase your home value.");
+            addMessage("What’s your full name?");
+            step = 20;
+          }
+          break;
+
+        case 11:
+          userData.name = value;
+          addMessage("What’s your email?");
+          break;
+
+        case 12:
+          if (!isValidEmail(value)) {
+            addMessage("Please enter a valid email address.");
+            step = 11;
+            return;
+          }
+          userData.email = value;
+          addMessage("What’s your phone number?");
+          break;
+
+        case 13:
+          if (!isValidPhone(value)) {
+            addMessage("Please enter a valid phone number with at least 10 digits.");
+            step = 12;
+            return;
+          }
+          userData.phone = value;
+          addMessage("What is your zip code?");
+          break;
+
+        case 14:
+          userData.zip = value;
+          addMessage("Submitting your request now...");
+          submitRealtorLead();
+          break;
+
+        case 21:
+          userData.name = value;
+          addMessage("What’s your email?");
+          break;
+
+        case 22:
+          if (!isValidEmail(value)) {
+            addMessage("Please enter a valid email address.");
+            step = 21;
+            return;
+          }
+          userData.email = value;
+          addMessage("What’s your phone number?");
+          break;
+
+        case 23:
+          if (!isValidPhone(value)) {
+            addMessage("Please enter a valid phone number with at least 10 digits.");
+            step = 22;
+            return;
+          }
+          userData.phone = value;
+          addMessage("What is your zip code?");
+          break;
+
+        case 24:
+          userData.zip = value;
+          addMessage("Submitting your request now...");
+          submitFundingLead();
+          break;
+      }
+
+      if (step === 10) step = 11;
+      if (step === 20) step = 21;
+    }
+
+    function submitFundingLead() {
+      if (isSubmitting) return;
+      isSubmitting = true;
+
+      const data = new URLSearchParams();
+      data.append("project_type", "loan");
+      data.append("name", userData.name || "");
+      data.append("email", userData.email || "");
+      data.append("phone", userData.phone || "");
+      data.append("zip", userData.zip || "");
+      data.append("goal", userData.goal || "");
+      data.append("source", "AI Home Advisor");
+
+      fetch("https://leadbizo.com/home-improvement-lead/index.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: data.toString()
+      })
+      .then(response => {
+        if (!response.ok) throw new Error("Funding lead submission failed");
+        addMessage("Thank you! Your request has been received. A funding specialist will be in touch as soon as possible by phone, text, or email.");
+        resetChatFlow();
+      })
+      .catch(error => {
+        console.error(error);
+        addMessage("There was a problem submitting your request. Please try again or use the funding form on the page.");
+        isSubmitting = false;
+      });
+    }
+
+    function submitRealtorLead() {
+      if (isSubmitting) return;
+      isSubmitting = true;
+
+      const data = new URLSearchParams();
+      data.append("lead_type", "realtor");
+      data.append("name", userData.name || "");
+      data.append("email", userData.email || "");
+      data.append("phone", userData.phone || "");
+      data.append("zip", userData.zip || "");
+      data.append("goal", userData.goal || "");
+      data.append("source", "AI Home Advisor");
+
+      fetch("/api/realtor-lead.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: data.toString(),
+        redirect: "follow"
+      })
+      .then(response => {
+        if (!response.ok) throw new Error("Realtor lead submission failed");
+        addMessage("Thank you! Your request has been received. A local real estate expert will be in touch as soon as possible by phone, text, or email.");
+        resetChatFlow();
+      })
+      .catch(error => {
+        console.error(error);
+        addMessage("There was a problem submitting your request. Please try again or use the realtor form on the page.");
+        isSubmitting = false;
+      });
+    }
+  </script>
+
+  <!-- GOOGLE MAPS PLACES API -->
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpLNCvzY-QPirPIva1-UrJ4eMejo3cHdQ&libraries=places&callback=initAutocomplete">
+  </script>
+
 </body>
 </html>
