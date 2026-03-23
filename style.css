@@ -797,3 +797,11 @@ footer p {
     transform: translateX(-50%);
   }
 }
+
+.service-card {
+  cursor: pointer;
+}
+
+.service-card:hover {
+  transform: translateY(-4px) scale(1.01);
+}
