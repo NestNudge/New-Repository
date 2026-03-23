@@ -147,3 +147,62 @@ footer {
   padding: 20px;
   opacity: 0.6;
 }
+
+/* 💬 CHAT BUTTON */
+#chat-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #00b4d8;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+/* 💬 CHAT BOX */
+#chat-box {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 260px;
+  background: white;
+  color: black;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.hidden {
+  display: none;
+}
+
+.chat-header {
+  background: #00b4d8;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.chat-body {
+  padding: 15px;
+}
+
+.chat-body button {
+  display: block;
+  width: 100%;
+  margin: 5px 0;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  background: #eee;
+  cursor: pointer;
+}
+
+.chat-body button:hover {
+  background: #ddd;
+}
