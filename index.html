@@ -9,6 +9,7 @@
 </head>
 <body>
 
+  <!-- HEADER -->
   <header>
     <nav>
       <a href="#">Home</a>
@@ -18,25 +19,42 @@
     </nav>
   </header>
 
+  <!-- AI CHAT -->
   <div id="chatWidget">
-    <div id="chatHeader" onclick="toggleChat()">
+    <div id="chatHeader">
       <span>🏡 AI Home Advisor</span>
+      <button type="button" id="chatCloseBtn" aria-label="Minimize chat" onclick="minimizeChat()">✕</button>
     </div>
 
     <div id="chatBox">
       <div id="chatMessages">
-        <p class="bot">Hi 👋 Want to increase your home value, explore funding, or connect with a local realtor?</p>
+        <p class="bot">Hi 👋 I can help with roofing, buying, entry doors, impact windows, funding, or finding a realtor. What would you like to explore?</p>
+      </div>
+
+      <div class="chat-quick-actions">
+        <button type="button" onclick="quickSelect('roof')">Roof</button>
+        <button type="button" onclick="quickSelect('buying')">Buying</button>
+        <button type="button" onclick="quickSelect('doors')">Entry Door</button>
+        <button type="button" onclick="quickSelect('windows')">Impact Windows</button>
+        <button type="button" onclick="quickSelect('realtor')">Realtor</button>
+        <button type="button" onclick="quickSelect('funding')">Funding</button>
       </div>
 
       <input
         type="text"
         id="chatInput"
-        placeholder="Ask about value, funding, or selling..."
+        placeholder="Ask about roof, buying, doors, windows, funding, or realtor..."
         onkeypress="handleChat(event)"
       >
     </div>
   </div>
 
+  <!-- REOPEN CHAT BUBBLE -->
+  <button id="chatReopen" type="button" aria-label="Open AI chat" onclick="reopenChat()">
+    💬 Chat with AI
+  </button>
+
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-container">
 
@@ -75,6 +93,7 @@
     </div>
   </section>
 
+  <!-- INFO -->
   <section class="info-strip">
     <h2>Why Home Value Planning Matters</h2>
     <p>
@@ -84,6 +103,7 @@
     </p>
   </section>
 
+  <!-- PROPERTY INSIGHTS -->
   <section class="info-strip" id="property-insights-section" style="display:none;">
     <h2>Property Insights for Your Area</h2>
     <p id="propertyInsightsText">
@@ -91,6 +111,7 @@
     </p>
   </section>
 
+  <!-- COST GUIDE -->
   <section class="cost-guide-section" id="cost-guide">
     <div class="cost-guide-wrap">
       <h2>Explore Upgrade Costs, Home Value Impact, and ROI</h2>
@@ -98,7 +119,7 @@
 
       <div class="upgrade-selector">
         <button type="button" onclick="showUpgrade('roof')">Roof Replacement</button>
-        <button type="button" onclick="showUpgrade('doors')">New Entry Doors</button>
+        <button type="button" onclick="showUpgrade('doors')">Entry Door</button>
         <button type="button" onclick="showUpgrade('windows')">Impact Windows</button>
       </div>
 
@@ -144,79 +165,100 @@
     </div>
   </section>
 
+  <!-- SERVICES CAROUSEL -->
   <section id="services" class="services-carousel">
+    <h2>Explore Value-Boosting Upgrades</h2>
 
-  <h2>Explore Value-Boosting Upgrades</h2>
+    <div class="carousel-wrapper">
+      <div class="carousel-track">
 
-  <div class="carousel-wrapper">
-
-    <div class="carousel-track">
-
-      <!-- ORIGINAL SET -->
-      <div class="service-card" onclick="selectServiceAndScroll('roof')">
-        <img src="/image/roof-1.webp">
-        <div class="overlay">
-          <h3>Roof Replacement</h3>
-          <p>+ $20K–$40K Value</p>
+        <!-- ORIGINAL SET -->
+        <div class="service-card" onclick="selectServiceAndScroll('roof')">
+          <img src="/image/roof-1.webp" alt="Roof Replacement">
+          <div class="overlay">
+            <h3>Roof Replacement</h3>
+            <p>$12K–$22K cost • May add $15K–$30K in value</p>
+          </div>
         </div>
-      </div>
 
-      <div class="service-card" onclick="selectServiceAndScroll('doors')">
-        <img src="/image/new-door-entry-way.png">
-        <div class="overlay">
-          <h3>New Entry Doors</h3>
+        <div class="service-card" onclick="selectServiceAndScroll('doors')">
+          <img src="/image/a_high_resolution_photograph_captures_the_entrance.png" alt="Entry Door">
+          <div class="overlay">
+            <h3>Entry Door</h3>
+            <p>$2.5K–$9K cost • Strong curb appeal and ROI</p>
+          </div>
         </div>
-      </div>
 
-      <div class="service-card" onclick="selectServiceAndScroll('windows')">
-        <img src="/image/home-evaluation1.png">
-        <div class="overlay">
-          <h3>Impact Windows</h3>
+        <div class="service-card" onclick="selectServiceAndScroll('windows')">
+          <img src="/image/home-evaluation1.png" alt="Impact Windows">
+          <div class="overlay">
+            <h3>Impact Windows</h3>
+            <p>$10K–$28K cost • Protection + resale appeal</p>
+          </div>
         </div>
-      </div>
 
-      <div class="service-card" onclick="scrollToLoan()">
-        <img src="/image/loan-for-upgrade.jpg">
-        <div class="overlay">
-          <h3>Funding Options</h3>
+        <div class="service-card" onclick="scrollToLoan()">
+          <img src="/image/loan-for-upgrade.jpg" alt="Funding Options">
+          <div class="overlay">
+            <h3>Funding Options</h3>
+            <p>Flexible financing can help start upgrades sooner</p>
+          </div>
         </div>
-      </div>
 
-      <div class="service-card" onclick="scrollToRealtor()">
-        <img src="/image/home-rennovation1.png">
-        <div class="overlay">
-          <h3>Home Remodeling</h3>
+        <div class="service-card" onclick="quickSelect('buying')">
+          <img src="/image/home-rennovation1.png" alt="Buying a Home">
+          <div class="overlay">
+            <h3>Buying a Home</h3>
+            <p>Understand upgrade potential before you buy</p>
+          </div>
         </div>
-      </div>
 
-      <!-- DUPLICATE SET (REQUIRED FOR INFINITE LOOP) -->
-      <div class="service-card" onclick="selectServiceAndScroll('roof')">
-        <img src="/image/roof-1.webp">
-        <div class="overlay">
-          <h3>Roof Replacement</h3>
+        <div class="service-card" onclick="quickSelect('realtor'); scrollToRealtor()">
+          <img src="/image/realtor-4.webp" alt="Realtor Guidance">
+          <div class="overlay">
+            <h3>Realtor Guidance</h3>
+            <p>Learn what updates could improve your selling price</p>
+          </div>
         </div>
-      </div>
 
-      <div class="service-card" onclick="selectServiceAndScroll('doors')">
-        <img src="/image/landscaping-3.webp">
-        <div class="overlay">
-          <h3>Doors</h3>
+        <!-- DUPLICATE SET FOR SMOOTH LOOP -->
+        <div class="service-card" onclick="selectServiceAndScroll('roof')">
+          <img src="/image/roof-1.webp" alt="Roof Replacement">
+          <div class="overlay">
+            <h3>Roof Replacement</h3>
+            <p>$12K–$22K cost • May add $15K–$30K in value</p>
+          </div>
         </div>
-      </div>
 
-      <div class="service-card" onclick="selectServiceAndScroll('windows')">
-        <img src="/image/home-evaluation1.png">
-        <div class="overlay">
-          <h3>Windows</h3>
+        <div class="service-card" onclick="selectServiceAndScroll('doors')">
+          <img src="/image/new-door-entry-way.png" alt="Entry Door">
+          <div class="overlay">
+            <h3>Entry Door</h3>
+            <p>$2.5K–$9K cost • Strong curb appeal and ROI</p>
+          </div>
         </div>
-      </div>
 
+        <div class="service-card" onclick="selectServiceAndScroll('windows')">
+          <img src="/image/home-evaluation1.png" alt="Impact Windows">
+          <div class="overlay">
+            <h3>Impact Windows</h3>
+            <p>$10K–$28K cost • Protection + resale appeal</p>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="scrollToLoan()">
+          <img src="/image/loan-for-upgrade.jpg" alt="Funding Options">
+          <div class="overlay">
+            <h3>Funding Options</h3>
+            <p>Flexible financing can help start upgrades sooner</p>
+          </div>
+        </div>
+
+      </div>
     </div>
+  </section>
 
-  </div>
-
-</section>
-
+  <!-- TESTIMONIALS -->
   <section class="testimonials">
     <h2>Real Homeowners, Real Results</h2>
 
@@ -241,6 +283,7 @@
     </div>
   </section>
 
+  <!-- FUNDING -->
   <section class="loan-section" id="loan-section">
     <div class="loan-container">
 
@@ -269,6 +312,7 @@
     </div>
   </section>
 
+  <!-- SELLING -->
   <section class="selling-section">
     <div class="selling-container">
 
@@ -285,6 +329,7 @@
     </div>
   </section>
 
+  <!-- REALTOR CONTACT -->
   <section class="realtor-contact" id="contact-form">
     <div class="loan-container">
 
@@ -308,12 +353,14 @@
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <p>© NestNudge</p>
   </footer>
 
   <script src="estimator.js"></script>
 
+  <!-- HELPERS -->
   <script>
     function scrollToLoan() {
       const section = document.getElementById("loan-section");
@@ -328,12 +375,11 @@
     function selectServiceAndScroll(type) {
       showUpgrade(type);
       const section = document.getElementById("cost-guide");
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+      if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   </script>
 
+  <!-- ESTIMATOR -->
   <script>
     const regionalMultipliers = {
       high: 1.18,
@@ -359,7 +405,7 @@
         valueHigh: 30000
       },
       doors: {
-        title: "New Entry Doors",
+        title: "Entry Door Upgrade",
         costLow: 2500,
         costHigh: 9000,
         valueLow: 3500,
@@ -449,6 +495,7 @@
     }
   </script>
 
+  <!-- GOOGLE MAPS -->
   <script>
     let autocomplete;
 
@@ -492,16 +539,16 @@
     });
   </script>
 
+  <!-- IMPROVED AI CHAT -->
   <script>
-    let step = 0;
-    let userData = {};
-    let isSubmitting = false;
-
-    function toggleChat() {
-      const box = document.getElementById("chatBox");
-      if (!box) return;
-      box.style.display = box.style.display === "block" ? "none" : "block";
-    }
+    let chatState = {
+      mode: "general",
+      service: "",
+      leadType: "",
+      captureStep: "",
+      data: {},
+      isSubmitting: false
+    };
 
     function addMessage(text, sender = "bot") {
       const messages = document.getElementById("chatMessages");
@@ -514,10 +561,177 @@
       messages.scrollTop = messages.scrollHeight;
     }
 
-    function resetChatFlow() {
-      step = 0;
-      userData = {};
-      isSubmitting = false;
+    function resetChatState() {
+      chatState = {
+        mode: "general",
+        service: "",
+        leadType: "",
+        captureStep: "",
+        data: {},
+        isSubmitting: false
+      };
+    }
+
+    function minimizeChat() {
+      const widget = document.getElementById("chatWidget");
+      const reopen = document.getElementById("chatReopen");
+      if (widget) widget.classList.add("chat-hidden");
+      if (reopen) reopen.classList.add("show-chat-bubble");
+    }
+
+    function reopenChat() {
+      const widget = document.getElementById("chatWidget");
+      const reopen = document.getElementById("chatReopen");
+      if (widget) widget.classList.remove("chat-hidden");
+      if (reopen) reopen.classList.remove("show-chat-bubble");
+    }
+
+    function quickSelect(topic) {
+      const map = {
+        roof: "roof",
+        buying: "buying",
+        doors: "entry door",
+        windows: "impact windows",
+        realtor: "realtor",
+        funding: "funding"
+      };
+      const value = map[topic] || topic;
+      addMessage(value, "user");
+      processUserMessage(value);
+    }
+
+    function handleChat(e) {
+      if (e.key !== "Enter" || chatState.isSubmitting) return;
+
+      const input = document.getElementById("chatInput");
+      if (!input) return;
+
+      const value = input.value.trim();
+      if (!value) return;
+
+      addMessage(value, "user");
+      input.value = "";
+      processUserMessage(value);
+    }
+
+    function detectIntent(text) {
+      const value = text.toLowerCase();
+
+      if (value.includes("roof") || value.includes("roofing")) {
+        return { type: "service", service: "roof" };
+      }
+
+      if (value.includes("door") || value.includes("entry door") || value.includes("front door")) {
+        return { type: "service", service: "doors" };
+      }
+
+      if (value.includes("window") || value.includes("impact window") || value.includes("hurricane window")) {
+        return { type: "service", service: "windows" };
+      }
+
+      if (value.includes("buy") || value.includes("buying") || value.includes("purchase") || value.includes("house hunt")) {
+        return { type: "buying" };
+      }
+
+      if (value.includes("sell") || value.includes("selling") || value.includes("realtor") || value.includes("realestate") || value.includes("real estate") || value.includes("agent")) {
+        return { type: "realtor" };
+      }
+
+      if (value.includes("funding") || value.includes("finance") || value.includes("loan") || value.includes("payment")) {
+        return { type: "funding" };
+      }
+
+      if (value.includes("change") || value.includes("instead") || value.includes("different")) {
+        return { type: "change" };
+      }
+
+      return { type: "general" };
+    }
+
+    function getUpgradeSummary(type) {
+      const zip = document.getElementById("zip")?.value?.trim() || "";
+      const tier = getRegionTier(zip);
+      const multiplier = regionalMultipliers[tier] || 1.0;
+      const item = upgradeData[type];
+
+      if (!item) return null;
+
+      const costLow = Math.round(item.costLow * multiplier);
+      const costHigh = Math.round(item.costHigh * multiplier);
+      const valueLow = Math.round(item.valueLow * multiplier);
+      const valueHigh = Math.round(item.valueHigh * multiplier);
+      const avgCost = Math.round((costLow + costHigh) / 2);
+      const avgValue = Math.round((valueLow + valueHigh) / 2);
+      const avgROI = Math.round((avgValue / avgCost) * 100);
+
+      return {
+        title: item.title,
+        costLow,
+        costHigh,
+        valueLow,
+        valueHigh,
+        avgROI
+      };
+    }
+
+    function processUserMessage(text) {
+      const intent = detectIntent(text);
+
+      if (intent.type === "service") {
+        chatState.mode = "service";
+        chatState.service = intent.service;
+        chatState.leadType = "funding";
+        chatState.captureStep = "";
+
+        showUpgrade(intent.service);
+
+        const summary = getUpgradeSummary(intent.service);
+        if (summary) {
+          addMessage(
+            `${summary.title} typically ranges from ${formatMoney(summary.costLow)} to ${formatMoney(summary.costHigh)} and may add about ${formatMoney(summary.valueLow)} to ${formatMoney(summary.valueHigh)} in value. Estimated ROI can be around ${summary.avgROI}%.`
+          );
+        }
+
+        addMessage("Would you like financing options, or would you like to explore another upgrade?");
+        return;
+      }
+
+      if (intent.type === "buying") {
+        chatState.mode = "buying";
+        chatState.captureStep = "";
+        addMessage("Buying is a great time to think about future value. I can help you explore which upgrades might have the strongest ROI after purchase.");
+        addMessage("Would you like to compare roofing, entry doors, or impact windows?");
+        return;
+      }
+
+      if (intent.type === "funding") {
+        chatState.mode = "funding";
+        chatState.leadType = "funding";
+        chatState.captureStep = "name";
+        addMessage("Absolutely — I can help with funding options. What’s your full name?");
+        return;
+      }
+
+      if (intent.type === "realtor") {
+        chatState.mode = "realtor";
+        chatState.leadType = "realtor";
+        chatState.captureStep = "name";
+        addMessage("Absolutely — I can connect you with a local realtor. What’s your full name?");
+        return;
+      }
+
+      if (intent.type === "change") {
+        addMessage("No problem — you can switch anytime. Are you interested in roofing, buying, entry doors, impact windows, funding, or a realtor?");
+        chatState.captureStep = "";
+        return;
+      }
+
+      if (chatState.captureStep) {
+        handleCaptureStep(text);
+        return;
+      }
+
+      addMessage("I can help with roofing, buying, entry doors, impact windows, funding, or a realtor. Which one would you like to explore?");
     }
 
     function isValidEmail(email) {
@@ -529,123 +743,57 @@
       return digits.length >= 10;
     }
 
-    function handleChat(e) {
-      if (e.key !== "Enter" || isSubmitting) return;
+    function handleCaptureStep(text) {
+      switch (chatState.captureStep) {
+        case "name":
+          chatState.data.name = text.trim();
+          chatState.captureStep = "email";
+          addMessage("Thanks. What’s your email address?");
+          return;
 
-      const input = document.getElementById("chatInput");
-      if (!input) return;
+        case "email":
+          if (!isValidEmail(text.trim())) {
+            addMessage("Please enter a valid email address.");
+            return;
+          }
+          chatState.data.email = text.trim();
+          chatState.captureStep = "phone";
+          addMessage("What’s your phone number?");
+          return;
 
-      const value = input.value.trim();
-      if (!value) return;
+        case "phone":
+          if (!isValidPhone(text.trim())) {
+            addMessage("Please enter a valid phone number with at least 10 digits.");
+            return;
+          }
+          chatState.data.phone = text.trim();
+          chatState.captureStep = "zip";
+          addMessage("What is your zip code?");
+          return;
 
-      addMessage(value, "user");
-      input.value = "";
-
-      step++;
-      setTimeout(() => nextStep(value), 350);
-    }
-
-    function nextStep(value) {
-      switch (step) {
-        case 1:
-          userData.intent = value.toLowerCase();
-          addMessage("Are you looking to sell, improve, refinance, or just explore options?");
-          break;
-
-        case 2:
-          userData.goal = value.toLowerCase();
-
-          if (userData.goal.includes("sell")) {
-            userData.lead_type = "realtor";
-            addMessage("Great — I can connect you with a local realtor.");
-            addMessage("What’s your full name?");
-            step = 10;
+        case "zip":
+          chatState.data.zip = text.trim();
+          addMessage("Submitting your request now...");
+          if (chatState.leadType === "realtor") {
+            submitRealtorLead();
           } else {
-            userData.lead_type = "funding";
-            addMessage("Great — you may qualify for funding to increase your home value.");
-            addMessage("What’s your full name?");
-            step = 20;
+            submitFundingLead();
           }
-          break;
-
-        case 11:
-          userData.name = value;
-          addMessage("What’s your email?");
-          break;
-
-        case 12:
-          if (!isValidEmail(value)) {
-            addMessage("Please enter a valid email address.");
-            step = 11;
-            return;
-          }
-          userData.email = value;
-          addMessage("What’s your phone number?");
-          break;
-
-        case 13:
-          if (!isValidPhone(value)) {
-            addMessage("Please enter a valid phone number with at least 10 digits.");
-            step = 12;
-            return;
-          }
-          userData.phone = value;
-          addMessage("What is your zip code?");
-          break;
-
-        case 14:
-          userData.zip = value;
-          addMessage("Submitting your request now...");
-          submitRealtorLead();
-          break;
-
-        case 21:
-          userData.name = value;
-          addMessage("What’s your email?");
-          break;
-
-        case 22:
-          if (!isValidEmail(value)) {
-            addMessage("Please enter a valid email address.");
-            step = 21;
-            return;
-          }
-          userData.email = value;
-          addMessage("What’s your phone number?");
-          break;
-
-        case 23:
-          if (!isValidPhone(value)) {
-            addMessage("Please enter a valid phone number with at least 10 digits.");
-            step = 22;
-            return;
-          }
-          userData.phone = value;
-          addMessage("What is your zip code?");
-          break;
-
-        case 24:
-          userData.zip = value;
-          addMessage("Submitting your request now...");
-          submitFundingLead();
-          break;
+          return;
       }
-
-      if (step === 10) step = 11;
-      if (step === 20) step = 21;
     }
 
     function submitFundingLead() {
-      if (isSubmitting) return;
-      isSubmitting = true;
+      if (chatState.isSubmitting) return;
+      chatState.isSubmitting = true;
 
       const data = new URLSearchParams();
       data.append("project_type", "loan");
-      data.append("name", userData.name || "");
-      data.append("email", userData.email || "");
-      data.append("phone", userData.phone || "");
-      data.append("zip", userData.zip || "");
-      data.append("goal", userData.goal || "");
+      data.append("name", chatState.data.name || "");
+      data.append("email", chatState.data.email || "");
+      data.append("phone", chatState.data.phone || "");
+      data.append("zip", chatState.data.zip || "");
+      data.append("goal", chatState.service || chatState.mode || "funding");
       data.append("source", "AI Home Advisor");
 
       fetch("https://leadbizo.com/home-improvement-lead/index.php", {
@@ -658,26 +806,26 @@
       .then(response => {
         if (!response.ok) throw new Error("Funding lead submission failed");
         addMessage("Thank you! Your request has been received. A funding specialist will be in touch as soon as possible by phone, text, or email.");
-        resetChatFlow();
+        resetChatState();
       })
       .catch(error => {
         console.error(error);
         addMessage("There was a problem submitting your request. Please try again or use the funding form on the page.");
-        isSubmitting = false;
+        chatState.isSubmitting = false;
       });
     }
 
     function submitRealtorLead() {
-      if (isSubmitting) return;
-      isSubmitting = true;
+      if (chatState.isSubmitting) return;
+      chatState.isSubmitting = true;
 
       const data = new URLSearchParams();
       data.append("lead_type", "realtor");
-      data.append("name", userData.name || "");
-      data.append("email", userData.email || "");
-      data.append("phone", userData.phone || "");
-      data.append("zip", userData.zip || "");
-      data.append("goal", userData.goal || "");
+      data.append("name", chatState.data.name || "");
+      data.append("email", chatState.data.email || "");
+      data.append("phone", chatState.data.phone || "");
+      data.append("zip", chatState.data.zip || "");
+      data.append("goal", chatState.service || chatState.mode || "realtor");
       data.append("source", "AI Home Advisor");
 
       fetch("/api/realtor-lead.php", {
@@ -691,16 +839,17 @@
       .then(response => {
         if (!response.ok) throw new Error("Realtor lead submission failed");
         addMessage("Thank you! Your request has been received. A local real estate expert will be in touch as soon as possible by phone, text, or email.");
-        resetChatFlow();
+        resetChatState();
       })
       .catch(error => {
         console.error(error);
         addMessage("There was a problem submitting your request. Please try again or use the realtor form on the page.");
-        isSubmitting = false;
+        chatState.isSubmitting = false;
       });
     }
   </script>
 
+  <!-- GOOGLE MAPS API -->
   <script async
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpLNCvzY-QPirPIva1-UrJ4eMejo3cHdQ&libraries=places&callback=initAutocomplete">
   </script>
