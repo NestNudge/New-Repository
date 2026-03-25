@@ -77,18 +77,18 @@
           <img src="/image/NestNudge-Logo.png" alt="NestNudge Logo">
         </div>
 
-       <form action="/home-improvement-lead/index.php" method="POST">
-  <h3>Start Your Free Value Plan</h3>
+        <form action="/home-improvement-lead/index.php" method="POST">
+          <h3>Start Your Free Value Plan</h3>
 
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="text" id="address" name="address" placeholder="Property Address" autocomplete="street-address">
-  <input type="text" id="zip" name="zip" placeholder="Zip Code" required>
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="text" id="address" name="address" placeholder="Property Address" autocomplete="street-address">
+          <input type="text" id="zip" name="zip" placeholder="Zip Code" required>
 
-  <input type="hidden" name="project_type" value="estimator">
-  <input type="hidden" name="source" value="NestNudge Hero Form">
+          <input type="hidden" name="project_type" value="estimator">
+          <input type="hidden" name="source" value="NestNudge Hero Form">
 
-  <button type="submit">See My Home Value Growth</button>
-</form>
+          <button type="submit">See My Home Value Growth</button>
+        </form>
       </div>
 
     </div>
@@ -173,7 +173,6 @@
     <div class="carousel-wrapper">
       <div class="carousel-track">
 
-        <!-- ORIGINAL SET -->
         <div class="service-card" onclick="selectServiceAndScroll('roof')">
           <img src="/image/roof-1.webp" alt="Roof Replacement">
           <div class="overlay">
@@ -214,7 +213,7 @@
           </div>
         </div>
 
-        <div class="service-card" onclick="quickSelect('realtor'); scrollToRealtor()">
+        <div class="service-card" onclick="quickSelect('realtor'); scrollToRealtor();">
           <img src="/image/realtor-4.webp" alt="Realtor Guidance">
           <div class="overlay">
             <h3>Realtor Guidance</h3>
@@ -232,7 +231,7 @@
         </div>
 
         <div class="service-card" onclick="selectServiceAndScroll('doors')">
-          <img src="/image/new-door-entry-way.png" alt="Entry Door">
+          <img src="/image/a_high_resolution_photograph_captures_the_entrance.png" alt="Entry Door">
           <div class="overlay">
             <h3>Entry Door</h3>
             <p>$2.5K–$9K cost • Strong curb appeal and ROI</p>
@@ -300,12 +299,13 @@
       </div>
 
       <div class="loan-form">
-        <form action="https://leadbizo.com/home-improvement-lead/index.php" method="POST">
+        <form action="/home-improvement-lead/index.php" method="POST">
           <input type="text" name="name" placeholder="Full Name" required>
           <input type="email" name="email" placeholder="Email Address" required>
           <input type="tel" name="phone" placeholder="Phone Number" required>
           <input type="text" name="zip" placeholder="Zip Code" required>
           <input type="hidden" name="project_type" value="loan">
+          <input type="hidden" name="source" value="NestNudge Funding Form">
           <button type="submit">Check My Options</button>
         </form>
       </div>
@@ -358,8 +358,6 @@
   <footer>
     <p>© NestNudge</p>
   </footer>
-
-  <script src="estimator.js"></script>
 
   <!-- HELPERS -->
   <script>
@@ -789,15 +787,14 @@
       chatState.isSubmitting = true;
 
       const data = new URLSearchParams();
-      data.append("project_type", "loan");
       data.append("name", chatState.data.name || "");
       data.append("email", chatState.data.email || "");
       data.append("phone", chatState.data.phone || "");
       data.append("zip", chatState.data.zip || "");
-      data.append("goal", chatState.service || chatState.mode || "funding");
+      data.append("project_type", chatState.service || chatState.mode || "loan");
       data.append("source", "AI Home Advisor");
 
-      fetch("https://leadbizo.com/home-improvement-lead/index.php", {
+      fetch("/home-improvement-lead/index.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
