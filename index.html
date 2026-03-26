@@ -852,5 +852,179 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpLNCvzY-QPirPIva1-UrJ4eMejo3cHdQ&libraries=places&callback=initAutocomplete">
   </script>
 
+<!-- NestNudge Live Activity Popup -->
+<div id="nn-popup" class="nn-hidden">
+  <div class="nn-popup-content">
+    <div class="nn-icon">✔</div>
+    <div class="nn-text">
+      <strong id="nn-name">Amanda S.</strong><br>
+      <span id="nn-location">Austin, TX</span><br>
+      <span id="nn-action">requested a home value</span><br>
+      <small id="nn-time">Just now</small>
+    </div>
+  </div>
+</div>
+
+<style>
+#nn-popup {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.18);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 9999;
+  width: 290px;
+  font-family: Arial, sans-serif;
+  animation: nnFadeIn 0.4s ease;
+}
+
+.nn-hidden {
+  display: none;
+}
+
+.nn-popup-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nn-icon {
+  background: #2E7D32;
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.nn-text strong {
+  font-size: 14px;
+}
+
+.nn-text span {
+  font-size: 13px;
+  color: #444;
+}
+
+.nn-text small {
+  font-size: 11px;
+  color: #888;
+}
+
+@keyframes nnFadeIn {
+  from {opacity:0; transform:translateY(20px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+/* Mobile optimization */
+@media (max-width: 480px) {
+  #nn-popup {
+    left: 10px;
+    right: 10px;
+    width: auto;
+    bottom: 15px;
+  }
+}
+</style>
+
+<script>
+// =============================
+// NestNudge Smart Popup System
+// =============================
+
+// 🔹 DEMO FALLBACK (works immediately)
+let demoLeads = [
+  {name:"Amanda S.", location:"Austin, TX"},
+  {name:"John M.", location:"Miami, FL"},
+  {name:"Carlos R.", location:"Orlando, FL"},
+  {name:"Lisa T.", location:"Tampa, FL"},
+  {name:"David K.", location:"Fort Lauderdale, FL"}
+];
+
+// 🔹 LIVE LEADS (will override demo when connected)
+let liveLeads = [];
+
+// 🔹 ACTION VARIATIONS (improves realism)
+const actions = [
+  "requested a home value",
+  "compared roof quotes",
+  "checked solar savings",
+  "booked a free estimate",
+  "looked for local contractors"
+];
+
+// 🔹 TIME VARIATIONS
+const times = [
+  "Just now",
+  "2 mins ago",
+  "5 mins ago",
+  "10 mins ago",
+  "15 mins ago"
+];
+
+// 🔹 FETCH REAL LEADS (OPTIONAL - SAFE)
+async function fetchLeads() {
+  try {
+    const res = await fetch("https://nestnudge.com/api/leads"); // 🔴 Replace later
+    if (res.ok) {
+      liveLeads = await res.json();
+    }
+  } catch (e) {
+    console.log("Using demo leads");
+  }
+}
+
+// 🔹 GET RANDOM LEAD
+function getRandomLead() {
+  let source = liveLeads.length ? liveLeads : demoLeads;
+
+  // Prioritize Florida (geo boost)
+  source = source.sort((a,b) => {
+    return a.location.includes("FL") ? -1 : 1;
+  });
+
+  return source[Math.floor(Math.random() * source.length)];
+}
+
+// 🔹 SHOW POPUP
+function showPopup() {
+  const lead = getRandomLead();
+
+  document.getElementById("nn-name").innerText = lead.name;
+  document.getElementById("nn-location").innerText = lead.location;
+
+  document.getElementById("nn-action").innerText =
+    actions[Math.floor(Math.random() * actions.length)];
+
+  document.getElementById("nn-time").innerText =
+    times[Math.floor(Math.random() * times.length)];
+
+  const popup = document.getElementById("nn-popup");
+
+  popup.classList.remove("nn-hidden");
+
+  setTimeout(() => {
+    popup.classList.add("nn-hidden");
+  }, 5000);
+}
+
+// 🔹 START SYSTEM (delay so it feels natural)
+setTimeout(() => {
+  fetchLeads().then(() => {
+    showPopup(); // first popup
+    setInterval(showPopup, 9000);
+  });
+}, 4000);
+</script>
+
 </body>
 </html>
