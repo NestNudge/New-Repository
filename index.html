@@ -922,8 +922,9 @@ function showLeadPopup(){
 
 function closeLeadPopup(){
   leadPopup.style.display = "none";
-}
+}b
 
+<script>
 function submitLead(){
   const address = document.getElementById("nn-address").value;
   const email = document.getElementById("nn-email").value;
@@ -933,32 +934,41 @@ function submitLead(){
     return;
   }
 
-  let leads = JSON.parse(localStorage.getItem("nn_leads") || "[]");
-  leads.push({address,email});
-  localStorage.setItem("nn_leads", JSON.stringify(leads));
+  // 🔥 SEND TO ZAPIER (THIS IS WHAT YOU WERE MISSING)
+  fetch(https://hooks.zapier.com/hooks/catch/26987757/unt9zsx/, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      address: address,
+      email: email,
+      source: "NestNudge Popup",
+      timestamp: new Date().toISOString()
+    })
+  })
+  .then(() => {
+    console.log("Lead sent to Zapier");
+  })
+  .catch((err) => {
+    console.log("Error sending lead:", err);
+  });
 
-  document.getElementById("nn-box").innerHTML =
-    "<h3>✅ You're In!</h3><p>We’ll contact you shortly.</p>";
+  // ✅ SUCCESS MESSAGE
+  const box = document.getElementById("nn-box");
 
-  setTimeout(closeLeadPopup, 2500);
+  box.innerHTML = `
+    <div style="text-align:center;">
+      <h3>✅ You're In!</h3>
+      <p>We’re finding the best options for your home.</p>
+    </div>
+  `;
+
+  // ✅ CLOSE POPUP AFTER DELAY
+  setTimeout(() => {
+    document.getElementById("nn-lead-popup").style.display = "none";
+  }, 2500);
 }
-
-// EVENTS
-document.getElementById("nn-submit").addEventListener("click", submitLead);
-document.getElementById("nn-close").addEventListener("click", closeLeadPopup);
-
-// START
-setTimeout(showLeadPopup, 4000);
-setInterval(showPopup, 9000);
-
-// Exit intent
-document.addEventListener("mouseout", function(e){
-  if(e.clientY < 10){
-    showLeadPopup();
-  }
-});
-
-});
 </script>
 </body>
 </html>
