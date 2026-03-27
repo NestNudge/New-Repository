@@ -288,7 +288,7 @@ select:focus {
   align-items: flex-end;
   gap: 40px;
   height: 300px;
-  margin: 34px 0 20px;
+  margin: 34px 0 50px;
 }
 
 .bar {
