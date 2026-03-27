@@ -4,8 +4,61 @@
   <link rel="icon" href="/nestnudge.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NestNudge</title>
+
+  <title>NestNudge | Local Roof Quotes, Home Value Planning, Miami & South Florida</title>
+  <meta name="description" content="NestNudge helps homeowners compare roof quotes, estimate home value impact, and explore roofing, windows, doors, funding, and realtor options in Miami, Fort Lauderdale, and South Florida.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://www.nestnudge.com/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="NestNudge | Local Roof Quotes and Home Value Planning">
+  <meta property="og:description" content="Compare roof quotes, estimate ROI, and explore local home upgrade options with NestNudge.">
+  <meta property="og:url" content="https://www.nestnudge.com/">
+  <meta property="og:site_name" content="NestNudge">
+  <meta property="og:image" content="https://www.nestnudge.com/image/NestNudge-Logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NestNudge | Roof Quotes and Home Value Planning">
+  <meta name="twitter:description" content="Compare roof quotes and explore upgrades that may improve home value.">
+  <meta name="twitter:image" content="https://www.nestnudge.com/image/NestNudge-Logo.png">
+
   <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.nestnudge.com/#org",
+        "name": "NestNudge",
+        "url": "https://www.nestnudge.com/",
+        "logo": "https://www.nestnudge.com/image/NestNudge-Logo.png"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.nestnudge.com/#website",
+        "url": "https://www.nestnudge.com/",
+        "name": "NestNudge",
+        "publisher": {
+          "@id": "https://www.nestnudge.com/#org"
+        }
+      },
+      {
+        "@type": "Service",
+        "name": "Roof Quote Matching and Home Value Planning",
+        "provider": {
+          "@id": "https://www.nestnudge.com/#org"
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Miami" },
+          { "@type": "City", "name": "Fort Lauderdale" },
+          { "@type": "AdministrativeArea", "name": "South Florida" }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -13,6 +66,8 @@
   <header>
     <nav>
       <a href="#">Home</a>
+      <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
+      <a href="/contractor-login.html">Partner Login</a>
       <a href="#cost-guide">Estimator</a>
       <a href="#services">Services</a>
       <a href="#contact-form">Contact</a>
@@ -934,27 +989,7 @@ function submitLead(){
     return;
   }
 
-  // 🔥 SEND TO ZAPIER (THIS IS WHAT YOU WERE MISSING)
-  fetch(https://hooks.zapier.com/hooks/catch/26987757/unt9zsx/, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      address: address,
-      email: email,
-      source: "NestNudge Popup",
-      timestamp: new Date().toISOString()
-    })
-  })
-  .then(() => {
-    console.log("Lead sent to Zapier");
-  })
-  .catch((err) => {
-    console.log("Error sending lead:", err);
-  });
-
-  // ✅ SUCCESS MESSAGE
+   // ✅ SUCCESS MESSAGE
   const box = document.getElementById("nn-box");
 
   box.innerHTML = `
@@ -969,6 +1004,18 @@ function submitLead(){
     document.getElementById("nn-lead-popup").style.display = "none";
   }, 2500);
 }
+
+// ✅ CONTROL HOW OFTEN POPUP SHOWS (2–3 MINUTES)
+function startPopupCycle() {
+  showPopup();
+
+  const nextDelay = Math.floor(Math.random() * (180000 - 120000 + 1)) + 120000;
+
+  setTimeout(startPopupCycle, nextDelay);
+}
+
+// First popup appears after 8–15 seconds
+setTimeout(startPopupCycle, Math.random() * 7000 + 8000);
+
 </script>
 </body>
-</html>
