@@ -853,175 +853,13 @@
   </script>
 
 <!-- ============================= -->
-<!-- NestNudge Conversion System -->
+<!-- NestNudge FINAL STABLE SYSTEM -->
 <!-- ============================= -->
 
-<!-- 🔵 LIVE ACTIVITY POPUP -->
-<div id="nn-popup" class="nn-hidden">
-  <div class="nn-popup-content">
-    <div class="nn-icon">✔</div>
-    <div class="nn-text">
-      <strong id="nn-name">Amanda S.</strong><br>
-      <span id="nn-location">Austin, TX</span><br>
-      <span id="nn-action">requested a home value</span><br>
-      <small id="nn-time">Just now</small>
-    </div>
-  </div>
-</div>
-
-<!-- 🟢 LEAD CAPTURE POPUP -->
-<div id="nn-lead-popup" class="nn-hidden">
-  <div class="nn-overlay"></div>
-  <div class="nn-lead-box">
-    <h3>See What Your Home Is Worth</h3>
-    <p>Get a fast estimate + local savings opportunities</p>
-
-    <input type="text" id="nn-address" placeholder="Enter your address">
-    <input type="email" id="nn-email" placeholder="Enter your email">
-
-    <button onclick="submitLead()">Get My Free Estimate</button>
-    <div class="nn-close" onclick="closeLeadPopup()">✕</div>
-  </div>
-</div>
-
-<style>
-/* ============================= */
-/* LIVE FEED */
-/* ============================= */
-#nn-popup {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 12px 35px rgba(0,0,0,0.18);
-  padding: 14px 16px;
-  display: flex;
-  z-index: 9999;
-  width: 290px;
-  font-family: Arial;
-  animation: nnFadeIn 0.4s ease;
-}
-.nn-hidden { display:none; }
-.nn-popup-content { display:flex; gap:10px; }
-.nn-icon {
-  background:#2E7D32;color:#fff;width:36px;height:36px;
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-}
-.nn-text span { font-size:13px;color:#444; }
-.nn-text small { font-size:11px;color:#888; }
-
-/* ============================= */
-/* LEAD POPUP */
-/* ============================= */
-#nn-lead-popup {
-  position: fixed;
-  top:0;left:0;width:100%;height:100%;
-  display:flex;align-items:center;justify-content:center;
-  z-index:10000;
-}
-
-.nn-overlay {
-  position:absolute;width:100%;height:100%;
-  background:rgba(0,0,0,0.5);
-}
-
-.nn-lead-box {
-  position:relative;
-  background:#fff;
-  padding:25px;
-  border-radius:16px;
-  width:90%;
-  max-width:400px;
-  text-align:center;
-  z-index:2;
-  box-shadow:0 20px 60px rgba(0,0,0,0.25);
-}
-
-.nn-lead-box h3 { margin-bottom:10px; }
-.nn-lead-box p { font-size:14px; color:#555; }
-
-.nn-lead-box input {
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  border-radius:8px;
-  border:1px solid #ccc;
-}
-
-.nn-lead-box button {
-  width:100%;
-  padding:12px;
-  background:#2E7D32;
-  color:#fff;
-  border:none;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.nn-close {
-  position:absolute;
-  top:10px;
-  right:15px;
-  cursor:pointer;
-  font-size:18px;
-}
-
-/* Animation */
-@keyframes nnFadeIn {
-  from {opacity:0; transform:translateY(20px);}
-  to {opacity:1; transform:translateY(0);}
-}
-
-/* Mobile */
-@media(max-width:480px){
-  #nn-popup{left:10px;right:10px;width:auto;}
-}
-</style>
-
-<script>
-// =============================
-// DATA
-// =============================
-let demoLeads = [
-  {name:"Amanda S.", location:"Austin, TX"},
-  {name:"John M.", location:"Miami, FL"},
-  {name:"Carlos R.", location:"Orlando, FL"},
-  {name:"Lisa T.", location:"Tampa, FL"},
-  {name:"David K.", location:"Fort Lauderdale, FL"}
-];
-
-let liveLeads = [];
-
-const actions = [
-  "requested a home value",
-  "compared roof quotes",
-  "checked solar savings",
-  "booked a free estimate"
-];
-
-const times = ["Just now","2 mins ago","5 mins ago","10 mins ago"];
-
-// =============================
-// FETCH REAL LEADS (SAFE)
-// =============================
-async function fetchLeads() {
-  try {
-    const res = await fetch("https://nestnudge.com/api/leads");
-    if(res.ok) liveLeads = await res.json();
-  } catch(e){}
-}
-
-<!-- ============================= -->
-<!-- NestNudge Clean Popup System -->
-<!-- ============================= -->
-
-<!-- 🔵 LIVE ACTIVITY POPUP -->
-<div id="nn-popup" class="nn-hidden">
-  <div class="nn-popup-content">
-    <div class="nn-icon">✔</div>
-    <div class="nn-text">
+<div id="nn-popup" style="display:none;position:fixed;bottom:20px;left:20px;background:#fff;padding:14px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.2);z-index:9999;font-family:Arial;">
+  <div style="display:flex;gap:10px;">
+    <div style="background:#2E7D32;color:#fff;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;">✔</div>
+    <div>
       <strong id="nn-name"></strong><br>
       <span id="nn-location"></span><br>
       <span id="nn-action"></span><br>
@@ -1030,139 +868,41 @@ async function fetchLeads() {
   </div>
 </div>
 
-<!-- 🟢 LEAD POPUP -->
-<div id="nn-lead-popup" class="nn-hidden">
-  <div class="nn-overlay"></div>
-  <div class="nn-lead-box">
-    <div class="nn-close" onclick="closeLeadPopup()">✕</div>
+<div id="nn-lead-popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;align-items:center;justify-content:center;z-index:10000;">
+  <div style="position:absolute;width:100%;height:100%;background:rgba(0,0,0,0.5);"></div>
+
+  <div id="nn-box" style="position:relative;background:#fff;padding:25px;border-radius:14px;width:90%;max-width:400px;text-align:center;z-index:2;font-family:Arial;">
+    <div id="nn-close" style="position:absolute;top:10px;right:15px;cursor:pointer;">✕</div>
+
     <h3>See What Your Home Is Worth</h3>
     <p>Get a fast estimate + local savings</p>
 
-    <input type="text" id="nn-address" placeholder="Enter your address">
-    <input type="email" id="nn-email" placeholder="Enter your email">
+    <input id="nn-address" placeholder="Enter your address" style="width:100%;padding:12px;margin:8px 0;">
+    <input id="nn-email" placeholder="Enter your email" style="width:100%;padding:12px;margin:8px 0;">
 
-    <button onclick="submitLead()">Get My Free Estimate</button>
+    <button id="nn-submit" style="width:100%;padding:12px;background:#2E7D32;color:#fff;border:none;border-radius:8px;">
+      Get My Free Estimate
+    </button>
   </div>
 </div>
 
-<style>
-.nn-hidden { display:none; }
-
-/* LIVE FEED */
-#nn-popup {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 12px 35px rgba(0,0,0,0.18);
-  padding: 14px;
-  z-index: 9999;
-  width: 280px;
-  font-family: Arial;
-}
-
-.nn-popup-content { display:flex; gap:10px; }
-
-.nn-icon {
-  background:#2E7D32;color:#fff;
-  width:34px;height:34px;
-  border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-}
-
-.nn-text span { font-size:13px;color:#444; }
-.nn-text small { font-size:11px;color:#888; }
-
-/* LEAD POPUP */
-#nn-lead-popup {
-  position: fixed;
-  top:0;left:0;width:100%;height:100%;
-  display:flex;align-items:center;justify-content:center;
-  z-index:10000;
-}
-
-.nn-overlay {
-  position:absolute;
-  width:100%;height:100%;
-  background:rgba(0,0,0,0.5);
-}
-
-.nn-lead-box {
-  position:relative;
-  background:#fff;
-  padding:25px;
-  border-radius:14px;
-  width:90%;
-  max-width:400px;
-  text-align:center;
-  z-index:2;
-}
-
-.nn-lead-box input {
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  border-radius:8px;
-  border:1px solid #ccc;
-}
-
-.nn-lead-box button {
-  width:100%;
-  padding:12px;
-  background:#2E7D32;
-  color:#fff;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-.nn-close {
-  position:absolute;
-  top:10px;
-  right:15px;
-  cursor:pointer;
-}
-
-/* Mobile */
-@media(max-width:480px){
-  #nn-popup{left:10px;right:10px;width:auto;}
-}
-</style>
-
 <script>
-// =============================
-// SAFE DATA (NO ERRORS)
-// =============================
+document.addEventListener("DOMContentLoaded", function(){
+
 const demoLeads = [
   {name:"Amanda S.", location:"Austin, TX"},
   {name:"John M.", location:"Miami, FL"},
   {name:"Carlos R.", location:"Orlando, FL"},
-  {name:"Lisa T.", location:"Tampa, FL"},
-  {name:"David K.", location:"Fort Lauderdale, FL"}
+  {name:"Lisa T.", location:"Tampa, FL"}
 ];
 
-const actions = [
-  "requested a home value",
-  "compared roof quotes",
-  "checked solar savings",
-  "booked a free estimate"
-];
+const actions = ["requested a home value","compared roof quotes","checked solar savings"];
+const times = ["Just now","2 mins ago","5 mins ago"];
 
-const times = ["Just now","2 mins ago","5 mins ago","10 mins ago"];
+const popup = document.getElementById("nn-popup");
+const leadPopup = document.getElementById("nn-lead-popup");
 
-// =============================
-// PREVENT DUPLICATES
-// =============================
-let popupRunning = false;
-let leadPopupShown = false;
-
-// =============================
-// LIVE POPUP
-// =============================
-function showPopup() {
-  if (!leadPopupShown) return;
-
+function showPopup(){
   const lead = demoLeads[Math.floor(Math.random()*demoLeads.length)];
 
   document.getElementById("nn-name").innerText = lead.name;
@@ -1172,65 +912,53 @@ function showPopup() {
   document.getElementById("nn-time").innerText =
     times[Math.floor(Math.random()*times.length)];
 
-  const popup = document.getElementById("nn-popup");
-  popup.classList.remove("nn-hidden");
-
-  setTimeout(()=>popup.classList.add("nn-hidden"),5000);
+  popup.style.display = "block";
+  setTimeout(()=>popup.style.display="none",5000);
 }
 
-// =============================
-// LEAD POPUP
-// =============================
 function showLeadPopup(){
-  if (leadPopupShown) return;
-  document.getElementById("nn-lead-popup").classList.remove("nn-hidden");
-  leadPopupShown = true;
+  leadPopup.style.display = "flex";
 }
 
 function closeLeadPopup(){
-  document.getElementById("nn-lead-popup").classList.add("nn-hidden");
-
-  if (!popupRunning) {
-    popupRunning = true;
-    setInterval(showPopup, 9000);
-  }
+  leadPopup.style.display = "none";
 }
 
-// =============================
-// SUBMIT (NO ERRORS)
-// =============================
 function submitLead(){
   const address = document.getElementById("nn-address").value;
   const email = document.getElementById("nn-email").value;
 
   if(!address || !email){
-    alert("Please enter your address and email");
+    alert("Please enter your info");
     return;
   }
 
-  // Save locally (safe fallback)
   let leads = JSON.parse(localStorage.getItem("nn_leads") || "[]");
-  leads.push({address, email, time: new Date().toISOString()});
+  leads.push({address,email});
   localStorage.setItem("nn_leads", JSON.stringify(leads));
 
-  // Success UI
-  document.querySelector(".nn-lead-box").innerHTML = `
-    <h3>✅ You're In!</h3>
-    <p>We’re finding the best options for your home.</p>
-  `;
+  document.getElementById("nn-box").innerHTML =
+    "<h3>✅ You're In!</h3><p>We’ll contact you shortly.</p>";
 
   setTimeout(closeLeadPopup, 2500);
 }
 
-// =============================
-// START SYSTEM
-// =============================
-setTimeout(showLeadPopup, 5000);
+// EVENTS
+document.getElementById("nn-submit").addEventListener("click", submitLead);
+document.getElementById("nn-close").addEventListener("click", closeLeadPopup);
 
-// Exit intent (desktop)
+// START
+setTimeout(showLeadPopup, 4000);
+setInterval(showPopup, 9000);
+
+// Exit intent
 document.addEventListener("mouseout", function(e){
   if(e.clientY < 10){
     showLeadPopup();
   }
 });
+
+});
 </script>
+</body>
+</html>
