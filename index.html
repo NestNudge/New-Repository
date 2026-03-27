@@ -942,80 +942,90 @@
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
+  const demoLeads = [
+    { name: "Amanda S.", location: "Miami, FL" },
+    { name: "John M.", location: "Fort Lauderdale, FL" },
+    { name: "Carlos R.", location: "Hollywood, FL" },
+    { name: "Lisa T.", location: "Boca Raton, FL" }
+  ];
 
-const demoLeads = [
-  {name:"Amanda S.", location:"Austin, TX"},
-  {name:"John M.", location:"Miami, FL"},
-  {name:"Carlos R.", location:"Orlando, FL"},
-  {name:"Lisa T.", location:"Tampa, FL"}
-];
+  const actions = [
+    "requested a roof quote",
+    "compared local roofers",
+    "checked roofing costs"
+  ];
 
-const actions = ["requested a home value","compared roof quotes","checked solar savings"];
-const times = ["Just now","2 mins ago","5 mins ago"];
+  const times = ["Just now", "2 mins ago", "5 mins ago"];
 
-const popup = document.getElementById("nn-popup");
-const leadPopup = document.getElementById("nn-lead-popup");
+  const popup = document.getElementById("nn-popup");
+  const leadPopup = document.getElementById("nn-lead-popup");
+  const closeBtn = document.getElementById("nn-close");
+  const submitBtn = document.getElementById("nn-submit");
 
-function showPopup(){
-  const lead = demoLeads[Math.floor(Math.random()*demoLeads.length)];
+  function showPopup() {
+    if (!popup) return;
 
-  document.getElementById("nn-name").innerText = lead.name;
-  document.getElementById("nn-location").innerText = lead.location;
-  document.getElementById("nn-action").innerText =
-    actions[Math.floor(Math.random()*actions.length)];
-  document.getElementById("nn-time").innerText =
-    times[Math.floor(Math.random()*times.length)];
+    const lead = demoLeads[Math.floor(Math.random() * demoLeads.length)];
 
-  popup.style.display = "block";
-  setTimeout(()=>popup.style.display="none",5000);
-}
+    document.getElementById("nn-name").innerText = lead.name;
+    document.getElementById("nn-location").innerText = lead.location;
+    document.getElementById("nn-action").innerText =
+      actions[Math.floor(Math.random() * actions.length)];
+    document.getElementById("nn-time").innerText =
+      times[Math.floor(Math.random() * times.length)];
 
-function showLeadPopup(){
-  leadPopup.style.display = "flex";
-}
+    popup.style.display = "block";
 
-function closeLeadPopup(){
-  leadPopup.style.display = "none";
-}b
-
-<script>
-function submitLead(){
-  const address = document.getElementById("nn-address").value;
-  const email = document.getElementById("nn-email").value;
-
-  if(!address || !email){
-    alert("Please enter your info");
-    return;
+    setTimeout(() => {
+      popup.style.display = "none";
+    }, 5000);
   }
 
-   // ✅ SUCCESS MESSAGE
-  const box = document.getElementById("nn-box");
+  function showLeadPopup() {
+    if (!leadPopup) return;
+    leadPopup.style.display = "flex";
+  }
 
-  box.innerHTML = `
-    <div style="text-align:center;">
-      <h3>✅ You're In!</h3>
-      <p>We’re finding the best options for your home.</p>
-    </div>
-  `;
+  function closeLeadPopup() {
+    if (!leadPopup) return;
+    leadPopup.style.display = "none";
+  }
 
-  // ✅ CLOSE POPUP AFTER DELAY
-  setTimeout(() => {
-    document.getElementById("nn-lead-popup").style.display = "none";
-  }, 2500);
-}
+  function submitLead() {
+    const address = document.getElementById("nn-address").value.trim();
+    const email = document.getElementById("nn-email").value.trim();
 
-// ✅ CONTROL HOW OFTEN POPUP SHOWS (2–3 MINUTES)
-function startPopupCycle() {
-  showPopup();
+    if (!address || !email) {
+      alert("Please enter your address and email.");
+      return;
+    }
 
-  const nextDelay = Math.floor(Math.random() * (180000 - 120000 + 1)) + 120000;
+    const box = document.getElementById("nn-box");
+    box.innerHTML = `
+      <div style="text-align:center;">
+        <h3>✅ You're In!</h3>
+        <p>We’re finding the best options for your home.</p>
+      </div>
+    `;
 
-  setTimeout(startPopupCycle, nextDelay);
-}
+    setTimeout(() => {
+      if (leadPopup) leadPopup.style.display = "none";
+    }, 2500);
+  }
 
-// First popup appears after 8–15 seconds
-setTimeout(startPopupCycle, Math.random() * 7000 + 8000);
+  function startPopupCycle() {
+    showPopup();
+    const nextDelay = Math.floor(Math.random() * (180000 - 120000 + 1)) + 120000;
+    setTimeout(startPopupCycle, nextDelay);
+  }
 
+  if (closeBtn) closeBtn.addEventListener("click", closeLeadPopup);
+  if (submitBtn) submitBtn.addEventListener("click", submitLead);
+
+  setTimeout(startPopupCycle, Math.random() * 7000 + 8000);
+  setTimeout(showLeadPopup, 45000);
+});
 </script>
 </body>
+</html>
