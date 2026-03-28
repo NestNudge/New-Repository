@@ -133,17 +133,18 @@
         </div>
 
         <form action="/lead-handler.php" method="POST">
-          <h3>Start Your Free Value Plan</h3>
+  <h3>Start Your Free Value Plan</h3>
 
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="text" id="address" name="address" placeholder="Property Address" autocomplete="street-address">
-          <input type="text" id="zip" name="zip" placeholder="Zip Code" required>
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="text" id="address" name="address" placeholder="Property Address" autocomplete="street-address" required>
+  <input type="email" name="email" placeholder="Email Address" required>
+  <input type="text" id="zip" name="zip" placeholder="Zip Code" required>
 
-          <input type="hidden" name="project_type" value="estimator">
-          <input type="hidden" name="source" value="NestNudge Hero Form">
+  <input type="hidden" name="project_type" value="estimator">
+  <input type="hidden" name="source" value="NestNudge Hero Form">
 
-          <button type="submit">See My Home Value Growth</button>
-        </form>
+  <button type="submit">See My Home Value Growth</button>
+</form>
       </div>
 
     </div>
