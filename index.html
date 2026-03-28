@@ -133,18 +133,17 @@
         </div>
 
         <form action="/lead-handler.php" method="POST">
-  <h3>Start Your Free Value Plan</h3>
+          <h3>Start Your Free Value Plan</h3>
 
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="text" id="address" name="address" placeholder="Property Address" autocomplete="street-address" required>
-  <input type="email" name="email" placeholder="Email Address" required>
-  <input type="text" id="zip" name="zip" placeholder="Zip Code" required>
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="text" id="address" name="address" placeholder="Property Address" autocomplete="street-address">
+          <input type="text" id="zip" name="zip" placeholder="Zip Code" required>
 
-  <input type="hidden" name="project_type" value="estimator">
-  <input type="hidden" name="source" value="NestNudge Hero Form">
+          <input type="hidden" name="project_type" value="estimator">
+          <input type="hidden" name="source" value="NestNudge Hero Form">
 
-  <button type="submit">See My Home Value Growth</button>
-</form>
+          <button type="submit">See My Home Value Growth</button>
+        </form>
       </div>
 
     </div>
@@ -396,7 +395,7 @@
       </div>
 
       <div class="loan-form">
-        <form action="/api/realtor-lead.php" method="POST">
+        <form action="/realtor-handler.php" method="POST">
           <input type="text" name="name" placeholder="Full Name" required>
           <input type="email" name="email" placeholder="Email Address" required>
           <input type="tel" name="phone" placeholder="Phone Number" required>
@@ -882,7 +881,7 @@ document.getElementById("valueGain").innerHTML =
       data.append("goal", chatState.service || chatState.mode || "realtor");
       data.append("source", "AI Home Advisor");
 
-      fetch("/api/realtor-lead.php", {
+      fetch("/realtor-handler.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
@@ -1002,17 +1001,32 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    const box = document.getElementById("nn-box");
-    box.innerHTML = `
-      <div style="text-align:center;">
-        <h3>✅ You're In!</h3>
-        <p>We’re finding the best options for your home.</p>
-      </div>
-    `;
+    const data = new URLSearchParams();
+    data.append("name", "Popup Lead");
+    data.append("address", address);
+    data.append("zip", "");
+    data.append("email", email);
+    data.append("project_type", "estimator");
+    data.append("source", "NestNudge Popup");
 
-    setTimeout(() => {
-      if (leadPopup) leadPopup.style.display = "none";
-    }, 2500);
+    fetch("/lead-handler.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: data.toString()
+    })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Popup lead submission failed");
+      }
+
+      window.location.href = "/thank-you.html";
+    })
+    .catch((error) => {
+      console.error(error);
+      alert("There was a problem submitting your request. Please try again.");
+    });
   }
 
   function startPopupCycle() {
