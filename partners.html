@@ -229,6 +229,7 @@
       padding: 6px 10px;
       font-size: 0.78rem;
       font-weight: 700;
+      text-transform: capitalize;
     }
 
     .status-pill {
@@ -455,19 +456,19 @@
           <div class="stats-grid">
             <div class="mini-card">
               <p>New Leads Today</p>
-              <h3>12</h3>
+              <h3 id="stat-new-leads">0</h3>
             </div>
             <div class="mini-card">
-              <p>Available Roofing Leads</p>
-              <h3>27</h3>
+              <p>Available Homeowner Leads</p>
+              <h3 id="stat-homeowner-leads">0</h3>
             </div>
             <div class="mini-card">
               <p>Average Lead Price</p>
               <h3>$38</h3>
             </div>
             <div class="mini-card">
-              <p>Pending Bids</p>
-              <h3>5</h3>
+              <p>Realtor Leads</p>
+              <h3 id="stat-realtor-leads">0</h3>
             </div>
           </div>
 
@@ -510,16 +511,16 @@
           <div class="dashboard-card">
             <h2>Available Leads</h2>
             <p class="section-subtext">
-              Browse current homeowner requests. This is a front-end dashboard layout you can expand into a live lead marketplace.
+              Browse real incoming homeowner and realtor requests from NestNudge.
             </p>
 
             <div class="filters">
-              <input type="text" id="leadSearch" placeholder="Search city, service, or source">
+              <input type="text" id="leadSearch" placeholder="Search city, source, zip, service">
               <select id="serviceFilter">
                 <option value="all">All Services</option>
+                <option value="estimator">Estimator</option>
+                <option value="loan">Funding</option>
                 <option value="roof">Roofing</option>
-                <option value="windows">Impact Windows</option>
-                <option value="doors">Entry Doors</option>
                 <option value="realtor">Realtor</option>
               </select>
               <select id="statusFilter">
@@ -528,118 +529,21 @@
                 <option value="hot">Hot</option>
               </select>
               <select id="cityFilter">
-                <option value="all">All Cities</option>
-                <option value="miami">Miami</option>
-                <option value="fort lauderdale">Fort Lauderdale</option>
-                <option value="hollywood">Hollywood</option>
-                <option value="boca raton">Boca Raton</option>
+                <option value="all">All Locations</option>
               </select>
             </div>
 
             <div class="lead-list" id="leadList">
-              <div class="lead-row" data-service="roof" data-status="hot" data-city="miami">
+              <div class="lead-row">
                 <div class="lead-main">
-                  <strong>Roof Quote Request — Miami, FL</strong>
-                  <span>Single-family home · Estimator form · Source: NestNudge Hero Form</span>
-                  <div class="lead-badges">
-                    <span class="lead-badge">Roofing</span>
-                    <span class="lead-badge">High Intent</span>
-                  </div>
-                </div>
-                <div class="lead-meta">
-                  Homeowner requested roof guidance and local contractor options.
-                </div>
-                <div>
-                  <span class="status-pill hot">Hot Lead</span>
-                </div>
-                <div class="lead-price">
-                  <strong>$45</strong><br>
-                  Exclusive lead
-                </div>
-                <div class="lead-actions">
-                  <button class="btn-primary">Buy Lead</button>
-                  <button class="btn-secondary">View Details</button>
-                </div>
-              </div>
-
-              <div class="lead-row" data-service="roof" data-status="new" data-city="fort lauderdale">
-                <div class="lead-main">
-                  <strong>Roof Replacement Inquiry — Fort Lauderdale, FL</strong>
-                  <span>Funding form follow-up · Source: NestNudge Funding Form</span>
-                  <div class="lead-badges">
-                    <span class="lead-badge">Roofing</span>
-                    <span class="lead-badge">Funding Ready</span>
-                  </div>
-                </div>
-                <div class="lead-meta">
-                  Homeowner is exploring roofing work and possible financing options.
-                </div>
-                <div>
-                  <span class="status-pill new">New Lead</span>
-                </div>
-                <div class="lead-price">
-                  <strong>$38</strong><br>
-                  Standard lead
-                </div>
-                <div class="lead-actions">
-                  <button class="btn-primary">Buy Lead</button>
-                  <button class="btn-secondary">View Details</button>
-                </div>
-              </div>
-
-              <div class="lead-row" data-service="roof" data-status="new" data-city="hollywood">
-                <div class="lead-main">
-                  <strong>Storm Damage Roofing Request — Hollywood, FL</strong>
-                  <span>Popup conversion lead · Source: NestNudge Popup</span>
-                  <div class="lead-badges">
-                    <span class="lead-badge">Roofing</span>
-                    <span class="lead-badge">Storm Damage</span>
-                  </div>
-                </div>
-                <div class="lead-meta">
-                  Homeowner entered address and email after viewing roofing options.
-                </div>
-                <div>
-                  <span class="status-pill new">New Lead</span>
-                </div>
-                <div class="lead-price">
-                  <strong>$34</strong><br>
-                  Shared lead
-                </div>
-                <div class="lead-actions">
-                  <button class="btn-primary">Buy Lead</button>
-                  <button class="btn-secondary">View Details</button>
-                </div>
-              </div>
-
-              <div class="lead-row" data-service="realtor" data-status="hot" data-city="boca raton">
-                <div class="lead-main">
-                  <strong>Seller Upgrade Consultation — Boca Raton, FL</strong>
-                  <span>Realtor form · Source: NestNudge Realtor Form</span>
-                  <div class="lead-badges">
-                    <span class="lead-badge">Realtor</span>
-                    <span class="lead-badge">Seller Intent</span>
-                  </div>
-                </div>
-                <div class="lead-meta">
-                  Homeowner is considering value-boosting updates before listing the property.
-                </div>
-                <div>
-                  <span class="status-pill hot">Hot Lead</span>
-                </div>
-                <div class="lead-price">
-                  <strong>$29</strong><br>
-                  Realtor lead
-                </div>
-                <div class="lead-actions">
-                  <button class="btn-primary">Buy Lead</button>
-                  <button class="btn-secondary">View Details</button>
+                  <strong>Loading leads...</strong>
+                  <span>Please wait while we pull your latest lead activity.</span>
                 </div>
               </div>
             </div>
 
             <p class="table-note">
-              Next upgrade: connect this dashboard to your live `leads.txt` or Google Sheets feed so contractors can view real incoming leads.
+              This section is connected to your real lead files. Next step can be buy buttons, exclusive lead claiming, or Stripe checkout.
             </p>
           </div>
         </section>
@@ -736,14 +640,10 @@
     const jumpButtons = document.querySelectorAll("[data-jump]");
 
     function showSection(target) {
-      sections.forEach(section => {
-        section.classList.add("hidden-section");
-      });
+      sections.forEach(section => section.classList.add("hidden-section"));
 
       const section = document.getElementById("section-" + target);
-      if (section) {
-        section.classList.remove("hidden-section");
-      }
+      if (section) section.classList.remove("hidden-section");
 
       navButtons.forEach(button => {
         button.classList.remove("active");
@@ -765,37 +665,175 @@
       });
     });
 
-    const leadSearch = document.getElementById("leadSearch");
-    const serviceFilter = document.getElementById("serviceFilter");
-    const statusFilter = document.getElementById("statusFilter");
-    const cityFilter = document.getElementById("cityFilter");
-    const leadRows = document.querySelectorAll(".lead-row");
+    function formatLeadTitle(lead) {
+      if (lead.lead_type === "realtor") {
+        return `Realtor Lead — ZIP ${lead.zip || "N/A"}`;
+      }
 
-    function filterLeads() {
-      const search = (leadSearch.value || "").toLowerCase();
-      const service = serviceFilter.value;
-      const status = statusFilter.value;
-      const city = cityFilter.value;
+      const projectMap = {
+        estimator: "Home Value Request",
+        loan: "Funding Request",
+        roof: "Roof Request"
+      };
 
-      leadRows.forEach(row => {
-        const rowText = row.textContent.toLowerCase();
-        const rowService = row.dataset.service;
-        const rowStatus = row.dataset.status;
-        const rowCity = row.dataset.city;
-
-        const matchesSearch = rowText.includes(search);
-        const matchesService = service === "all" || rowService === service;
-        const matchesStatus = status === "all" || rowStatus === status;
-        const matchesCity = city === "all" || rowCity === city;
-
-        row.style.display = (matchesSearch && matchesService && matchesStatus && matchesCity) ? "grid" : "none";
-      });
+      const label = projectMap[lead.project_type] || "Homeowner Request";
+      return `${label} — ZIP ${lead.zip || "N/A"}`;
     }
 
-    if (leadSearch) leadSearch.addEventListener("input", filterLeads);
-    if (serviceFilter) serviceFilter.addEventListener("change", filterLeads);
-    if (statusFilter) statusFilter.addEventListener("change", filterLeads);
-    if (cityFilter) cityFilter.addEventListener("change", filterLeads);
+    function inferStatus(lead) {
+      const source = (lead.source || "").toLowerCase();
+      const project = (lead.project_type || "").toLowerCase();
+
+      if (source.includes("popup") || source.includes("ai") || project === "roof") {
+        return "hot";
+      }
+      return "new";
+    }
+
+    function inferPrice(lead) {
+      if (lead.lead_type === "realtor") return 29;
+      if ((lead.project_type || "") === "loan") return 38;
+      if ((lead.project_type || "") === "roof") return 45;
+      return 34;
+    }
+
+    function escapeHtml(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function renderLeads(leads) {
+      const leadList = document.getElementById("leadList");
+      const cityFilter = document.getElementById("cityFilter");
+      if (!leadList) return;
+
+      if (!Array.isArray(leads) || !leads.length) {
+        leadList.innerHTML = `
+          <div class="lead-row">
+            <div class="lead-main">
+              <strong>No leads found yet</strong>
+              <span>As new submissions come in, they will appear here.</span>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      const zips = [...new Set(leads.map(l => l.zip).filter(Boolean))];
+      cityFilter.innerHTML = `<option value="all">All Locations</option>` +
+        zips.map(zip => `<option value="${escapeHtml(zip.toLowerCase())}">${escapeHtml(zip)}</option>`).join("");
+
+      leadList.innerHTML = leads.map(lead => {
+        const status = inferStatus(lead);
+        const price = inferPrice(lead);
+        const service = lead.lead_type === "realtor" ? "realtor" : (lead.project_type || "estimator");
+        const detailText = lead.lead_type === "realtor"
+          ? `Name: ${escapeHtml(lead.name)} · Email: ${escapeHtml(lead.email)} · Phone: ${escapeHtml(lead.phone)}`
+          : `Name: ${escapeHtml(lead.name)} · Address: ${escapeHtml(lead.address || "Not provided")} · Email: ${escapeHtml(lead.email)} · Phone: ${escapeHtml(lead.phone)}`;
+
+        return `
+          <div class="lead-row" data-service="${escapeHtml(service)}" data-status="${escapeHtml(status)}" data-city="${escapeHtml((lead.zip || "").toLowerCase())}">
+            <div class="lead-main">
+              <strong>${escapeHtml(formatLeadTitle(lead))}</strong>
+              <span>${escapeHtml(lead.timestamp || "")} · Source: ${escapeHtml(lead.source || "NestNudge")}</span>
+              <div class="lead-badges">
+                <span class="lead-badge">${escapeHtml(service)}</span>
+                <span class="lead-badge">${escapeHtml(lead.lead_type)}</span>
+              </div>
+            </div>
+            <div class="lead-meta">${detailText}</div>
+            <div>
+              <span class="status-pill ${escapeHtml(status)}">${status === "hot" ? "Hot Lead" : "New Lead"}</span>
+            </div>
+            <div class="lead-price">
+              <strong>$${price}</strong><br>
+              ${lead.lead_type === "realtor" ? "Realtor lead" : "Lead ready"}
+            </div>
+            <div class="lead-actions">
+              <button class="btn-primary" onclick="alert('Next step: connect this button to Stripe or a claim-lead flow.')">Buy Lead</button>
+              <button class="btn-secondary" onclick="alert('Lead details expansion can be added next.')">View Details</button>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      attachFilters();
+    }
+
+    function attachFilters() {
+      const leadSearch = document.getElementById("leadSearch");
+      const serviceFilter = document.getElementById("serviceFilter");
+      const statusFilter = document.getElementById("statusFilter");
+      const cityFilter = document.getElementById("cityFilter");
+      const leadRows = document.querySelectorAll(".lead-row");
+
+      function filterLeads() {
+        const search = (leadSearch.value || "").toLowerCase();
+        const service = serviceFilter.value;
+        const status = statusFilter.value;
+        const city = cityFilter.value;
+
+        leadRows.forEach(row => {
+          const rowText = row.textContent.toLowerCase();
+          const rowService = row.dataset.service;
+          const rowStatus = row.dataset.status;
+          const rowCity = row.dataset.city;
+
+          const matchesSearch = rowText.includes(search);
+          const matchesService = service === "all" || rowService === service;
+          const matchesStatus = status === "all" || rowStatus === status;
+          const matchesCity = city === "all" || rowCity === city;
+
+          row.style.display = (matchesSearch && matchesService && matchesStatus && matchesCity) ? "grid" : "none";
+        });
+      }
+
+      if (leadSearch) leadSearch.oninput = filterLeads;
+      if (serviceFilter) serviceFilter.onchange = filterLeads;
+      if (statusFilter) statusFilter.onchange = filterLeads;
+      if (cityFilter) cityFilter.onchange = filterLeads;
+    }
+
+    async function loadRealLeads() {
+      try {
+        const response = await fetch("/get-dashboard-leads.php", { cache: "no-store" });
+        if (!response.ok) throw new Error("Failed to load dashboard leads");
+
+        const data = await response.json();
+        const leads = data.leads || [];
+
+        renderLeads(leads);
+
+        const today = new Date().toISOString().slice(0, 10);
+        const todayLeadCount = leads.filter(lead => {
+          const ts = String(lead.timestamp || "");
+          return ts.startsWith(today);
+        }).length;
+
+        const homeownerCount = leads.filter(lead => lead.lead_type === "homeowner").length;
+        const realtorCount = leads.filter(lead => lead.lead_type === "realtor").length;
+
+        document.getElementById("stat-new-leads").textContent = todayLeadCount;
+        document.getElementById("stat-homeowner-leads").textContent = homeownerCount;
+        document.getElementById("stat-realtor-leads").textContent = realtorCount;
+      } catch (error) {
+        console.error(error);
+        document.getElementById("leadList").innerHTML = `
+          <div class="lead-row">
+            <div class="lead-main">
+              <strong>Could not load live leads</strong>
+              <span>Please check get-dashboard-leads.php and your lead files.</span>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    loadRealLeads();
   </script>
 
 </body>
