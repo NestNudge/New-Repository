@@ -1770,3 +1770,121 @@ footer p {
 .conversion-cta {
   margin-top: 25px;
 }
+
+/* ===== PREMIUM ESTIMATOR UPGRADE ===== */
+
+.graph-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 40px;
+  height: 300px;
+  margin: 34px 0 50px;
+}
+
+#currentValue,
+#newValue,
+#valueGain {
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #ffffff;
+  border: 1px solid #e7ecef;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  padding: 14px 18px;
+  text-align: center;
+}
+
+#currentValue {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+#newValue {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+#valueGain {
+  margin-top: 16px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #2E7D32;
+}
+
+.conversion-cta {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.conversion-cta button {
+  min-width: 220px;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+/* Optional: make result cards feel more premium too */
+.results-panel {
+  background: #f9fbfc;
+  border: 1px solid #e6ecef;
+  border-radius: 18px;
+  padding: 28px 22px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.results-grid {
+  gap: 18px;
+}
+
+.result-box {
+  background: #fff;
+  border: 1px solid #e7ecef;
+  border-radius: 14px;
+  padding: 18px 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+}
+
+.result-box .label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #5b6470;
+}
+
+.result-box strong {
+  font-size: 22px;
+  color: #111827;
+}
+
+/* Mobile polish */
+@media (max-width: 768px) {
+  .graph-container {
+    gap: 24px;
+    height: 240px;
+    margin: 28px 0 40px;
+  }
+
+  #currentValue,
+  #newValue,
+  #valueGain {
+    max-width: 100%;
+    padding: 12px 14px;
+  }
+
+  #valueGain {
+    font-size: 18px;
+  }
+
+  .conversion-cta button {
+    width: 100%;
+    min-width: auto;
+  }
+}
