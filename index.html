@@ -528,14 +528,14 @@
       document.getElementById("roiRange").textContent = roiLow + "% - " + roiHigh + "%";
       document.getElementById("resultsPanel").style.display = "block";
 
-      document.getElementById("currentValue").textContent =
-        "Estimated project cost: " + formatMoney(avgCost);
+     document.getElementById("currentValue").innerHTML =
+  "<strong>Estimated Project Cost</strong><br>" + formatMoney(avgCost);
 
-      document.getElementById("newValue").textContent =
-        "Estimated added home value: " + formatMoney(avgValue);
+document.getElementById("newValue").innerHTML =
+  "<strong>Estimated Value Added</strong><br>" + formatMoney(avgValue);
 
-      document.getElementById("valueGain").textContent =
-        "Estimated ROI: " + avgROI + "%";
+document.getElementById("valueGain").innerHTML =
+  "<strong>Estimated ROI</strong><br>" + avgROI + "%";
 
       const currentBar = document.querySelector(".current-bar");
       const newBar = document.querySelector(".new-bar");
