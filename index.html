@@ -132,7 +132,7 @@
           <img src="/image/NestNudge-Logo.png" alt="NestNudge Logo">
         </div>
 
-        <form action="/home-improvement-lead/index.php" method="POST">
+        <form action="/lead-handler.php" method="POST">
           <h3>Start Your Free Value Plan</h3>
 
           <input type="text" name="name" placeholder="Your Name" required>
@@ -354,7 +354,7 @@
       </div>
 
       <div class="loan-form">
-        <form action="/home-improvement-lead/index.php" method="POST">
+        <form action="/lead-handler.php" method="POST">
           <input type="text" name="name" placeholder="Full Name" required>
           <input type="email" name="email" placeholder="Email Address" required>
           <input type="tel" name="phone" placeholder="Phone Number" required>
@@ -849,7 +849,7 @@ document.getElementById("valueGain").innerHTML =
       data.append("project_type", chatState.service || chatState.mode || "loan");
       data.append("source", "AI Home Advisor");
 
-      fetch("/home-improvement-lead/index.php", {
+      fetch("/lead-handler.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
