@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   file_put_contents("leads.txt", $entry, FILE_APPEND);
 
   // Success response
-  echo "SUCCESS";
+ header("Location: /thank-you.html");
+exit;
 }
 ?>
