@@ -220,7 +220,7 @@
 
   <!-- HEADER -->
   <header>
-  <nav class="main-nav">
+   <nav class="main-nav">
       <a href="/">Home</a>
 
       <div class="dropdown">
@@ -361,6 +361,184 @@
       </div>
     </div>
   </section>
+  
+  <section class="featured-offers-home" id="featured-offers">
+  <style>
+    .featured-offers-home {
+      padding: 70px 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+    }
+
+    .featured-offers-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .featured-offers-heading {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 34px;
+    }
+
+    .featured-offers-heading h2 {
+      font-size: clamp(1.9rem, 3vw, 2.8rem);
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+
+    .featured-offers-heading p {
+      color: #64748b;
+      font-size: 1.02rem;
+    }
+
+    .featured-offers-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .featured-offer-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .featured-offer-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 36px rgba(15, 23, 42, 0.1);
+    }
+
+    .featured-offer-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .featured-offer-content {
+      padding: 22px;
+    }
+
+    .featured-offer-label {
+      display: inline-block;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: #eefbf2;
+      color: #1f6f35;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .featured-offer-content h3 {
+      color: #0f172a;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .featured-offer-content p {
+      color: #64748b;
+      margin-bottom: 16px;
+      min-height: 72px;
+    }
+
+    .featured-offer-btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: #2E7D32;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .featured-offer-btn:hover {
+      background: #25682a;
+    }
+
+    .featured-offers-footer {
+      text-align: center;
+      margin-top: 28px;
+    }
+
+    .featured-offers-footer a {
+      color: #2E7D32;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    @media (max-width: 1100px) {
+      .featured-offers-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .featured-offers-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <div class="featured-offers-inner">
+    <div class="featured-offers-heading">
+      <h2>Featured Ways to Save</h2>
+      <p>
+        Explore smart offers that may help reduce monthly costs, improve home efficiency,
+        and strengthen your financial options.
+      </p>
+    </div>
+
+    <div class="featured-offers-grid">
+      <article class="featured-offer-card">
+        <img src="/image/loan-for-upgrade.jpg" alt="Lower your debt payments">
+        <div class="featured-offer-content">
+          <span class="featured-offer-label">Top Pick</span>
+          <h3>Lower Your Debt Payments</h3>
+          <p>Compare loan and debt consolidation options that may help reduce monthly costs.</p>
+          <a href="/offers.html" class="featured-offer-btn">Learn more</a>
+        </div>
+      </article>
+
+      <article class="featured-offer-card">
+        <img src="/image/home-evaluation1.png" alt="Cut your energy bill">
+        <div class="featured-offer-content">
+          <span class="featured-offer-label">Homeowner Favorite</span>
+          <h3>Cut Your Energy Bill</h3>
+          <p>See whether your home may qualify for solar savings and lower utility costs.</p>
+          <a href="/offers.html" class="featured-offer-btn">Learn more</a>
+        </div>
+      </article>
+
+      <article class="featured-offer-card">
+        <img src="/image/realtor-4.webp" alt="Protect your home">
+        <div class="featured-offer-content">
+          <span class="featured-offer-label">Popular</span>
+          <h3>Protect Your Home</h3>
+          <p>Explore insurance options designed to help protect your household and reduce risk.</p>
+          <a href="/offers.html" class="featured-offer-btn">Learn more</a>
+        </div>
+      </article>
+
+      <article class="featured-offer-card">
+        <img src="/image/roof-1.webp" alt="Unlock better credit">
+        <div class="featured-offer-content">
+          <span class="featured-offer-label">Smart Start</span>
+          <h3>Unlock Better Credit</h3>
+          <p>Access credit tools that can improve your profile and open stronger options later.</p>
+          <a href="/offers.html" class="featured-offer-btn">Learn more</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="featured-offers-footer">
+      <a href="/offers.html">View all offers →</a>
+    </div>
+  </div>
+</section>
 
   <!-- VALUE / TRUST -->
   <section class="roof-page-section" style="background:#f7f7f7;">
