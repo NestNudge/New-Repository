@@ -1935,3 +1935,11 @@ footer p {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.cta-nav {
+  background: #2E7D32;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+}
