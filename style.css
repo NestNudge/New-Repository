@@ -1943,3 +1943,19 @@ footer p {
   border-radius: 8px;
   font-weight: 700;
 }
+
+.cta-nav {
+  background: #2E7D32;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.cta-nav:hover {
+  background: #256628;
+  color: #fff;
+}
