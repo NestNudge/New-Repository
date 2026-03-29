@@ -1,4 +1,65 @@
-<section class="featured-offers-home" id="featured-offers">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="/nestnudge.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NestNudge | Local Roof Quotes, Home Value Planning, Miami & South Florida</title>
+  <meta name="description" content="NestNudge helps homeowners compare roof quotes, estimate home value impact, and explore roofing, windows, doors, funding, realtor, and smart money offers in Miami, Fort Lauderdale, and South Florida.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://www.nestnudge.com/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="NestNudge | Local Roof Quotes and Home Value Planning">
+  <meta property="og:description" content="Compare roof quotes, estimate ROI, and explore local home upgrade and smart money options with NestNudge.">
+  <meta property="og:url" content="https://www.nestnudge.com/">
+  <meta property="og:site_name" content="NestNudge">
+  <meta property="og:image" content="https://www.nestnudge.com/image/NestNudge-Logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NestNudge | Roof Quotes and Home Value Planning">
+  <meta name="twitter:description" content="Compare roof quotes and explore upgrades that may improve home value.">
+  <meta name="twitter:image" content="https://www.nestnudge.com/image/NestNudge-Logo.png">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.nestnudge.com/#org",
+        "name": "NestNudge",
+        "url": "https://www.nestnudge.com/",
+        "logo": "https://www.nestnudge.com/image/NestNudge-Logo.png"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.nestnudge.com/#website",
+        "url": "https://www.nestnudge.com/",
+        "name": "NestNudge",
+        "publisher": {
+          "@id": "https://www.nestnudge.com/#org"
+        }
+      },
+      {
+        "@type": "Service",
+        "name": "Roof Quote Matching, Home Value Planning, and Smart Money Offers",
+        "provider": {
+          "@id": "https://www.nestnudge.com/#org"
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Miami" },
+          { "@type": "City", "name": "Fort Lauderdale" },
+          { "@type": "AdministrativeArea", "name": "South Florida" }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <style>
     .featured-offers-home {
       padding: 70px 20px;
@@ -106,9 +167,99 @@
       text-decoration: none;
     }
 
+    .offers-highlight-strip {
+      padding: 56px 20px;
+      background: linear-gradient(135deg, #ecfdf3 0%, #eff6ff 100%);
+    }
+
+    .offers-highlight-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .offers-highlight-copy h2 {
+      font-size: clamp(1.9rem, 3vw, 2.8rem);
+      color: #0f172a;
+      margin-bottom: 12px;
+    }
+
+    .offers-highlight-copy p {
+      color: #475569;
+      margin-bottom: 18px;
+      max-width: 620px;
+    }
+
+    .offers-highlight-copy ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 22px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .offers-highlight-copy li {
+      color: #1e293b;
+      font-weight: 600;
+    }
+
+    .offers-highlight-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .offers-highlight-btn,
+    .offers-highlight-btn-outline {
+      display: inline-block;
+      padding: 14px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .offers-highlight-btn {
+      background: #2E7D32;
+      color: #fff;
+    }
+
+    .offers-highlight-btn-outline {
+      background: #fff;
+      color: #2E7D32;
+      border: 2px solid #2E7D32;
+    }
+
+    .offers-highlight-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.1);
+      border: 1px solid #e5e7eb;
+    }
+
+    .offers-highlight-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
     @media (max-width: 1100px) {
       .featured-offers-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .offers-highlight-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .offers-highlight-card img {
+        height: 260px;
       }
     }
 
@@ -118,60 +269,1113 @@
       }
     }
   </style>
+</head>
+<body>
 
-  <div class="featured-offers-inner">
-    <div class="featured-offers-heading">
-      <h2>Featured Ways to Save</h2>
-      <p>
-        Explore smart offers that may help reduce monthly costs, improve home efficiency,
-        and strengthen your financial options.
-      </p>
+  <!-- HEADER -->
+  <header>
+    <nav class="main-nav">
+
+      <a href="/">Home</a>
+
+      <div class="dropdown">
+        <button class="dropbtn">Services ▼</button>
+        <div class="dropdown-content">
+          <a href="/#services">All Services</a>
+          <a href="/#cost-guide">Home Estimator</a>
+          <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
+          <a href="/offers.html">Offers</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">Get Quotes ▼</button>
+        <div class="dropdown-content">
+          <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
+          <a href="/#contact-form">Request Estimate</a>
+          <a href="/#cost-guide">Project Estimator</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">Partners ▼</button>
+        <div class="dropdown-content">
+          <a href="/contractor-login.php">Partner Login</a>
+          <a href="/contractor-signup.php">Create Account</a>
+        </div>
+      </div>
+
+      <a href="/offers.html">Offers</a>
+      <a href="/#contact-form">Contact</a>
+      <a class="cta-button" href="/roof-quotes-miami-fort-lauderdale.html">Get My Quote</a>
+    </nav>
+  </header>
+
+  <!-- AI CHAT -->
+  <div id="chatWidget">
+    <div id="chatHeader">
+      <span>🏡 AI Home Advisor</span>
+      <button type="button" id="chatCloseBtn" aria-label="Minimize chat" onclick="minimizeChat()">✕</button>
     </div>
 
-    <div class="featured-offers-grid">
-      <article class="featured-offer-card">
-        <img src="/image/loan-for-upgrade.jpg" alt="Lower your debt payments">
-        <div class="featured-offer-content">
-          <span class="featured-offer-label">Top Pick</span>
-          <h3>Lower Your Debt Payments</h3>
-          <p>Compare loan and debt consolidation options that may help reduce monthly costs.</p>
-          <a href="/offers.html" class="featured-offer-btn">Learn more</a>
-        </div>
-      </article>
+    <div id="chatBox">
+      <div id="chatMessages">
+        <p class="bot">Hi 👋 I can help with roofing, buying, entry doors, impact windows, funding, finding a realtor, or exploring money-saving offers. What would you like to explore?</p>
+      </div>
 
-      <article class="featured-offer-card">
-        <img src="/image/home-evaluation1.png" alt="Cut your energy bill">
-        <div class="featured-offer-content">
-          <span class="featured-offer-label">Homeowner Favorite</span>
-          <h3>Cut Your Energy Bill</h3>
-          <p>See whether your home may qualify for solar savings and lower utility costs.</p>
-          <a href="/offers.html" class="featured-offer-btn">Learn more</a>
-        </div>
-      </article>
+      <div class="chat-quick-actions">
+        <button type="button" onclick="quickSelect('roof')">Roof</button>
+        <button type="button" onclick="quickSelect('buying')">Buying</button>
+        <button type="button" onclick="quickSelect('doors')">Entry Door</button>
+        <button type="button" onclick="quickSelect('windows')">Impact Windows</button>
+        <button type="button" onclick="quickSelect('realtor')">Realtor</button>
+        <button type="button" onclick="quickSelect('funding')">Funding</button>
+      </div>
 
-      <article class="featured-offer-card">
-        <img src="/image/realtor-4.webp" alt="Protect your home">
-        <div class="featured-offer-content">
-          <span class="featured-offer-label">Popular</span>
-          <h3>Protect Your Home</h3>
-          <p>Explore insurance options designed to help protect your household and reduce risk.</p>
-          <a href="/offers.html" class="featured-offer-btn">Learn more</a>
-        </div>
-      </article>
-
-      <article class="featured-offer-card">
-        <img src="/image/roof-1.webp" alt="Unlock better credit">
-        <div class="featured-offer-content">
-          <span class="featured-offer-label">Smart Start</span>
-          <h3>Unlock Better Credit</h3>
-          <p>Access credit tools that can improve your profile and open stronger options later.</p>
-          <a href="/offers.html" class="featured-offer-btn">Learn more</a>
-        </div>
-      </article>
-    </div>
-
-    <div class="featured-offers-footer">
-      <a href="/offers.html">View all offers →</a>
+      <input
+        type="text"
+        id="chatInput"
+        placeholder="Ask about roof, buying, doors, windows, funding, realtor, or offers..."
+        onkeypress="handleChat(event)"
+      >
     </div>
   </div>
-</section>
+
+  <!-- REOPEN CHAT BUBBLE -->
+  <button id="chatReopen" type="button" aria-label="Open AI chat" onclick="reopenChat()">
+    💬 Chat with AI
+  </button>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-container">
+
+      <div class="hero-text">
+        <h1>Unlock Your Home’s Hidden Value</h1>
+        <p>
+          Discover how upgrades like a new roof, entry doors, or impact windows
+          could affect your home value and ROI based on your location.
+        </p>
+
+        <ul class="hero-benefits">
+          <li>✔ Address autocomplete</li>
+          <li>✔ Zip-based property insights</li>
+          <li>✔ Personalized cost and ROI guidance</li>
+        </ul>
+      </div>
+
+      <div class="hero-form">
+        <div class="form-logo">
+          <img src="/image/NestNudge-Logo.png" alt="NestNudge Logo">
+        </div>
+
+        <form action="/lead-handler.php" method="POST">
+          <h3>Start Your Free Value Plan</h3>
+
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="text" id="address" name="address" placeholder="Property Address" autocomplete="street-address">
+          <input type="text" id="zip" name="zip" placeholder="Zip Code" required>
+
+          <input type="hidden" name="project_type" value="estimator">
+          <input type="hidden" name="source" value="NestNudge Hero Form">
+
+          <button type="submit">See My Home Value Growth</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INFO -->
+  <section class="info-strip">
+    <h2>Why Home Value Planning Matters</h2>
+    <p>
+      Most homeowners overlook simple upgrades that can dramatically increase resale value.
+      NestNudge helps you compare likely project cost, added home value, and estimated ROI
+      before you spend a dollar.
+    </p>
+  </section>
+
+  <!-- OFFERS HIGHLIGHT -->
+  <section class="offers-highlight-strip">
+    <div class="offers-highlight-inner">
+      <div class="offers-highlight-copy">
+        <h2>New: Explore Smart Money Offers</h2>
+        <p>
+          NestNudge now helps visitors go beyond home upgrades with offers focused on lower payments,
+          solar savings, insurance, mortgage options, and stronger credit positioning.
+        </p>
+        <ul>
+          <li>✔ Personalized savings-focused offers</li>
+          <li>✔ Great fit for homeowners and families</li>
+          <li>✔ Easy “Learn more” path to your Offers page</li>
+        </ul>
+        <div class="offers-highlight-actions">
+          <a href="/offers.html" class="offers-highlight-btn">Explore offers</a>
+          <a href="/#loan-section" class="offers-highlight-btn-outline">See financing options</a>
+        </div>
+      </div>
+
+      <div class="offers-highlight-card">
+        <img src="/image/loan-for-upgrade.jpg" alt="Explore smart money offers">
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPERTY INSIGHTS -->
+  <section class="info-strip" id="property-insights-section" style="display:none;">
+    <h2>Property Insights for Your Area</h2>
+    <p id="propertyInsightsText">
+      Based on your location, we’ll use regional pricing and home-value assumptions to guide your estimate.
+    </p>
+  </section>
+
+  <!-- COST GUIDE -->
+  <section class="cost-guide-section" id="cost-guide">
+    <div class="cost-guide-wrap">
+      <h2>Explore Upgrade Costs, Home Value Impact, and ROI</h2>
+      <p>Select a project type to see estimated cost range, added home value, and ROI estimate.</p>
+
+      <div class="upgrade-selector">
+        <button type="button" onclick="showUpgrade('roof')">Roof Replacement</button>
+        <button type="button" onclick="showUpgrade('doors')">Entry Door</button>
+        <button type="button" onclick="showUpgrade('windows')">Impact Windows</button>
+      </div>
+
+      <div id="resultsPanel" class="results-panel" style="display:none;">
+        <h3 id="resultsTitle">Cost Guide</h3>
+
+        <div class="results-grid">
+          <div class="result-box">
+            <span class="label">Estimated Cost Range</span>
+            <strong id="costRange">$0 - $0</strong>
+          </div>
+
+          <div class="result-box">
+            <span class="label">Estimated Home Value Increase</span>
+            <strong id="valueRange">$0 - $0</strong>
+          </div>
+
+          <div class="result-box">
+            <span class="label">Estimated ROI</span>
+            <strong id="roiRange">0% - 0%</strong>
+          </div>
+        </div>
+
+        <div class="graph-container">
+          <div class="bar current-bar">
+            <span>Project Cost</span>
+          </div>
+
+          <div class="bar new-bar">
+            <span>Value Added</span>
+          </div>
+        </div>
+
+        <p id="currentValue"></p>
+        <p id="newValue"></p>
+        <h3 id="valueGain"></h3>
+
+        <div class="conversion-cta">
+          <button type="button" onclick="scrollToLoan()">See Financing Options</button>
+          <button type="button" onclick="scrollToRealtor()">See My Home Value Plan</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES CAROUSEL -->
+  <section id="services" class="services-carousel">
+    <h2>Explore Value-Boosting Upgrades</h2>
+
+    <div class="carousel-wrapper">
+      <div class="carousel-track">
+
+        <div class="service-card" onclick="selectServiceAndScroll('roof')">
+          <img src="/image/roof-1.webp" alt="Roof Replacement">
+          <div class="overlay">
+            <h3>Roof Replacement</h3>
+            <p>$12K–$22K cost • May add $15K–$30K in value</p>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="selectServiceAndScroll('doors')">
+          <img src="/image/a_high_resolution_photograph_captures_the_entrance.png" alt="Entry Door">
+          <div class="overlay">
+            <h3>Entry Door</h3>
+            <p>$2.5K–$9K cost • Strong curb appeal and ROI</p>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="selectServiceAndScroll('windows')">
+          <img src="/image/home-evaluation1.png" alt="Impact Windows">
+          <div class="overlay">
+            <h3>Impact Windows</h3>
+            <p>$10K–$28K cost • Protection + resale appeal</p>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="scrollToLoan()">
+          <img src="/image/loan-for-upgrade.jpg" alt="Funding Options">
+          <div class="overlay">
+            <h3>Funding Options</h3>
+            <p>Flexible financing can help start upgrades sooner</p>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="window.location.href='/offers.html'">
+          <img src="/image/realtor-4.webp" alt="Smart Offers">
+          <div class="overlay">
+            <h3>Smart Offers</h3>
+            <p>Explore loans, solar, insurance, and credit tools</p>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="quickSelect('buying')">
+          <img src="/image/home-rennovation1.png" alt="Buying a Home">
+          <div class="overlay">
+            <h3>Buying a Home</h3>
+            <p>Understand upgrade potential before you buy</p>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="quickSelect('realtor'); scrollToRealtor();">
+          <img src="/image/realtor-4.webp" alt="Realtor Guidance">
+          <div class="overlay">
+            <h3>Realtor Guidance</h3>
+            <p>Learn what updates could improve your selling price</p>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="selectServiceAndScroll('roof')">
+          <img src="/image/roof-1.webp" alt="Roof Replacement">
+          <div class="overlay">
+            <h3>Roof Replacement</h3>
+            <p>$12K–$22K cost • May add $15K–$30K in value</p>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="selectServiceAndScroll('doors')">
+          <img src="/image/a_high_resolution_photograph_captures_the_entrance.png" alt="Entry Door">
+          <div class="overlay">
+            <h3>Entry Door</h3>
+            <p>$2.5K–$9K cost • Strong curb appeal and ROI</p>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="selectServiceAndScroll('windows')">
+          <img src="/image/home-evaluation1.png" alt="Impact Windows">
+          <div class="overlay">
+            <h3>Impact Windows</h3>
+            <p>$10K–$28K cost • Protection + resale appeal</p>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="scrollToLoan()">
+          <img src="/image/loan-for-upgrade.jpg" alt="Funding Options">
+          <div class="overlay">
+            <h3>Funding Options</h3>
+            <p>Flexible financing can help start upgrades sooner</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED OFFERS -->
+  <section class="featured-offers-home" id="featured-offers">
+    <div class="featured-offers-inner">
+      <div class="featured-offers-heading">
+        <h2>Featured Ways to Save</h2>
+        <p>
+          Explore smart offers that may help reduce monthly costs, improve home efficiency,
+          and strengthen your financial options.
+        </p>
+      </div>
+
+      <div class="featured-offers-grid">
+        <article class="featured-offer-card">
+          <img src="/image/loan-for-upgrade.jpg" alt="Lower your debt payments">
+          <div class="featured-offer-content">
+            <span class="featured-offer-label">Top Pick</span>
+            <h3>Lower Your Debt Payments</h3>
+            <p>Compare loan and debt consolidation options that may help reduce monthly costs.</p>
+            <a href="/offers.html" class="featured-offer-btn">Learn more</a>
+          </div>
+        </article>
+
+        <article class="featured-offer-card">
+          <img src="/image/home-evaluation1.png" alt="Cut your energy bill">
+          <div class="featured-offer-content">
+            <span class="featured-offer-label">Homeowner Favorite</span>
+            <h3>Cut Your Energy Bill</h3>
+            <p>See whether your home may qualify for solar savings and lower utility costs.</p>
+            <a href="/offers.html" class="featured-offer-btn">Learn more</a>
+          </div>
+        </article>
+
+        <article class="featured-offer-card">
+          <img src="/image/realtor-4.webp" alt="Protect your home">
+          <div class="featured-offer-content">
+            <span class="featured-offer-label">Popular</span>
+            <h3>Protect Your Home</h3>
+            <p>Explore insurance options designed to help protect your household and reduce risk.</p>
+            <a href="/offers.html" class="featured-offer-btn">Learn more</a>
+          </div>
+        </article>
+
+        <article class="featured-offer-card">
+          <img src="/image/roof-1.webp" alt="Unlock better credit">
+          <div class="featured-offer-content">
+            <span class="featured-offer-label">Smart Start</span>
+            <h3>Unlock Better Credit</h3>
+            <p>Access credit tools that can improve your profile and open stronger options later.</p>
+            <a href="/offers.html" class="featured-offer-btn">Learn more</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="featured-offers-footer">
+        <a href="/offers.html">View all offers →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <h2>Real Homeowners, Real Results</h2>
+
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <img src="/image/sarah-m.png" alt="Sarah M">
+        <p>⭐⭐⭐⭐⭐ “I increased my home value by $35K just by following the plan.”</p>
+        <strong>Sarah M. – Miami, FL</strong>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="/image/john-p.png" alt="John P">
+        <p>⭐⭐⭐⭐⭐ “The roof upgrade alone paid for itself.”</p>
+        <strong>John P. – Dallas, TX</strong>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="/image/greg-r.png" alt="Greg R">
+        <p>⭐⭐⭐⭐⭐ “I sold my home faster and above asking price.”</p>
+        <strong>Greg R. – San Diego, CA</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUNDING -->
+  <section class="loan-section" id="loan-section">
+    <div class="loan-container">
+
+      <div class="loan-text">
+        <h2>You May Already Qualify for Funding</h2>
+        <p>Based on your home value growth plan, you may be eligible to fund your upgrades.</p>
+
+        <ul>
+          <li>✔ Fast approvals</li>
+          <li>✔ No home equity required</li>
+          <li>✔ Flexible loan options</li>
+        </ul>
+      </div>
+
+      <div class="loan-form">
+        <form action="/lead-handler.php" method="POST">
+          <input type="text" name="name" placeholder="Full Name" required>
+          <input type="email" name="email" placeholder="Email Address" required>
+          <input type="tel" name="phone" placeholder="Phone Number" required>
+          <input type="text" name="zip" placeholder="Zip Code" required>
+          <input type="hidden" name="project_type" value="loan">
+          <input type="hidden" name="source" value="NestNudge Funding Form">
+          <button type="submit">Check My Options</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SELLING -->
+  <section class="selling-section">
+    <div class="selling-container">
+
+      <div class="selling-text">
+        <h2>Thinking About Selling?</h2>
+        <p>Connect with a trusted local realtor and see how upgrades may improve your sale price.</p>
+        <a href="#contact-form" class="cta-btn">Get Started</a>
+      </div>
+
+      <div class="selling-image">
+        <img src="/image/realtor-4.webp" alt="Local Realtor">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REALTOR CONTACT -->
+  <section class="realtor-contact" id="contact-form">
+    <div class="loan-container">
+
+      <div class="loan-text">
+        <h2>Get Connected With a Local Realtor</h2>
+        <p>Tell us a little about yourself and we’ll connect you with a trusted local expert.</p>
+      </div>
+
+      <div class="loan-form">
+        <form action="/realtor-handler.php" method="POST">
+          <input type="text" name="name" placeholder="Full Name" required>
+          <input type="email" name="email" placeholder="Email Address" required>
+          <input type="tel" name="phone" placeholder="Phone Number" required>
+          <input type="text" name="zip" placeholder="Zip Code" required>
+          <input type="hidden" name="lead_type" value="realtor">
+          <input type="hidden" name="source" value="NestNudge Realtor Form">
+          <button type="submit">Get Connected</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© NestNudge</p>
+  </footer>
+
+  <!-- HELPERS -->
+  <script>
+    function scrollToLoan() {
+      const section = document.getElementById("loan-section");
+      if (section) section.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function scrollToRealtor() {
+      const section = document.getElementById("contact-form");
+      if (section) section.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function selectServiceAndScroll(type) {
+      showUpgrade(type);
+      const section = document.getElementById("cost-guide");
+      if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  </script>
+
+  <!-- ESTIMATOR -->
+  <script>
+    const regionalMultipliers = {
+      high: 1.18,
+      medium: 1.0,
+      low: 0.88
+    };
+
+    function getRegionTier(zip) {
+      if (!zip || zip.length < 5) return "medium";
+      const firstDigit = parseInt(zip.charAt(0), 10);
+
+      if ([0, 1, 9].includes(firstDigit)) return "high";
+      if ([2, 3, 4, 5, 6].includes(firstDigit)) return "medium";
+      return "low";
+    }
+
+    const upgradeData = {
+      roof: {
+        title: "Roof Replacement",
+        costLow: 12000,
+        costHigh: 22000,
+        valueLow: 15000,
+        valueHigh: 30000
+      },
+      doors: {
+        title: "Entry Door Upgrade",
+        costLow: 2500,
+        costHigh: 9000,
+        valueLow: 3500,
+        valueHigh: 12000
+      },
+      windows: {
+        title: "Impact Windows",
+        costLow: 10000,
+        costHigh: 28000,
+        valueLow: 12000,
+        valueHigh: 35000
+      }
+    };
+
+    function formatMoney(value) {
+      return value.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0
+      });
+    }
+
+    function showPropertyInsights() {
+      const zip = document.getElementById("zip")?.value?.trim() || "";
+      const tier = getRegionTier(zip);
+      const text = document.getElementById("propertyInsightsText");
+      const section = document.getElementById("property-insights-section");
+
+      if (!text || !section) return;
+
+      let message = "Based on your location, we’ll use regional pricing and home-value assumptions to guide your estimate.";
+
+      if (tier === "high") {
+        message = "Your area appears to be in a higher-cost market. Project pricing and value gains may trend above national averages.";
+      } else if (tier === "low") {
+        message = "Your area appears to be in a lower-cost market. Project pricing may be lower, though value gains can still be strong.";
+      }
+
+      text.textContent = message;
+      section.style.display = "block";
+    }
+
+    function showUpgrade(type) {
+      const item = upgradeData[type];
+      if (!item) return;
+
+      const zip = document.getElementById("zip")?.value?.trim() || "";
+      const tier = getRegionTier(zip);
+      const multiplier = regionalMultipliers[tier];
+
+      const costLow = Math.round(item.costLow * multiplier);
+      const costHigh = Math.round(item.costHigh * multiplier);
+      const valueLow = Math.round(item.valueLow * multiplier);
+      const valueHigh = Math.round(item.valueHigh * multiplier);
+
+      document.getElementById("resultsTitle").textContent = item.title + " Cost Guide";
+      document.getElementById("costRange").textContent = formatMoney(costLow) + " - " + formatMoney(costHigh);
+      document.getElementById("valueRange").textContent = formatMoney(valueLow) + " - " + formatMoney(valueHigh);
+
+      const avgCost = (costLow + costHigh) / 2;
+      const avgValue = (valueLow + valueHigh) / 2;
+      const roiLow = Math.round((valueLow / costHigh) * 100);
+      const roiHigh = Math.round((valueHigh / costLow) * 100);
+      const avgROI = Math.round((avgValue / avgCost) * 100);
+
+      document.getElementById("roiRange").textContent = roiLow + "% - " + roiHigh + "%";
+      document.getElementById("resultsPanel").style.display = "block";
+
+      document.getElementById("currentValue").innerHTML =
+        "<strong>Estimated Project Cost</strong><br>" + formatMoney(avgCost);
+
+      document.getElementById("newValue").innerHTML =
+        "<strong>Estimated Value Added</strong><br>" + formatMoney(avgValue);
+
+      document.getElementById("valueGain").innerHTML =
+        "<strong>Estimated ROI</strong><br>" + avgROI + "%";
+
+      const currentBar = document.querySelector(".current-bar");
+      const newBar = document.querySelector(".new-bar");
+
+      if (currentBar && newBar) {
+        currentBar.style.height = Math.max(70, avgCost / 200) + "px";
+        newBar.style.height = Math.max(90, avgValue / 200) + "px";
+      }
+
+      showPropertyInsights();
+    }
+  </script>
+
+  <!-- GOOGLE MAPS -->
+  <script>
+    let autocomplete;
+
+    function initAutocomplete() {
+      const addressInput = document.getElementById("address");
+      if (!addressInput || !window.google || !google.maps || !google.maps.places) return;
+
+      autocomplete = new google.maps.places.Autocomplete(addressInput, {
+        types: ["address"],
+        componentRestrictions: { country: "us" },
+        fields: ["address_components", "formatted_address"]
+      });
+
+      autocomplete.addListener("place_changed", handlePlaceSelect);
+    }
+
+    function handlePlaceSelect() {
+      const place = autocomplete.getPlace();
+      if (!place || !place.address_components) return;
+
+      let zipCode = "";
+
+      place.address_components.forEach(component => {
+        if (component.types.includes("postal_code")) {
+          zipCode = component.long_name;
+        }
+      });
+
+      const zipInput = document.getElementById("zip");
+      if (zipInput && zipCode) {
+        zipInput.value = zipCode;
+        showPropertyInsights();
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const zipInput = document.getElementById("zip");
+      if (zipInput) {
+        zipInput.addEventListener("input", showPropertyInsights);
+      }
+    });
+  </script>
+
+  <!-- IMPROVED AI CHAT -->
+  <script>
+    let chatState = {
+      mode: "general",
+      service: "",
+      leadType: "",
+      captureStep: "",
+      data: {},
+      isSubmitting: false
+    };
+
+    function addMessage(text, sender = "bot") {
+      const messages = document.getElementById("chatMessages");
+      if (!messages) return;
+
+      const msg = document.createElement("p");
+      msg.className = sender;
+      msg.textContent = text;
+      messages.appendChild(msg);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function resetChatState() {
+      chatState = {
+        mode: "general",
+        service: "",
+        leadType: "",
+        captureStep: "",
+        data: {},
+        isSubmitting: false
+      };
+    }
+
+    function minimizeChat() {
+      const widget = document.getElementById("chatWidget");
+      const reopen = document.getElementById("chatReopen");
+      if (widget) widget.classList.add("chat-hidden");
+      if (reopen) reopen.classList.add("show-chat-bubble");
+    }
+
+    function reopenChat() {
+      const widget = document.getElementById("chatWidget");
+      const reopen = document.getElementById("chatReopen");
+      if (widget) widget.classList.remove("chat-hidden");
+      if (reopen) reopen.classList.remove("show-chat-bubble");
+    }
+
+    function quickSelect(topic) {
+      const map = {
+        roof: "roof",
+        buying: "buying",
+        doors: "entry door",
+        windows: "impact windows",
+        realtor: "realtor",
+        funding: "funding"
+      };
+      const value = map[topic] || topic;
+      addMessage(value, "user");
+      processUserMessage(value);
+    }
+
+    function handleChat(e) {
+      if (e.key !== "Enter" || chatState.isSubmitting) return;
+
+      const input = document.getElementById("chatInput");
+      if (!input) return;
+
+      const value = input.value.trim();
+      if (!value) return;
+
+      addMessage(value, "user");
+      input.value = "";
+      processUserMessage(value);
+    }
+
+    function detectIntent(text) {
+      const value = text.toLowerCase();
+
+      if (value.includes("roof") || value.includes("roofing")) {
+        return { type: "service", service: "roof" };
+      }
+
+      if (value.includes("door") || value.includes("entry door") || value.includes("front door")) {
+        return { type: "service", service: "doors" };
+      }
+
+      if (value.includes("window") || value.includes("impact window") || value.includes("hurricane window")) {
+        return { type: "service", service: "windows" };
+      }
+
+      if (value.includes("buy") || value.includes("buying") || value.includes("purchase") || value.includes("house hunt")) {
+        return { type: "buying" };
+      }
+
+      if (value.includes("sell") || value.includes("selling") || value.includes("realtor") || value.includes("realestate") || value.includes("real estate") || value.includes("agent")) {
+        return { type: "realtor" };
+      }
+
+      if (value.includes("funding") || value.includes("finance") || value.includes("loan") || value.includes("payment")) {
+        return { type: "funding" };
+      }
+
+      if (value.includes("change") || value.includes("instead") || value.includes("different")) {
+        return { type: "change" };
+      }
+
+      if (value.includes("offer") || value.includes("debt") || value.includes("solar") || value.includes("insurance") || value.includes("credit")) {
+        return { type: "offers" };
+      }
+
+      return { type: "general" };
+    }
+
+    function getUpgradeSummary(type) {
+      const zip = document.getElementById("zip")?.value?.trim() || "";
+      const tier = getRegionTier(zip);
+      const multiplier = regionalMultipliers[tier] || 1.0;
+      const item = upgradeData[type];
+
+      if (!item) return null;
+
+      const costLow = Math.round(item.costLow * multiplier);
+      const costHigh = Math.round(item.costHigh * multiplier);
+      const valueLow = Math.round(item.valueLow * multiplier);
+      const valueHigh = Math.round(item.valueHigh * multiplier);
+      const avgCost = Math.round((costLow + costHigh) / 2);
+      const avgValue = Math.round((valueLow + valueHigh) / 2);
+      const avgROI = Math.round((avgValue / avgCost) * 100);
+
+      return {
+        title: item.title,
+        costLow,
+        costHigh,
+        valueLow,
+        valueHigh,
+        avgROI
+      };
+    }
+
+    function processUserMessage(text) {
+      const intent = detectIntent(text);
+
+      if (intent.type === "service") {
+        chatState.mode = "service";
+        chatState.service = intent.service;
+        chatState.leadType = "funding";
+        chatState.captureStep = "";
+
+        showUpgrade(intent.service);
+
+        const summary = getUpgradeSummary(intent.service);
+        if (summary) {
+          addMessage(
+            `${summary.title} typically ranges from ${formatMoney(summary.costLow)} to ${formatMoney(summary.costHigh)} and may add about ${formatMoney(summary.valueLow)} to ${formatMoney(summary.valueHigh)} in value. Estimated ROI can be around ${summary.avgROI}%.`
+          );
+        }
+
+        addMessage("Would you like financing options, or would you like to explore another upgrade?");
+        return;
+      }
+
+      if (intent.type === "buying") {
+        chatState.mode = "buying";
+        chatState.captureStep = "";
+        addMessage("Buying is a great time to think about future value. I can help you explore which upgrades might have the strongest ROI after purchase.");
+        addMessage("Would you like to compare roofing, entry doors, or impact windows?");
+        return;
+      }
+
+      if (intent.type === "funding") {
+        chatState.mode = "funding";
+        chatState.leadType = "funding";
+        chatState.captureStep = "name";
+        addMessage("Absolutely — I can help with funding options. What’s your full name?");
+        return;
+      }
+
+      if (intent.type === "realtor") {
+        chatState.mode = "realtor";
+        chatState.leadType = "realtor";
+        chatState.captureStep = "name";
+        addMessage("Absolutely — I can connect you with a local realtor. What’s your full name?");
+        return;
+      }
+
+      if (intent.type === "offers") {
+        addMessage("NestNudge now has an Offers page with loans, solar, insurance, mortgage options, and credit tools. Click Learn more in the Featured Ways to Save section or visit /offers.html.");
+        return;
+      }
+
+      if (intent.type === "change") {
+        addMessage("No problem — you can switch anytime. Are you interested in roofing, buying, entry doors, impact windows, funding, realtor guidance, or smart offers?");
+        chatState.captureStep = "";
+        return;
+      }
+
+      if (chatState.captureStep) {
+        handleCaptureStep(text);
+        return;
+      }
+
+      addMessage("I can help with roofing, buying, entry doors, impact windows, funding, realtor guidance, or smart offers. Which one would you like to explore?");
+    }
+
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function isValidPhone(phone) {
+      const digits = phone.replace(/\D/g, "");
+      return digits.length >= 10;
+    }
+
+    function handleCaptureStep(text) {
+      switch (chatState.captureStep) {
+        case "name":
+          chatState.data.name = text.trim();
+          chatState.captureStep = "email";
+          addMessage("Thanks. What’s your email address?");
+          return;
+
+        case "email":
+          if (!isValidEmail(text.trim())) {
+            addMessage("Please enter a valid email address.");
+            return;
+          }
+          chatState.data.email = text.trim();
+          chatState.captureStep = "phone";
+          addMessage("What’s your phone number?");
+          return;
+
+        case "phone":
+          if (!isValidPhone(text.trim())) {
+            addMessage("Please enter a valid phone number with at least 10 digits.");
+            return;
+          }
+          chatState.data.phone = text.trim();
+          chatState.captureStep = "zip";
+          addMessage("What is your zip code?");
+          return;
+
+        case "zip":
+          chatState.data.zip = text.trim();
+          addMessage("Submitting your request now...");
+          if (chatState.leadType === "realtor") {
+            submitRealtorLead();
+          } else {
+            submitFundingLead();
+          }
+          return;
+      }
+    }
+
+    function submitFundingLead() {
+      if (chatState.isSubmitting) return;
+      chatState.isSubmitting = true;
+
+      const data = new URLSearchParams();
+      data.append("name", chatState.data.name || "");
+      data.append("email", chatState.data.email || "");
+      data.append("phone", chatState.data.phone || "");
+      data.append("zip", chatState.data.zip || "");
+      data.append("project_type", chatState.service || chatState.mode || "loan");
+      data.append("source", "AI Home Advisor");
+
+      fetch("/lead-handler.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: data.toString()
+      })
+      .then(response => {
+        if (!response.ok) throw new Error("Funding lead submission failed");
+        addMessage("Thank you! Your request has been received. A funding specialist will be in touch as soon as possible by phone, text, or email.");
+        resetChatState();
+      })
+      .catch(error => {
+        console.error(error);
+        addMessage("There was a problem submitting your request. Please try again or use the funding form on the page.");
+        chatState.isSubmitting = false;
+      });
+    }
+
+    function submitRealtorLead() {
+      if (chatState.isSubmitting) return;
+      chatState.isSubmitting = true;
+
+      const data = new URLSearchParams();
+      data.append("lead_type", "realtor");
+      data.append("name", chatState.data.name || "");
+      data.append("email", chatState.data.email || "");
+      data.append("phone", chatState.data.phone || "");
+      data.append("zip", chatState.data.zip || "");
+      data.append("goal", chatState.service || chatState.mode || "realtor");
+      data.append("source", "AI Home Advisor");
+
+      fetch("/realtor-handler.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: data.toString(),
+        redirect: "follow"
+      })
+      .then(response => {
+        if (!response.ok) throw new Error("Realtor lead submission failed");
+        addMessage("Thank you! Your request has been received. A local real estate expert will be in touch as soon as possible by phone, text, or email.");
+        resetChatState();
+      })
+      .catch(error => {
+        console.error(error);
+        addMessage("There was a problem submitting your request. Please try again or use the realtor form on the page.");
+        chatState.isSubmitting = false;
+      });
+    }
+  </script>
+
+  <!-- GOOGLE MAPS API -->
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpLNCvzY-QPirPIva1-UrJ4eMejo3cHdQ&libraries=places&callback=initAutocomplete">
+  </script>
+
+  <!-- NestNudge FINAL STABLE SYSTEM -->
+  <div id="nn-popup" style="display:none;position:fixed;bottom:20px;left:20px;background:#fff;padding:14px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.2);z-index:9999;font-family:Arial;">
+    <div style="display:flex;gap:10px;">
+      <div style="background:#2E7D32;color:#fff;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;">✔</div>
+      <div>
+        <strong id="nn-name"></strong><br>
+        <span id="nn-location"></span><br>
+        <span id="nn-action"></span><br>
+        <small id="nn-time"></small>
+      </div>
+    </div>
+  </div>
+
+  <div id="nn-lead-popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;align-items:center;justify-content:center;z-index:10000;">
+    <div style="position:absolute;width:100%;height:100%;background:rgba(0,0,0,0.5);"></div>
+
+    <div id="nn-box" style="position:relative;background:#fff;padding:25px;border-radius:14px;width:90%;max-width:400px;text-align:center;z-index:2;font-family:Arial;">
+      <div id="nn-close" style="position:absolute;top:10px;right:15px;cursor:pointer;">✕</div>
+
+      <h3>See What Your Home Is Worth</h3>
+      <p>Get a fast estimate + local savings</p>
+
+      <input id="nn-address" placeholder="Enter your address" style="width:100%;padding:12px;margin:8px 0;">
+      <input id="nn-email" placeholder="Enter your email" style="width:100%;padding:12px;margin:8px 0;">
+
+      <button id="nn-submit" style="width:100%;padding:12px;background:#2E7D32;color:#fff;border:none;border-radius:8px;">
+        Get My Free Estimate
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const demoLeads = [
+        { name: "Amanda S.", location: "Miami, FL" },
+        { name: "John M.", location: "Fort Lauderdale, FL" },
+        { name: "Carlos R.", location: "Hollywood, FL" },
+        { name: "Lisa T.", location: "Boca Raton, FL" }
+      ];
+
+      const actions = [
+        "requested a roof quote",
+        "compared local roofers",
+        "checked roofing costs"
+      ];
+
+      const times = ["Just now", "2 mins ago", "5 mins ago"];
+
+      const popup = document.getElementById("nn-popup");
+      const leadPopup = document.getElementById("nn-lead-popup");
+      const closeBtn = document.getElementById("nn-close");
+      const submitBtn = document.getElementById("nn-submit");
+
+      function showPopup() {
+        if (!popup) return;
+
+        const lead = demoLeads[Math.floor(Math.random() * demoLeads.length)];
+
+        document.getElementById("nn-name").innerText = lead.name;
+        document.getElementById("nn-location").innerText = lead.location;
+        document.getElementById("nn-action").innerText =
+          actions[Math.floor(Math.random() * actions.length)];
+        document.getElementById("nn-time").innerText =
+          times[Math.floor(Math.random() * times.length)];
+
+        popup.style.display = "block";
+
+        setTimeout(() => {
+          popup.style.display = "none";
+        }, 5000);
+      }
+
+      function showLeadPopup() {
+        if (!leadPopup) return;
+        leadPopup.style.display = "flex";
+      }
+
+      function closeLeadPopup() {
+        if (!leadPopup) return;
+        leadPopup.style.display = "none";
+      }
+
+      function submitLead() {
+        const address = document.getElementById("nn-address").value.trim();
+        const email = document.getElementById("nn-email").value.trim();
+
+        if (!address || !email) {
+          alert("Please enter your address and email.");
+          return;
+        }
+
+        const data = new URLSearchParams();
+        data.append("name", "Popup Lead");
+        data.append("address", address);
+        data.append("zip", "");
+        data.append("email", email);
+        data.append("project_type", "estimator");
+        data.append("source", "NestNudge Popup");
+
+        fetch("/lead-handler.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: data.toString()
+        })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Popup lead submission failed");
+          }
+
+          window.location.href = "/thank-you.html";
+        })
+        .catch((error) => {
+          console.error(error);
+          alert("There was a problem submitting your request. Please try again.");
+        });
+      }
+
+      function startPopupCycle() {
+        showPopup();
+        const nextDelay = Math.floor(Math.random() * (180000 - 120000 + 1)) + 120000;
+        setTimeout(startPopupCycle, nextDelay);
+      }
+
+      if (closeBtn) closeBtn.addEventListener("click", closeLeadPopup);
+      if (submitBtn) submitBtn.addEventListener("click", submitLead);
+
+      setTimeout(startPopupCycle, Math.random() * 7000 + 8000);
+      setTimeout(showLeadPopup, 45000);
+    });
+  </script>
+</body>
+</html>
