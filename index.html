@@ -65,12 +65,33 @@
       background: linear-gradient(135deg, #eff6ff 0%, #ecfdf3 50%, #ffffff 100%);
     }
 
+    .hero-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
     .hero-text h1 {
       line-height: 1.08;
     }
 
     .hero-benefits li {
       font-weight: 600;
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 16px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+      display: block;
     }
 
     .service-card .overlay p {
@@ -449,6 +470,15 @@
       .featured-offers-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-image img {
+        margin: 20px auto;
+      }
     }
 
     @media (max-width: 900px) {
@@ -566,6 +596,10 @@
           <li>✔ Explore lower monthly payment solutions</li>
           <li>✔ Keep your home upgrade goals moving forward</li>
         </ul>
+      </div>
+
+      <div class="hero-image">
+        <img src="/image/house-hero.jpg" alt="Beautiful home exterior">
       </div>
 
       <div class="hero-form">
@@ -705,7 +739,7 @@
               A roof replacement can improve protection, curb appeal, and buyer confidence,
               especially when the existing roof shows age or storm wear.
             </p>
-            <a href="/blog/roof-replacement-roi-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+            <a href="/roof-replacement-roi-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
 
@@ -717,7 +751,7 @@
               A strong front entry can improve first impressions, curb appeal, and perceived value
               with one focused exterior upgrade.
             </p>
-            <a href="/blog/best-entry-door-upgrades.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+            <a href="/best-entry-door-upgrades.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
 
@@ -729,7 +763,7 @@
               Impact windows can improve storm protection, comfort, and resale appeal while helping
               homeowners plan around long-term durability.
             </p>
-            <a href="/blog/impact-windows-home-value-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+            <a href="/impact-windows-home-value-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
 
@@ -741,7 +775,7 @@
               Flexible financing can help homeowners move forward sooner when a roof, window, or
               entry-door project needs attention.
             </p>
-            <a href="/blog/home-improvement-financing-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+            <a href="/home-improvement-financing-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
 
@@ -753,7 +787,7 @@
               Explore educational guides on lowering monthly payments, solar savings, insurance,
               and better credit positioning.
             </p>
-            <a href="/blog/how-to-lower-your-monthly-payments.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+            <a href="/how-to-lower-your-monthly-payments.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
 
@@ -765,7 +799,7 @@
               Learn how to spot upgrade potential before you buy so you can better estimate future
               costs, improvements, and value upside.
             </p>
-            <a href="/blog/buying-a-home-with-upgrade-potential.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+            <a href="/buying-a-home-with-upgrade-potential.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
 
@@ -777,7 +811,7 @@
               Understand which upgrades may help a home show better, attract stronger offers, and
               support faster listing performance.
             </p>
-            <a href="/blog/which-upgrades-help-sell-a-home-faster.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+            <a href="/which-upgrades-help-sell-a-home-faster.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
 
@@ -790,7 +824,7 @@
               A roof replacement can improve protection, curb appeal, and buyer confidence,
               especially when the existing roof shows age or storm wear.
             </p>
-            <a href="/blog/roof-replacement-roi-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+            <a href="/roof-replacement-roi-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
 
@@ -802,7 +836,7 @@
               A strong front entry can improve first impressions, curb appeal, and perceived value
               with one focused exterior upgrade.
             </p>
-            <a href="/blog/best-entry-door-upgrades.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+            <a href="/best-entry-door-upgrades.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
 
@@ -814,7 +848,7 @@
               Impact windows can improve storm protection, comfort, and resale appeal while helping
               homeowners plan around long-term durability.
             </p>
-            <a href="/blog/impact-windows-home-value-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+            <a href="/impact-windows-home-value-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
 
@@ -826,7 +860,7 @@
               Flexible financing can help homeowners move forward sooner when a roof, window, or
               entry-door project needs attention.
             </p>
-            <a href="/blog/home-improvement-financing-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+            <a href="/home-improvement-financing-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
 
@@ -858,7 +892,7 @@
               payment, which can make monthly budgeting easier and reduce financial pressure for homeowners
               planning their next move.
             </p>
-            <a href="/blog/lower-your-monthly-payments.html" class="featured-offer-btn">Learn More...</a>
+            <a href="/lower-your-monthly-payments.html" class="featured-offer-btn">Learn More...</a>
           </div>
         </article>
 
@@ -871,7 +905,7 @@
               Solar savings content helps homeowners understand when lower utility costs, long-term energy
               planning, and home efficiency improvements may be worth exploring before requesting quotes.
             </p>
-            <a href="/blog/cut-your-energy-bill-with-solar.html" class="featured-offer-btn">Learn More...</a>
+            <a href="/cut-your-energy-bill-with-solar.html" class="featured-offer-btn">Learn More...</a>
           </div>
         </article>
 
@@ -884,7 +918,7 @@
               Insurance comparison guides help visitors think through coverage, monthly premiums, and bundle
               savings so they can make better decisions around protecting their home and household.
             </p>
-            <a href="/blog/compare-insurance-options-and-save.html" class="featured-offer-btn">Learn More...</a>
+            <a href="/compare-insurance-options-and-save.html" class="featured-offer-btn">Learn More...</a>
           </div>
         </article>
 
@@ -897,7 +931,7 @@
               Credit-focused content helps visitors understand how their profile affects rates, approvals,
               and future offers, making it easier to prepare for loans, cards, and larger household decisions.
             </p>
-            <a href="/blog/unlock-better-financial-options-with-credit-tools.html" class="featured-offer-btn">Learn More...</a>
+            <a href="/unlock-better-financial-options-with-credit-tools.html" class="featured-offer-btn">Learn More...</a>
           </div>
         </article>
       </div>
