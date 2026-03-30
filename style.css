@@ -1109,3 +1109,81 @@ footer p {
   padding: 120px 20px 60px;
   background: rgba(0, 0, 0, 0.45);
 }
+
+/* FIX HERO LAYOUT + OVERLAY */
+
+.hero-split {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* BACKGROUND IMAGE */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+
+  background-image: url("https://nestnudge.com/image/house-hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  z-index: 1;
+}
+
+/* FULL OVERLAY (COVERS EVERYTHING) */
+.hero-overlay {
+  position: absolute;   /* 🔥 CHANGE THIS */
+  inset: 0;             /* 🔥 THIS FIXES TOP GAP */
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+}
+
+/* CONTENT ABOVE OVERLAY */
+.hero-container {
+  position: relative;
+  z-index: 3;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  display: grid;
+  gap: 24px;
+}
+
+/* TEXT COLOR FIX */
+.hero-left,
+.hero-left h1,
+.hero-left p,
+.hero-benefits li {
+  color: #ffffff;
+}
+
+/* HEADLINE */
+.hero-left h1 {
+  font-size: 32px;
+  margin-bottom: 14px;
+}
+
+/* PARAGRAPH */
+.hero-left p {
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+  .hero-container {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .hero-left h1 {
+    font-size: 48px;
+  }
+}
