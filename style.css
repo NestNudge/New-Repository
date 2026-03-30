@@ -182,7 +182,7 @@ nav a,
   padding: 120px 16px 44px;
   background:
     linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-    url("/image/house-hero.jpg") no-repeat center center / cover;
+    url("image/house-hero.jpg") no-repeat center center / cover;
   text-align: center;
 }
 
