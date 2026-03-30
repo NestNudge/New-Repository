@@ -581,11 +581,18 @@
     💬 Chat with AI
   </button>
 
-  <!-- HERO -->
-  <section class="hero money-hero">
+  <section class="hero-split">
+
+  <!-- BACKGROUND IMAGE -->
+  <div class="hero-bg"></div>
+
+  <!-- CONTENT LAYER -->
+  <div class="hero-overlay">
+
     <div class="hero-container">
 
-      <div class="hero-text">
+      <!-- LEFT SIDE TEXT -->
+      <div class="hero-left">
         <h1>Smarter Money Moves Start Here</h1>
         <p>
           Lower your bills, reduce debt, and find better financial options—all in minutes.
@@ -593,36 +600,36 @@
 
         <ul class="hero-benefits">
           <li>✔ Compare options in minutes</li>
-          <li>✔ Explore lower monthly payment solutions</li>
-          <li>✔ Keep your home upgrade goals moving forward</li>
+          <li>✔ Lower your monthly payments</li>
+          <li>✔ Make smarter home decisions</li>
         </ul>
       </div>
 
-      <div class="hero-image">
-        <img src="/image/house-hero.jpg" alt="Beautiful home exterior">
-      </div>
+      <!-- RIGHT SIDE FORM -->
+      <div class="hero-right">
+        <div class="hero-form">
+          <form action="/lead-handler.php" method="POST">
 
-      <div class="hero-form">
-        <div class="form-logo">
-          <img src="/image/NestNudge-Logo.png" alt="NestNudge Logo">
+            <h3>Check Your Options</h3>
+
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="text" name="zip" placeholder="ZIP Code" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+
+            <input type="hidden" name="project_type" value="lead">
+            <input type="hidden" name="source" value="Hero Right Form">
+
+            <button type="submit">Check My Rate</button>
+
+          </form>
         </div>
-
-        <form action="/lead-handler.php" method="POST">
-          <h3>Start Your Free Value Plan</h3>
-
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="text" id="address" name="address" placeholder="Property Address" autocomplete="street-address">
-          <input type="text" id="zip" name="zip" placeholder="Zip Code" required>
-
-          <input type="hidden" name="project_type" value="estimator">
-          <input type="hidden" name="source" value="NestNudge Hero Form">
-
-          <button type="submit">Get My Options</button>
-        </form>
       </div>
 
     </div>
-  </section>
+
+  </div>
+
+</section>
 
   <!-- INFO -->
   <section class="info-strip">
