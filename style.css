@@ -1,1640 +1,1281 @@
-:root {
-  --primary: #2e7d32;
-  --primary-dark: #256628;
-  --primary-light: #eaf6ed;
-  --dark: #1b1b1b;
-  --light: #f7f7f7;
-  --text: #444;
-  --white: #ffffff;
-  --border: #e5e7eb;
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.18);
-  --radius: 16px;
-}
-
-/* RESET */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  color: var(--text);
-  background: var(--white);
-  overflow-x: hidden;
-  line-height: 1.5;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-section {
-  width: 100%;
-}
-
-a {
-  color: inherit;
-}
-
-/* GLOBAL BUTTONS */
-button,
-.cta-btn,
-.cta-button {
-  appearance: none;
-  border: none;
-  background: var(--primary);
-  color: var(--white);
-  padding: 12px 18px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 1.2;
-  text-decoration: none;
-  transition: background 0.25s ease, transform 0.25s ease;
-  display: inline-block;
-}
-
-button:hover,
-.cta-btn:hover,
-.cta-button:hover {
-  background: var(--primary-dark);
-  transform: translateY(-1px);
-}
-
-/* INPUTS */
-input,
-textarea,
-select {
-  width: 100%;
-  padding: 12px 14px;
-  margin: 0 0 12px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  font-size: 15px;
-  outline: none;
-  background: var(--white);
-  color: var(--dark);
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: var(--primary);
-}
-
-/* HEADER */
-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 16px;
-  z-index: 200;
-}
-
-nav,
-.main-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 10px 14px;
-}
-
-nav a,
-.main-nav a,
-.dropbtn {
-  color: var(--white);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.cta-button {
-  background: var(--primary);
-  color: #fff;
-  border-radius: 999px;
-  padding: 12px 18px;
-}
-
-/* DROPDOWNS */
-.dropdown {
-  position: relative;
-}
-
-.dropbtn {
-  background: none;
-  padding: 10px 0;
-  border: none;
-  cursor: pointer;
-  color: #fff;
-}
-
-/* invisible bridge so menu doesn't disappear */
-.dropdown::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 100%;
-  width: 100%;
-  height: 12px;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 220px;
-  background: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
-  z-index: 9999;
-  padding-top: 6px;
-}
-
-.dropdown-content a {
-  display: block;
-  padding: 12px 14px;
-  color: #333;
-  font-size: 14px;
-  text-decoration: none;
-  white-space: nowrap;
-  background: #fff;
-}
-
-.dropdown-content a:hover {
-  background: #f4f7f4;
-}
-
-.dropdown:hover .dropdown-content,
-.dropdown:focus-within .dropdown-content {
-  display: block;
-}
-
-/* HERO */
-.hero-split {
-  position: relative;
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background-image: url("https://www.nestnudge.com/image/house-hero.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: 1;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-}
-
-.hero-container {
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 110px 16px 50px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
-  align-items: center;
-}
-
-.hero-left,
-.hero-left h1,
-.hero-left p,
-.hero-benefits li {
-  color: #fff;
-}
-
-.hero-left {
-  min-width: 0;
-  max-width: 680px;
-}
-
-.hero-left h1 {
-  margin: 0 0 14px;
-  font-size: 32px;
-  line-height: 1.1;
-}
-
-.hero-left p {
-  margin: 0 0 18px;
-  max-width: 640px;
-  font-size: 16px;
-  line-height: 1.55;
-}
-
-.hero-benefits {
-  list-style: none;
-  padding: 0;
-  margin: 18px 0 0;
-}
-
-.hero-benefits li {
-  margin-bottom: 10px;
-  font-size: 15px;
-  line-height: 1.4;
-  font-weight: 600;
-}
-
-.hero-right {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.hero-form {
-  width: 100%;
-  max-width: 420px;
-  margin: 0;
-  background: rgba(255, 255, 255, 0.97);
-  padding: 22px 18px;
-  border-radius: 18px;
-  box-shadow: var(--shadow-lg);
-}
-
-.hero-form h3 {
-  margin: 0 0 16px;
-  color: var(--dark);
-  font-size: 22px;
-  text-align: center;
-}
-
-.hero-form button {
-  width: 100%;
-}
-
-/* INFO STRIP */
-.info-strip {
-  text-align: center;
-  padding: 44px 16px;
-  background: #f9f9f9;
-}
-
-.info-strip h2 {
-  margin: 0 0 12px;
-  color: var(--dark);
-  font-size: 28px;
-}
-
-.info-strip p {
-  max-width: 850px;
-  margin: 0 auto;
-  line-height: 1.7;
-}
-
-/* OFFERS INTRO */
-.offers-intro-strip {
-  padding: 60px 20px 40px;
-  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-}
-
-.offers-intro-wrap {
-  max-width: 1180px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 28px;
-  align-items: center;
-}
-
-.offers-intro-copy h2 {
-  font-size: clamp(2rem, 3vw, 3rem);
-  color: #0f172a;
-  margin-bottom: 12px;
-}
-
-.offers-intro-copy p {
-  color: #475569;
-  font-size: 1.04rem;
-  margin-bottom: 18px;
-  max-width: 620px;
-}
-
-.offers-intro-copy ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 20px;
-  display: grid;
-  gap: 10px;
-}
-
-.offers-intro-copy li {
-  font-weight: 600;
-  color: #1e293b;
-}
-
-.offers-intro-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.offers-intro-btn,
-.offers-intro-btn-outline {
-  display: inline-block;
-  padding: 14px 20px;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 700;
-  transition: 0.2s ease;
-}
-
-.offers-intro-btn {
-  background: #2e7d32;
-  color: #fff;
-}
-
-.offers-intro-btn:hover {
-  background: #25682a;
-}
-
-.offers-intro-btn-outline {
-  background: #fff;
-  color: #2e7d32;
-  border: 2px solid #2e7d32;
-}
-
-.offers-intro-btn-outline:hover {
-  background: #f0fdf4;
-}
-
-.offers-intro-card {
-  background: #fff;
-  border-radius: 22px;
-  overflow: hidden;
-  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-}
-
-.offers-intro-card img {
-  width: 100%;
-  height: 350px;
-  object-fit: cover;
-  display: block;
-}
-
-/* PROPERTY INSIGHTS */
-#property-insights-section {
-  display: none;
-}
-
-/* COST GUIDE */
-.cost-guide-section {
-  padding: 50px 16px;
-  background: #f8faf8;
-}
-
-.cost-guide-wrap {
-  max-width: 1100px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.cost-guide-wrap h2 {
-  margin: 0 0 12px;
-  color: var(--dark);
-  font-size: 28px;
-}
-
-.cost-guide-wrap p {
-  max-width: 760px;
-  margin: 0 auto 22px;
-  line-height: 1.6;
-}
-
-.upgrade-selector {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  justify-content: center;
-  margin-bottom: 24px;
-}
-
-.upgrade-selector button {
-  width: 100%;
-  min-width: 0;
-}
-
-.results-panel {
-  background: #f9fbfc;
-  border: 1px solid #e6ecef;
-  border-radius: 20px;
-  padding: 22px 14px 120px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.results-panel h3 {
-  color: var(--dark);
-}
-
-.results-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  margin: 22px 0 18px;
-}
-
-.result-box {
-  background: #fff;
-  border: 1px solid #e7ecef;
-  border-radius: 14px;
-  padding: 18px 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
-}
-
-.result-box .label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 14px;
-  color: #5b6470;
-}
-
-.result-box strong {
-  display: block;
-  font-size: 22px;
-  color: #111827;
-}
-
-/* GRAPH */
-.graph-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 18px;
-  height: 240px;
-  margin: 24px 0 24px;
-  padding: 16px 8px 74px;
-  overflow: visible;
-}
-
-.bar {
-  width: 78px;
-  min-height: 40px;
-  position: relative;
-  border-radius: 16px 16px 0 0;
-  transition: 0.8s ease;
-  background: #ddd;
-}
-
-.current-bar {
-  background: #999;
-}
-
-.new-bar {
-  background: var(--primary);
-}
-
-.bar span {
-  position: absolute;
-  left: 50%;
-  bottom: -52px;
-  transform: translateX(-50%);
-  width: 110px;
-  text-align: center;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.2;
-  color: var(--dark);
-}
-
-#currentValue,
-#newValue,
-#valueGain {
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  background: #ffffff;
-  border: 1px solid #e7ecef;
-  border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  padding: 14px 16px;
-  text-align: center;
-}
-
-#currentValue {
-  margin-top: 0;
-  margin-bottom: 16px;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-#newValue {
-  margin-top: 0;
-  margin-bottom: 16px;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-#valueGain {
-  margin-top: 0;
-  margin-bottom: 22px;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.45;
-  color: var(--primary);
-}
-
-.conversion-cta {
-  margin-top: 24px;
-  padding: 0 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.conversion-cta button,
-.conversion-cta .cta-btn {
-  width: 100%;
-  min-width: 0;
-  padding: 14px 18px;
-  border-radius: 12px;
-}
-
-/* SERVICES CAROUSEL */
-.services-carousel {
-  padding: 60px 16px;
-  background: #f9f9f9;
-  text-align: center;
-  overflow: hidden;
-}
-
-.services-carousel h2 {
-  margin: 0 0 28px;
-  color: var(--dark);
-  font-size: 28px;
-}
-
-.carousel-wrapper {
-  overflow: hidden;
-  position: relative;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.carousel-track {
-  display: flex;
-  gap: 20px;
-  width: max-content;
-  animation: scrollLeft 55s linear infinite;
-}
-
-.carousel-wrapper:hover .carousel-track {
-  animation-play-state: paused;
-}
-
-.carousel-track .service-card {
-  min-width: 260px;
-  max-width: 260px;
-  flex-shrink: 0;
-}
-
-@keyframes scrollLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.service-card {
-  position: relative;
-  border-radius: 18px;
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-  transition: transform 0.3s ease;
-  background: var(--white);
-}
-
-.service-card:hover {
-  transform: translateY(-4px) scale(1.01);
-}
-
-.service-card img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-}
-
-.service-card .overlay {
-  position: absolute;
-  inset: auto 0 0 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.88), transparent);
-  color: var(--white);
-  padding: 18px;
-  text-align: left;
-}
-
-.service-card h3 {
-  margin: 0 0 6px;
-  font-size: 18px;
-}
-
-.service-card p {
-  margin: 0 0 10px;
-  font-size: 14px;
-  line-height: 1.4;
-  opacity: 0.96;
-}
-
-.service-learn-more,
-.featured-offer-btn,
-.money-link {
-  display: inline-block;
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: opacity 0.2s ease;
-}
-
-.service-learn-more:hover,
-.featured-offer-btn:hover,
-.money-link:hover {
-  opacity: 0.85;
-}
-
-.service-learn-more {
-  color: #fff;
-  margin-top: 6px;
-}
-
-/* FEATURED OFFERS */
-.featured-offers-home {
-  padding: 72px 20px;
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-}
-
-.featured-offers-inner {
-  max-width: 1180px;
-  margin: 0 auto;
-}
-
-.featured-offers-heading {
-  text-align: center;
-  max-width: 820px;
-  margin: 0 auto 34px;
-}
-
-.featured-offers-heading h2 {
-  font-size: clamp(1.9rem, 3vw, 2.8rem);
-  margin-bottom: 10px;
-  color: #0f172a;
-}
-
-.featured-offers-heading p {
-  color: #64748b;
-  font-size: 1.02rem;
-  line-height: 1.7;
-}
-
-.featured-offers-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 22px;
-}
-
-.featured-offer-card {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.featured-offer-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 36px rgba(15, 23, 42, 0.1);
-}
-
-.featured-offer-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  display: block;
-}
-
-.featured-offer-content {
-  padding: 22px;
-}
-
-.featured-offer-label {
-  display: inline-block;
-  padding: 6px 11px;
-  border-radius: 999px;
-  background: #eefbf2;
-  color: #1f6f35;
-  font-size: 0.8rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.featured-offer-content h3 {
-  color: #0f172a;
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-}
-
-.featured-offer-content p {
-  color: #64748b;
-  margin-bottom: 16px;
-  min-height: 118px;
-  line-height: 1.65;
-}
-
-.featured-offer-btn {
-  color: #2e7d32;
-}
-
-/* TESTIMONIALS */
-.testimonials {
-  text-align: center;
-  padding: 26px 16px 50px;
-}
-
-.testimonials h2 {
-  color: var(--dark);
-  margin: 0 0 22px;
-  font-size: 28px;
-}
-
-.testimonial-grid {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.testimonial-card {
-  background: var(--white);
-  padding: 22px 18px;
-  border-radius: 16px;
-  text-align: center;
-  box-shadow: var(--shadow);
-  min-width: 0;
-}
-
-.testimonial-card img {
-  width: 84px;
-  height: 84px;
-  border-radius: 50%;
-  margin: 0 auto 12px;
-  object-fit: cover;
-}
-
-.testimonial-card p {
-  line-height: 1.6;
-}
-
-/* LOAN + REALTOR */
-.loan-section {
-  background: #f7f7f7;
-  padding: 50px 16px;
-  border-radius: 24px;
-  margin: 20px auto 50px;
-}
-
-.loan-container {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  align-items: stretch;
-  max-width: 1100px;
-  margin: auto;
-}
-
-.loan-text,
-.loan-form {
-  min-width: 0;
-}
-
-.loan-text h2 {
-  color: var(--dark);
-  margin-top: 0;
-  font-size: 28px;
-}
-
-.loan-text ul {
-  margin: 20px 0;
-  padding-left: 18px;
-  line-height: 1.8;
-}
-
-.loan-form {
-  background: var(--white);
-  padding: 22px 18px;
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-}
-
-.loan-form button {
-  width: 100%;
-}
-
-.selling-section {
-  padding: 20px 16px 50px;
-}
-
-.selling-container {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  max-width: 1100px;
-  margin: auto;
-}
-
-.selling-text,
-.selling-image {
-  min-width: 0;
-}
-
-.selling-text h2 {
-  color: var(--dark);
-  margin-top: 0;
-  font-size: 28px;
-}
-
-.selling-text p {
-  line-height: 1.7;
-}
-
-.selling-image img {
-  width: 100%;
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-}
-
-.realtor-contact {
-  padding: 0 16px 50px;
-}
-
-/* PHASE 1 LOAN */
-.phase-one-loan {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #334155 100%);
-  color: #fff;
-  padding: 72px 20px;
-  border-radius: 0;
-  margin: 0;
-}
-
-.phase-one-loan .loan-container {
-  max-width: 1180px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 28px;
-  align-items: center;
-}
-
-.phase-one-loan .loan-text h2 {
-  font-size: clamp(2rem, 3vw, 3.1rem);
-  line-height: 1.08;
-  margin-bottom: 14px;
-  color: #fff;
-}
-
-.phase-one-loan .loan-text p {
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 1.06rem;
-  margin-bottom: 18px;
-  max-width: 620px;
-}
-
-.phase-one-loan .loan-text ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 22px;
-  display: grid;
-  gap: 10px;
-}
-
-.phase-one-loan .loan-text li {
-  font-weight: 600;
-  color: #e2e8f0;
-}
-
-.loan-highlight-badge {
-  display: inline-block;
-  background: #dcfce7;
-  color: #166534;
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 0.88rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.loan-mini-steps {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 22px;
-}
-
-.loan-mini-step {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
-  padding: 16px;
-  text-align: center;
-  color: #fff;
-  font-weight: 700;
-}
-
-.phase-one-loan .loan-form {
-  background: #fff;
-  border-radius: 22px;
-  padding: 26px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
-}
-
-.phase-one-loan .loan-form h3 {
-  color: #0f172a;
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-}
-
-.phase-one-loan .loan-form p {
-  color: #64748b;
-  margin-bottom: 18px;
-}
-
-.phase-one-loan .loan-form form {
-  display: grid;
-  gap: 12px;
-}
-
-.phase-one-loan .loan-form input,
-.phase-one-loan .loan-form select {
-  width: 100%;
-  padding: 14px 15px;
-  border: 1px solid #cbd5e1;
-  border-radius: 12px;
-  font-size: 1rem;
-  outline: none;
-}
-
-.phase-one-loan .loan-form input:focus,
-.phase-one-loan .loan-form select:focus {
-  border-color: #2e7d32;
-  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
-}
-
-.phase-one-loan .loan-form button {
-  padding: 15px 18px;
-  background: #2e7d32;
-  color: #fff;
-  border: none;
-  border-radius: 999px;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.phase-one-loan .loan-form button:hover {
-  background: #25682a;
-}
-
-.loan-trust-note {
-  margin-top: 12px;
-  font-size: 0.92rem;
-  color: #64748b;
-  text-align: center;
-}
-
-/* FINAL CTA */
-.final-money-cta {
-  padding: 64px 20px;
-  background: linear-gradient(135deg, #ecfdf3 0%, #eff6ff 100%);
-}
-
-.final-money-cta-inner {
-  max-width: 980px;
-  margin: 0 auto;
-  text-align: center;
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 24px;
-  padding: 42px 28px;
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
-}
-
-.final-money-cta-inner h2 {
-  font-size: clamp(2rem, 3vw, 3rem);
-  margin-bottom: 12px;
-  color: #0f172a;
-}
-
-.final-money-cta-inner p {
-  color: #64748b;
-  margin-bottom: 20px;
-  font-size: 1.05rem;
-}
-
-.final-money-cta-inner a {
-  display: inline-block;
-  padding: 14px 22px;
-  border-radius: 999px;
-  background: #2e7d32;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 700;
-}
-
-/* CHAT */
-#chatWidget {
-  position: fixed;
-  left: 12px;
-  right: 12px;
-  bottom: 12px;
-  width: auto;
-  z-index: 9999;
-  border-radius: 22px;
-  overflow: hidden;
-  border: 1px solid rgba(46, 204, 113, 0.25);
-  background: #fff;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
-  max-height: 70vh;
-}
-
-#chatHeader {
-  background: linear-gradient(135deg, #2ecc71, #27ae60);
-  color: #fff;
-  padding: 14px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.chat-header-agent {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 0;
-}
-
-.chat-agent-avatar {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.85);
-  flex-shrink: 0;
-}
-
-.chat-header-text {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.chat-agent-name {
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.1;
-}
-
-.chat-agent-status {
-  font-size: 12px;
-  opacity: 0.92;
-  margin-top: 3px;
-}
-
-#chatCloseBtn {
-  background: rgba(255, 255, 255, 0.16);
-  color: #fff;
-  border: none;
-  width: 34px;
-  height: 34px;
-  min-width: 34px;
-  border-radius: 999px;
-  font-size: 18px;
-  line-height: 1;
-  padding: 0;
-  cursor: pointer;
-}
-
-#chatCloseBtn:hover {
-  background: rgba(255, 255, 255, 0.28);
-  transform: none;
-}
-
-#chatBox {
-  display: block;
-  background: #fff;
-}
-
-#chatMessages {
-  padding: 16px;
-  max-height: 320px;
-  overflow-y: auto;
-  background:
-    radial-gradient(circle at top right, rgba(46, 204, 113, 0.08), transparent 28%),
-    #f9fbfa;
-}
-
-.chat-message-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.message-avatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-}
-
-.message-stack {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  max-width: calc(100% - 52px);
-}
-
-.message-meta {
-  font-size: 12px;
-  font-weight: 700;
-  color: #5b6470;
-  margin: 0 0 4px 2px;
-}
-
-#chatMessages p {
-  margin: 0;
-  line-height: 1.45;
-  font-size: 14px;
-}
-
-.bot {
-  background: #fff;
-  color: #1f2937;
-  padding: 12px 14px;
-  border-radius: 16px 16px 16px 6px;
-  max-width: 100%;
-  width: fit-content;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.user {
-  background: linear-gradient(135deg, #2ecc71, #27ae60);
-  color: #fff;
-  padding: 12px 14px;
-  border-radius: 16px 16px 6px 16px;
-  max-width: 90%;
-  width: fit-content;
-  margin-left: auto;
-  text-align: left;
-  box-shadow: 0 8px 18px rgba(39, 174, 96, 0.22);
-}
-
-.chat-quick-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 0 12px 12px;
-  background: #f9fbfa;
-}
-
-.chat-quick-actions button {
-  width: auto;
-  min-width: auto;
-  padding: 8px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  background: #eef7f0;
-  color: #256628;
-  border: 1px solid rgba(46, 125, 50, 0.15);
-}
-
-.chat-quick-actions button:hover {
-  background: #e3f3e7;
-}
-
-#chatInput {
-  width: 100%;
-  margin: 0;
-  padding: 15px 16px;
-  border: none;
-  border-top: 1px solid #e5e7eb;
-  border-radius: 0;
-  background: #fff;
-  font-size: 14px;
-  outline: none;
-}
-
-#chatInput::placeholder {
-  color: #94a3b8;
-}
-
-#chatInput:focus {
-  background: #fcfffd;
-}
-
-.chat-hidden {
-  display: none !important;
-}
-
-/* REOPEN CHAT */
-#chatReopen {
-  position: fixed;
-  right: 12px;
-  bottom: 12px;
-  z-index: 9998;
-  display: none;
-  align-items: center;
-  gap: 12px;
-  background: linear-gradient(135deg, #77c96b, #b5e06a);
-  color: #fff;
-  border: none;
-  padding: 10px 14px 10px 10px;
-  border-radius: 999px;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
-  font-weight: 700;
-  min-width: 250px;
-  text-align: left;
-}
-
-.chat-reopen-avatar {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-  border: 2px solid rgba(255, 255, 255, 0.9);
-}
-
-.chat-reopen-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
-}
-
-.chat-reopen-text strong {
-  font-size: 15px;
-  color: #fff;
-}
-
-.chat-reopen-text small {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.95);
-  margin-top: 3px;
-}
-
-.show-chat-bubble {
-  display: inline-flex !important;
-}
-
-/* THANK YOU */
-.thank-you-page {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 16px;
-  background: linear-gradient(135deg, #f7fbf8, #eef7f0);
-}
-
-.thank-you-card {
-  max-width: 620px;
-  width: 100%;
-  background: #ffffff;
-  border-radius: 22px;
-  padding: 36px 22px;
-  text-align: center;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-  border: 1px solid rgba(46, 125, 50, 0.12);
-}
-
-.thank-you-card h1 {
-  margin: 0 0 16px;
-  color: #1b1b1b;
-  font-size: 32px;
-}
-
-.thank-you-card p {
-  margin: 0 0 14px;
-  color: #444;
-  line-height: 1.7;
-  font-size: 17px;
-}
-
-.thank-you-card .cta-btn {
-  display: inline-block;
-  margin-top: 16px;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 24px 16px;
-  background: var(--dark);
-  color: var(--white);
-}
-
-footer p {
-  margin: 0;
-}
-
-/* RESPONSIVE */
-@media (max-width: 1100px) {
-  .featured-offers-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 900px) {
-  .offers-intro-wrap,
-  .phase-one-loan .loan-container,
-  .loan-mini-steps {
-    grid-template-columns: 1fr;
-  }
-
-  .offers-intro-card img {
-    height: 280px;
-  }
-}
-
-@media (max-width: 680px) {
-  .featured-offers-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .featured-offer-content p {
-    min-height: auto;
-  }
-}
-
-@media (min-width: 768px) {
-  header {
-    padding: 18px 24px;
-  }
-
-  nav,
-  .main-nav {
-    justify-content: center;
-    gap: 14px 18px;
-  }
-
-  .hero-container {
-    padding: 120px 24px 60px;
-    grid-template-columns: minmax(0, 1.35fr) minmax(360px, 420px);
-    gap: 56px;
-  }
-
-  .hero-left h1 {
-    font-size: 48px;
-  }
-
-  .hero-left p {
-    font-size: 17px;
-  }
-
-  .hero-benefits li {
-    font-size: 16px;
-  }
-
-  .hero-right {
-    justify-content: flex-end;
-  }
-
-  .upgrade-selector {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .upgrade-selector button {
-    width: auto;
-    min-width: 190px;
-  }
-
-  .results-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .graph-container {
-    gap: 24px;
-    height: 260px;
-    padding-bottom: 76px;
-  }
-
-  .bar {
-    width: 92px;
-  }
-
-  .bar span {
-    width: 120px;
-    font-size: 15px;
-  }
-
-  .conversion-cta {
-    padding: 0 20px;
-  }
-
-  .carousel-track .service-card {
-    min-width: 300px;
-    max-width: 300px;
-  }
-
-  .service-card img {
-    height: 300px;
-  }
-
-  .testimonial-grid {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .testimonial-card {
-    flex: 1 1 280px;
-  }
-
-  .loan-container,
-  .selling-container {
-    gap: 32px;
-  }
-
-  #chatWidget {
-    left: auto;
-    right: 12px;
-    width: 390px;
-    max-height: none;
-  }
-
-  #chatMessages {
-    max-height: 340px;
-  }
-
-  #chatReopen {
-    right: 12px;
-    bottom: 12px;
-  }
-
-  .thank-you-card {
-    padding: 50px 35px;
-  }
-
-  .thank-you-card h1 {
-    font-size: 42px;
-  }
-}
-
-@media (min-width: 992px) {
-  header {
-    padding: 20px 10%;
-  }
-
-  nav,
-  .main-nav {
-    justify-content: flex-end;
-    gap: 18px;
-  }
-
-  nav a,
-  .main-nav a,
-  .dropbtn {
-    font-size: 15px;
-  }
-
-  .hero-container {
-    grid-template-columns: minmax(0, 1.45fr) minmax(380px, 430px);
-    gap: 80px;
-    padding: 120px 32px 70px;
-  }
-
-  .hero-left {
-    max-width: 760px;
-  }
-
-  .hero-left h1 {
-    font-size: 56px;
-  }
-
-  .hero-left p {
-    font-size: 18px;
-  }
-
-  .hero-form {
-    max-width: 430px;
-    margin-left: auto;
-    padding: 28px;
-  }
-
-  .graph-container {
-    gap: 40px;
-    height: 300px;
-    margin: 34px 0 28px;
-  }
-
-  .bar {
-    width: 120px;
-  }
-
-  .bar span {
-    width: 130px;
-  }
-
-  .conversion-cta {
-    flex-direction: row;
-    justify-content: center;
-    gap: 14px;
-  }
-
-  .conversion-cta button,
-  .conversion-cta .cta-btn {
-    width: auto;
-    min-width: 220px;
-  }
-
-  .carousel-wrapper {
-    max-width: 1600px;
-  }
-
-  .carousel-track .service-card {
-    min-width: 360px;
-    max-width: 360px;
-  }
-
-  .service-card img {
-    height: 320px;
-  }
-
-  .loan-container,
-  .selling-container {
-    flex-direction: row;
-    align-items: center;
-    gap: 40px;
-  }
-
-  .loan-text,
-  .loan-form,
-  .selling-text,
-  .selling-image {
-    flex: 1;
-    min-width: 280px;
-  }
-
-  .results-panel {
-    padding: 28px 22px 32px;
-  }
-
-  .featured-offers-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .offers-intro-wrap,
-  .phase-one-loan .loan-container {
-    grid-template-columns: 1.05fr 0.95fr;
-  }
-
-  .loan-mini-steps {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  #chatWidget {
-    right: 24px;
-    bottom: 24px;
-    width: 400px;
-  }
-
-  #chatReopen {
-    right: 24px;
-    bottom: 24px;
-  }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- BASIC -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- TITLE -->
+  <title>NestNudge | Save Money & Plan Smarter Home Improvements</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Lower your monthly expenses, explore solar savings, compare insurance, and improve your credit. Start smarter home decisions with NestNudge.">
+  <meta name="keywords" content="home savings, solar savings, roofing quotes, home improvement, insurance comparison, credit improvement, NestNudge">
+  <meta name="author" content="NestNudge">
+
+  <!-- FAVICON -->
+  <link rel="icon" href="/nestnudge.ico">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- GOOGLE FONT (OPTIONAL BUT RECOMMENDED) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- SOCIAL / OPEN GRAPH -->
+  <meta property="og:title" content="NestNudge | Smarter Home Decisions">
+  <meta property="og:description" content="Start saving money today while staying on track with your home goals.">
+  <meta property="og:image" content="https://www.nestnudge.com/image/house-hero.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.nestnudge.com">
+
+  <!-- PERFORMANCE -->
+  <link rel="preload" as="image" href="https://www.nestnudge.com/image/house-hero.jpg">
+
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav class="main-nav">
+
+      <a href="/">Home</a>
+
+      <div class="dropdown">
+        <button class="dropbtn">Services ▼</button>
+        <div class="dropdown-content">
+          <a href="/#services">All Services</a>
+          <a href="/#cost-guide">Home Estimator</a>
+          <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
+          <a href="/offers.html">Offers</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">Get Quotes ▼</button>
+        <div class="dropdown-content">
+          <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
+          <a href="/#contact-form">Request Estimate</a>
+          <a href="/#cost-guide">Project Estimator</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">Partners ▼</button>
+        <div class="dropdown-content">
+          <a href="/contractor-login.php">Partner Login</a>
+          <a href="/contractor-signup.php">Create Account</a>
+        </div>
+      </div>
+
+      <a href="/offers.html">Offers</a>
+      <a href="/#contact-form">Contact</a>
+      <a class="cta-button" href="/roof-quotes-miami-fort-lauderdale.html">Get My Quote</a>
+
+    </nav>
+  </header>
+
+<!-- AI CHAT -->
+<div id="chatWidget">
+  <div id="chatHeader">
+    <div class="chat-header-agent">
+      <img src="/image/michael-chat.png" alt="Michael from NestNudge" class="chat-agent-avatar">
+      <div class="chat-header-text">
+        <span class="chat-agent-name">Michael | NestNudge</span>
+        <span class="chat-agent-status">Live support</span>
+      </div>
+    </div>
+
+    <button type="button" id="chatCloseBtn" aria-label="Minimize chat" onclick="minimizeChat()">✕</button>
+  </div>
+
+  <div id="chatBox">
+    <div id="chatMessages">
+      <div class="chat-message-row bot-row intro-row">
+        <img src="/image/michael-chat.png" alt="Michael from NestNudge" class="message-avatar">
+        <div class="message-stack">
+          <div class="message-meta">Michael | NestNudge</div>
+          <p class="bot" id="chatGreeting"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-quick-actions">
+      <button type="button" onclick="quickSelect('roof')">Roof</button>
+      <button type="button" onclick="quickSelect('buying')">Buying</button>
+      <button type="button" onclick="quickSelect('doors')">Entry Door</button>
+      <button type="button" onclick="quickSelect('windows')">Impact Windows</button>
+      <button type="button" onclick="quickSelect('realtor')">Realtor</button>
+      <button type="button" onclick="quickSelect('funding')">Funding</button>
+    </div>
+
+    <input
+      type="text"
+      id="chatInput"
+      placeholder="Ask about roof, buying, doors, windows, funding, offers, or realtor..."
+      onkeypress="handleChat(event)"
+    >
+  </div>
+</div>
+
+<!-- REOPEN CHAT BUBBLE -->
+<button id="chatReopen" type="button" aria-label="Open AI chat" onclick="reopenChat()">
+  <img src="/image/michael-chat.png" alt="Michael from NestNudge" class="chat-reopen-avatar">
+  <span class="chat-reopen-text">
+    <strong>Chat with Michael</strong>
+    <small>Questions? Let’s chat!</small>
+  </span>
+</button>
+
+  <section class="hero-split">
+
+  <!-- BACKGROUND IMAGE -->
+  <div class="hero-bg"></div>
+
+  <!-- CONTENT LAYER -->
+  <div class="hero-overlay">
+
+    <div class="hero-container">
+
+      <!-- LEFT SIDE TEXT -->
+      <div class="hero-left">
+        <h1>Smarter Money Moves Start Here</h1>
+        <p>
+          Lower your bills, reduce debt, and find better financial options—all in minutes.
+        </p>
+
+        <ul class="hero-benefits">
+          <li>✔ Compare options in minutes</li>
+          <li>✔ Lower your monthly payments</li>
+          <li>✔ Make smarter home decisions</li>
+        </ul>
+      </div>
+
+      <!-- RIGHT SIDE FORM -->
+      <div class="hero-right">
+        <div class="hero-form">
+          <form action="/lead-handler.php" method="POST">
+
+            <h3>Check Your Options</h3>
+
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="text" name="zip" placeholder="ZIP Code" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+
+            <input type="hidden" name="project_type" value="lead">
+            <input type="hidden" name="source" value="Hero Right Form">
+
+            <button type="submit">Check My Rate</button>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- INFO -->
+  <section class="info-strip">
+    <h2>Why Home Value Planning Matters</h2>
+    <p>
+      Most homeowners overlook simple upgrades that can dramatically increase resale value.
+      NestNudge helps you compare likely project cost, added home value, and estimated ROI
+      before you spend a dollar.
+    </p>
+  </section>
+
+  <!-- OFFERS INTRO -->
+  <section class="offers-intro-strip">
+    <div class="offers-intro-wrap">
+      <div class="offers-intro-copy">
+        <h2>Save money now while keeping your home goals on track</h2>
+        <p>
+          NestNudge now helps visitors go beyond project planning with educational content around
+          lower monthly payments, solar savings, insurance comparisons, and credit improvement.
+          The goal is not to replace roofing, solar, or realtor leads—it is to help more homeowners
+          take a first step, then move naturally into the right local service when they’re ready.
+        </p>
+        <ul>
+          <li>✔ More entry points for more homeowner intent</li>
+          <li>✔ Educational blog paths before offer clicks</li>
+          <li>✔ Better support for roof, solar, funding, and realtor lead generation</li>
+        </ul>
+        <div class="offers-intro-actions">
+          <a href="/offers.html" class="offers-intro-btn">Explore Offers</a>
+          <a href="#loan-section" class="offers-intro-btn-outline">Check Your Rate</a>
+        </div>
+      </div>
+
+      <div class="offers-intro-card">
+        <img src="/image/hero-smart-money-homeowners.jpg" alt="Homeowner reviewing money-saving options">
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPERTY INSIGHTS -->
+  <section class="info-strip" id="property-insights-section" style="display:none;">
+    <h2>Property Insights for Your Area</h2>
+    <p id="propertyInsightsText">
+      Based on your location, we’ll use regional pricing and home-value assumptions to guide your estimate.
+    </p>
+  </section>
+
+  <!-- COST GUIDE -->
+  <section class="cost-guide-section" id="cost-guide">
+    <div class="cost-guide-wrap">
+      <h2>Explore Upgrade Costs, Home Value Impact, and ROI</h2>
+      <p>Select a project type to see estimated cost range, added home value, and ROI estimate.</p>
+
+      <div class="upgrade-selector">
+        <button type="button" onclick="showUpgrade('roof')">Roof Replacement</button>
+        <button type="button" onclick="showUpgrade('doors')">Entry Door</button>
+        <button type="button" onclick="showUpgrade('windows')">Impact Windows</button>
+      </div>
+
+      <div id="resultsPanel" class="results-panel" style="display:none;">
+        <h3 id="resultsTitle">Cost Guide</h3>
+
+        <div class="results-grid">
+          <div class="result-box">
+            <span class="label">Estimated Cost Range</span>
+            <strong id="costRange">$0 - $0</strong>
+          </div>
+
+          <div class="result-box">
+            <span class="label">Estimated Home Value Increase</span>
+            <strong id="valueRange">$0 - $0</strong>
+          </div>
+
+          <div class="result-box">
+            <span class="label">Estimated ROI</span>
+            <strong id="roiRange">0% - 0%</strong>
+          </div>
+        </div>
+
+        <div class="graph-container">
+          <div class="bar current-bar">
+            <span>Project Cost</span>
+          </div>
+
+          <div class="bar new-bar">
+            <span>Value Added</span>
+          </div>
+        </div>
+
+        <p id="currentValue"></p>
+        <p id="newValue"></p>
+        <h3 id="valueGain"></h3>
+
+        <div class="conversion-cta">
+          <button type="button" onclick="scrollToLoan()">Check Your Rate</button>
+          <button type="button" onclick="scrollToRealtor()">See My Home Value Plan</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES CAROUSEL -->
+  <section id="services" class="services-carousel">
+    <h2>Explore Value-Boosting Upgrades</h2>
+
+    <div class="carousel-wrapper">
+      <div class="carousel-track">
+
+        <div class="service-card" onclick="selectServiceAndScroll('roof')">
+          <img src="/image/upgrade-roof-guide.jpg" alt="Roof Replacement">
+          <div class="overlay">
+            <h3>Roof Replacement</h3>
+            <p>
+              A roof replacement can improve protection, curb appeal, and buyer confidence,
+              especially when the existing roof shows age or storm wear.
+            </p>
+            <a href="/roof-replacement-roi-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="selectServiceAndScroll('doors')">
+          <img src="/image/upgrade-entry-door-guide.jpg" alt="Entry Door">
+          <div class="overlay">
+            <h3>Entry Door</h3>
+            <p>
+              A strong front entry can improve first impressions, curb appeal, and perceived value
+              with one focused exterior upgrade.
+            </p>
+            <a href="/best-entry-door-upgrades.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="selectServiceAndScroll('windows')">
+          <img src="/image/upgrade-impact-windows-guide.jpg" alt="Impact Windows">
+          <div class="overlay">
+            <h3>Impact Windows</h3>
+            <p>
+              Impact windows can improve storm protection, comfort, and resale appeal while helping
+              homeowners plan around long-term durability.
+            </p>
+            <a href="/impact-windows-home-value-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="scrollToLoan()">
+          <img src="/image/upgrade-home-financing-guide.jpg" alt="Funding Options">
+          <div class="overlay">
+            <h3>Funding Options</h3>
+            <p>
+              Flexible financing can help homeowners move forward sooner when a roof, window, or
+              entry-door project needs attention.
+            </p>
+            <a href="/home-improvement-financing-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="window.location.href='/offers.html'">
+          <img src="/image/upgrade-smart-offers-guide.jpg" alt="Smart Offers">
+          <div class="overlay">
+            <h3>Smart Offers</h3>
+            <p>
+              Explore educational guides on lowering monthly payments, solar savings, insurance,
+              and better credit positioning.
+            </p>
+            <a href="/how-to-lower-your-monthly-payments.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="quickSelect('buying')">
+          <img src="/image/upgrade-buying-home-guide.jpg" alt="Buying a Home">
+          <div class="overlay">
+            <h3>Buying a Home</h3>
+            <p>
+              Learn how to spot upgrade potential before you buy so you can better estimate future
+              costs, improvements, and value upside.
+            </p>
+            <a href="/buying-a-home-with-upgrade-potential.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="quickSelect('realtor'); scrollToRealtor();">
+          <img src="/image/upgrade-selling-home-guide.jpg" alt="Realtor Guidance">
+          <div class="overlay">
+            <h3>Realtor Guidance</h3>
+            <p>
+              Understand which upgrades may help a home show better, attract stronger offers, and
+              support faster listing performance.
+            </p>
+            <a href="/which-upgrades-help-sell-a-home-faster.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+          </div>
+        </div>
+
+        <!-- DUPLICATE SET FOR SMOOTH LOOP -->
+        <div class="service-card" onclick="selectServiceAndScroll('roof')">
+          <img src="/image/upgrade-roof-guide.jpg" alt="Roof Replacement">
+          <div class="overlay">
+            <h3>Roof Replacement</h3>
+            <p>
+              A roof replacement can improve protection, curb appeal, and buyer confidence,
+              especially when the existing roof shows age or storm wear.
+            </p>
+            <a href="/roof-replacement-roi-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="selectServiceAndScroll('doors')">
+          <img src="/image/upgrade-entry-door-guide.jpg" alt="Entry Door">
+          <div class="overlay">
+            <h3>Entry Door</h3>
+            <p>
+              A strong front entry can improve first impressions, curb appeal, and perceived value
+              with one focused exterior upgrade.
+            </p>
+            <a href="/best-entry-door-upgrades.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="selectServiceAndScroll('windows')">
+          <img src="/image/upgrade-impact-windows-guide.jpg" alt="Impact Windows">
+          <div class="overlay">
+            <h3>Impact Windows</h3>
+            <p>
+              Impact windows can improve storm protection, comfort, and resale appeal while helping
+              homeowners plan around long-term durability.
+            </p>
+            <a href="/impact-windows-home-value-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="scrollToLoan()">
+          <img src="/image/upgrade-home-financing-guide.jpg" alt="Funding Options">
+          <div class="overlay">
+            <h3>Funding Options</h3>
+            <p>
+              Flexible financing can help homeowners move forward sooner when a roof, window, or
+              entry-door project needs attention.
+            </p>
+            <a href="/home-improvement-financing-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED OFFERS -->
+  <section class="featured-offers-home" id="featured-offers">
+    <div class="featured-offers-inner">
+      <div class="featured-offers-heading">
+        <h2>Featured Ways to Save</h2>
+        <p>
+          Featured Ways to Save highlights common financial moves that may help reduce monthly expenses,
+          improve household cash flow, and make larger home decisions easier to manage. These guides are
+          designed to help visitors understand their options first, then take the next step through trusted
+          partners if the offer is a good fit.
+        </p>
+      </div>
+
+      <div class="featured-offers-grid">
+        <article class="featured-offer-card">
+          <img src="/image/featured-lower-payments.jpg" alt="Lower your monthly payments">
+          <div class="featured-offer-content">
+            <span class="featured-offer-label">Top Pick</span>
+            <h3>Lower Your Monthly Payments</h3>
+            <p>
+              Personal loans and debt consolidation may help combine high-interest balances into one simpler
+              payment, which can make monthly budgeting easier and reduce financial pressure for homeowners
+              planning their next move.
+            </p>
+            <a href="/lower-your-monthly-payments.html" class="featured-offer-btn">Learn More...</a>
+          </div>
+        </article>
+
+        <article class="featured-offer-card">
+          <img src="/image/featured-solar-savings.jpg" alt="Cut your energy bill">
+          <div class="featured-offer-content">
+            <span class="featured-offer-label">Homeowner Favorite</span>
+            <h3>Cut Your Energy Bill</h3>
+            <p>
+              Solar savings content helps homeowners understand when lower utility costs, long-term energy
+              planning, and home efficiency improvements may be worth exploring before requesting quotes.
+            </p>
+            <a href="/cut-your-energy-bill-with-solar.html" class="featured-offer-btn">Learn More...</a>
+          </div>
+        </article>
+
+        <article class="featured-offer-card">
+          <img src="/image/featured-insurance-options.jpg" alt="Compare insurance options">
+          <div class="featured-offer-content">
+            <span class="featured-offer-label">Popular</span>
+            <h3>Compare Insurance Options</h3>
+            <p>
+              Insurance comparison guides help visitors think through coverage, monthly premiums, and bundle
+              savings so they can make better decisions around protecting their home and household.
+            </p>
+            <a href="/compare-insurance-options-and-save.html" class="featured-offer-btn">Learn More...</a>
+          </div>
+        </article>
+
+        <article class="featured-offer-card">
+          <img src="/image/featured-credit-tools.jpg" alt="Unlock better financial options">
+          <div class="featured-offer-content">
+            <span class="featured-offer-label">Smart Start</span>
+            <h3>Unlock Better Financial Options</h3>
+            <p>
+              Credit-focused content helps visitors understand how their profile affects rates, approvals,
+              and future offers, making it easier to prepare for loans, cards, and larger household decisions.
+            </p>
+            <a href="/unlock-better-financial-options-with-credit-tools.html" class="featured-offer-btn">Learn More...</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <h2>Real Homeowners, Real Results</h2>
+
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <img src="/image/sarah-m.png" alt="Sarah M">
+        <p>⭐⭐⭐⭐⭐ “I increased my home value by $35K just by following the plan.”</p>
+        <strong>Sarah M. – Miami, FL</strong>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="/image/john-p.png" alt="John P">
+        <p>⭐⭐⭐⭐⭐ “The roof upgrade alone paid for itself.”</p>
+        <strong>John P. – Dallas, TX</strong>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="/image/greg-r.png" alt="Greg R">
+        <p>⭐⭐⭐⭐⭐ “I sold my home faster and above asking price.”</p>
+        <strong>Greg R. – San Diego, CA</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 1 LOAN SECTION -->
+  <section class="loan-section phase-one-loan" id="loan-section">
+    <div class="loan-container">
+      <div class="loan-text">
+        <span class="loan-highlight-badge">Phase 1 Offer Stack</span>
+        <h2>Lower Your Monthly Payments</h2>
+        <p>
+          See if you qualify for lower interest rates and consolidate your debt into one simple payment.
+        </p>
+
+        <ul>
+          <li>✔ Personal loans and debt consolidation options</li>
+          <li>✔ Faster path to lower monthly bills</li>
+          <li>✔ A strong front door into your roof, solar, and home upgrade ecosystem</li>
+        </ul>
+
+        <div class="loan-mini-steps">
+          <div class="loan-mini-step">1. Tell us what you need</div>
+          <div class="loan-mini-step">2. Compare top options</div>
+          <div class="loan-mini-step">3. Choose what works best</div>
+        </div>
+      </div>
+
+      <div class="loan-form">
+        <h3>Check your rate without affecting your credit</h3>
+        <p>Start with a few quick details to see personalized options.</p>
+
+        <form action="/lead-handler.php" method="POST">
+          <select name="goal" required>
+            <option value="">What are you looking to do today?</option>
+            <option value="lower-debt">Lower debt</option>
+            <option value="save-on-bills">Save on bills</option>
+            <option value="get-insured">Get insured</option>
+            <option value="improve-credit">Improve credit</option>
+          </select>
+
+          <select name="debt_amount" required>
+            <option value="">How much debt do you have?</option>
+            <option value="under-5000">&lt;$5,000</option>
+            <option value="5000-20000">$5k–$20k</option>
+            <option value="20000-plus">$20k+</option>
+          </select>
+
+          <select name="credit_range" required>
+            <option value="">What’s your credit range?</option>
+            <option value="excellent">Excellent</option>
+            <option value="good">Good</option>
+            <option value="fair">Fair</option>
+            <option value="not-sure">Not sure</option>
+          </select>
+
+          <input type="text" name="zip" placeholder="ZIP Code" required>
+          <input type="text" name="name" placeholder="Full Name" required>
+          <input type="email" name="email" placeholder="Email Address" required>
+          <input type="tel" name="phone" placeholder="Phone Number" required>
+
+          <input type="hidden" name="project_type" value="personal-loan">
+          <input type="hidden" name="source" value="NestNudge Lower Monthly Payments Form">
+
+          <button type="submit">Get My Options</button>
+        </form>
+
+        <div class="loan-trust-note">
+          Get personalized options in minutes.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELLING -->
+  <section class="selling-section">
+    <div class="selling-container">
+
+      <div class="selling-text">
+        <h2>Thinking About Selling?</h2>
+        <p>Connect with a trusted local realtor and see how upgrades may improve your sale price.</p>
+        <a href="#contact-form" class="cta-btn">Get Started</a>
+      </div>
+
+      <div class="selling-image">
+        <img src="/image/realtor-4.webp" alt="Local Realtor">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REALTOR CONTACT -->
+  <section class="realtor-contact" id="contact-form">
+    <div class="loan-container">
+
+      <div class="loan-text">
+        <h2>Get Connected With a Local Realtor</h2>
+        <p>Tell us a little about yourself and we’ll connect you with a trusted local expert.</p>
+      </div>
+
+      <div class="loan-form">
+        <form action="/realtor-handler.php" method="POST">
+          <input type="text" name="name" placeholder="Full Name" required>
+          <input type="email" name="email" placeholder="Email Address" required>
+          <input type="tel" name="phone" placeholder="Phone Number" required>
+          <input type="text" name="zip" placeholder="Zip Code" required>
+          <input type="hidden" name="lead_type" value="realtor">
+          <input type="hidden" name="source" value="NestNudge Realtor Form">
+          <button type="submit">Get Connected</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-money-cta">
+    <div class="final-money-cta-inner">
+      <h2>See What You Qualify For in Minutes</h2>
+      <p>
+        Whether you want lower payments, a better plan for your home, or a local expert to guide the next step,
+        NestNudge helps you start with the option that fits best.
+      </p>
+      <a href="#loan-section">Get Started</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© NestNudge</p>
+  </footer>
+
+  <!-- HELPERS -->
+  <script>
+    function scrollToLoan() {
+      const section = document.getElementById("loan-section");
+      if (section) section.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function scrollToRealtor() {
+      const section = document.getElementById("contact-form");
+      if (section) section.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function selectServiceAndScroll(type) {
+      showUpgrade(type);
+      const section = document.getElementById("cost-guide");
+      if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  </script>
+
+  <!-- ESTIMATOR -->
+  <script>
+    const regionalMultipliers = {
+      high: 1.18,
+      medium: 1.0,
+      low: 0.88
+    };
+
+    function getRegionTier(zip) {
+      if (!zip || zip.length < 5) return "medium";
+      const firstDigit = parseInt(zip.charAt(0), 10);
+
+      if ([0, 1, 9].includes(firstDigit)) return "high";
+      if ([2, 3, 4, 5, 6].includes(firstDigit)) return "medium";
+      return "low";
+    }
+
+    const upgradeData = {
+      roof: {
+        title: "Roof Replacement",
+        costLow: 12000,
+        costHigh: 22000,
+        valueLow: 15000,
+        valueHigh: 30000
+      },
+      doors: {
+        title: "Entry Door Upgrade",
+        costLow: 2500,
+        costHigh: 9000,
+        valueLow: 3500,
+        valueHigh: 12000
+      },
+      windows: {
+        title: "Impact Windows",
+        costLow: 10000,
+        costHigh: 28000,
+        valueLow: 12000,
+        valueHigh: 35000
+      }
+    };
+
+    function formatMoney(value) {
+      return value.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0
+      });
+    }
+
+    function showPropertyInsights() {
+      const zip = document.getElementById("zip")?.value?.trim() || "";
+      const tier = getRegionTier(zip);
+      const text = document.getElementById("propertyInsightsText");
+      const section = document.getElementById("property-insights-section");
+
+      if (!text || !section) return;
+
+      let message = "Based on your location, we’ll use regional pricing and home-value assumptions to guide your estimate.";
+
+      if (tier === "high") {
+        message = "Your area appears to be in a higher-cost market. Project pricing and value gains may trend above national averages.";
+      } else if (tier === "low") {
+        message = "Your area appears to be in a lower-cost market. Project pricing may be lower, though value gains can still be strong.";
+      }
+
+      text.textContent = message;
+      section.style.display = "block";
+    }
+
+    function showUpgrade(type) {
+      const item = upgradeData[type];
+      if (!item) return;
+
+      const zip = document.getElementById("zip")?.value?.trim() || "";
+      const tier = getRegionTier(zip);
+      const multiplier = regionalMultipliers[tier];
+
+      const costLow = Math.round(item.costLow * multiplier);
+      const costHigh = Math.round(item.costHigh * multiplier);
+      const valueLow = Math.round(item.valueLow * multiplier);
+      const valueHigh = Math.round(item.valueHigh * multiplier);
+
+      document.getElementById("resultsTitle").textContent = item.title + " Cost Guide";
+      document.getElementById("costRange").textContent = formatMoney(costLow) + " - " + formatMoney(costHigh);
+      document.getElementById("valueRange").textContent = formatMoney(valueLow) + " - " + formatMoney(valueHigh);
+
+      const avgCost = (costLow + costHigh) / 2;
+      const avgValue = (valueLow + valueHigh) / 2;
+      const roiLow = Math.round((valueLow / costHigh) * 100);
+      const roiHigh = Math.round((valueHigh / costLow) * 100);
+      const avgROI = Math.round((avgValue / avgCost) * 100);
+
+      document.getElementById("roiRange").textContent = roiLow + "% - " + roiHigh + "%";
+      document.getElementById("resultsPanel").style.display = "block";
+
+      document.getElementById("currentValue").innerHTML =
+        "<strong>Estimated Project Cost</strong><br>" + formatMoney(avgCost);
+
+      document.getElementById("newValue").innerHTML =
+        "<strong>Estimated Value Added</strong><br>" + formatMoney(avgValue);
+
+      document.getElementById("valueGain").innerHTML =
+        "<strong>Estimated ROI</strong><br>" + avgROI + "%";
+
+      const currentBar = document.querySelector(".current-bar");
+      const newBar = document.querySelector(".new-bar");
+
+      if (currentBar && newBar) {
+        currentBar.style.height = Math.max(70, avgCost / 200) + "px";
+        newBar.style.height = Math.max(90, avgValue / 200) + "px";
+      }
+
+      showPropertyInsights();
+    }
+  </script>
+
+  <!-- GOOGLE MAPS -->
+  <script>
+    let autocomplete;
+
+    function initAutocomplete() {
+      const addressInput = document.getElementById("address");
+      if (!addressInput || !window.google || !google.maps || !google.maps.places) return;
+
+      autocomplete = new google.maps.places.Autocomplete(addressInput, {
+        types: ["address"],
+        componentRestrictions: { country: "us" },
+        fields: ["address_components", "formatted_address"]
+      });
+
+      autocomplete.addListener("place_changed", handlePlaceSelect);
+    }
+
+    function handlePlaceSelect() {
+      const place = autocomplete.getPlace();
+      if (!place || !place.address_components) return;
+
+      let zipCode = "";
+
+      place.address_components.forEach(component => {
+        if (component.types.includes("postal_code")) {
+          zipCode = component.long_name;
+        }
+      });
+
+      const zipInput = document.getElementById("zip");
+      if (zipInput && zipCode) {
+        zipInput.value = zipCode;
+        showPropertyInsights();
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const zipInput = document.getElementById("zip");
+      if (zipInput) {
+        zipInput.addEventListener("input", showPropertyInsights);
+      }
+    });
+  </script>
+
+  <!-- IMPROVED AI CHAT -->
+  <script>
+    let chatState = {
+      mode: "general",
+      service: "",
+      leadType: "",
+      captureStep: "",
+      data: {},
+      isSubmitting: false
+    };
+
+    function addMessage(text, sender = "bot") {
+      const messages = document.getElementById("chatMessages");
+      if (!messages) return;
+
+      const msg = document.createElement("p");
+      msg.className = sender;
+      msg.textContent = text;
+      messages.appendChild(msg);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function resetChatState() {
+      chatState = {
+        mode: "general",
+        service: "",
+        leadType: "",
+        captureStep: "",
+        data: {},
+        isSubmitting: false
+      };
+    }
+
+    function minimizeChat() {
+      const widget = document.getElementById("chatWidget");
+      const reopen = document.getElementById("chatReopen");
+      if (widget) widget.classList.add("chat-hidden");
+      if (reopen) reopen.classList.add("show-chat-bubble");
+    }
+
+    function reopenChat() {
+      const widget = document.getElementById("chatWidget");
+      const reopen = document.getElementById("chatReopen");
+      if (widget) widget.classList.remove("chat-hidden");
+      if (reopen) reopen.classList.remove("show-chat-bubble");
+    }
+
+    function quickSelect(topic) {
+      const map = {
+        roof: "roof",
+        buying: "buying",
+        doors: "entry door",
+        windows: "impact windows",
+        realtor: "realtor",
+        funding: "funding"
+      };
+      const value = map[topic] || topic;
+      addMessage(value, "user");
+      processUserMessage(value);
+    }
+
+    function handleChat(e) {
+      if (e.key !== "Enter" || chatState.isSubmitting) return;
+
+      const input = document.getElementById("chatInput");
+      if (!input) return;
+
+      const value = input.value.trim();
+      if (!value) return;
+
+      addMessage(value, "user");
+      input.value = "";
+      processUserMessage(value);
+    }
+
+    function detectIntent(text) {
+      const value = text.toLowerCase();
+
+      if (value.includes("roof") || value.includes("roofing")) {
+        return { type: "service", service: "roof" };
+      }
+
+      if (value.includes("door") || value.includes("entry door") || value.includes("front door")) {
+        return { type: "service", service: "doors" };
+      }
+
+      if (value.includes("window") || value.includes("impact window") || value.includes("hurricane window")) {
+        return { type: "service", service: "windows" };
+      }
+
+      if (value.includes("buy") || value.includes("buying") || value.includes("purchase") || value.includes("house hunt")) {
+        return { type: "buying" };
+      }
+
+      if (value.includes("sell") || value.includes("selling") || value.includes("realtor") || value.includes("realestate") || value.includes("real estate") || value.includes("agent")) {
+        return { type: "realtor" };
+      }
+
+      if (value.includes("funding") || value.includes("finance") || value.includes("loan") || value.includes("payment") || value.includes("debt") || value.includes("credit")) {
+        return { type: "funding" };
+      }
+
+      if (value.includes("solar") || value.includes("insurance") || value.includes("offer")) {
+        return { type: "offers" };
+      }
+
+      if (value.includes("change") || value.includes("instead") || value.includes("different")) {
+        return { type: "change" };
+      }
+
+      return { type: "general" };
+    }
+
+    function getUpgradeSummary(type) {
+      const zip = document.getElementById("zip")?.value?.trim() || "";
+      const tier = getRegionTier(zip);
+      const multiplier = regionalMultipliers[tier] || 1.0;
+      const item = upgradeData[type];
+
+      if (!item) return null;
+
+      const costLow = Math.round(item.costLow * multiplier);
+      const costHigh = Math.round(item.costHigh * multiplier);
+      const valueLow = Math.round(item.valueLow * multiplier);
+      const valueHigh = Math.round(item.valueHigh * multiplier);
+      const avgCost = Math.round((costLow + costHigh) / 2);
+      const avgValue = Math.round((valueLow + valueHigh) / 2);
+      const avgROI = Math.round((avgValue / avgCost) * 100);
+
+      return {
+        title: item.title,
+        costLow,
+        costHigh,
+        valueLow,
+        valueHigh,
+        avgROI
+      };
+    }
+
+    function processUserMessage(text) {
+      const intent = detectIntent(text);
+
+      if (intent.type === "service") {
+        chatState.mode = "service";
+        chatState.service = intent.service;
+        chatState.leadType = "funding";
+        chatState.captureStep = "";
+
+        showUpgrade(intent.service);
+
+        const summary = getUpgradeSummary(intent.service);
+        if (summary) {
+          addMessage(
+            `${summary.title} typically ranges from ${formatMoney(summary.costLow)} to ${formatMoney(summary.costHigh)} and may add about ${formatMoney(summary.valueLow)} to ${formatMoney(summary.valueHigh)} in value. Estimated ROI can be around ${summary.avgROI}%.`
+          );
+        }
+
+        addMessage("Would you like financing options, or would you like to explore another upgrade?");
+        return;
+      }
+
+      if (intent.type === "buying") {
+        chatState.mode = "buying";
+        chatState.captureStep = "";
+        addMessage("Buying is a great time to think about future value. I can help you explore which upgrades might have the strongest ROI after purchase.");
+        addMessage("Would you like to compare roofing, entry doors, or impact windows?");
+        return;
+      }
+
+      if (intent.type === "funding") {
+        chatState.mode = "funding";
+        chatState.leadType = "funding";
+        chatState.captureStep = "name";
+        addMessage("Absolutely — I can help with funding options. What’s your full name?");
+        return;
+      }
+
+      if (intent.type === "realtor") {
+        chatState.mode = "realtor";
+        chatState.leadType = "realtor";
+        chatState.captureStep = "name";
+        addMessage("Absolutely — I can connect you with a local realtor. What’s your full name?");
+        return;
+      }
+
+      if (intent.type === "offers") {
+        addMessage("NestNudge now includes educational savings guides for loans, solar, insurance, and credit. You can explore them in Featured Ways to Save or visit /offers.html.");
+        return;
+      }
+
+      if (intent.type === "change") {
+        addMessage("No problem — you can switch anytime. Are you interested in roofing, buying, entry doors, impact windows, funding, offers, or a realtor?");
+        chatState.captureStep = "";
+        return;
+      }
+
+      if (chatState.captureStep) {
+        handleCaptureStep(text);
+        return;
+      }
+
+      addMessage("I can help with roofing, buying, entry doors, impact windows, funding, offers, or a realtor. Which one would you like to explore?");
+    }
+
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function isValidPhone(phone) {
+      const digits = phone.replace(/\D/g, "");
+      return digits.length >= 10;
+    }
+
+    function handleCaptureStep(text) {
+      switch (chatState.captureStep) {
+        case "name":
+          chatState.data.name = text.trim();
+          chatState.captureStep = "email";
+          addMessage("Thanks. What’s your email address?");
+          return;
+
+        case "email":
+          if (!isValidEmail(text.trim())) {
+            addMessage("Please enter a valid email address.");
+            return;
+          }
+          chatState.data.email = text.trim();
+          chatState.captureStep = "phone";
+          addMessage("What’s your phone number?");
+          return;
+
+        case "phone":
+          if (!isValidPhone(text.trim())) {
+            addMessage("Please enter a valid phone number with at least 10 digits.");
+            return;
+          }
+          chatState.data.phone = text.trim();
+          chatState.captureStep = "zip";
+          addMessage("What is your zip code?");
+          return;
+
+        case "zip":
+          chatState.data.zip = text.trim();
+          addMessage("Submitting your request now...");
+          if (chatState.leadType === "realtor") {
+            submitRealtorLead();
+          } else {
+            submitFundingLead();
+          }
+          return;
+      }
+    }
+
+    function submitFundingLead() {
+      if (chatState.isSubmitting) return;
+      chatState.isSubmitting = true;
+
+      const data = new URLSearchParams();
+      data.append("name", chatState.data.name || "");
+      data.append("email", chatState.data.email || "");
+      data.append("phone", chatState.data.phone || "");
+      data.append("zip", chatState.data.zip || "");
+      data.append("project_type", chatState.service || chatState.mode || "loan");
+      data.append("source", "AI Home Advisor");
+
+      fetch("/lead-handler.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: data.toString()
+      })
+      .then(response => {
+        if (!response.ok) throw new Error("Funding lead submission failed");
+        addMessage("Thank you! Your request has been received. A funding specialist will be in touch as soon as possible by phone, text, or email.");
+        resetChatState();
+      })
+      .catch(error => {
+        console.error(error);
+        addMessage("There was a problem submitting your request. Please try again or use the funding form on the page.");
+        chatState.isSubmitting = false;
+      });
+    }
+
+    function submitRealtorLead() {
+      if (chatState.isSubmitting) return;
+      chatState.isSubmitting = true;
+
+      const data = new URLSearchParams();
+      data.append("lead_type", "realtor");
+      data.append("name", chatState.data.name || "");
+      data.append("email", chatState.data.email || "");
+      data.append("phone", chatState.data.phone || "");
+      data.append("zip", chatState.data.zip || "");
+      data.append("goal", chatState.service || chatState.mode || "realtor");
+      data.append("source", "AI Home Advisor");
+
+      fetch("/realtor-handler.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: data.toString(),
+        redirect: "follow"
+      })
+      .then(response => {
+        if (!response.ok) throw new Error("Realtor lead submission failed");
+        addMessage("Thank you! Your request has been received. A local real estate expert will be in touch as soon as possible by phone, text, or email.");
+        resetChatState();
+      })
+      .catch(error => {
+        console.error(error);
+        addMessage("There was a problem submitting your request. Please try again or use the realtor form on the page.");
+        chatState.isSubmitting = false;
+      });
+    }
+  </script>
+
+  <!-- GOOGLE MAPS API -->
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places&callback=initAutocomplete">
+  </script>
+
+  <!-- NestNudge FINAL STABLE SYSTEM -->
+  <div id="nn-popup" style="display:none;position:fixed;bottom:20px;left:20px;background:#fff;padding:14px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.2);z-index:9999;font-family:Arial;">
+    <div style="display:flex;gap:10px;">
+      <div style="background:#2E7D32;color:#fff;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;">✔</div>
+      <div>
+        <strong id="nn-name"></strong><br>
+        <span id="nn-location"></span><br>
+        <span id="nn-action"></span><br>
+        <small id="nn-time"></small>
+      </div>
+    </div>
+  </div>
+
+  <div id="nn-lead-popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;align-items:center;justify-content:center;z-index:10000;">
+    <div style="position:absolute;width:100%;height:100%;background:rgba(0,0,0,0.5);"></div>
+
+    <div id="nn-box" style="position:relative;background:#fff;padding:25px;border-radius:14px;width:90%;max-width:400px;text-align:center;z-index:2;font-family:Arial;">
+      <div id="nn-close" style="position:absolute;top:10px;right:15px;cursor:pointer;">✕</div>
+
+      <h3>See What Your Home Is Worth</h3>
+      <p>Get a fast estimate + local savings</p>
+
+      <input id="nn-address" placeholder="Enter your address" style="width:100%;padding:12px;margin:8px 0;">
+      <input id="nn-email" placeholder="Enter your email" style="width:100%;padding:12px;margin:8px 0;">
+
+      <button id="nn-submit" style="width:100%;padding:12px;background:#2E7D32;color:#fff;border:none;border-radius:8px;">
+        Get My Free Estimate
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const demoLeads = [
+        { name: "Amanda S.", location: "Miami, FL" },
+        { name: "John M.", location: "Fort Lauderdale, FL" },
+        { name: "Carlos R.", location: "Hollywood, FL" },
+        { name: "Lisa T.", location: "Boca Raton, FL" }
+      ];
+
+      const actions = [
+        "requested a roof quote",
+        "compared local roofers",
+        "checked roofing costs"
+      ];
+
+      const times = ["Just now", "2 mins ago", "5 mins ago"];
+
+      const popup = document.getElementById("nn-popup");
+      const leadPopup = document.getElementById("nn-lead-popup");
+      const closeBtn = document.getElementById("nn-close");
+      const submitBtn = document.getElementById("nn-submit");
+
+      function showPopup() {
+        if (!popup) return;
+
+        const lead = demoLeads[Math.floor(Math.random() * demoLeads.length)];
+
+        document.getElementById("nn-name").innerText = lead.name;
+        document.getElementById("nn-location").innerText = lead.location;
+        document.getElementById("nn-action").innerText =
+          actions[Math.floor(Math.random() * actions.length)];
+        document.getElementById("nn-time").innerText =
+          times[Math.floor(Math.random() * times.length)];
+
+        popup.style.display = "block";
+
+        setTimeout(() => {
+          popup.style.display = "none";
+        }, 5000);
+      }
+
+      function showLeadPopup() {
+        if (!leadPopup) return;
+        leadPopup.style.display = "flex";
+      }
+
+      function closeLeadPopup() {
+        if (!leadPopup) return;
+        leadPopup.style.display = "none";
+      }
+
+      function submitLead() {
+        const address = document.getElementById("nn-address").value.trim();
+        const email = document.getElementById("nn-email").value.trim();
+
+        if (!address || !email) {
+          alert("Please enter your address and email.");
+          return;
+        }
+
+        const data = new URLSearchParams();
+        data.append("name", "Popup Lead");
+        data.append("address", address);
+        data.append("zip", "");
+        data.append("email", email);
+        data.append("project_type", "estimator");
+        data.append("source", "NestNudge Popup");
+
+        fetch("/lead-handler.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: data.toString()
+        })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Popup lead submission failed");
+          }
+
+          window.location.href = "/thank-you.html";
+        })
+        .catch((error) => {
+          console.error(error);
+          alert("There was a problem submitting your request. Please try again.");
+        });
+      }
+
+      function startPopupCycle() {
+        showPopup();
+        const nextDelay = Math.floor(Math.random() * (180000 - 120000 + 1)) + 120000;
+        setTimeout(startPopupCycle, nextDelay);
+      }
+
+      if (closeBtn) closeBtn.addEventListener("click", closeLeadPopup);
+      if (submitBtn) submitBtn.addEventListener("click", submitLead);
+
+      setTimeout(startPopupCycle, Math.random() * 7000 + 8000);
+      setTimeout(showLeadPopup, 45000);
+    });
+  </script>
+</body>
+</html>
