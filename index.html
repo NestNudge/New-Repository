@@ -1,208 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- BASIC -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NestNudge | Smart Money Moves, Home Value Planning, and Local Services</title>
+  <meta name="description" content="NestNudge helps homeowners lower monthly payments, compare roof quotes, estimate home value impact, and explore roofing, solar, windows, doors, funding, and realtor options.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://www.nestnudge.com/">
 
-  <!-- TITLE -->
-  <title>NestNudge | Save Money & Plan Smarter Home Improvements</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="NestNudge | Smart Money Moves and Home Value Planning">
+  <meta property="og:description" content="Lower your bills, compare roof quotes, estimate ROI, and explore local home upgrade and savings options with NestNudge.">
+  <meta property="og:url" content="https://www.nestnudge.com/">
+  <meta property="og:site_name" content="NestNudge">
+  <meta property="og:image" content="https://www.nestnudge.com/image/NestNudge-Logo.png">
 
-  <!-- SEO -->
-  <meta name="description" content="Lower your monthly expenses, explore solar savings, compare insurance, and improve your credit. Start smarter home decisions with NestNudge.">
-  <meta name="keywords" content="home savings, solar savings, roofing quotes, home improvement, insurance comparison, credit improvement, NestNudge">
-  <meta name="author" content="NestNudge">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NestNudge | Smart Money Moves and Home Value Planning">
+  <meta name="twitter:description" content="Lower bills, compare roof quotes, and explore smarter homeowner options.">
+  <meta name="twitter:image" content="https://www.nestnudge.com/image/NestNudge-Logo.png">
 
-  <!-- FAVICON -->
   <link rel="icon" href="/nestnudge.ico">
-
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- GOOGLE FONT (OPTIONAL BUT RECOMMENDED) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- SOCIAL / OPEN GRAPH -->
-  <meta property="og:title" content="NestNudge | Smarter Home Decisions">
-  <meta property="og:description" content="Start saving money today while staying on track with your home goals.">
-  <meta property="og:image" content="https://www.nestnudge.com/image/house-hero.jpg">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.nestnudge.com">
-
-  <!-- PERFORMANCE -->
-  <link rel="preload" as="image" href="https://www.nestnudge.com/image/house-hero.jpg">
-
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.nestnudge.com/#org",
+        "name": "NestNudge",
+        "url": "https://www.nestnudge.com/",
+        "logo": "https://www.nestnudge.com/image/NestNudge-Logo.png"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.nestnudge.com/#website",
+        "url": "https://www.nestnudge.com/",
+        "name": "NestNudge",
+        "publisher": {
+          "@id": "https://www.nestnudge.com/#org"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
-  <!-- HEADER -->
   <header>
     <nav class="main-nav">
-
       <a href="/">Home</a>
 
       <div class="dropdown">
-        <button class="dropbtn">Services ▼</button>
+        <button class="dropbtn" type="button">Services ▼</button>
         <div class="dropdown-content">
-          <a href="/#services">All Services</a>
-          <a href="/#cost-guide">Home Estimator</a>
+          <a href="#services">All Services</a>
+          <a href="#cost-guide">Home Estimator</a>
           <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
           <a href="/offers.html">Offers</a>
         </div>
       </div>
 
       <div class="dropdown">
-        <button class="dropbtn">Get Quotes ▼</button>
+        <button class="dropbtn" type="button">Get Quotes ▼</button>
         <div class="dropdown-content">
           <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
-          <a href="/#contact-form">Request Estimate</a>
-          <a href="/#cost-guide">Project Estimator</a>
+          <a href="#loan-section">Check Your Rate</a>
+          <a href="#contact-form">Talk to a Realtor</a>
         </div>
       </div>
 
       <div class="dropdown">
-        <button class="dropbtn">Partners ▼</button>
+        <button class="dropbtn" type="button">Partners ▼</button>
         <div class="dropdown-content">
+          <a href="/partners.html">Partner Overview</a>
           <a href="/contractor-login.php">Partner Login</a>
-          <a href="/contractor-signup.php">Create Account</a>
+          <a href="/contractor-signup.php">Apply Now</a>
         </div>
       </div>
 
       <a href="/offers.html">Offers</a>
-      <a href="/#contact-form">Contact</a>
+      <a href="/partners.html">For Partners</a>
       <a class="cta-button" href="/roof-quotes-miami-fort-lauderdale.html">Get My Quote</a>
-
     </nav>
   </header>
 
-<!-- AI CHAT -->
-<div id="chatWidget">
-  <div id="chatHeader">
-    <div class="chat-header-agent">
-      <img src="/image/michael-chat.png" alt="Michael from NestNudge" class="chat-agent-avatar">
-      <div class="chat-header-text">
-        <span class="chat-agent-name">Michael | NestNudge</span>
-        <span class="chat-agent-status">Live support</span>
-      </div>
-    </div>
-
-    <button type="button" id="chatCloseBtn" aria-label="Minimize chat" onclick="minimizeChat()">✕</button>
-  </div>
-
-  <div id="chatBox">
-    <div id="chatMessages">
-      <div class="chat-message-row bot-row intro-row">
-        <img src="/image/michael-chat.png" alt="Michael from NestNudge" class="message-avatar">
-        <div class="message-stack">
-          <div class="message-meta">Michael | NestNudge</div>
-          <p class="bot" id="chatGreeting"></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="chat-quick-actions">
-      <button type="button" onclick="quickSelect('roof')">Roof</button>
-      <button type="button" onclick="quickSelect('buying')">Buying</button>
-      <button type="button" onclick="quickSelect('doors')">Entry Door</button>
-      <button type="button" onclick="quickSelect('windows')">Impact Windows</button>
-      <button type="button" onclick="quickSelect('realtor')">Realtor</button>
-      <button type="button" onclick="quickSelect('funding')">Funding</button>
-    </div>
-
-    <input
-      type="text"
-      id="chatInput"
-      placeholder="Ask about roof, buying, doors, windows, funding, offers, or realtor..."
-      onkeypress="handleChat(event)"
-    >
-  </div>
-</div>
-
-<!-- REOPEN CHAT BUBBLE -->
-<button id="chatReopen" type="button" aria-label="Open AI chat" onclick="reopenChat()">
-  <img src="/image/michael-chat.png" alt="Michael from NestNudge" class="chat-reopen-avatar">
-  <span class="chat-reopen-text">
-    <strong>Chat with Michael</strong>
-    <small>Questions? Let’s chat!</small>
-  </span>
-</button>
-
   <section class="hero-split">
+    <div class="hero-bg"></div>
 
-  <!-- BACKGROUND IMAGE -->
-  <div class="hero-bg"></div>
+    <div class="hero-overlay">
+      <div class="hero-container">
+        <div class="hero-left">
+          <h1>Save Money Now—Without Putting Your Home Goals on Hold</h1>
+          <p>
+            Lower your bills, explore solar savings, compare insurance, improve your credit,
+            and make smarter home decisions with confidence.
+          </p>
 
-  <!-- CONTENT LAYER -->
-  <div class="hero-overlay">
+          <ul class="hero-benefits">
+            <li>✔ Compare options in minutes</li>
+            <li>✔ Lower your monthly payments</li>
+            <li>✔ Move toward smarter home decisions</li>
+          </ul>
+        </div>
 
-    <div class="hero-container">
+        <div class="hero-right">
+          <div class="hero-form" id="hero-form">
+            <form action="/lead-handler.php" method="POST">
+              <h3>Check Your Options</h3>
 
-      <!-- LEFT SIDE TEXT -->
-      <div class="hero-left">
-        <h1>Smarter Money Moves Start Here</h1>
-        <p>
-          Lower your bills, reduce debt, and find better financial options—all in minutes.
-        </p>
+              <input type="text" name="name" placeholder="Full Name" required>
+              <input type="text" name="zip" id="zip" placeholder="ZIP Code" required>
+              <input type="email" name="email" placeholder="Email Address" required>
 
-        <ul class="hero-benefits">
-          <li>✔ Compare options in minutes</li>
-          <li>✔ Lower your monthly payments</li>
-          <li>✔ Make smarter home decisions</li>
-        </ul>
-      </div>
+              <input type="hidden" name="project_type" value="lead">
+              <input type="hidden" name="source" value="Hero Form">
 
-      <!-- RIGHT SIDE FORM -->
-      <div class="hero-right">
-        <div class="hero-form">
-          <form action="/lead-handler.php" method="POST">
-
-            <h3>Check Your Options</h3>
-
-            <input type="text" name="name" placeholder="Full Name" required>
-            <input type="text" name="zip" placeholder="ZIP Code" required>
-            <input type="email" name="email" placeholder="Email Address" required>
-
-            <input type="hidden" name="project_type" value="lead">
-            <input type="hidden" name="source" value="Hero Right Form">
-
-            <button type="submit">Check My Rate</button>
-
-          </form>
+              <button type="submit">Check My Options</button>
+            </form>
+          </div>
         </div>
       </div>
-
     </div>
+  </section>
 
-  </div>
-
-</section>
-
-  <!-- INFO -->
   <section class="info-strip">
     <h2>Why Home Value Planning Matters</h2>
     <p>
-      Most homeowners overlook simple upgrades that can dramatically increase resale value.
-      NestNudge helps you compare likely project cost, added home value, and estimated ROI
-      before you spend a dollar.
+      Most homeowners overlook simple upgrades and savings opportunities that can improve monthly cash flow,
+      resale value, and confidence before making a major home decision.
     </p>
   </section>
 
-  <!-- OFFERS INTRO -->
   <section class="offers-intro-strip">
     <div class="offers-intro-wrap">
       <div class="offers-intro-copy">
         <h2>Save money now while keeping your home goals on track</h2>
         <p>
-          NestNudge now helps visitors go beyond project planning with educational content around
+          NestNudge helps visitors go beyond project planning with educational content around
           lower monthly payments, solar savings, insurance comparisons, and credit improvement.
           The goal is not to replace roofing, solar, or realtor leads—it is to help more homeowners
           take a first step, then move naturally into the right local service when they’re ready.
         </p>
+
         <ul>
           <li>✔ More entry points for more homeowner intent</li>
           <li>✔ Educational blog paths before offer clicks</li>
           <li>✔ Better support for roof, solar, funding, and realtor lead generation</li>
         </ul>
+
         <div class="offers-intro-actions">
           <a href="/offers.html" class="offers-intro-btn">Explore Offers</a>
           <a href="#loan-section" class="offers-intro-btn-outline">Check Your Rate</a>
@@ -215,15 +163,13 @@
     </div>
   </section>
 
-  <!-- PROPERTY INSIGHTS -->
-  <section class="info-strip" id="property-insights-section" style="display:none;">
+  <section class="info-strip" id="property-insights-section">
     <h2>Property Insights for Your Area</h2>
     <p id="propertyInsightsText">
       Based on your location, we’ll use regional pricing and home-value assumptions to guide your estimate.
     </p>
   </section>
 
-  <!-- COST GUIDE -->
   <section class="cost-guide-section" id="cost-guide">
     <div class="cost-guide-wrap">
       <h2>Explore Upgrade Costs, Home Value Impact, and ROI</h2>
@@ -277,7 +223,6 @@
     </div>
   </section>
 
-  <!-- SERVICES CAROUSEL -->
   <section id="services" class="services-carousel">
     <h2>Explore Value-Boosting Upgrades</h2>
 
@@ -288,10 +233,7 @@
           <img src="/image/upgrade-roof-guide.jpg" alt="Roof Replacement">
           <div class="overlay">
             <h3>Roof Replacement</h3>
-            <p>
-              A roof replacement can improve protection, curb appeal, and buyer confidence,
-              especially when the existing roof shows age or storm wear.
-            </p>
+            <p>A roof replacement can improve protection, curb appeal, and buyer confidence.</p>
             <a href="/roof-replacement-roi-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
@@ -300,10 +242,7 @@
           <img src="/image/upgrade-entry-door-guide.jpg" alt="Entry Door">
           <div class="overlay">
             <h3>Entry Door</h3>
-            <p>
-              A strong front entry can improve first impressions, curb appeal, and perceived value
-              with one focused exterior upgrade.
-            </p>
+            <p>A strong front entry can improve curb appeal and perceived value.</p>
             <a href="/best-entry-door-upgrades.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
@@ -312,10 +251,7 @@
           <img src="/image/upgrade-impact-windows-guide.jpg" alt="Impact Windows">
           <div class="overlay">
             <h3>Impact Windows</h3>
-            <p>
-              Impact windows can improve storm protection, comfort, and resale appeal while helping
-              homeowners plan around long-term durability.
-            </p>
+            <p>Impact windows can improve storm protection, comfort, and resale appeal.</p>
             <a href="/impact-windows-home-value-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
@@ -324,10 +260,7 @@
           <img src="/image/upgrade-home-financing-guide.jpg" alt="Funding Options">
           <div class="overlay">
             <h3>Funding Options</h3>
-            <p>
-              Flexible financing can help homeowners move forward sooner when a roof, window, or
-              entry-door project needs attention.
-            </p>
+            <p>Flexible financing can help homeowners move forward sooner.</p>
             <a href="/home-improvement-financing-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
@@ -336,10 +269,7 @@
           <img src="/image/upgrade-smart-offers-guide.jpg" alt="Smart Offers">
           <div class="overlay">
             <h3>Smart Offers</h3>
-            <p>
-              Explore educational guides on lowering monthly payments, solar savings, insurance,
-              and better credit positioning.
-            </p>
+            <p>Explore guides on lower monthly payments, solar savings, insurance, and credit.</p>
             <a href="/how-to-lower-your-monthly-payments.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
@@ -348,10 +278,7 @@
           <img src="/image/upgrade-buying-home-guide.jpg" alt="Buying a Home">
           <div class="overlay">
             <h3>Buying a Home</h3>
-            <p>
-              Learn how to spot upgrade potential before you buy so you can better estimate future
-              costs, improvements, and value upside.
-            </p>
+            <p>Learn how to spot upgrade potential before you buy.</p>
             <a href="/buying-a-home-with-upgrade-potential.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
@@ -360,23 +287,17 @@
           <img src="/image/upgrade-selling-home-guide.jpg" alt="Realtor Guidance">
           <div class="overlay">
             <h3>Realtor Guidance</h3>
-            <p>
-              Understand which upgrades may help a home show better, attract stronger offers, and
-              support faster listing performance.
-            </p>
+            <p>Understand which upgrades may help a home show better and sell faster.</p>
             <a href="/which-upgrades-help-sell-a-home-faster.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
 
-        <!-- DUPLICATE SET FOR SMOOTH LOOP -->
+        <!-- duplicate cards for loop -->
         <div class="service-card" onclick="selectServiceAndScroll('roof')">
           <img src="/image/upgrade-roof-guide.jpg" alt="Roof Replacement">
           <div class="overlay">
             <h3>Roof Replacement</h3>
-            <p>
-              A roof replacement can improve protection, curb appeal, and buyer confidence,
-              especially when the existing roof shows age or storm wear.
-            </p>
+            <p>A roof replacement can improve protection, curb appeal, and buyer confidence.</p>
             <a href="/roof-replacement-roi-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
@@ -385,35 +306,8 @@
           <img src="/image/upgrade-entry-door-guide.jpg" alt="Entry Door">
           <div class="overlay">
             <h3>Entry Door</h3>
-            <p>
-              A strong front entry can improve first impressions, curb appeal, and perceived value
-              with one focused exterior upgrade.
-            </p>
+            <p>A strong front entry can improve curb appeal and perceived value.</p>
             <a href="/best-entry-door-upgrades.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
-          </div>
-        </div>
-
-        <div class="service-card" onclick="selectServiceAndScroll('windows')">
-          <img src="/image/upgrade-impact-windows-guide.jpg" alt="Impact Windows">
-          <div class="overlay">
-            <h3>Impact Windows</h3>
-            <p>
-              Impact windows can improve storm protection, comfort, and resale appeal while helping
-              homeowners plan around long-term durability.
-            </p>
-            <a href="/impact-windows-home-value-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
-          </div>
-        </div>
-
-        <div class="service-card" onclick="scrollToLoan()">
-          <img src="/image/upgrade-home-financing-guide.jpg" alt="Funding Options">
-          <div class="overlay">
-            <h3>Funding Options</h3>
-            <p>
-              Flexible financing can help homeowners move forward sooner when a roof, window, or
-              entry-door project needs attention.
-            </p>
-            <a href="/home-improvement-financing-guide.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
 
@@ -421,16 +315,13 @@
     </div>
   </section>
 
-  <!-- FEATURED OFFERS -->
   <section class="featured-offers-home" id="featured-offers">
     <div class="featured-offers-inner">
       <div class="featured-offers-heading">
         <h2>Featured Ways to Save</h2>
         <p>
           Featured Ways to Save highlights common financial moves that may help reduce monthly expenses,
-          improve household cash flow, and make larger home decisions easier to manage. These guides are
-          designed to help visitors understand their options first, then take the next step through trusted
-          partners if the offer is a good fit.
+          improve household cash flow, and make larger home decisions easier to manage.
         </p>
       </div>
 
@@ -440,11 +331,7 @@
           <div class="featured-offer-content">
             <span class="featured-offer-label">Top Pick</span>
             <h3>Lower Your Monthly Payments</h3>
-            <p>
-              Personal loans and debt consolidation may help combine high-interest balances into one simpler
-              payment, which can make monthly budgeting easier and reduce financial pressure for homeowners
-              planning their next move.
-            </p>
+            <p>Debt consolidation and personal loan options may help reduce financial pressure.</p>
             <a href="/lower-your-monthly-payments.html" class="featured-offer-btn">Learn More...</a>
           </div>
         </article>
@@ -454,10 +341,7 @@
           <div class="featured-offer-content">
             <span class="featured-offer-label">Homeowner Favorite</span>
             <h3>Cut Your Energy Bill</h3>
-            <p>
-              Solar savings content helps homeowners understand when lower utility costs, long-term energy
-              planning, and home efficiency improvements may be worth exploring before requesting quotes.
-            </p>
+            <p>Solar savings content helps homeowners understand when lower utility costs may be worth exploring.</p>
             <a href="/cut-your-energy-bill-with-solar.html" class="featured-offer-btn">Learn More...</a>
           </div>
         </article>
@@ -467,10 +351,7 @@
           <div class="featured-offer-content">
             <span class="featured-offer-label">Popular</span>
             <h3>Compare Insurance Options</h3>
-            <p>
-              Insurance comparison guides help visitors think through coverage, monthly premiums, and bundle
-              savings so they can make better decisions around protecting their home and household.
-            </p>
+            <p>Think through coverage, monthly premiums, and bundle savings more clearly.</p>
             <a href="/compare-insurance-options-and-save.html" class="featured-offer-btn">Learn More...</a>
           </div>
         </article>
@@ -480,10 +361,7 @@
           <div class="featured-offer-content">
             <span class="featured-offer-label">Smart Start</span>
             <h3>Unlock Better Financial Options</h3>
-            <p>
-              Credit-focused content helps visitors understand how their profile affects rates, approvals,
-              and future offers, making it easier to prepare for loans, cards, and larger household decisions.
-            </p>
+            <p>Understand how your credit profile affects rates, approvals, and future offers.</p>
             <a href="/unlock-better-financial-options-with-credit-tools.html" class="featured-offer-btn">Learn More...</a>
           </div>
         </article>
@@ -491,7 +369,6 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
   <section class="testimonials">
     <h2>Real Homeowners, Real Results</h2>
 
@@ -516,7 +393,6 @@
     </div>
   </section>
 
-  <!-- PHASE 1 LOAN SECTION -->
   <section class="loan-section phase-one-loan" id="loan-section">
     <div class="loan-container">
       <div class="loan-text">
@@ -585,10 +461,8 @@
     </div>
   </section>
 
-  <!-- SELLING -->
   <section class="selling-section">
     <div class="selling-container">
-
       <div class="selling-text">
         <h2>Thinking About Selling?</h2>
         <p>Connect with a trusted local realtor and see how upgrades may improve your sale price.</p>
@@ -598,14 +472,11 @@
       <div class="selling-image">
         <img src="/image/realtor-4.webp" alt="Local Realtor">
       </div>
-
     </div>
   </section>
 
-  <!-- REALTOR CONTACT -->
   <section class="realtor-contact" id="contact-form">
     <div class="loan-container">
-
       <div class="loan-text">
         <h2>Get Connected With a Local Realtor</h2>
         <p>Tell us a little about yourself and we’ll connect you with a trusted local expert.</p>
@@ -622,86 +493,9 @@
           <button type="submit">Get Connected</button>
         </form>
       </div>
-
     </div>
   </section>
-  
-  <section class="partners-section" id="partners">
-  <div class="partners-container">
-    <div class="partners-copy">
-      <span class="partners-badge">For Contractors, Loan Reps & Realtors</span>
-      <h2>Turn Local Homeowner Interest Into Real Business Growth</h2>
-      <p class="partners-lead">
-        NestNudge gives partners a better way to grow: your own personalized partner back office,
-        a custom share link, and access to vetted local opportunities by ZIP code.
-      </p>
 
-      <p>
-        Instead of chasing random leads, you get a system built to help you manage your pipeline,
-        respond faster, and compete for better-fit opportunities in your market.
-      </p>
-
-      <ul class="partners-benefits">
-        <li>✔ Your own custom partner link to share with prospects</li>
-        <li>✔ Access to daily vetted lead opportunities</li>
-        <li>✔ Bid on high-quality local leads by ZIP code</li>
-        <li>✔ A back-office platform to organize and manage your pipeline</li>
-        <li>✔ Built for contractors, loan reps, and realtors who want more control</li>
-      </ul>
-
-      <div class="partners-trust-line">
-        Close one solid deal and the platform can pay for itself.
-      </div>
-    </div>
-
-    <div class="partners-pricing-card">
-      <div class="partners-pricing-top">
-        <span class="pricing-kicker">Start Risk-Free</span>
-        <h3>Try the platform, then choose the plan that fits your business</h3>
-        <p>
-          Get started with a low-friction entry point, then scale into a full membership
-          once you see the value.
-        </p>
-      </div>
-
-      <div class="trial-box">
-        <h4>Starter Access</h4>
-        <p class="trial-price">$29 <span>first month</span></p>
-        <p class="trial-note">Low-risk way to test the platform and lead flow.</p>
-      </div>
-
-      <div class="partner-plan featured-plan">
-        <div class="plan-label">Most Popular</div>
-        <h4>Monthly</h4>
-        <p class="partner-price">$99<span>/month</span></p>
-        <p>Flexible access for partners who want to grow steadily.</p>
-      </div>
-
-      <div class="partner-plan-row">
-        <div class="partner-plan compact-plan">
-          <h4>Quarterly</h4>
-          <p class="partner-price">$299<span>/3 months</span></p>
-          <p>Stronger commitment with stable lead access.</p>
-        </div>
-
-        <div class="partner-plan compact-plan best-value-plan">
-          <h4>Yearly</h4>
-          <p class="partner-price">$499<span>/year</span></p>
-          <p>Best value for long-term growth.</p>
-        </div>
-      </div>
-
-      <a href="/partners.html" class="cta-btn partners-main-cta">See Partner Details</a>
-      <a href="/contractor-signup.php" class="partners-secondary-link">Apply to Become a Partner</a>
-
-      <div class="partners-microcopy">
-        Vetted leads. ZIP-based opportunities. More control over how you grow.
-      </div>
-    </div>
-  </div>
-</section>
-
-  <!-- FINAL CTA -->
   <section class="final-money-cta">
     <div class="final-money-cta-inner">
       <h2>See What You Qualify For in Minutes</h2>
@@ -713,12 +507,137 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <section class="partners-section" id="partners">
+    <div class="partners-container">
+      <div class="partners-copy">
+        <span class="partners-badge">For Contractors, Loan Reps & Realtors</span>
+        <h2>Turn Local Homeowner Interest Into Real Business Growth</h2>
+
+        <p class="partners-lead">
+          NestNudge gives partners a better way to grow: your own personalized partner back office,
+          a custom share link, and access to vetted local opportunities by ZIP code.
+        </p>
+
+        <p>
+          Instead of chasing random leads, you get a system built to help you manage your pipeline,
+          respond faster, and compete for better-fit opportunities in your market.
+        </p>
+
+        <ul class="partners-benefits">
+          <li>✔ Your own custom partner link to share with prospects</li>
+          <li>✔ Access to daily vetted lead opportunities</li>
+          <li>✔ Bid on high-quality local leads by ZIP code</li>
+          <li>✔ A back-office platform to organize and manage your pipeline</li>
+          <li>✔ Built for contractors, loan reps, and realtors who want more control</li>
+        </ul>
+
+        <div class="partners-trust-line">
+          Close one solid deal and the platform can pay for itself.
+        </div>
+      </div>
+
+      <div class="partners-pricing-card">
+        <div class="partners-pricing-top">
+          <span class="pricing-kicker">Start Risk-Free</span>
+          <h3>Try the platform, then choose the plan that fits your business</h3>
+          <p>
+            Get started with a low-friction entry point, then scale into a full membership
+            once you see the value.
+          </p>
+        </div>
+
+        <div class="trial-box">
+          <h4>Starter Access</h4>
+          <p class="trial-price">$29 <span>first month</span></p>
+          <p class="trial-note">Low-risk way to test the platform and lead flow.</p>
+        </div>
+
+        <div class="partner-plan featured-plan">
+          <div class="plan-label">Most Popular</div>
+          <h4>Monthly</h4>
+          <p class="partner-price">$99<span>/month</span></p>
+          <p>Flexible access for partners who want to grow steadily.</p>
+        </div>
+
+        <div class="partner-plan-row">
+          <div class="partner-plan compact-plan">
+            <h4>Quarterly</h4>
+            <p class="partner-price">$299<span>/3 months</span></p>
+            <p>Stronger commitment with stable lead access.</p>
+          </div>
+
+          <div class="partner-plan compact-plan best-value-plan">
+            <h4>Yearly</h4>
+            <p class="partner-price">$499<span>/year</span></p>
+            <p>Best value for long-term growth.</p>
+          </div>
+        </div>
+
+        <a href="/partners.html" class="cta-btn partners-main-cta">See Partner Details</a>
+        <a href="/contractor-signup.php" class="partners-secondary-link">Apply to Become a Partner</a>
+
+        <div class="partners-microcopy">
+          Vetted leads. ZIP-based opportunities. More control over how you grow.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI CHAT -->
+  <div id="chatWidget">
+    <div id="chatHeader">
+      <div class="chat-header-agent">
+        <img src="/image/michael-chat.png" alt="Michael from NestNudge" class="chat-agent-avatar">
+        <div class="chat-header-text">
+          <span class="chat-agent-name">Michael | NestNudge</span>
+          <span class="chat-agent-status">AI-assisted support</span>
+        </div>
+      </div>
+
+      <button type="button" id="chatCloseBtn" aria-label="Minimize chat" onclick="minimizeChat()">✕</button>
+    </div>
+
+    <div id="chatBox">
+      <div id="chatMessages">
+        <div class="chat-message-row bot-row intro-row">
+          <img src="/image/michael-chat.png" alt="Michael from NestNudge" class="message-avatar">
+          <div class="message-stack">
+            <div class="message-meta">Michael | NestNudge</div>
+            <p class="bot" id="chatGreeting"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-quick-actions">
+        <button type="button" onclick="quickSelect('roof')">Roof</button>
+        <button type="button" onclick="quickSelect('buying')">Buying</button>
+        <button type="button" onclick="quickSelect('doors')">Entry Door</button>
+        <button type="button" onclick="quickSelect('windows')">Impact Windows</button>
+        <button type="button" onclick="quickSelect('realtor')">Realtor</button>
+        <button type="button" onclick="quickSelect('funding')">Funding</button>
+      </div>
+
+      <input
+        type="text"
+        id="chatInput"
+        placeholder="Ask about roof, buying, doors, windows, funding, offers, or realtor..."
+        onkeypress="handleChat(event)"
+      >
+    </div>
+  </div>
+
+  <button id="chatReopen" type="button" aria-label="Open AI chat" onclick="reopenChat()">
+    <img src="/image/michael-chat.png" alt="Michael from NestNudge" class="chat-reopen-avatar">
+    <span class="chat-reopen-text">
+      <strong>Chat with Michael</strong>
+      <small>Questions? Let’s chat.</small>
+    </span>
+  </button>
+
   <footer>
     <p>© NestNudge</p>
   </footer>
 
-  <!-- HELPERS -->
   <script>
     function scrollToLoan() {
       const section = document.getElementById("loan-section");
@@ -737,7 +656,6 @@
     }
   </script>
 
-  <!-- ESTIMATOR -->
   <script>
     const regionalMultipliers = {
       high: 1.18,
@@ -853,51 +771,6 @@
     }
   </script>
 
-  <!-- GOOGLE MAPS -->
-  <script>
-    let autocomplete;
-
-    function initAutocomplete() {
-      const addressInput = document.getElementById("address");
-      if (!addressInput || !window.google || !google.maps || !google.maps.places) return;
-
-      autocomplete = new google.maps.places.Autocomplete(addressInput, {
-        types: ["address"],
-        componentRestrictions: { country: "us" },
-        fields: ["address_components", "formatted_address"]
-      });
-
-      autocomplete.addListener("place_changed", handlePlaceSelect);
-    }
-
-    function handlePlaceSelect() {
-      const place = autocomplete.getPlace();
-      if (!place || !place.address_components) return;
-
-      let zipCode = "";
-
-      place.address_components.forEach(component => {
-        if (component.types.includes("postal_code")) {
-          zipCode = component.long_name;
-        }
-      });
-
-      const zipInput = document.getElementById("zip");
-      if (zipInput && zipCode) {
-        zipInput.value = zipCode;
-        showPropertyInsights();
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-      const zipInput = document.getElementById("zip");
-      if (zipInput) {
-        zipInput.addEventListener("input", showPropertyInsights);
-      }
-    });
-  </script>
-
-  <!-- IMPROVED AI CHAT -->
   <script>
     let chatState = {
       mode: "general",
@@ -908,14 +781,46 @@
       isSubmitting: false
     };
 
+    function getTimeBasedGreeting() {
+      const hour = new Date().getHours();
+
+      if (hour < 12) return "Hello, this is Michael with NestNudge, how can I support you this morning?";
+      if (hour < 18) return "Hello, this is Michael with NestNudge, how can I support you this afternoon?";
+      return "Hello, this is Michael with NestNudge, how can I support you this evening?";
+    }
+
+    function setInitialChatGreeting() {
+      const greetingEl = document.getElementById("chatGreeting");
+      if (greetingEl) {
+        greetingEl.textContent = getTimeBasedGreeting();
+      }
+    }
+
     function addMessage(text, sender = "bot") {
       const messages = document.getElementById("chatMessages");
       if (!messages) return;
 
-      const msg = document.createElement("p");
-      msg.className = sender;
-      msg.textContent = text;
-      messages.appendChild(msg);
+      if (sender === "bot") {
+        const row = document.createElement("div");
+        row.className = "chat-message-row bot-row";
+
+        row.innerHTML = `
+          <img src="/image/michael-chat.png" alt="Michael from NestNudge" class="message-avatar">
+          <div class="message-stack">
+            <div class="message-meta">Michael | NestNudge</div>
+            <p class="bot"></p>
+          </div>
+        `;
+
+        row.querySelector("p").textContent = text;
+        messages.appendChild(row);
+      } else {
+        const p = document.createElement("p");
+        p.className = "user";
+        p.textContent = text;
+        messages.appendChild(p);
+      }
+
       messages.scrollTop = messages.scrollHeight;
     }
 
@@ -975,37 +880,14 @@
     function detectIntent(text) {
       const value = text.toLowerCase();
 
-      if (value.includes("roof") || value.includes("roofing")) {
-        return { type: "service", service: "roof" };
-      }
-
-      if (value.includes("door") || value.includes("entry door") || value.includes("front door")) {
-        return { type: "service", service: "doors" };
-      }
-
-      if (value.includes("window") || value.includes("impact window") || value.includes("hurricane window")) {
-        return { type: "service", service: "windows" };
-      }
-
-      if (value.includes("buy") || value.includes("buying") || value.includes("purchase") || value.includes("house hunt")) {
-        return { type: "buying" };
-      }
-
-      if (value.includes("sell") || value.includes("selling") || value.includes("realtor") || value.includes("realestate") || value.includes("real estate") || value.includes("agent")) {
-        return { type: "realtor" };
-      }
-
-      if (value.includes("funding") || value.includes("finance") || value.includes("loan") || value.includes("payment") || value.includes("debt") || value.includes("credit")) {
-        return { type: "funding" };
-      }
-
-      if (value.includes("solar") || value.includes("insurance") || value.includes("offer")) {
-        return { type: "offers" };
-      }
-
-      if (value.includes("change") || value.includes("instead") || value.includes("different")) {
-        return { type: "change" };
-      }
+      if (value.includes("roof") || value.includes("roofing")) return { type: "service", service: "roof" };
+      if (value.includes("door") || value.includes("entry door") || value.includes("front door")) return { type: "service", service: "doors" };
+      if (value.includes("window") || value.includes("impact window") || value.includes("hurricane window")) return { type: "service", service: "windows" };
+      if (value.includes("buy") || value.includes("buying") || value.includes("purchase")) return { type: "buying" };
+      if (value.includes("sell") || value.includes("selling") || value.includes("realtor") || value.includes("agent")) return { type: "realtor" };
+      if (value.includes("funding") || value.includes("finance") || value.includes("loan") || value.includes("payment") || value.includes("debt") || value.includes("credit")) return { type: "funding" };
+      if (value.includes("solar") || value.includes("insurance") || value.includes("offer")) return { type: "offers" };
+      if (value.includes("change") || value.includes("instead") || value.includes("different")) return { type: "change" };
 
       return { type: "general" };
     }
@@ -1083,7 +965,7 @@
       }
 
       if (intent.type === "offers") {
-        addMessage("NestNudge now includes educational savings guides for loans, solar, insurance, and credit. You can explore them in Featured Ways to Save or visit /offers.html.");
+        addMessage("NestNudge includes educational savings guides for loans, solar, insurance, and credit. You can explore them in Featured Ways to Save or visit /offers.html.");
         return;
       }
 
@@ -1174,8 +1056,7 @@
         addMessage("Thank you! Your request has been received. A funding specialist will be in touch as soon as possible by phone, text, or email.");
         resetChatState();
       })
-      .catch(error => {
-        console.error(error);
+      .catch(() => {
         addMessage("There was a problem submitting your request. Please try again or use the funding form on the page.");
         chatState.isSubmitting = false;
       });
@@ -1207,149 +1088,19 @@
         addMessage("Thank you! Your request has been received. A local real estate expert will be in touch as soon as possible by phone, text, or email.");
         resetChatState();
       })
-      .catch(error => {
-        console.error(error);
+      .catch(() => {
         addMessage("There was a problem submitting your request. Please try again or use the realtor form on the page.");
         chatState.isSubmitting = false;
       });
     }
-  </script>
 
-  <!-- GOOGLE MAPS API -->
-  <script async
-    src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places&callback=initAutocomplete">
-  </script>
-
-  <!-- NestNudge FINAL STABLE SYSTEM -->
-  <div id="nn-popup" style="display:none;position:fixed;bottom:20px;left:20px;background:#fff;padding:14px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.2);z-index:9999;font-family:Arial;">
-    <div style="display:flex;gap:10px;">
-      <div style="background:#2E7D32;color:#fff;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;">✔</div>
-      <div>
-        <strong id="nn-name"></strong><br>
-        <span id="nn-location"></span><br>
-        <span id="nn-action"></span><br>
-        <small id="nn-time"></small>
-      </div>
-    </div>
-  </div>
-
-  <div id="nn-lead-popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;align-items:center;justify-content:center;z-index:10000;">
-    <div style="position:absolute;width:100%;height:100%;background:rgba(0,0,0,0.5);"></div>
-
-    <div id="nn-box" style="position:relative;background:#fff;padding:25px;border-radius:14px;width:90%;max-width:400px;text-align:center;z-index:2;font-family:Arial;">
-      <div id="nn-close" style="position:absolute;top:10px;right:15px;cursor:pointer;">✕</div>
-
-      <h3>See What Your Home Is Worth</h3>
-      <p>Get a fast estimate + local savings</p>
-
-      <input id="nn-address" placeholder="Enter your address" style="width:100%;padding:12px;margin:8px 0;">
-      <input id="nn-email" placeholder="Enter your email" style="width:100%;padding:12px;margin:8px 0;">
-
-      <button id="nn-submit" style="width:100%;padding:12px;background:#2E7D32;color:#fff;border:none;border-radius:8px;">
-        Get My Free Estimate
-      </button>
-    </div>
-  </div>
-
-  <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const demoLeads = [
-        { name: "Amanda S.", location: "Miami, FL" },
-        { name: "John M.", location: "Fort Lauderdale, FL" },
-        { name: "Carlos R.", location: "Hollywood, FL" },
-        { name: "Lisa T.", location: "Boca Raton, FL" }
-      ];
+      setInitialChatGreeting();
 
-      const actions = [
-        "requested a roof quote",
-        "compared local roofers",
-        "checked roofing costs"
-      ];
-
-      const times = ["Just now", "2 mins ago", "5 mins ago"];
-
-      const popup = document.getElementById("nn-popup");
-      const leadPopup = document.getElementById("nn-lead-popup");
-      const closeBtn = document.getElementById("nn-close");
-      const submitBtn = document.getElementById("nn-submit");
-
-      function showPopup() {
-        if (!popup) return;
-
-        const lead = demoLeads[Math.floor(Math.random() * demoLeads.length)];
-
-        document.getElementById("nn-name").innerText = lead.name;
-        document.getElementById("nn-location").innerText = lead.location;
-        document.getElementById("nn-action").innerText =
-          actions[Math.floor(Math.random() * actions.length)];
-        document.getElementById("nn-time").innerText =
-          times[Math.floor(Math.random() * times.length)];
-
-        popup.style.display = "block";
-
-        setTimeout(() => {
-          popup.style.display = "none";
-        }, 5000);
+      const zipInput = document.getElementById("zip");
+      if (zipInput) {
+        zipInput.addEventListener("input", showPropertyInsights);
       }
-
-      function showLeadPopup() {
-        if (!leadPopup) return;
-        leadPopup.style.display = "flex";
-      }
-
-      function closeLeadPopup() {
-        if (!leadPopup) return;
-        leadPopup.style.display = "none";
-      }
-
-      function submitLead() {
-        const address = document.getElementById("nn-address").value.trim();
-        const email = document.getElementById("nn-email").value.trim();
-
-        if (!address || !email) {
-          alert("Please enter your address and email.");
-          return;
-        }
-
-        const data = new URLSearchParams();
-        data.append("name", "Popup Lead");
-        data.append("address", address);
-        data.append("zip", "");
-        data.append("email", email);
-        data.append("project_type", "estimator");
-        data.append("source", "NestNudge Popup");
-
-        fetch("/lead-handler.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
-          body: data.toString()
-        })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Popup lead submission failed");
-          }
-
-          window.location.href = "/thank-you.html";
-        })
-        .catch((error) => {
-          console.error(error);
-          alert("There was a problem submitting your request. Please try again.");
-        });
-      }
-
-      function startPopupCycle() {
-        showPopup();
-        const nextDelay = Math.floor(Math.random() * (180000 - 120000 + 1)) + 120000;
-        setTimeout(startPopupCycle, nextDelay);
-      }
-
-      if (closeBtn) closeBtn.addEventListener("click", closeLeadPopup);
-      if (submitBtn) submitBtn.addEventListener("click", submitLead);
-
-      setTimeout(startPopupCycle, Math.random() * 7000 + 8000);
-      setTimeout(showLeadPopup, 45000);
     });
   </script>
 </body>
