@@ -2575,6 +2575,21 @@ footer p {
   .final-money-cta-inner {
     padding: 32px 20px;
   }
+  
+  .offers-page header {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+}
+
+.offers-page nav a,
+.offers-page .main-nav a,
+.offers-page .dropbtn {
+  color: #111827;
+}
+
+.offers-page .cta-button {
+  color: #ffffff;
+}
 
   .partners-pricing-card,
   .partner-pricing-plan,
