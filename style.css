@@ -2341,71 +2341,90 @@ footer p {
   }
 }
 
-/* Mobile only */
+/* MOBILE FIXES - CLEANED AND UNIFIED */
 @media (max-width: 768px) {
-  .site-header {
-    position: fixed; /* or sticky */
+  /* Header and navigation */
+  header {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(20, 24, 32, 0.92);
-    backdrop-filter: blur(6px);
+    padding: 10px 12px;
+    background: rgba(15, 23, 42, 0.96);
+    backdrop-filter: blur(8px);
   }
 
-  .hero-section {
-    padding-top: 110px; /* adjust to your actual mobile header height */
-    position: relative;
+  nav,
+  .main-nav {
+    justify-content: flex-start;
+    gap: 8px 10px;
   }
 
-  .hero-content {
-    position: relative;
-    z-index: 2;
-  }
-}
-
-:root {
-  --mobile-header-height: 92px;
-}
-
-@media (max-width: 768px) {
-  .site-header {
-    min-height: var(--mobile-header-height);
+  nav a,
+  .main-nav a,
+  .dropbtn {
+    font-size: 13px;
+    line-height: 1.2;
+    white-space: nowrap;
   }
 
-  .hero-section {
-    padding-top: calc(var(--mobile-header-height) + 18px);
+  .cta-button {
+    padding: 10px 14px;
+    font-size: 13px;
   }
-}
 
-.hero-section {
-  position: relative;
-  overflow: hidden;
-}
+  .dropdown::after {
+    display: none;
+  }
 
-.hero-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.45),
-    rgba(0, 0, 0, 0.35)
-  );
-  z-index: 1;
-}
+  .dropdown-content {
+    min-width: 180px;
+  }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
+  /* Home hero spacing and readability */
+  .hero,
+  .hero-full,
+  .hero-split {
+    min-height: auto;
+  }
 
-@media (max-width: 768px) {
+  .hero-overlay {
+    align-items: flex-start;
+    background: rgba(0, 0, 0, 0.58);
+  }
+
+  .hero-container {
+    padding: 165px 16px 48px;
+    gap: 20px;
+  }
+
+  .hero-left,
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-left h1,
+  .hero-text h1 {
+    font-size: 2.25rem;
+    line-height: 1.02;
+    margin-bottom: 14px;
+    max-width: 11ch;
+  }
+
+  .hero-left p,
+  .hero-text p {
+    font-size: 1rem;
+    line-height: 1.55;
+    margin-bottom: 16px;
+    max-width: 100%;
+  }
+
   .hero-benefits {
-    margin-top: 18px;
-    padding: 14px 16px;
-    background: rgba(0, 0, 0, 0.35);
-    border-radius: 12px;
+    margin-top: 16px;
+    padding: 14px 14px 12px;
+    background: rgba(0, 0, 0, 0.40);
+    border-radius: 14px;
     backdrop-filter: blur(4px);
   }
 
@@ -2413,85 +2432,159 @@ footer p {
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    color: #fff;
+    margin-bottom: 10px;
+    color: #ffffff !important;
+    font-size: 15px;
+    line-height: 1.45;
     font-weight: 600;
-    line-height: 1.4;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
   }
 
-  .hero-benefits li::before,
-  .hero-benefits .check-icon {
-    color: #ffffff;
+  .hero-benefits li i,
+  .hero-benefits li svg,
+  .hero-benefits li .check-icon,
+  .hero-benefits li::before {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+    opacity: 1 !important;
     flex-shrink: 0;
+  }
+
+  .hero-form {
+    max-width: 100%;
+  }
+
+  /* Offers page hero */
+  .offers-hero {
+    padding: 150px 16px 42px;
+  }
+
+  .offers-hero-inner {
+    gap: 20px;
+  }
+
+  .offers-hero h1 {
+    font-size: 2.15rem;
+    line-height: 1.04;
+    margin-bottom: 14px;
+    color: #0f172a !important;
+    max-width: 11ch;
+  }
+
+  .offers-hero p {
+    font-size: 1rem;
+    line-height: 1.55;
+    margin-bottom: 18px;
+    color: #334155 !important;
+    max-width: 100%;
+  }
+
+  .offers-hero-points {
+    margin: 0 0 20px;
+    padding: 14px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.88);
+  }
+
+  .offers-hero-points li {
+    color: #0f172a !important;
     font-weight: 700;
   }
-}
 
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.4rem;
-    line-height: 1.05;
+  .offers-kicker {
     margin-bottom: 12px;
   }
 
-  .hero-subtitle {
-    font-size: 1.1rem;
-    line-height: 1.5;
+  /* Partner hero and other main headings */
+  .partner-hero {
+    padding: 150px 16px 52px;
   }
 
-  .hero-cta {
-    margin-top: 14px;
-  }
-}
-
-@media (max-width: 768px) {
-  .main-nav {
-    gap: 12px;
-    font-size: 0.95rem;
+  .partner-hero h1 {
+    font-size: 2.2rem;
+    line-height: 1.04;
   }
 
-  .main-nav a {
-    white-space: nowrap;
+  .partner-hero p {
+    font-size: 1rem;
+    line-height: 1.65;
   }
-}
 
-@media (max-width: 768px) {
-  .site-header {
-    position: fixed;
-    top: 0;
+  .offers-intro-strip,
+  .partners-section,
+  .phase-one-loan,
+  .offers-section,
+  .partner-features,
+  .partner-pricing-section,
+  .partner-faq,
+  .partner-roi-strip,
+  .featured-offers-home,
+  .final-money-cta {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .offers-intro-copy h2,
+  .partners-copy h2,
+  .phase-one-loan .loan-text h2,
+  .partner-section-heading h2,
+  .offers-section-title h2,
+  .featured-offers-heading h2,
+  .final-money-cta-inner h2,
+  .info-strip h2,
+  .cost-guide-wrap h2,
+  .services-carousel h2,
+  .testimonials h2,
+  .loan-text h2,
+  .selling-text h2 {
+    font-size: 2rem;
+    line-height: 1.08;
+  }
+
+  .offers-intro-copy p,
+  .partners-copy p,
+  .phase-one-loan .loan-text p,
+  .partner-section-heading p,
+  .offers-section-title p,
+  .featured-offers-heading p,
+  .final-money-cta-inner p {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .offers-intro-actions,
+  .offers-hero-actions,
+  .partner-hero-cta {
+    gap: 10px;
+  }
+
+  .offers-intro-btn,
+  .offers-intro-btn-outline,
+  .offers-btn,
+  .offers-btn-outline,
+  .partner-outline-btn {
     width: 100%;
-    z-index: 1000;
-    background: rgba(20, 24, 32, 0.92);
+    text-align: center;
   }
 
-  .hero-section {
-    position: relative;
-    padding-top: 110px;
+  .phase-one-loan .loan-form {
+    padding: 22px 18px;
   }
 
-  .hero-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.35);
-    z-index: 1;
+  .final-money-cta-inner {
+    padding: 32px 20px;
   }
 
-  .hero-content {
-    position: relative;
-    z-index: 2;
-  }
-
-  .hero-benefits {
-    background: rgba(0, 0, 0, 0.35);
-    padding: 14px 16px;
-    border-radius: 12px;
-  }
-
-  .hero-benefits li,
-  .hero-title,
-  .hero-subtitle {
-    color: #fff;
-    text-shadow: 0 1px 2px rgba(0,0,0,.45);
+  .partners-pricing-card,
+  .partner-pricing-plan,
+  .partner-feature-card,
+  .partner-faq-item,
+  .offer-card-content,
+  .hub-box,
+  .trust-box,
+  .faq-box {
+    padding-left: 18px;
+    padding-right: 18px;
   }
 }
