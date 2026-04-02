@@ -2647,3 +2647,109 @@ body.offers-page .cta-button {
 body.offers-page .dropdown-content a {
   color: #333 !important;
 }
+
+@media (max-width: 768px) {
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 12px;
+    background: rgba(15, 23, 42, 0.96);
+    backdrop-filter: blur(8px);
+  }
+
+  .hero,
+  .hero-full,
+  .hero-split {
+    min-height: 100vh;
+  }
+
+  .hero-bg {
+    display: block;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+
+  .hero-overlay {
+    align-items: flex-start;
+    background: rgba(0, 0, 0, 0.45);
+  }
+
+  .hero-container {
+    padding: 130px 16px 48px;
+    gap: 20px;
+  }
+
+  .hero-left,
+  .hero-text {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .hero-left h1,
+  .hero-text h1 {
+    font-size: 2.25rem;
+    line-height: 1.05;
+    margin: 0 0 14px;
+    max-width: 100%;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 12px;
+    background: rgba(15, 23, 42, 0.96);
+    backdrop-filter: blur(8px);
+  }
+
+  .hero,
+  .hero-full,
+  .hero-split {
+    min-height: 100vh;
+  }
+
+  .hero-bg {
+    display: block;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+
+  .hero-overlay {
+    align-items: flex-start;
+    background: rgba(0, 0, 0, 0.45);
+  }
+
+  .hero-container {
+    padding: 130px 16px 48px;
+    gap: 20px;
+  }
+
+  .hero-left,
+  .hero-text {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .hero-left h1,
+  .hero-text h1 {
+    font-size: 2.25rem;
+    line-height: 1.05;
+    margin: 0 0 14px;
+    max-width: 100%;
+    width: 100%;
+    text-align: left;
+  }
+}
