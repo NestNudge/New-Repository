@@ -2763,3 +2763,19 @@ body.offers-page .dropdown-content a {
   stroke: #ffffff !important;
   opacity: 1 !important;
 }
+
+/* MATCH CHATBOT GREEN ON OFFERS PAGE */
+.offers-page .cta-button,
+.offers-page .offers-btn,
+.offers-page .offers-intro-btn,
+.offers-page .featured-offer-btn {
+  background: linear-gradient(135deg, #2ecc71, #27ae60) !important;
+  border: none;
+  color: #fff !important;
+}
+
+.offers-page .cta-button:hover,
+.offers-page .offers-btn:hover,
+.offers-page .offers-intro-btn:hover {
+  background: #27ae60 !important;
+}
