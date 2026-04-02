@@ -2753,3 +2753,13 @@ body.offers-page .dropdown-content a {
     text-align: left;
   }
 }
+
+.hero-benefits li i,
+.hero-benefits li svg,
+.hero-benefits li .check-icon,
+.hero-benefits li::before {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+  opacity: 1 !important;
+}
