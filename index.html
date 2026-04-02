@@ -259,6 +259,17 @@
     ]
   }
   </script>
+
+  <style>
+    .testimonial-card img{
+      width:72px !important;
+      height:72px !important;
+      object-fit:cover !important;
+      border-radius:50% !important;
+      display:block;
+      margin:0 auto 12px;
+    }
+  </style>
 </head>
 <body>
 
@@ -802,7 +813,7 @@
         <img src="/image/michael-chat.png" alt="Michael from NestNudge" class="chat-agent-avatar">
         <div class="chat-header-text">
           <span class="chat-agent-name">Michael | NestNudge</span>
-          <span class="chat-agent-status">AI-assisted support</span>
+          <span class="chat-agent-status">Searches the full page</span>
         </div>
       </div>
 
@@ -827,12 +838,14 @@
         <button type="button" onclick="quickSelect('windows')">Impact Windows</button>
         <button type="button" onclick="quickSelect('realtor')">Realtor</button>
         <button type="button" onclick="quickSelect('funding')">Funding</button>
+        <button type="button" onclick="quickSelect('offers')">Offers</button>
+        <button type="button" onclick="quickSelect('partners')">Partners</button>
       </div>
 
       <input
         type="text"
         id="chatInput"
-        placeholder="Ask about roof, buying, doors, windows, funding, offers, or realtor..."
+        placeholder="Search anything on this page: roof, quotes, funding, offers, realtor, partners..."
         onkeypress="handleChat(event)"
       >
     </div>
@@ -841,8 +854,8 @@
   <button id="chatReopen" type="button" aria-label="Open AI chat" onclick="reopenChat()">
     <img src="/image/michael-chat.png" alt="Michael from NestNudge" class="chat-reopen-avatar">
     <span class="chat-reopen-text">
-      <strong>Chat with Michael</strong>
-      <small>Questions? Let’s chat.</small>
+      <strong>Search the page with Michael</strong>
+      <small>Roof, funding, offers, partners, more</small>
     </span>
   </button>
 
@@ -1106,15 +1119,23 @@
           const section = document.getElementById("partners");
           if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
         }
+      },
+      testimonials: {
+        keywords: ["testimonial", "testimonials", "review", "reviews", "results", "success stories"],
+        response: "There is a testimonials section on the page with homeowner results and profile photos.",
+        action: function () {
+          const section = document.querySelector(".testimonials");
+          if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
       }
     };
 
     function getTimeBasedGreeting() {
       const hour = new Date().getHours();
 
-      if (hour < 12) return "Hello, this is Michael with NestNudge. I can help you search the page for roof, funding, buying, offers, realtor guidance, or partner details. What would you like to explore?";
-      if (hour < 18) return "Hello, this is Michael with NestNudge. I can help you search the page for roof, funding, buying, offers, realtor guidance, or partner details. What would you like to explore?";
-      return "Hello, this is Michael with NestNudge. I can help you search the page for roof, funding, buying, offers, realtor guidance, or partner details. What would you like to explore?";
+      if (hour < 12) return "Hello, this is Michael with NestNudge. I can search the full page for roof costs, quotes, funding, offers, testimonials, realtor guidance, or partner pricing. What would you like to explore?";
+      if (hour < 18) return "Hello, this is Michael with NestNudge. I can search the full page for roof costs, quotes, funding, offers, testimonials, realtor guidance, or partner pricing. What would you like to explore?";
+      return "Hello, this is Michael with NestNudge. I can search the full page for roof costs, quotes, funding, offers, testimonials, realtor guidance, or partner pricing. What would you like to explore?";
     }
 
     function setInitialChatGreeting() {
@@ -1184,7 +1205,9 @@
         doors: "entry door",
         windows: "impact windows",
         realtor: "realtor",
-        funding: "funding"
+        funding: "funding",
+        offers: "offers",
+        partners: "partners"
       };
       const value = map[topic] || topic;
       addMessage(value, "user");
@@ -1219,6 +1242,7 @@
       if (value.includes("funding") || value.includes("finance") || value.includes("loan") || value.includes("payment") || value.includes("debt") || value.includes("credit")) return { type: "funding" };
       if (value.includes("solar") || value.includes("insurance") || value.includes("offer")) return { type: "offers" };
       if (value.includes("partner") || value.includes("contractor") || value.includes("pricing") || value.includes("month") || value.includes("year")) return { type: "partners" };
+      if (value.includes("testimonial") || value.includes("review") || value.includes("results")) return { type: "testimonials" };
 
       return searchPageContent(value);
     }
@@ -1351,6 +1375,12 @@
         return;
       }
 
+      if (intent.type === "testimonials") {
+        if (pageKnowledge.testimonials.action) pageKnowledge.testimonials.action();
+        addMessage(pageKnowledge.testimonials.response);
+        return;
+      }
+
       if (intent.type === "quotes") {
         addMessage("I can guide you to roof quotes right now.");
         window.location.href = "/roof-quotes-miami-fort-lauderdale.html";
@@ -1362,7 +1392,7 @@
         return;
       }
 
-      addMessage("I can help you search this page for roofing, buying, entry doors, impact windows, funding, offers, realtor guidance, roof quotes, or partner details. What would you like to explore?");
+      addMessage("I can search this full page for roofing, buying, entry doors, impact windows, funding, offers, testimonials, realtor guidance, roof quotes, or partner pricing. What would you like to explore?");
     }
 
     function isValidEmail(email) {
