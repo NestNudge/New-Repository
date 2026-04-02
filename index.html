@@ -1338,25 +1338,56 @@
       return "";
     }
 
-    function detectIntent(text) {
-      const value = text.toLowerCase();
+function detectIntent(text) {
+  const value = text.toLowerCase();
 
-      if (value.includes("homeowner")) return { type: "audience", audience: "consumer" };
-      if (value.includes("contractor") || value.includes("partner")) return { type: "audience", audience: "partner" };
-      if (value.includes("roof")) return { type: "service", service: "roof" };
-      if (value.includes("door")) return { type: "service", service: "doors" };
-      if (value.includes("window")) return { type: "service", service: "windows" };
-      if (value.includes("buy") || value.includes("purchase")) return { type: "buying" };
-      if (value.includes("sell") || value.includes("realtor") || value.includes("agent")) return { type: "realtor" };
-      if (value.includes("funding") || value.includes("finance") || value.includes("loan") || value.includes("payment") || value.includes("debt") || value.includes("credit")) return { type: "funding" };
-      if (value.includes("solar")) return { type: "knowledge", topic: "solar" };
-      if (value.includes("insurance")) return { type: "knowledge", topic: "insurance" };
-      if (value.includes("offer")) return { type: "knowledge", topic: "offers" };
-      if (value.includes("pricing") || value.includes("$29") || value.includes("$99") || value.includes("$299") || value.includes("$499") || value.includes("startup package") || value.includes("lead")) return { type: "knowledge", topic: "partners" };
-      if (value.includes("change") || value.includes("instead") || value.includes("different")) return { type: "change" };
+  if (value.includes("homeowner")) return { type: "audience", audience: "consumer" };
+  if (value.includes("contractor") || value.includes("partner")) return { type: "audience", audience: "partner" };
 
-      return { type: "search" };
-    }
+  if (value.includes("roof")) return { type: "service", service: "roof" };
+  if (value.includes("door")) return { type: "service", service: "doors" };
+  if (value.includes("window")) return { type: "service", service: "windows" };
+  if (value.includes("buy") || value.includes("purchase")) return { type: "buying" };
+  if (value.includes("sell") || value.includes("realtor") || value.includes("agent")) return { type: "realtor" };
+
+  if (
+    value.includes("funding") ||
+    value.includes("finance") ||
+    value.includes("loan") ||
+    value.includes("payment") ||
+    value.includes("payments") ||
+    value.includes("debt") ||
+    value.includes("credit") ||
+    value.includes("bill") ||
+    value.includes("bills") ||
+    value.includes("monthly bills") ||
+    value.includes("lower my bills") ||
+    value.includes("lower bills")
+  ) {
+    return { type: "funding" };
+  }
+
+  if (value.includes("solar")) return { type: "knowledge", topic: "solar" };
+  if (value.includes("insurance")) return { type: "knowledge", topic: "insurance" };
+  if (value.includes("offer")) return { type: "knowledge", topic: "offers" };
+  if (
+    value.includes("pricing") ||
+    value.includes("$29") ||
+    value.includes("$99") ||
+    value.includes("$299") ||
+    value.includes("$499") ||
+    value.includes("startup package") ||
+    value.includes("lead")
+  ) {
+    return { type: "knowledge", topic: "partners" };
+  }
+
+  if (value.includes("change") || value.includes("instead") || value.includes("different")) {
+    return { type: "change" };
+  }
+
+  return { type: "search" };
+}
 
     function buildVisiblePageSections() {
       visiblePageSections = visibleSectionConfig.map(section => {
@@ -1614,14 +1645,18 @@
       }
 
       if (intent.type === "funding") {
-        chatState.mode = "funding";
-        chatState.leadType = "funding";
-        routeFromVisibleMatch(searchVisiblePage(text));
-        addMessage("Funding can be a strong first move because lowering monthly payments often gives homeowners more flexibility before tackling larger projects.");
-        addMessage("If you’d like, I can help you get started now. What’s your full name?");
-        chatState.captureStep = "name";
-        return;
-      }
+  chatState.mode = "funding";
+  chatState.leadType = "funding";
+  routeFromVisibleMatch(searchVisiblePage("funding lower monthly payments loan debt credit bills"));
+
+  addMessage("If your goal is to lower your monthly bills, the strongest first step is usually reducing your current payments before taking on any large home projects.");
+  addMessage("Most homeowners start here because it creates breathing room right away and makes every next decision easier.");
+  addMessage("Once your monthly pressure is lower, you can decide whether to move into upgrades like roofing, windows, or solar from a stronger financial position.");
+  addMessage("I can help you get started now. What’s your full name?");
+
+  chatState.captureStep = "name";
+  return;
+}
 
       if (intent.type === "realtor") {
         chatState.mode = "realtor";
@@ -1662,12 +1697,36 @@
   }
 
   // fallback (normal behavior)
-  const visibleMatch = searchVisiblePage(text);
-  const knowledgeMatches = searchKnowledgeBase(text);
+  const lower = text.toLowerCase();
 
-  if (visibleMatch) routeFromVisibleMatch(visibleMatch);
+if (
+  lower.includes("bill") ||
+  lower.includes("bills") ||
+  lower.includes("payment") ||
+  lower.includes("payments") ||
+  lower.includes("debt") ||
+  lower.includes("credit")
+) {
+  routeFromVisibleMatch(searchVisiblePage("funding lower monthly payments"));
+  addMessage("If lowering monthly bills is your goal, the smartest place to start is with payment-lowering or debt-consolidation options before making any larger home move.");
+  addMessage("That gives you faster financial relief and puts you in a better position for everything that comes next.");
+  addMessage("I can help you get started now. What’s your full name?");
+  chatState.mode = "funding";
+  chatState.leadType = "funding";
+  chatState.captureStep = "name";
+  return;
+}
 
-  addMessage(summarizeKnowledgeMatches(knowledgeMatches));
+const visibleMatch = searchVisiblePage(text);
+const knowledgeMatches = searchKnowledgeBase(text);
+
+if (visibleMatch) {
+  routeFromVisibleMatch(visibleMatch);
+  addMessage(`${visibleMatch.label}: ${visibleMatch.cta}`);
+}
+
+if (knowledgeMatches.length) {
+  addMessage("I found a few relevant options. Tell me whether your main goal is lower bills, improving home value, or preparing to sell, and I’ll guide you to the best next step.");
   addDecisionCTA(text);
   return;
 }
