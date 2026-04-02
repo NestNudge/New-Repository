@@ -100,32 +100,61 @@
 
   <section id="cost-guide" class="cost-guide-section">
     <div class="cost-guide-wrap">
-      <h2>Home Upgrade Estimator</h2>
+      <h2>Home Upgrade ROI Estimator</h2>
       <p>
-        Explore how different improvements can affect your home's value and overall appeal.
+        Compare popular upgrades and see how they may impact your home's value.
       </p>
 
       <div class="upgrade-selector">
-        <button type="button">Roof Upgrade</button>
-        <button type="button">Kitchen Refresh</button>
-        <button type="button">Exterior Paint</button>
+        <button type="button" onclick="showUpgrade('roof')">Roof</button>
+        <button type="button" onclick="showUpgrade('solar')">Solar</button>
+        <button type="button" onclick="showUpgrade('kitchen')">Kitchen</button>
+        <button type="button" onclick="showUpgrade('bathroom')">Bathroom</button>
+        <button type="button" onclick="showUpgrade('windows')">Windows</button>
       </div>
 
       <div class="results-panel">
-        <h3>Estimated Value Impact</h3>
+        <h3 id="upgradeTitle">Roof Upgrade ROI</h3>
+
         <div class="results-grid">
           <div class="result-box">
-            <span class="label">Current Estimated Value</span>
-            <strong>$420,000</strong>
+            <span class="label">Estimated Project Cost</span>
+            <strong id="projectCost">$18,000</strong>
           </div>
           <div class="result-box">
-            <span class="label">Projected New Value</span>
-            <strong>$448,000</strong>
+            <span class="label">Estimated Added Value</span>
+            <strong id="addedValue">$28,000</strong>
           </div>
           <div class="result-box">
-            <span class="label">Potential Gain</span>
-            <strong>$28,000</strong>
+            <span class="label">Estimated ROI</span>
+            <strong id="roiValue">156%</strong>
           </div>
+        </div>
+
+        <div class="graph-container">
+          <div class="bar current-bar" id="costBar" style="height: 120px;">
+            <span>Project Cost</span>
+          </div>
+          <div class="bar new-bar" id="valueBar" style="height: 180px;">
+            <span>Added Value</span>
+          </div>
+        </div>
+
+        <div id="currentValue">
+          Estimated project cost for a roof upgrade is around <strong>$18,000</strong>.
+        </div>
+
+        <div id="newValue">
+          Estimated added home value after the project is around <strong>$28,000</strong>.
+        </div>
+
+        <div id="valueGain">
+          Estimated return on investment: <strong>156%</strong>
+        </div>
+
+        <div class="conversion-cta">
+          <a class="cta-btn" href="/roof-quotes-miami-fort-lauderdale.html">Get My Quote</a>
+          <a class="cta-btn" href="#loan-section">Check My Rate</a>
         </div>
       </div>
     </div>
@@ -227,6 +256,85 @@
     </div>
   </section>
 
+  <section class="partners-section">
+    <div class="partners-container">
+      <div class="partners-copy">
+        <span class="partners-badge">For Contractors & Service Pros</span>
+        <h2>Grow Your Business With NestNudge</h2>
+        <p class="partners-lead">
+          Get in front of homeowners actively searching for services like yours.
+        </p>
+        <p>
+          NestNudge connects qualified partners with real homeowner demand.
+          Whether you're a roofer, solar installer, or home service pro,
+          our platform helps you generate leads and grow faster.
+        </p>
+
+        <ul class="partners-benefits">
+          <li>✔ Exclusive homeowner leads</li>
+          <li>✔ Simple onboarding process</li>
+          <li>✔ Scalable growth opportunities</li>
+          <li>✔ Built for contractors & service pros</li>
+        </ul>
+
+        <span class="partners-trust-line">
+          Built to help great local pros grow
+        </span>
+      </div>
+
+      <div class="partners-pricing-card">
+        <div class="partners-pricing-top">
+          <span class="pricing-kicker">Partner Access</span>
+          <h3>Start Generating Leads</h3>
+          <p>
+            Choose the option that fits your business and start connecting with homeowners.
+          </p>
+        </div>
+
+        <div class="trial-box">
+          <h4>Apply to Join</h4>
+          <p class="trial-price">
+            Free <span>application</span>
+          </p>
+          <p class="trial-note">
+            Submit your info and get reviewed to join the NestNudge partner network.
+          </p>
+        </div>
+
+        <div class="partner-plan-row">
+          <div class="partner-plan featured-plan">
+            <span class="plan-label">Popular</span>
+            <h4>Partner Overview</h4>
+            <p>
+              Learn how NestNudge works and how to start receiving homeowner leads.
+            </p>
+            <a href="/partners.html" class="plan-link">Learn More →</a>
+          </div>
+
+          <div class="partner-plan compact-plan best-value-plan">
+            <h4>Partner Login</h4>
+            <p>
+              Already approved? Log in to manage leads and opportunities.
+            </p>
+            <a href="/contractor-login.php" class="plan-link">Login →</a>
+          </div>
+        </div>
+
+        <a class="cta-button partners-main-cta" href="/contractor-signup.php">
+          Apply Now
+        </a>
+
+        <a class="partners-secondary-link" href="/partners.html">
+          View Full Partner Details
+        </a>
+
+        <div class="partners-microcopy">
+          No upfront commitment required to apply.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="loan-section" class="loan-section">
     <div class="loan-container">
       <div class="loan-text">
@@ -273,13 +381,19 @@
     <h2>What Homeowners Say</h2>
     <div class="testimonial-grid">
       <div class="testimonial-card">
+        <img src="/image/testimonial-1.jpg" alt="Sarah M." />
         <p>"NestNudge made it much easier to compare our roof project options and decide what to do next."</p>
+        <strong>Sarah M.</strong>
       </div>
       <div class="testimonial-card">
+        <img src="/image/testimonial-2.jpg" alt="David R." />
         <p>"The offers page helped us find useful upgrade opportunities we would have missed otherwise."</p>
+        <strong>David R.</strong>
       </div>
       <div class="testimonial-card">
+        <img src="/image/testimonial-3.jpg" alt="Angela T." />
         <p>"The process felt simple and much less overwhelming than trying to figure everything out on our own."</p>
+        <strong>Angela T.</strong>
       </div>
     </div>
   </section>
@@ -321,93 +435,109 @@
   </button>
 
   <script>
+    const upgradeData = {
+      roof: {
+        title: "Roof Upgrade ROI",
+        cost: "$18,000",
+        value: "$28,000",
+        roi: "156%",
+        costHeight: "120px",
+        valueHeight: "180px"
+      },
+      solar: {
+        title: "Solar Upgrade ROI",
+        cost: "$22,000",
+        value: "$30,000",
+        roi: "136%",
+        costHeight: "145px",
+        valueHeight: "190px"
+      },
+      kitchen: {
+        title: "Kitchen Upgrade ROI",
+        cost: "$25,000",
+        value: "$32,000",
+        roi: "128%",
+        costHeight: "155px",
+        valueHeight: "198px"
+      },
+      bathroom: {
+        title: "Bathroom Upgrade ROI",
+        cost: "$14,000",
+        value: "$19,000",
+        roi: "136%",
+        costHeight: "100px",
+        valueHeight: "145px"
+      },
+      windows: {
+        title: "Window Upgrade ROI",
+        cost: "$12,000",
+        value: "$16,500",
+        roi: "138%",
+        costHeight: "90px",
+        valueHeight: "130px"
+      }
+    };
+
+    function showUpgrade(type) {
+      const item = upgradeData[type];
+      if (!item) return;
+
+      document.getElementById("upgradeTitle").textContent = item.title;
+      document.getElementById("projectCost").textContent = item.cost;
+      document.getElementById("addedValue").textContent = item.value;
+      document.getElementById("roiValue").textContent = item.roi;
+      document.getElementById("costBar").style.height = item.costHeight;
+      document.getElementById("valueBar").style.height = item.valueHeight;
+      document.getElementById("currentValue").innerHTML =
+        `Estimated project cost for this upgrade is around <strong>${item.cost}</strong>.`;
+      document.getElementById("newValue").innerHTML =
+        `Estimated added home value after the project is around <strong>${item.value}</strong>.`;
+      document.getElementById("valueGain").innerHTML =
+        `Estimated return on investment: <strong>${item.roi}</strong>`;
+    }
+
     const siteContent = [
       {
         title: "Home",
         url: "/",
-        keywords: [
-          "home",
-          "homepage",
-          "nestnudge",
-          "what is nestnudge",
-          "services",
-          "home upgrades"
-        ],
+        keywords: ["home", "homepage", "nestnudge", "what is nestnudge", "services", "home upgrades"],
         content:
           "NestNudge helps homeowners compare roof quotes, explore offers, review financing options, and connect with trusted partners."
       },
       {
         title: "Partners",
         url: "/partners.html",
-        keywords: [
-          "partners",
-          "partner",
-          "contractor",
-          "contractor login",
-          "partner login",
-          "apply",
-          "join",
-          "signup",
-          "sign up"
-        ],
+        keywords: ["partners", "partner", "contractor", "contractor login", "partner login", "apply", "join", "signup", "sign up", "pricing"],
         content:
-          "You can visit the Partners page to learn about joining the NestNudge network, review the partner overview, and apply or log in."
+          "Visit the Partners page to learn about joining the NestNudge network, review pricing, apply, or log in."
       },
       {
         title: "Roof Quotes",
         url: "/roof-quotes-miami-fort-lauderdale.html",
-        keywords: [
-          "roof",
-          "roof quote",
-          "roofing",
-          "estimate",
-          "roof quote miami",
-          "roof quote fort lauderdale"
-        ],
+        keywords: ["roof", "roof quote", "roofing", "estimate", "roof quote miami", "roof quote fort lauderdale"],
         content:
           "The Roof Quotes page helps homeowners explore roofing quote options and connect with local providers for next steps."
       },
       {
         title: "Offers",
         url: "/offers.html",
-        keywords: [
-          "offers",
-          "rebates",
-          "cash back",
-          "cashback",
-          "incentives",
-          "savings",
-          "home offers"
-        ],
+        keywords: ["offers", "rebates", "cash back", "cashback", "incentives", "savings", "home offers"],
         content:
           "The Offers page highlights homeowner savings opportunities, upgrade incentives, and featured ways to reduce project costs."
       },
       {
         title: "Financing",
         url: "#loan-section",
-        keywords: [
-          "financing",
-          "rate",
-          "loan",
-          "check my rate",
-          "payment",
-          "funding"
-        ],
+        keywords: ["financing", "rate", "loan", "check my rate", "payment", "funding"],
         content:
           "NestNudge includes financing guidance so homeowners can review payment options and take the next step toward a home project."
       },
       {
         title: "Estimator",
         url: "#cost-guide",
-        keywords: [
-          "estimator",
-          "value",
-          "cost guide",
-          "upgrade estimator",
-          "home value"
-        ],
+        keywords: ["estimator", "value", "cost guide", "upgrade estimator", "home value", "roi"],
         content:
-          "The Home Upgrade Estimator section shows how different projects may affect property value and homeowner planning."
+          "The Home Upgrade ROI Estimator section shows how different projects may affect property value and homeowner planning."
       }
     ];
 
@@ -423,11 +553,7 @@
 
       if (type === "bot") {
         row.innerHTML = `
-          <img
-            class="message-avatar"
-            src="/image/michael-chat.png"
-            alt="Michael"
-          />
+          <img class="message-avatar" src="/image/michael-chat.png" alt="Michael" />
           <div class="message-stack">
             <div class="message-meta">Michael</div>
             <div class="bot">${html}</div>
