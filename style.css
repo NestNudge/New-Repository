@@ -2603,3 +2603,7 @@ footer p {
     padding-right: 18px;
   }
 }
+
+* {
+  outline: 1px solid red;
+}
