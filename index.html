@@ -22,121 +22,184 @@
 
   <link rel="icon" href="/nestnudge.ico">
   <link rel="stylesheet" href="style.css">
-  
-  <style>
-  .chat-audience-actions,
-  .chat-dynamic-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 10px;
-  }
-
-  .chat-audience-actions button,
-  .chat-dynamic-options button {
-    appearance: none;
-    -webkit-appearance: none;
-    border: 1px solid #dfe3ea;
-    background: #f2f2f7;
-    color: #1c1c1e;
-    border-radius: 999px;
-    padding: 10px 14px;
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 1.2;
-    cursor: pointer;
-    box-shadow:
-      0 1px 2px rgba(0,0,0,0.06),
-      inset 0 1px 0 rgba(255,255,255,0.85);
-    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-  }
-
-  .chat-audience-actions button:hover,
-  .chat-dynamic-options button:hover {
-    background: #e9e9ef;
-    box-shadow:
-      0 2px 6px rgba(0,0,0,0.08),
-      inset 0 1px 0 rgba(255,255,255,0.9);
-  }
-
-  .chat-audience-actions button:active,
-  .chat-dynamic-options button:active {
-    transform: scale(0.98);
-    background: #dedee5;
-    box-shadow:
-      inset 0 2px 4px rgba(0,0,0,0.08);
-  }
-
-  .chat-audience-actions button:focus,
-  .chat-dynamic-options button:focus {
-    outline: none;
-    box-shadow:
-      0 0 0 3px rgba(0,122,255,0.18),
-      0 1px 2px rgba(0,0,0,0.06),
-      inset 0 1px 0 rgba(255,255,255,0.85);
-  }
-</style>
 
   <style>
-    /* Added only for the two popups so your existing page layout/styles remain unchanged */
+    .chat-audience-actions,
+    .chat-dynamic-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .chat-audience-actions button,
+    .chat-dynamic-options button {
+      appearance: none;
+      -webkit-appearance: none;
+      border: 1px solid #dfe3ea;
+      background: #f2f2f7;
+      color: #1c1c1e;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.2;
+      cursor: pointer;
+      box-shadow:
+        0 1px 2px rgba(0,0,0,0.06),
+        inset 0 1px 0 rgba(255,255,255,0.85);
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    }
+
+    .chat-audience-actions button:hover,
+    .chat-dynamic-options button:hover {
+      background: #e9e9ef;
+      box-shadow:
+        0 2px 6px rgba(0,0,0,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+    }
+
+    .chat-audience-actions button:active,
+    .chat-dynamic-options button:active {
+      transform: scale(0.98);
+      background: #dedee5;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.08);
+    }
+
+    .chat-audience-actions button:focus,
+    .chat-dynamic-options button:focus {
+      outline: none;
+      box-shadow:
+        0 0 0 3px rgba(0,122,255,0.18),
+        0 1px 2px rgba(0,0,0,0.06),
+        inset 0 1px 0 rgba(255,255,255,0.85);
+    }
+
+    .testimonial-card img {
+      width: 72px !important;
+      height: 72px !important;
+      object-fit: cover !important;
+      border-radius: 50% !important;
+      display: block;
+      margin: 0 auto 12px;
+    }
+
     #activityPopup {
       position: fixed;
       left: 18px;
-      bottom: 18px;
-      z-index: 9998;
-      width: min(320px, calc(100vw - 36px));
+      bottom: 110px;
+      width: 320px;
+      max-width: calc(100vw - 36px);
       background: #ffffff;
-      color: #1f2937;
-      border-radius: 14px;
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
-      padding: 14px 16px;
+      border: 1px solid #d9e2ec;
+      border-radius: 18px;
+      box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.16),
+        0 2px 10px rgba(15, 23, 42, 0.08);
+      padding: 14px 14px 12px;
+      z-index: 9998;
       display: none;
-      border: 1px solid rgba(0, 0, 0, 0.08);
+      overflow: hidden;
     }
 
     #activityPopup.show {
       display: block;
-      animation: fadeSlideIn 0.35s ease;
+      animation: activitySlideIn 0.35s ease;
     }
 
-    .activity-popup-top {
+    @keyframes activitySlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .activity-popup-topbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #22c55e, #0ea5e9);
+    }
+
+    .activity-popup-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .activity-popup-icon {
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
+      justify-content: center;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
+      font-size: 18px;
+      line-height: 1;
     }
 
-    .activity-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #22c55e;
-      flex: 0 0 auto;
+    .activity-popup-copy {
+      flex: 1;
+      min-width: 0;
     }
 
     .activity-popup-label {
-      font-size: 12px;
+      display: inline-block;
+      font-size: 11px;
       font-weight: 700;
-      text-transform: uppercase;
       letter-spacing: 0.04em;
-      color: #15803d;
+      text-transform: uppercase;
+      color: #0f766e;
+      background: #ecfeff;
+      border: 1px solid #bae6fd;
+      border-radius: 999px;
+      padding: 4px 8px;
+      margin-bottom: 8px;
     }
 
     .activity-popup-message {
-      margin: 0;
       font-size: 14px;
-      line-height: 1.5;
+      line-height: 1.45;
+      color: #0f172a;
+      margin: 0 0 6px;
+      font-weight: 600;
+    }
+
+    .activity-popup-time {
+      font-size: 12px;
+      color: #64748b;
+      margin: 0;
     }
 
     .activity-popup-close {
       position: absolute;
+      top: 10px;
       right: 10px;
-      top: 8px;
-      border: 0;
+      width: 28px;
+      height: 28px;
+      border: none;
       background: transparent;
+      color: #64748b;
       font-size: 18px;
+      line-height: 1;
       cursor: pointer;
-      color: #6b7280;
+      border-radius: 999px;
+    }
+
+    .activity-popup-close:hover {
+      background: #f1f5f9;
+      color: #0f172a;
     }
 
     #leadOfferModal {
@@ -263,29 +326,25 @@
       color: #111827;
     }
 
-    @keyframes fadeSlideIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
 
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
+      #activityPopup {
+        left: 12px;
+        right: 12px;
+        bottom: 95px;
+        width: auto;
+      }
+
       .lead-offer-body {
         grid-template-columns: 1fr;
       }
 
       .lead-offer-image {
         max-height: 220px;
-      }
-
-      #activityPopup {
-        bottom: 12px;
-        left: 12px;
-        width: min(320px, calc(100vw - 24px));
       }
     }
   </style>
@@ -313,17 +372,6 @@
     ]
   }
   </script>
-
-  <style>
-    .testimonial-card img{
-      width:72px !important;
-      height:72px !important;
-      object-fit:cover !important;
-      border-radius:50% !important;
-      display:block;
-      margin:0 auto 12px;
-    }
-  </style>
 </head>
 <body>
 
@@ -506,7 +554,6 @@
 
     <div class="carousel-wrapper">
       <div class="carousel-track">
-
         <div class="service-card" onclick="selectServiceAndScroll('roof')">
           <img src="/image/upgrade-roof-guide.jpg" alt="Roof Replacement">
           <div class="overlay">
@@ -587,7 +634,6 @@
             <a href="/best-entry-door-upgrades.html" onclick="event.stopPropagation();" class="service-learn-more">Learn More...</a>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -860,7 +906,6 @@
     </div>
   </section>
 
-  <!-- AI CHAT -->
   <div id="chatWidget">
     <div id="chatHeader">
       <div class="chat-header-agent">
@@ -874,40 +919,38 @@
       <button type="button" id="chatCloseBtn" aria-label="Minimize chat" onclick="minimizeChat()">✕</button>
     </div>
 
-    <div id="chatMessages">
-  <div class="chat-message-row bot-row intro-row">
-    <img src="/image/michael-chat.png" alt="Michael from NestNudge" class="message-avatar">
-    <div class="message-stack">
-      <div class="message-meta">Michael | NestNudge</div>
-      <p class="bot" id="chatGreeting"></p>
-
-      <div class="chat-audience-actions">
-        <button type="button" onclick="quickSelect('homeowner')">Homeowner</button>
-        <button type="button" onclick="quickSelect('contractor')">Contractor / Partner</button>
+    <div id="chatBox">
+      <div id="chatMessages">
+        <div class="chat-message-row bot-row intro-row">
+          <img src="/image/michael-chat.png" alt="Michael from NestNudge" class="message-avatar">
+          <div class="message-stack">
+            <div class="message-meta">Michael | NestNudge</div>
+            <p class="bot" id="chatGreeting"></p>
+            <div class="chat-audience-actions">
+              <button type="button" onclick="quickSelect('homeowner')">Homeowner</button>
+              <button type="button" onclick="quickSelect('contractor')">Contractor / Partner</button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
       <div class="chat-quick-actions">
-  <button type="button" onclick="quickSelect('roof')">Roof</button>
-  <button type="button" onclick="quickSelect('buying')">Buying</button>
-  <button type="button" onclick="quickSelect('doors')">Entry Door</button>
-  <button type="button" onclick="quickSelect('windows')">Impact Windows</button>
-  <button type="button" onclick="quickSelect('realtor')">Realtor</button>
-  <button type="button" onclick="quickSelect('funding')">Funding</button>
-
-  <!-- ✅ ADD THESE -->
-  <button type="button" onclick="quickSelect('offers')">Offers</button>
-  <button type="button" onclick="quickSelect('partners')">Partners</button>
-</div>
+        <button type="button" onclick="quickSelect('roof')">Roof</button>
+        <button type="button" onclick="quickSelect('buying')">Buying</button>
+        <button type="button" onclick="quickSelect('doors')">Entry Door</button>
+        <button type="button" onclick="quickSelect('windows')">Impact Windows</button>
+        <button type="button" onclick="quickSelect('realtor')">Realtor</button>
+        <button type="button" onclick="quickSelect('funding')">Funding</button>
+        <button type="button" onclick="quickSelect('offers')">Offers</button>
+        <button type="button" onclick="quickSelect('partners')">Partners</button>
+      </div>
 
       <input
-  type="text"
-  id="chatInput"
-  placeholder="Ask about roof, funding, selling, offers, partners, solar, insurance, windows, or doors..."
-  onkeypress="handleChat(event)"
->
+        type="text"
+        id="chatInput"
+        placeholder="Ask about roof, funding, selling, offers, partners, solar, insurance, windows, or doors..."
+        onkeypress="handleChat(event)"
+      >
     </div>
   </div>
 
@@ -919,26 +962,26 @@
     </span>
   </button>
 
-  <!-- Visitor Activity Popup -->
   <div id="activityPopup" aria-live="polite" aria-atomic="true">
-    <button type="button" class="activity-popup-close" aria-label="Close activity popup" onclick="closeActivityPopup()">×</button>
-    <div class="activity-popup-top">
-      <span class="activity-dot"></span>
-      <span class="activity-popup-label">Recent activity</span>
+    <div class="activity-popup-topbar"></div>
+    <button type="button" class="activity-popup-close" onclick="closeActivityPopup()" aria-label="Close activity popup">×</button>
+    <div class="activity-popup-inner">
+      <div class="activity-popup-icon" id="activityPopupIcon">🏠</div>
+      <div class="activity-popup-copy">
+        <div class="activity-popup-label" id="activityPopupLabel">Recent Activity</div>
+        <p class="activity-popup-message" id="activityPopupMessage">A homeowner in Miami viewed roof quotes.</p>
+        <p class="activity-popup-time" id="activityPopupTime">2 minutes ago</p>
+      </div>
     </div>
-    <p class="activity-popup-message" id="activityPopupMessage"></p>
   </div>
 
-  <!-- Offer / Service Lead Popup -->
   <div id="leadOfferModal" aria-hidden="true">
     <div class="lead-offer-card" role="dialog" aria-modal="true" aria-labelledby="leadOfferTitle">
       <button type="button" class="lead-offer-close" aria-label="Close offer popup" onclick="closeLeadOfferModal()">×</button>
-
       <div class="lead-offer-body">
         <div class="lead-offer-image">
           <img src="/image/hero-smart-money-homeowners.jpg" alt="NestNudge homeowner savings offer">
         </div>
-
         <div class="lead-offer-copy">
           <span class="lead-offer-badge">Before you go</span>
           <h3 id="leadOfferTitle">Want help finding your best money-saving option?</h3>
@@ -946,16 +989,14 @@
             See whether you may qualify for lower monthly payments, smarter home upgrade planning,
             or help from a trusted local expert.
           </p>
-
           <ul>
             <li>Lower your monthly payments</li>
             <li>Compare your next best home option</li>
             <li>Get connected with a local expert</li>
           </ul>
-
           <div class="lead-offer-actions">
-            <a href="#loan-section" class="lead-offer-primary" onclick="closeLeadOfferModal(); scrollToLoan();">Check My Options</a>
-            <a href="javascript:void(0)" class="lead-offer-secondary" onclick="closeLeadOfferModal(); reopenChat(); focusChatInput();">Ask Michael</a>
+            <a href="#loan-section" class="lead-offer-primary" onclick="closeLeadOfferModal(); scrollToLoan(); return false;">Check My Options</a>
+            <a href="#" class="lead-offer-secondary" onclick="closeLeadOfferModal(); reopenChat(); focusChatInput(); return false;">Ask Michael</a>
           </div>
         </div>
       </div>
@@ -999,7 +1040,6 @@
     function getRegionTier(zip) {
       if (!zip || zip.length < 5) return "medium";
       const firstDigit = parseInt(zip.charAt(0), 10);
-
       if ([0, 1, 9].includes(firstDigit)) return "high";
       if ([2, 3, 4, 5, 6].includes(firstDigit)) return "medium";
       return "low";
@@ -1042,7 +1082,6 @@
       const tier = getRegionTier(zip);
       const text = document.getElementById("propertyInsightsText");
       const section = document.getElementById("property-insights-section");
-
       if (!text || !section) return;
 
       let message = "Based on your location, we’ll use regional pricing and home-value assumptions to guide your estimate.";
@@ -1105,115 +1144,10 @@
   </script>
 
   <script>
-  let knowledgeBaseSections = [];
-  let visiblePageSections = [];
+    let knowledgeBaseSections = [];
+    let visiblePageSections = [];
 
-  let chatState = {
-    mode: "general",
-    service: "",
-    leadType: "",
-    captureStep: "",
-    audience: "",
-    data: {},
-    isSubmitting: false
-  };
-
-  const knowledgeSynonyms = {
-    roof: ["roof", "roofing", "roof replacement", "shingles", "roof quote", "roof quotes"],
-    doors: ["door", "doors", "entry door", "front door"],
-    windows: ["window", "windows", "impact window", "impact windows", "hurricane windows"],
-    funding: ["funding", "finance", "financing", "loan", "loans", "debt", "credit", "monthly payment", "monthly payments"],
-    realtor: ["realtor", "real estate", "agent", "selling", "sell my home", "listing"],
-    solar: ["solar", "energy bill", "electric bill", "utility bill"],
-    insurance: ["insurance", "premium", "coverage", "bundle"],
-    offers: ["offers", "save money", "lower bills", "featured offers"],
-    partners: ["partner", "partners", "contractor", "contractors", "lead", "leads", "pricing", "plans", "zip code", "zip-based", "startup package", "$29", "$99", "$299", "$499"]
-  };
-
-  const visibleSectionConfig = [
-    {
-      id: "hero-form",
-      label: "Check Your Options",
-      keywords: ["start", "check options", "homeowner options", "save money", "lower bills"],
-      cta: "You can start with the main options form on this page."
-    },
-    {
-      id: "cost-guide",
-      label: "Upgrade Cost Guide",
-      keywords: ["roof", "roofing", "doors", "entry door", "windows", "impact windows", "roi", "cost", "value", "upgrade"],
-      cta: "The upgrade estimator can help compare project cost, value added, and ROI."
-    },
-    {
-      id: "featured-offers",
-      label: "Featured Ways to Save",
-      keywords: ["offers", "solar", "insurance", "credit", "save money", "lower payments"],
-      cta: "The Featured Ways to Save section highlights financial options and homeowner savings paths."
-    },
-    {
-      id: "loan-section",
-      label: "Lower Your Monthly Payments",
-      keywords: ["loan", "funding", "debt", "credit", "monthly payments", "payments"],
-      cta: "The funding section helps visitors check options and lower monthly payments."
-    },
-    {
-      id: "contact-form",
-      label: "Local Realtor Connection",
-      keywords: ["realtor", "selling", "agent", "sell", "home value", "listing"],
-      cta: "The realtor section helps visitors connect with a local expert."
-    },
-    {
-      id: "partners",
-      label: "Partner Platform",
-      keywords: ["partner", "contractor", "pricing", "startup package", "lead flow", "lead opportunities", "zip code", "business growth"],
-      cta: "The partner section explains pricing, lead access, and growth options."
-    }
-  ];
-
-function getTimeBasedGreeting() {
-  const hour = new Date().getHours();
-  const intro =
-    hour < 12
-      ? "Good morning — I’m Michael with NestNudge."
-      : hour < 18
-      ? "Good afternoon — I’m Michael with NestNudge."
-      : "Good evening — I’m Michael with NestNudge.";
-
-  return `${intro} I can search this page and the NestNudge knowledge base to help you find the best next step. I can help homeowners lower bills, improve home value, explore upgrades, or prepare to sell. I can also help contractors and partners compare plans, understand lead flow, and choose the right package. Start by choosing homeowner or contractor below.`;
-}
-
-  function setInitialChatGreeting() {
-    const greetingEl = document.getElementById("chatGreeting");
-    if (greetingEl) greetingEl.textContent = getTimeBasedGreeting();
-  }
-
-  function addMessage(text, sender = "bot") {
-    const messages = document.getElementById("chatMessages");
-    if (!messages) return;
-
-    if (sender === "bot") {
-      const row = document.createElement("div");
-      row.className = "chat-message-row bot-row";
-      row.innerHTML = `
-        <img src="/image/michael-chat.png" alt="Michael from NestNudge" class="message-avatar">
-        <div class="message-stack">
-          <div class="message-meta">Michael | NestNudge</div>
-          <p class="bot"></p>
-        </div>
-      `;
-      row.querySelector("p").textContent = text;
-      messages.appendChild(row);
-    } else {
-      const p = document.createElement("p");
-      p.className = "user";
-      p.textContent = text;
-      messages.appendChild(p);
-    }
-
-    messages.scrollTop = messages.scrollHeight;
-  }
-
-  function resetChatState() {
-    chatState = {
+    let chatState = {
       mode: "general",
       service: "",
       leadType: "",
@@ -1222,577 +1156,709 @@ function getTimeBasedGreeting() {
       data: {},
       isSubmitting: false
     };
-  }
 
-  function minimizeChat() {
-    const widget = document.getElementById("chatWidget");
-    const reopen = document.getElementById("chatReopen");
-    if (widget) widget.classList.add("chat-hidden");
-    if (reopen) reopen.classList.add("show-chat-bubble");
-  }
+    const knowledgeSynonyms = {
+      roof: ["roof", "roofing", "roof replacement", "shingles", "roof quote", "roof quotes"],
+      doors: ["door", "doors", "entry door", "front door"],
+      windows: ["window", "windows", "impact window", "impact windows", "hurricane windows"],
+      funding: ["funding", "finance", "financing", "loan", "loans", "debt", "credit", "monthly payment", "monthly payments"],
+      realtor: ["realtor", "real estate", "agent", "selling", "sell my home", "listing"],
+      solar: ["solar", "energy bill", "electric bill", "utility bill"],
+      insurance: ["insurance", "premium", "coverage", "bundle"],
+      offers: ["offers", "save money", "lower bills", "featured offers"],
+      partners: ["partner", "partners", "contractor", "contractors", "lead", "leads", "pricing", "plans", "zip code", "zip-based", "startup package", "$29", "$99", "$299", "$499"]
+    };
 
-  function reopenChat() {
-    const widget = document.getElementById("chatWidget");
-    const reopen = document.getElementById("chatReopen");
-    if (widget) widget.classList.remove("chat-hidden");
-    if (reopen) reopen.classList.remove("show-chat-bubble");
-  }
+    const visibleSectionConfig = [
+      {
+        id: "hero-form",
+        label: "Check Your Options",
+        keywords: ["start", "check options", "homeowner options", "save money", "lower bills"],
+        cta: "You can start with the main options form on this page."
+      },
+      {
+        id: "cost-guide",
+        label: "Upgrade Cost Guide",
+        keywords: ["roof", "roofing", "doors", "entry door", "windows", "impact windows", "roi", "cost", "value", "upgrade"],
+        cta: "The upgrade estimator can help compare project cost, value added, and ROI."
+      },
+      {
+        id: "featured-offers",
+        label: "Featured Ways to Save",
+        keywords: ["offers", "solar", "insurance", "credit", "save money", "lower payments"],
+        cta: "The Featured Ways to Save section highlights financial options and homeowner savings paths."
+      },
+      {
+        id: "loan-section",
+        label: "Lower Your Monthly Payments",
+        keywords: ["loan", "funding", "debt", "credit", "monthly payments", "payments"],
+        cta: "The funding section helps visitors check options and lower monthly payments."
+      },
+      {
+        id: "contact-form",
+        label: "Local Realtor Connection",
+        keywords: ["realtor", "selling", "agent", "sell", "home value", "listing"],
+        cta: "The realtor section helps visitors connect with a local expert."
+      },
+      {
+        id: "partners",
+        label: "Partner Platform",
+        keywords: ["partner", "contractor", "pricing", "startup package", "lead flow", "lead opportunities", "zip code", "business growth"],
+        cta: "The partner section explains pricing, lead access, and growth options."
+      }
+    ];
 
-  function quickSelect(topic) {
-  const map = {
-    homeowner: "I am a homeowner",
-    contractor: "I am a contractor or partner",
-    roof: "roof",
-    buying: "buying a home",
-    doors: "entry door",
-    windows: "impact windows",
-    realtor: "realtor",
-    funding: "lower monthly payments",
-    offers: "offers",
-    partners: "partner plans"
-  };
+    function getTimeBasedGreeting() {
+      const hour = new Date().getHours();
+      const intro = hour < 12
+        ? "Good morning — I’m Michael with NestNudge."
+        : hour < 18
+        ? "Good afternoon — I’m Michael with NestNudge."
+        : "Good evening — I’m Michael with NestNudge.";
 
-  const value = map[topic] || topic;
-  addMessage(value, "user");
-  processUserMessage(value);
-}
-
-  function handleChat(e) {
-    if (e.key !== "Enter" || chatState.isSubmitting) return;
-
-    const input = document.getElementById("chatInput");
-    if (!input) return;
-
-    const value = input.value.trim();
-    if (!value) return;
-
-    addMessage(value, "user");
-    input.value = "";
-    processUserMessage(value);
-  }
-
-  function detectAudience(text) {
-    const value = text.toLowerCase();
-
-    if (
-      value.includes("contractor") ||
-      value.includes("roofer") ||
-      value.includes("realtor partner") ||
-      value.includes("loan officer") ||
-      value.includes("loan rep") ||
-      value.includes("partner") ||
-      value.includes("my business") ||
-      value.includes("company")
-    ) {
-      return "partner";
+      return `${intro} I can search this page and the NestNudge knowledge base to help you find the best next step. I can help homeowners lower bills, improve home value, explore upgrades, or prepare to sell. I can also help contractors and partners compare plans, understand lead flow, and choose the right package. Start by choosing homeowner or contractor below.`;
     }
 
-    if (
-      value.includes("homeowner") ||
-      value.includes("my house") ||
-      value.includes("my home") ||
-      value.includes("selling my home") ||
-      value.includes("buying a home")
-    ) {
-      return "consumer";
+    function setInitialChatGreeting() {
+      const greetingEl = document.getElementById("chatGreeting");
+      if (greetingEl) greetingEl.textContent = getTimeBasedGreeting();
     }
 
-    return "";
-  }
+    function addMessage(text, sender = "bot") {
+      const messages = document.getElementById("chatMessages");
+      if (!messages) return;
 
-  function detectIntent(text) {
-    const value = text.toLowerCase();
+      if (sender === "bot") {
+        const row = document.createElement("div");
+        row.className = "chat-message-row bot-row";
+        row.innerHTML = `
+          <img src="/image/michael-chat.png" alt="Michael from NestNudge" class="message-avatar">
+          <div class="message-stack">
+            <div class="message-meta">Michael | NestNudge</div>
+            <p class="bot"></p>
+          </div>
+        `;
+        row.querySelector("p").textContent = text;
+        messages.appendChild(row);
+      } else {
+        const p = document.createElement("p");
+        p.className = "user";
+        p.textContent = text;
+        messages.appendChild(p);
+      }
 
-    if (value.includes("homeowner")) return { type: "audience", audience: "consumer" };
-    if (value.includes("contractor") || value.includes("partner")) return { type: "audience", audience: "partner" };
+      messages.scrollTop = messages.scrollHeight;
+    }
 
-    if (value.includes("roof")) return { type: "service", service: "roof" };
-    if (value.includes("door")) return { type: "service", service: "doors" };
-    if (value.includes("window")) return { type: "service", service: "windows" };
-    if (value.includes("buy") || value.includes("purchase")) return { type: "buying" };
-    if (value.includes("sell") || value.includes("realtor") || value.includes("agent")) return { type: "realtor" };
-    if (value.includes("funding") || value.includes("finance") || value.includes("loan") || value.includes("payment") || value.includes("debt") || value.includes("credit")) return { type: "funding" };
-    if (value.includes("solar")) return { type: "knowledge", topic: "solar" };
-    if (value.includes("insurance")) return { type: "knowledge", topic: "insurance" };
-    if (value.includes("offer")) return { type: "knowledge", topic: "offers" };
-    if (value.includes("pricing") || value.includes("$29") || value.includes("$99") || value.includes("$299") || value.includes("$499") || value.includes("startup package") || value.includes("lead")) return { type: "knowledge", topic: "partners" };
-    if (value.includes("change") || value.includes("instead") || value.includes("different")) return { type: "change" };
-
-    return { type: "search" };
-  }
-
-  function buildVisiblePageSections() {
-    visiblePageSections = visibleSectionConfig.map(section => {
-      const el = document.getElementById(section.id);
-      return {
-        ...section,
-        text: el ? el.innerText.toLowerCase() : ""
+    function resetChatState() {
+      chatState = {
+        mode: "general",
+        service: "",
+        leadType: "",
+        captureStep: "",
+        audience: "",
+        data: {},
+        isSubmitting: false
       };
-    });
-  }
+    }
 
-  async function loadKnowledgeBase() {
-    try {
-      const response = await fetch("/ai-knowledge-base.html", { cache: "no-store" });
-      if (!response.ok) throw new Error("Knowledge base fetch failed");
+    function minimizeChat() {
+      const widget = document.getElementById("chatWidget");
+      const reopen = document.getElementById("chatReopen");
+      if (widget) widget.classList.add("chat-hidden");
+      if (reopen) reopen.classList.add("show-chat-bubble");
+    }
 
-      const html = await response.text();
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, "text/html");
-      const sections = Array.from(doc.querySelectorAll("section"));
+    function reopenChat() {
+      const widget = document.getElementById("chatWidget");
+      const reopen = document.getElementById("chatReopen");
+      if (widget) widget.classList.remove("chat-hidden");
+      if (reopen) reopen.classList.remove("show-chat-bubble");
+    }
 
-      knowledgeBaseSections = sections.map(section => {
-        const heading = section.querySelector("h2, h3")?.innerText?.trim() || section.id || "Knowledge";
-        const text = section.innerText.replace(/\s+/g, " ").trim();
+    function quickSelect(topic) {
+      const map = {
+        homeowner: "I am a homeowner",
+        contractor: "I am a contractor or partner",
+        roof: "roof",
+        buying: "buying a home",
+        doors: "entry door",
+        windows: "impact windows",
+        realtor: "realtor",
+        funding: "lower monthly payments",
+        offers: "offers",
+        partners: "partner plans"
+      };
+
+      const value = map[topic] || topic;
+      addMessage(value, "user");
+      processUserMessage(value);
+    }
+
+    function handleChat(e) {
+      if (e.key !== "Enter" || chatState.isSubmitting) return;
+
+      const input = document.getElementById("chatInput");
+      if (!input) return;
+
+      const value = input.value.trim();
+      if (!value) return;
+
+      addMessage(value, "user");
+      input.value = "";
+      processUserMessage(value);
+    }
+
+    function detectAudience(text) {
+      const value = text.toLowerCase();
+
+      if (
+        value.includes("contractor") ||
+        value.includes("roofer") ||
+        value.includes("realtor partner") ||
+        value.includes("loan officer") ||
+        value.includes("loan rep") ||
+        value.includes("partner") ||
+        value.includes("my business") ||
+        value.includes("company")
+      ) {
+        return "partner";
+      }
+
+      if (
+        value.includes("homeowner") ||
+        value.includes("my house") ||
+        value.includes("my home") ||
+        value.includes("selling my home") ||
+        value.includes("buying a home")
+      ) {
+        return "consumer";
+      }
+
+      return "";
+    }
+
+    function detectIntent(text) {
+      const value = text.toLowerCase();
+
+      if (value.includes("homeowner")) return { type: "audience", audience: "consumer" };
+      if (value.includes("contractor") || value.includes("partner")) return { type: "audience", audience: "partner" };
+      if (value.includes("roof")) return { type: "service", service: "roof" };
+      if (value.includes("door")) return { type: "service", service: "doors" };
+      if (value.includes("window")) return { type: "service", service: "windows" };
+      if (value.includes("buy") || value.includes("purchase")) return { type: "buying" };
+      if (value.includes("sell") || value.includes("realtor") || value.includes("agent")) return { type: "realtor" };
+      if (value.includes("funding") || value.includes("finance") || value.includes("loan") || value.includes("payment") || value.includes("debt") || value.includes("credit")) return { type: "funding" };
+      if (value.includes("solar")) return { type: "knowledge", topic: "solar" };
+      if (value.includes("insurance")) return { type: "knowledge", topic: "insurance" };
+      if (value.includes("offer")) return { type: "knowledge", topic: "offers" };
+      if (value.includes("pricing") || value.includes("$29") || value.includes("$99") || value.includes("$299") || value.includes("$499") || value.includes("startup package") || value.includes("lead")) return { type: "knowledge", topic: "partners" };
+      if (value.includes("change") || value.includes("instead") || value.includes("different")) return { type: "change" };
+
+      return { type: "search" };
+    }
+
+    function buildVisiblePageSections() {
+      visiblePageSections = visibleSectionConfig.map(section => {
+        const el = document.getElementById(section.id);
         return {
-          id: section.id || "",
-          heading,
-          text,
-          textLower: text.toLowerCase()
+          ...section,
+          text: el ? el.innerText.toLowerCase() : ""
         };
       });
-    } catch (error) {
-      knowledgeBaseSections = [];
-      console.warn("Knowledge base unavailable:", error);
     }
-  }
 
-  function getUpgradeSummary(type) {
-    const zip = document.getElementById("zip")?.value?.trim() || "";
-    const tier = getRegionTier(zip);
-    const multiplier = regionalMultipliers[tier] || 1.0;
-    const item = upgradeData[type];
+    async function loadKnowledgeBase() {
+      try {
+        const response = await fetch("/ai-knowledge-base.html", { cache: "no-store" });
+        if (!response.ok) throw new Error("Knowledge base fetch failed");
 
-    if (!item) return null;
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, "text/html");
+        const sections = Array.from(doc.querySelectorAll("section"));
 
-    const costLow = Math.round(item.costLow * multiplier);
-    const costHigh = Math.round(item.costHigh * multiplier);
-    const valueLow = Math.round(item.valueLow * multiplier);
-    const valueHigh = Math.round(item.valueHigh * multiplier);
-    const avgCost = Math.round((costLow + costHigh) / 2);
-    const avgValue = Math.round((valueLow + valueHigh) / 2);
-    const avgROI = Math.round((avgValue / avgCost) * 100);
-
-    return {
-      title: item.title,
-      costLow,
-      costHigh,
-      valueLow,
-      valueHigh,
-      avgROI
-    };
-  }
-
-  function extractTopicKeywords(text) {
-    const lower = text.toLowerCase();
-    let found = [];
-
-    Object.entries(knowledgeSynonyms).forEach(([topic, terms]) => {
-      if (terms.some(term => lower.includes(term))) {
-        found.push(topic);
+        knowledgeBaseSections = sections.map(section => {
+          const heading = section.querySelector("h2, h3")?.innerText?.trim() || section.id || "Knowledge";
+          const text = section.innerText.replace(/\s+/g, " ").trim();
+          return {
+            id: section.id || "",
+            heading,
+            text,
+            textLower: text.toLowerCase()
+          };
+        });
+      } catch (error) {
+        knowledgeBaseSections = [];
+        console.warn("Knowledge base unavailable:", error);
       }
-    });
+    }
 
-    return [...new Set(found)];
-  }
+    function getUpgradeSummary(type) {
+      const zip = document.getElementById("zip")?.value?.trim() || "";
+      const tier = getRegionTier(zip);
+      const multiplier = regionalMultipliers[tier] || 1.0;
+      const item = upgradeData[type];
+      if (!item) return null;
 
-  function searchVisiblePage(text) {
-    const lower = text.toLowerCase();
-    let bestMatch = null;
-    let bestScore = 0;
+      const costLow = Math.round(item.costLow * multiplier);
+      const costHigh = Math.round(item.costHigh * multiplier);
+      const valueLow = Math.round(item.valueLow * multiplier);
+      const valueHigh = Math.round(item.valueHigh * multiplier);
+      const avgCost = Math.round((costLow + costHigh) / 2);
+      const avgValue = Math.round((valueLow + valueHigh) / 2);
+      const avgROI = Math.round((avgValue / avgCost) * 100);
 
-    visiblePageSections.forEach(section => {
-      let score = 0;
+      return {
+        title: item.title,
+        costLow,
+        costHigh,
+        valueLow,
+        valueHigh,
+        avgROI
+      };
+    }
 
-      section.keywords.forEach(keyword => {
-        if (lower.includes(keyword)) score += 3;
-        if (section.text.includes(keyword) && lower.includes(keyword)) score += 2;
+    function extractTopicKeywords(text) {
+      const lower = text.toLowerCase();
+      let found = [];
+
+      Object.entries(knowledgeSynonyms).forEach(([topic, terms]) => {
+        if (terms.some(term => lower.includes(term))) {
+          found.push(topic);
+        }
       });
 
-      if (score > bestScore) {
-        bestScore = score;
-        bestMatch = section;
-      }
-    });
+      return [...new Set(found)];
+    }
 
-    return bestMatch;
-  }
+    function searchVisiblePage(text) {
+      const lower = text.toLowerCase();
+      let bestMatch = null;
+      let bestScore = 0;
 
-  function searchKnowledgeBase(text) {
-    const lower = text.toLowerCase();
-    const topicKeywords = extractTopicKeywords(text);
-    let scored = knowledgeBaseSections.map(section => {
-      let score = 0;
+      visiblePageSections.forEach(section => {
+        let score = 0;
 
-      topicKeywords.forEach(topic => {
-        if (section.id.includes(topic)) score += 10;
-        if (section.textLower.includes(topic)) score += 3;
+        section.keywords.forEach(keyword => {
+          if (lower.includes(keyword)) score += 3;
+          if (section.text.includes(keyword) && lower.includes(keyword)) score += 2;
+        });
+
+        if (score > bestScore) {
+          bestScore = score;
+          bestMatch = section;
+        }
       });
 
-      lower.split(/\s+/).forEach(word => {
-        if (word.length > 2 && section.textLower.includes(word)) score += 1;
+      return bestMatch;
+    }
+
+    function searchKnowledgeBase(text) {
+      const lower = text.toLowerCase();
+      const topicKeywords = extractTopicKeywords(text);
+
+      let scored = knowledgeBaseSections.map(section => {
+        let score = 0;
+
+        topicKeywords.forEach(topic => {
+          if (section.id.includes(topic)) score += 10;
+          if (section.textLower.includes(topic)) score += 3;
+        });
+
+        lower.split(/\s+/).forEach(word => {
+          if (word.length > 2 && section.textLower.includes(word)) score += 1;
+        });
+
+        if (chatState.audience === "partner" && section.id.startsWith("partner")) score += 3;
+        if (chatState.audience === "consumer" && section.id.startsWith("consumer")) score += 3;
+
+        return { ...section, score };
       });
 
-      if (chatState.audience === "partner" && section.id.startsWith("partner")) score += 3;
-      if (chatState.audience === "consumer" && section.id.startsWith("consumer")) score += 3;
-
-      return { ...section, score };
-    });
-
-    scored.sort((a, b) => b.score - a.score);
-    return scored.filter(item => item.score > 0).slice(0, 2);
-  }
-
-  function summarizeKnowledgeMatches(matches) {
-    if (!matches.length) {
-      return "I found some general guidance, but I need a little more detail to point you to the best option.";
+      scored.sort((a, b) => b.score - a.score);
+      return scored.filter(item => item.score > 0).slice(0, 2);
     }
 
-    return matches
-      .map(match => {
-        const trimmed = match.text.length > 320 ? match.text.slice(0, 320).trim() + "…" : match.text;
-        return `${match.heading}: ${trimmed}`;
-      })
-      .join(" ");
-  }
-
-  function routeFromVisibleMatch(match) {
-    if (!match) return;
-
-    const section = document.getElementById(match.id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }
-
-  function addDecisionCTA(text) {
-    const lower = text.toLowerCase();
-
-    if (chatState.audience === "partner" || lower.includes("partner") || lower.includes("contractor") || lower.includes("pricing")) {
-      addMessage("If you want, I can help you choose between the $29 starter plan, the $99 monthly plan, or the longer-term growth plans based on where your business is right now.");
-      return;
-    }
-
-    if (lower.includes("sell") || lower.includes("realtor") || lower.includes("home value")) {
-      addMessage("If selling is on your mind, the smartest next step is usually to connect with a local realtor and prioritize the upgrades that improve selling power without overspending.");
-      return;
-    }
-
-    if (lower.includes("roof") || lower.includes("window") || lower.includes("door")) {
-      addMessage("If you want, I can guide you to the upgrade estimator and help you decide whether the goal is lower bills, stronger resale value, or better protection.");
-      return;
-    }
-
-    if (lower.includes("loan") || lower.includes("funding") || lower.includes("payment") || lower.includes("debt") || lower.includes("credit")) {
-      addMessage("If lowering monthly bills is the priority, starting with funding options is often the fastest move because it creates breathing room before larger home decisions.");
-      return;
-    }
-
-    addMessage("Tell me your goal and I’ll guide you to the best next step — lower bills, improve home value, prepare to sell, or grow your business.");
-  }
-  
-  function showChatOptionButtons(options = []) {
-  const messages = document.getElementById("chatMessages");
-  if (!messages || !options.length) return;
-
-  const wrap = document.createElement("div");
-  wrap.className = "chat-dynamic-options";
-
-  options.forEach(option => {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.textContent = option.label;
-    btn.onclick = function () {
-      addMessage(option.value, "user");
-      processUserMessage(option.value);
-    };
-    wrap.appendChild(btn);
-  });
-
-  messages.appendChild(wrap);
-  messages.scrollTop = messages.scrollHeight;
-}
-
-  function processUserMessage(text) {
-    if (chatState.captureStep) {
-      handleCaptureStep(text);
-      return;
-    }
-
-    const detectedAudience = detectAudience(text);
-    if (detectedAudience && !chatState.audience) {
-      chatState.audience = detectedAudience;
-    }
-
-    const intent = detectIntent(text);
-
-    if (intent.type === "audience") {
-  chatState.audience = intent.audience;
-
-  if (intent.audience === "consumer") {
-    addMessage("Perfect — I’ll guide you like a homeowner looking for the best next step.");
-    addMessage("You can start with one of these: lower monthly payments, roof quotes and ROI, windows or doors, solar or insurance savings, or selling with a realtor.");
-    showChatOptionButtons([
-      { label: "Lower Bills", value: "lower monthly payments" },
-      { label: "Roof Quotes", value: "roof quotes" },
-      { label: "Windows", value: "impact windows" },
-      { label: "Selling", value: "selling my home" }
-    ]);
-  } else {
-    addMessage("Perfect — I’ll guide you like a contractor or partner looking for the best growth path.");
-    addMessage("You can start with startup pricing, monthly plans, lead opportunities, or ZIP code targeting.");
-    showChatOptionButtons([
-      { label: "$29 Startup", value: "$29 startup package" },
-      { label: "$99 Monthly", value: "$99 monthly plan" },
-      { label: "Lead Flow", value: "lead opportunities" },
-      { label: "ZIP Targeting", value: "ZIP code leads" }
-    ]);
-  }
-  return;
-}
-
-    if (intent.type === "service") {
-      chatState.mode = "service";
-      chatState.service = intent.service;
-      chatState.leadType = "funding";
-      chatState.captureStep = "";
-
-      showUpgrade(intent.service);
-
-      const summary = getUpgradeSummary(intent.service);
-      if (summary) {
-        addMessage(`${summary.title} typically ranges from ${formatMoney(summary.costLow)} to ${formatMoney(summary.costHigh)} and may add about ${formatMoney(summary.valueLow)} to ${formatMoney(summary.valueHigh)} in value. Estimated ROI can be around ${summary.avgROI}%.`);
+    function summarizeKnowledgeMatches(matches) {
+      if (!matches.length) {
+        return "I found some general guidance, but I need a little more detail to point you to the best option.";
       }
 
-      const visibleMatch = searchVisiblePage(text);
-      routeFromVisibleMatch(visibleMatch);
-      addDecisionCTA(text);
-      return;
+      return matches
+        .map(match => {
+          const trimmed = match.text.length > 320 ? match.text.slice(0, 320).trim() + "…" : match.text;
+          return `${match.heading}: ${trimmed}`;
+        })
+        .join(" ");
     }
 
-    if (intent.type === "buying") {
-      chatState.mode = "buying";
-      addMessage("Buying is a great time to think ahead. The best buyers look for upgrade potential, future value, and projects that may improve comfort or resale later.");
-      addMessage("Would you like to compare roofing, entry doors, or impact windows first?");
-      return;
+    function routeFromVisibleMatch(match) {
+      if (!match) return;
+      const section = document.getElementById(match.id);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     }
 
-    if (intent.type === "funding") {
-      chatState.mode = "funding";
-      chatState.leadType = "funding";
-      routeFromVisibleMatch(searchVisiblePage(text));
-      addMessage("Funding can be a strong first move because lowering monthly payments often gives homeowners more flexibility before tackling larger projects.");
-      addMessage("If you’d like, I can help you get started now. What’s your full name?");
-      chatState.captureStep = "name";
-      return;
+    function addDecisionCTA(text) {
+      const lower = text.toLowerCase();
+
+      if (chatState.audience === "partner" || lower.includes("partner") || lower.includes("contractor") || lower.includes("pricing")) {
+        addMessage("If you want, I can help you choose between the $29 starter plan, the $99 monthly plan, or the longer-term growth plans based on where your business is right now.");
+        return;
+      }
+
+      if (lower.includes("sell") || lower.includes("realtor") || lower.includes("home value")) {
+        addMessage("If selling is on your mind, the smartest next step is usually to connect with a local realtor and prioritize the upgrades that improve selling power without overspending.");
+        return;
+      }
+
+      if (lower.includes("roof") || lower.includes("window") || lower.includes("door")) {
+        addMessage("If you want, I can guide you to the upgrade estimator and help you decide whether the goal is lower bills, stronger resale value, or better protection.");
+        return;
+      }
+
+      if (lower.includes("loan") || lower.includes("funding") || lower.includes("payment") || lower.includes("debt") || lower.includes("credit")) {
+        addMessage("If lowering monthly bills is the priority, starting with funding options is often the fastest move because it creates breathing room before larger home decisions.");
+        return;
+      }
+
+      addMessage("Tell me your goal and I’ll guide you to the best next step — lower bills, improve home value, prepare to sell, or grow your business.");
     }
 
-    if (intent.type === "realtor") {
-      chatState.mode = "realtor";
-      chatState.leadType = "realtor";
-      routeFromVisibleMatch(searchVisiblePage(text));
-      addMessage("When selling is the goal, the smartest decision is usually to focus on the upgrades that improve selling power and put more money back in your pocket without overspending.");
-      addMessage("I can connect you with a local realtor now. What’s your full name?");
-      chatState.captureStep = "name";
-      return;
+    function showChatOptionButtons(options = []) {
+      const messages = document.getElementById("chatMessages");
+      if (!messages || !options.length) return;
+
+      const wrap = document.createElement("div");
+      wrap.className = "chat-dynamic-options";
+
+      options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = option.label;
+        btn.onclick = function () {
+          addMessage(option.value, "user");
+          processUserMessage(option.value);
+        };
+        wrap.appendChild(btn);
+      });
+
+      messages.appendChild(wrap);
+      messages.scrollTop = messages.scrollHeight;
     }
 
-    if (intent.type === "knowledge") {
+    function processUserMessage(text) {
+      if (chatState.captureStep) {
+        handleCaptureStep(text);
+        return;
+      }
+
+      const detectedAudience = detectAudience(text);
+      if (detectedAudience && !chatState.audience) {
+        chatState.audience = detectedAudience;
+      }
+
+      const intent = detectIntent(text);
+
+      if (intent.type === "audience") {
+        chatState.audience = intent.audience;
+
+        if (intent.audience === "consumer") {
+          addMessage("Perfect — I’ll guide you like a homeowner looking for the best next step.");
+          addMessage("You can start with one of these: lower monthly payments, roof quotes and ROI, windows or doors, solar or insurance savings, or selling with a realtor.");
+          showChatOptionButtons([
+            { label: "Lower Bills", value: "lower monthly payments" },
+            { label: "Roof Quotes", value: "roof quotes" },
+            { label: "Windows", value: "impact windows" },
+            { label: "Selling", value: "selling my home" }
+          ]);
+        } else {
+          addMessage("Perfect — I’ll guide you like a contractor or partner looking for the best growth path.");
+          addMessage("You can start with startup pricing, monthly plans, lead opportunities, or ZIP code targeting.");
+          showChatOptionButtons([
+            { label: "$29 Startup", value: "$29 startup package" },
+            { label: "$99 Monthly", value: "$99 monthly plan" },
+            { label: "Lead Flow", value: "lead opportunities" },
+            { label: "ZIP Targeting", value: "ZIP code leads" }
+          ]);
+        }
+        return;
+      }
+
+      if (intent.type === "service") {
+        chatState.mode = "service";
+        chatState.service = intent.service;
+        chatState.leadType = "funding";
+        chatState.captureStep = "";
+
+        showUpgrade(intent.service);
+
+        const summary = getUpgradeSummary(intent.service);
+        if (summary) {
+          addMessage(`${summary.title} typically ranges from ${formatMoney(summary.costLow)} to ${formatMoney(summary.costHigh)} and may add about ${formatMoney(summary.valueLow)} to ${formatMoney(summary.valueHigh)} in value. Estimated ROI can be around ${summary.avgROI}%.`);
+        }
+
+        const visibleMatch = searchVisiblePage(text);
+        routeFromVisibleMatch(visibleMatch);
+        addDecisionCTA(text);
+        return;
+      }
+
+      if (intent.type === "buying") {
+        chatState.mode = "buying";
+        addMessage("Buying is a great time to think ahead. The best buyers look for upgrade potential, future value, and projects that may improve comfort or resale later.");
+        addMessage("Would you like to compare roofing, entry doors, or impact windows first?");
+        return;
+      }
+
+      if (intent.type === "funding") {
+        chatState.mode = "funding";
+        chatState.leadType = "funding";
+        routeFromVisibleMatch(searchVisiblePage(text));
+        addMessage("Funding can be a strong first move because lowering monthly payments often gives homeowners more flexibility before tackling larger projects.");
+        addMessage("If you’d like, I can help you get started now. What’s your full name?");
+        chatState.captureStep = "name";
+        return;
+      }
+
+      if (intent.type === "realtor") {
+        chatState.mode = "realtor";
+        chatState.leadType = "realtor";
+        routeFromVisibleMatch(searchVisiblePage(text));
+        addMessage("When selling is the goal, the smartest decision is usually to focus on the upgrades that improve selling power and put more money back in your pocket without overspending.");
+        addMessage("I can connect you with a local realtor now. What’s your full name?");
+        chatState.captureStep = "name";
+        return;
+      }
+
+      if (intent.type === "knowledge") {
+        const visibleMatch = searchVisiblePage(text);
+        const knowledgeMatches = searchKnowledgeBase(text);
+
+        if (visibleMatch) routeFromVisibleMatch(visibleMatch);
+
+        addMessage(summarizeKnowledgeMatches(knowledgeMatches));
+        addDecisionCTA(text);
+        return;
+      }
+
+      if (intent.type === "change") {
+        chatState.captureStep = "";
+        chatState.mode = "general";
+        chatState.service = "";
+        addMessage("No problem — we can change direction. Are you looking for help as a homeowner, or are you a contractor/partner exploring leads and plans?");
+        return;
+      }
+
       const visibleMatch = searchVisiblePage(text);
       const knowledgeMatches = searchKnowledgeBase(text);
 
-      if (visibleMatch) routeFromVisibleMatch(visibleMatch);
+      if (visibleMatch) {
+        routeFromVisibleMatch(visibleMatch);
+        addMessage(`${visibleMatch.label}: ${visibleMatch.cta}`);
+      }
 
-      addMessage(summarizeKnowledgeMatches(knowledgeMatches));
-      addDecisionCTA(text);
-      return;
-    }
-
-    if (intent.type === "change") {
-      chatState.captureStep = "";
-      chatState.mode = "general";
-      chatState.service = "";
-      addMessage("No problem — we can change direction. Are you looking for help as a homeowner, or are you a contractor/partner exploring leads and plans?");
-      return;
-    }
-
-    const visibleMatch = searchVisiblePage(text);
-    const knowledgeMatches = searchKnowledgeBase(text);
-
-    if (visibleMatch) {
-      routeFromVisibleMatch(visibleMatch);
-      addMessage(`${visibleMatch.label}: ${visibleMatch.cta}`);
-    }
-
-    if (knowledgeMatches.length) {
-      addMessage(summarizeKnowledgeMatches(knowledgeMatches));
-      addDecisionCTA(text);
-      return;
-    }
-
-    addMessage("I can help you search the page and knowledge base for homeowner options, upgrade ROI, funding, selling guidance, solar, insurance, and partner pricing. Tell me your goal and I’ll guide you to the best next step.");
-  }
-
-  function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  }
-
-  function isValidPhone(phone) {
-    const digits = phone.replace(/\D/g, "");
-    return digits.length >= 10;
-  }
-
-  function handleCaptureStep(text) {
-    switch (chatState.captureStep) {
-      case "name":
-        chatState.data.name = text.trim();
-        chatState.captureStep = "email";
-        addMessage("Thanks. What’s your email address?");
+      if (knowledgeMatches.length) {
+        addMessage(summarizeKnowledgeMatches(knowledgeMatches));
+        addDecisionCTA(text);
         return;
+      }
 
-      case "email":
-        if (!isValidEmail(text.trim())) {
-          addMessage("Please enter a valid email address.");
+      addMessage("I can help you search the page and knowledge base for homeowner options, upgrade ROI, funding, selling guidance, solar, insurance, and partner pricing. Tell me your goal and I’ll guide you to the best next step.");
+    }
+
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function isValidPhone(phone) {
+      const digits = phone.replace(/\D/g, "");
+      return digits.length >= 10;
+    }
+
+    function handleCaptureStep(text) {
+      switch (chatState.captureStep) {
+        case "name":
+          chatState.data.name = text.trim();
+          chatState.captureStep = "email";
+          addMessage("Thanks. What’s your email address?");
           return;
-        }
-        chatState.data.email = text.trim();
-        chatState.captureStep = "phone";
-        addMessage("What’s your phone number?");
-        return;
 
-      case "phone":
-        if (!isValidPhone(text.trim())) {
-          addMessage("Please enter a valid phone number with at least 10 digits.");
+        case "email":
+          if (!isValidEmail(text.trim())) {
+            addMessage("Please enter a valid email address.");
+            return;
+          }
+          chatState.data.email = text.trim();
+          chatState.captureStep = "phone";
+          addMessage("What’s your phone number?");
           return;
-        }
-        chatState.data.phone = text.trim();
-        chatState.captureStep = "zip";
-        addMessage("What is your zip code?");
-        return;
 
-      case "zip":
-        chatState.data.zip = text.trim();
-        addMessage("Submitting your request now...");
-        if (chatState.leadType === "realtor") {
-          submitRealtorLead();
-        } else {
-          submitFundingLead();
-        }
-        return;
+        case "phone":
+          if (!isValidPhone(text.trim())) {
+            addMessage("Please enter a valid phone number with at least 10 digits.");
+            return;
+          }
+          chatState.data.phone = text.trim();
+          chatState.captureStep = "zip";
+          addMessage("What is your zip code?");
+          return;
+
+        case "zip":
+          chatState.data.zip = text.trim();
+          addMessage("Submitting your request now...");
+          if (chatState.leadType === "realtor") {
+            submitRealtorLead();
+          } else {
+            submitFundingLead();
+          }
+          return;
+      }
     }
-  }
 
-  function submitFundingLead() {
-    if (chatState.isSubmitting) return;
-    chatState.isSubmitting = true;
+    function submitFundingLead() {
+      if (chatState.isSubmitting) return;
+      chatState.isSubmitting = true;
 
-    const data = new URLSearchParams();
-    data.append("name", chatState.data.name || "");
-    data.append("email", chatState.data.email || "");
-    data.append("phone", chatState.data.phone || "");
-    data.append("zip", chatState.data.zip || "");
-    data.append("project_type", chatState.service || chatState.mode || "loan");
-    data.append("source", "AI Home Advisor Search Bot");
+      const data = new URLSearchParams();
+      data.append("name", chatState.data.name || "");
+      data.append("email", chatState.data.email || "");
+      data.append("phone", chatState.data.phone || "");
+      data.append("zip", chatState.data.zip || "");
+      data.append("project_type", chatState.service || chatState.mode || "loan");
+      data.append("source", "AI Home Advisor Search Bot");
 
-    fetch("/lead-handler.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: data.toString()
-    })
-      .then(response => {
-        if (!response.ok) throw new Error("Funding lead submission failed");
-        addMessage("Thank you! Your request has been received. A funding specialist will be in touch as soon as possible by phone, text, or email.");
-        resetChatState();
+      fetch("/lead-handler.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: data.toString()
       })
-      .catch(() => {
-        addMessage("There was a problem submitting your request. Please try again or use the funding form on the page.");
-        chatState.isSubmitting = false;
-      });
-  }
+        .then(response => {
+          if (!response.ok) throw new Error("Funding lead submission failed");
+          addMessage("Thank you! Your request has been received. A funding specialist will be in touch as soon as possible by phone, text, or email.");
+          resetChatState();
+        })
+        .catch(() => {
+          addMessage("There was a problem submitting your request. Please try again or use the funding form on the page.");
+          chatState.isSubmitting = false;
+        });
+    }
 
-  function submitRealtorLead() {
-    if (chatState.isSubmitting) return;
-    chatState.isSubmitting = true;
+    function submitRealtorLead() {
+      if (chatState.isSubmitting) return;
+      chatState.isSubmitting = true;
 
-    const data = new URLSearchParams();
-    data.append("lead_type", "realtor");
-    data.append("name", chatState.data.name || "");
-    data.append("email", chatState.data.email || "");
-    data.append("phone", chatState.data.phone || "");
-    data.append("zip", chatState.data.zip || "");
-    data.append("goal", chatState.service || chatState.mode || "realtor");
-    data.append("source", "AI Home Advisor Search Bot");
+      const data = new URLSearchParams();
+      data.append("lead_type", "realtor");
+      data.append("name", chatState.data.name || "");
+      data.append("email", chatState.data.email || "");
+      data.append("phone", chatState.data.phone || "");
+      data.append("zip", chatState.data.zip || "");
+      data.append("goal", chatState.service || chatState.mode || "realtor");
+      data.append("source", "AI Home Advisor Search Bot");
 
-    fetch("/realtor-handler.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: data.toString(),
-      redirect: "follow"
-    })
-      .then(response => {
-        if (!response.ok) throw new Error("Realtor lead submission failed");
-        addMessage("Thank you! Your request has been received. A local real estate expert will be in touch as soon as possible by phone, text, or email.");
-        resetChatState();
+      fetch("/realtor-handler.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: data.toString(),
+        redirect: "follow"
       })
-      .catch(() => {
-        addMessage("There was a problem submitting your request. Please try again or use the realtor form on the page.");
-        chatState.isSubmitting = false;
-      });
-  }
-
-  document.addEventListener("DOMContentLoaded", async function () {
-    setInitialChatGreeting();
-
-    const zipInput = document.getElementById("zip");
-    if (zipInput) zipInput.addEventListener("input", showPropertyInsights);
-
-    buildVisiblePageSections();
-    await loadKnowledgeBase();
-  });
-</script>
+        .then(response => {
+          if (!response.ok) throw new Error("Realtor lead submission failed");
+          addMessage("Thank you! Your request has been received. A local real estate expert will be in touch as soon as possible by phone, text, or email.");
+          resetChatState();
+        })
+        .catch(() => {
+          addMessage("There was a problem submitting your request. Please try again or use the realtor form on the page.");
+          chatState.isSubmitting = false;
+        });
+    }
+  </script>
 
   <script>
-    const visitorActivities = [
-      "A homeowner in Miami viewed Roof Replacement a few minutes ago.",
-      "A visitor in Fort Lauderdale checked Lower Monthly Payments recently.",
-      "A homeowner in Dallas explored Impact Windows just now.",
-      "Someone in San Diego looked at Realtor Guidance a few minutes ago.",
-      "A visitor in Boca Raton reviewed Featured Ways to Save recently.",
-      "Someone in Orlando checked home upgrade ROI a few minutes ago."
+    const activityItems = [
+      {
+        type: "roof",
+        label: "Roof Search",
+        icon: "🏠",
+        message: "A homeowner in Miami viewed roof quotes.",
+        time: "2 minutes ago"
+      },
+      {
+        type: "funding",
+        label: "Funding Search",
+        icon: "💳",
+        message: "A visitor in Fort Lauderdale checked lower monthly payment options.",
+        time: "5 minutes ago"
+      },
+      {
+        type: "realtor",
+        label: "Selling Search",
+        icon: "📍",
+        message: "A homeowner in Tampa explored local realtor guidance.",
+        time: "7 minutes ago"
+      },
+      {
+        type: "windows",
+        label: "Window Search",
+        icon: "🪟",
+        message: "A visitor in Dallas reviewed impact window value.",
+        time: "10 minutes ago"
+      },
+      {
+        type: "solar",
+        label: "Solar Search",
+        icon: "☀️",
+        message: "A homeowner in Phoenix explored solar savings.",
+        time: "12 minutes ago"
+      },
+      {
+        type: "partners",
+        label: "Partner Search",
+        icon: "📈",
+        message: "A contractor in Houston compared partner pricing plans.",
+        time: "15 minutes ago"
+      }
     ];
 
-    let activityPopupTimer = null;
-    let activityPopupCycle = null;
     let activityIndex = 0;
+    let activityPopupTimer = null;
+    let activityPopupCycleTimer = null;
 
     function showActivityPopup() {
-      const popup = document.getElementById("activityPopup");
-      const message = document.getElementById("activityPopupMessage");
-      if (!popup || !message || sessionStorage.getItem("nn_activity_closed") === "1") return;
+      if (sessionStorage.getItem("nn_activity_closed") === "1") return;
 
-      message.textContent = visitorActivities[activityIndex % visitorActivities.length];
+      const popup = document.getElementById("activityPopup");
+      const icon = document.getElementById("activityPopupIcon");
+      const label = document.getElementById("activityPopupLabel");
+      const message = document.getElementById("activityPopupMessage");
+      const time = document.getElementById("activityPopupTime");
+
+      if (!popup || !icon || !label || !message || !time) return;
+
+      const item = activityItems[activityIndex];
+      icon.textContent = item.icon;
+      label.textContent = item.label;
+      message.textContent = item.message;
+      time.textContent = item.time;
       popup.classList.add("show");
-      activityIndex += 1;
 
       clearTimeout(activityPopupTimer);
       activityPopupTimer = setTimeout(() => {
         popup.classList.remove("show");
-      }, 5200);
+      }, 5500);
+
+      activityIndex = (activityIndex + 1) % activityItems.length;
     }
 
     function closeActivityPopup() {
       const popup = document.getElementById("activityPopup");
       if (popup) popup.classList.remove("show");
       sessionStorage.setItem("nn_activity_closed", "1");
-      clearInterval(activityPopupCycle);
       clearTimeout(activityPopupTimer);
-    }
-
-    function initActivityPopup() {
-      if (sessionStorage.getItem("nn_activity_closed") === "1") return;
-
-      setTimeout(showActivityPopup, 3500);
-      activityPopupCycle = setInterval(showActivityPopup, 18000);
+      clearInterval(activityPopupCycleTimer);
     }
 
     function openLeadOfferModal() {
@@ -1810,7 +1876,18 @@ function getTimeBasedGreeting() {
       modal.setAttribute("aria-hidden", "true");
     }
 
-    function initLeadOfferModal() {
+    document.addEventListener("DOMContentLoaded", async function () {
+      setInitialChatGreeting();
+
+      const zipInput = document.getElementById("zip");
+      if (zipInput) zipInput.addEventListener("input", showPropertyInsights);
+
+      buildVisiblePageSections();
+      await loadKnowledgeBase();
+
+      setTimeout(showActivityPopup, 2500);
+      activityPopupCycleTimer = setInterval(showActivityPopup, 12000);
+
       setTimeout(openLeadOfferModal, 12000);
 
       document.addEventListener("mouseleave", function (event) {
@@ -1827,18 +1904,6 @@ function getTimeBasedGreeting() {
           }
         });
       }
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-      setInitialChatGreeting();
-
-      const zipInput = document.getElementById("zip");
-      if (zipInput) {
-        zipInput.addEventListener("input", showPropertyInsights);
-      }
-
-      initActivityPopup();
-      initLeadOfferModal();
     });
   </script>
 </body>
