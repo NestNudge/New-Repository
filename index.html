@@ -1633,16 +1633,44 @@
         return;
       }
 
-      if (intent.type === "knowledge") {
-        const visibleMatch = searchVisiblePage(text);
-        const knowledgeMatches = searchKnowledgeBase(text);
+     if (intent.type === "knowledge") {
+  const lower = text.toLowerCase();
 
-        if (visibleMatch) routeFromVisibleMatch(visibleMatch);
+  // 🔥 PRIORITY: LOWER MONTHLY BILLS
+  if (
+    lower.includes("lower") ||
+    lower.includes("bill") ||
+    lower.includes("payment") ||
+    lower.includes("debt") ||
+    lower.includes("credit")
+  ) {
+    addMessage("If your goal is to lower your monthly bills, the strongest first step is usually reducing your current payments before taking on any large home projects.");
 
-        addMessage(summarizeKnowledgeMatches(knowledgeMatches));
-        addDecisionCTA(text);
-        return;
-      }
+    addMessage("Most homeowners start here because it creates immediate breathing room and makes every next decision easier.");
+
+    addMessage("From there, you can decide whether to invest in upgrades like roofing, windows, or solar based on your new financial position.");
+
+    addMessage("The best next step is to check what options you qualify for right now.");
+
+    // 👇 scroll to funding section
+    const section = document.getElementById("loan-section");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+
+    return;
+  }
+
+  // fallback (normal behavior)
+  const visibleMatch = searchVisiblePage(text);
+  const knowledgeMatches = searchKnowledgeBase(text);
+
+  if (visibleMatch) routeFromVisibleMatch(visibleMatch);
+
+  addMessage(summarizeKnowledgeMatches(knowledgeMatches));
+  addDecisionCTA(text);
+  return;
+}
 
       if (intent.type === "change") {
         chatState.captureStep = "";
