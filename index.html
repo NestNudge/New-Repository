@@ -1581,181 +1581,171 @@ function detectIntent(text) {
     }
 
     function processUserMessage(text) {
-      if (chatState.captureStep) {
-        handleCaptureStep(text);
-        return;
-      }
-
-      const detectedAudience = detectAudience(text);
-      if (detectedAudience && !chatState.audience) {
-        chatState.audience = detectedAudience;
-      }
-
-      const intent = detectIntent(text);
-
-      if (intent.type === "audience") {
-        chatState.audience = intent.audience;
-
-        if (intent.audience === "consumer") {
-          addMessage("Perfect — I’ll guide you like a homeowner looking for the best next step.");
-          addMessage("You can start with one of these: lower monthly payments, roof quotes and ROI, windows or doors, solar or insurance savings, or selling with a realtor.");
-          showChatOptionButtons([
-            { label: "Lower Bills", value: "lower monthly payments" },
-            { label: "Roof Quotes", value: "roof quotes" },
-            { label: "Windows", value: "impact windows" },
-            { label: "Selling", value: "selling my home" }
-          ]);
-        } else {
-          addMessage("Perfect — I’ll guide you like a contractor or partner looking for the best growth path.");
-          addMessage("You can start with startup pricing, monthly plans, lead opportunities, or ZIP code targeting.");
-          showChatOptionButtons([
-            { label: "$29 Startup", value: "$29 startup package" },
-            { label: "$99 Monthly", value: "$99 monthly plan" },
-            { label: "Lead Flow", value: "lead opportunities" },
-            { label: "ZIP Targeting", value: "ZIP code leads" }
-          ]);
-        }
-        return;
-      }
-
-      if (intent.type === "service") {
-        chatState.mode = "service";
-        chatState.service = intent.service;
-        chatState.leadType = "funding";
-        chatState.captureStep = "";
-
-        showUpgrade(intent.service);
-
-        const summary = getUpgradeSummary(intent.service);
-        if (summary) {
-          addMessage(`${summary.title} typically ranges from ${formatMoney(summary.costLow)} to ${formatMoney(summary.costHigh)} and may add about ${formatMoney(summary.valueLow)} to ${formatMoney(summary.valueHigh)} in value. Estimated ROI can be around ${summary.avgROI}%.`);
-        }
-
-        const visibleMatch = searchVisiblePage(text);
-        routeFromVisibleMatch(visibleMatch);
-        addDecisionCTA(text);
-        return;
-      }
-
-      if (intent.type === "buying") {
-        chatState.mode = "buying";
-        addMessage("Buying is a great time to think ahead. The best buyers look for upgrade potential, future value, and projects that may improve comfort or resale later.");
-        addMessage("Would you like to compare roofing, entry doors, or impact windows first?");
-        return;
-      }
-
-      if (intent.type === "funding") {
-  chatState.mode = "funding";
-  chatState.leadType = "funding";
-  routeFromVisibleMatch(searchVisiblePage("funding lower monthly payments loan debt credit bills"));
-
-  addMessage("If your goal is to lower your monthly bills, the strongest first step is usually reducing your current payments before taking on any large home projects.");
-  addMessage("Most homeowners start here because it creates breathing room right away and makes every next decision easier.");
-  addMessage("Once your monthly pressure is lower, you can decide whether to move into upgrades like roofing, windows, or solar from a stronger financial position.");
-  addMessage("I can help you get started now. What’s your full name?");
-
-  chatState.captureStep = "name";
-  return;
-}
-
-      if (intent.type === "realtor") {
-        chatState.mode = "realtor";
-        chatState.leadType = "realtor";
-        routeFromVisibleMatch(searchVisiblePage(text));
-        addMessage("When selling is the goal, the smartest decision is usually to focus on the upgrades that improve selling power and put more money back in your pocket without overspending.");
-        addMessage("I can connect you with a local realtor now. What’s your full name?");
-        chatState.captureStep = "name";
-        return;
-      }
-
-     if (intent.type === "knowledge") {
-  const lower = text.toLowerCase();
-
-  // 🔥 PRIORITY: LOWER MONTHLY BILLS
-  if (
-    lower.includes("lower") ||
-    lower.includes("bill") ||
-    lower.includes("payment") ||
-    lower.includes("debt") ||
-    lower.includes("credit")
-  ) {
-    addMessage("If your goal is to lower your monthly bills, the strongest first step is usually reducing your current payments before taking on any large home projects.");
-
-    addMessage("Most homeowners start here because it creates immediate breathing room and makes every next decision easier.");
-
-    addMessage("From there, you can decide whether to invest in upgrades like roofing, windows, or solar based on your new financial position.");
-
-    addMessage("The best next step is to check what options you qualify for right now.");
-
-    // 👇 scroll to funding section
-    const section = document.getElementById("loan-section");
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-
+  if (chatState.captureStep) {
+    handleCaptureStep(text);
     return;
   }
 
-  // fallback (normal behavior)
+  const detectedAudience = detectAudience(text);
+  if (detectedAudience && !chatState.audience) {
+    chatState.audience = detectedAudience;
+  }
+
+  const intent = detectIntent(text);
   const lower = text.toLowerCase();
 
-if (
-  lower.includes("bill") ||
-  lower.includes("bills") ||
-  lower.includes("payment") ||
-  lower.includes("payments") ||
-  lower.includes("debt") ||
-  lower.includes("credit")
-) {
-  routeFromVisibleMatch(searchVisiblePage("funding lower monthly payments"));
-  addMessage("If lowering monthly bills is your goal, the smartest place to start is with payment-lowering or debt-consolidation options before making any larger home move.");
-  addMessage("That gives you faster financial relief and puts you in a better position for everything that comes next.");
-  addMessage("I can help you get started now. What’s your full name?");
-  chatState.mode = "funding";
-  chatState.leadType = "funding";
-  chatState.captureStep = "name";
-  return;
-}
+  if (intent.type === "audience") {
+    chatState.audience = intent.audience;
 
-const visibleMatch = searchVisiblePage(text);
-const knowledgeMatches = searchKnowledgeBase(text);
+    if (intent.audience === "consumer") {
+      addMessage("Perfect — I’ll guide you like a homeowner looking for the best next step.");
+      addMessage("You can start with one of these: lower monthly payments, roof quotes and ROI, windows or doors, solar or insurance savings, or selling with a realtor.");
+      showChatOptionButtons([
+        { label: "Lower Bills", value: "lower monthly payments" },
+        { label: "Roof Quotes", value: "roof quotes" },
+        { label: "Windows", value: "impact windows" },
+        { label: "Selling", value: "selling my home" }
+      ]);
+    } else {
+      addMessage("Perfect — I’ll guide you like a contractor or partner looking for the best growth path.");
+      addMessage("You can start with startup pricing, monthly plans, lead opportunities, or ZIP code targeting.");
+      showChatOptionButtons([
+        { label: "$29 Startup", value: "$29 startup package" },
+        { label: "$99 Monthly", value: "$99 monthly plan" },
+        { label: "Lead Flow", value: "lead opportunities" },
+        { label: "ZIP Targeting", value: "ZIP code leads" }
+      ]);
+    }
+    return;
+  }
 
-if (visibleMatch) {
-  routeFromVisibleMatch(visibleMatch);
-  addMessage(`${visibleMatch.label}: ${visibleMatch.cta}`);
-}
+  if (intent.type === "service") {
+    chatState.mode = "service";
+    chatState.service = intent.service;
+    chatState.leadType = "funding";
+    chatState.captureStep = "";
 
-if (knowledgeMatches.length) {
-  addMessage("I found a few relevant options. Tell me whether your main goal is lower bills, improving home value, or preparing to sell, and I’ll guide you to the best next step.");
-  addDecisionCTA(text);
-  return;
-}
+    showUpgrade(intent.service);
 
-      if (intent.type === "change") {
-        chatState.captureStep = "";
-        chatState.mode = "general";
-        chatState.service = "";
-        addMessage("No problem — we can change direction. Are you looking for help as a homeowner, or are you a contractor/partner exploring leads and plans?");
-        return;
-      }
-
-      const visibleMatch = searchVisiblePage(text);
-      const knowledgeMatches = searchKnowledgeBase(text);
-
-      if (visibleMatch) {
-        routeFromVisibleMatch(visibleMatch);
-        addMessage(`${visibleMatch.label}: ${visibleMatch.cta}`);
-      }
-
-      if (knowledgeMatches.length) {
-        addMessage(summarizeKnowledgeMatches(knowledgeMatches));
-        addDecisionCTA(text);
-        return;
-      }
-
-      addMessage("I can help you search the page and knowledge base for homeowner options, upgrade ROI, funding, selling guidance, solar, insurance, and partner pricing. Tell me your goal and I’ll guide you to the best next step.");
+    const summary = getUpgradeSummary(intent.service);
+    if (summary) {
+      addMessage(`${summary.title} typically ranges from ${formatMoney(summary.costLow)} to ${formatMoney(summary.costHigh)} and may add about ${formatMoney(summary.valueLow)} to ${formatMoney(summary.valueHigh)} in value. Estimated ROI can be around ${summary.avgROI}%.`);
     }
 
+    const visibleMatch = searchVisiblePage(text);
+    routeFromVisibleMatch(visibleMatch);
+    addDecisionCTA(text);
+    return;
+  }
+
+  if (intent.type === "buying") {
+    chatState.mode = "buying";
+    addMessage("Buying is a great time to think ahead. The best buyers look for upgrade potential, future value, and projects that may improve comfort or resale later.");
+    addMessage("Would you like to compare roofing, entry doors, or impact windows first?");
+    return;
+  }
+
+  if (intent.type === "funding") {
+    chatState.mode = "funding";
+    chatState.leadType = "funding";
+    routeFromVisibleMatch(searchVisiblePage("funding lower monthly payments loan debt credit bills"));
+
+    addMessage("If your goal is to lower your monthly bills, the strongest first step is usually reducing your current payments before taking on any large home projects.");
+    addMessage("Most homeowners start here because it creates breathing room right away and makes every next decision easier.");
+    addMessage("Once your monthly pressure is lower, you can decide whether to move into upgrades like roofing, windows, or solar from a stronger financial position.");
+    addMessage("I can help you get started now. What’s your full name?");
+
+    chatState.captureStep = "name";
+    return;
+  }
+
+  if (intent.type === "realtor") {
+    chatState.mode = "realtor";
+    chatState.leadType = "realtor";
+    routeFromVisibleMatch(searchVisiblePage(text));
+    addMessage("When selling is the goal, the smartest decision is usually to focus on the upgrades that improve selling power and put more money back in your pocket without overspending.");
+    addMessage("I can connect you with a local realtor now. What’s your full name?");
+    chatState.captureStep = "name";
+    return;
+  }
+
+  if (intent.type === "knowledge") {
+    if (
+      lower.includes("bill") ||
+      lower.includes("bills") ||
+      lower.includes("payment") ||
+      lower.includes("payments") ||
+      lower.includes("debt") ||
+      lower.includes("credit")
+    ) {
+      routeFromVisibleMatch(searchVisiblePage("funding lower monthly payments"));
+      addMessage("If lowering monthly bills is your goal, the smartest place to start is with payment-lowering or debt-consolidation options before making any larger home move.");
+      addMessage("That gives you faster financial relief and puts you in a better position for everything that comes next.");
+      addMessage("I can help you get started now. What’s your full name?");
+      chatState.mode = "funding";
+      chatState.leadType = "funding";
+      chatState.captureStep = "name";
+      return;
+    }
+
+    const visibleMatch = searchVisiblePage(text);
+    const knowledgeMatches = searchKnowledgeBase(text);
+
+    if (visibleMatch) {
+      routeFromVisibleMatch(visibleMatch);
+      addMessage(`${visibleMatch.label}: ${visibleMatch.cta}`);
+    }
+
+    if (knowledgeMatches.length) {
+      addMessage("I found a few relevant options. Tell me whether your main goal is lower bills, improving home value, or preparing to sell, and I’ll guide you to the best next step.");
+      addDecisionCTA(text);
+      return;
+    }
+  }
+
+  if (intent.type === "change") {
+    chatState.captureStep = "";
+    chatState.mode = "general";
+    chatState.service = "";
+    addMessage("No problem — we can change direction. Are you looking for help as a homeowner, or are you a contractor/partner exploring leads and plans?");
+    return;
+  }
+
+  if (
+    lower.includes("bill") ||
+    lower.includes("bills") ||
+    lower.includes("payment") ||
+    lower.includes("payments") ||
+    lower.includes("debt") ||
+    lower.includes("credit")
+  ) {
+    routeFromVisibleMatch(searchVisiblePage("funding lower monthly payments"));
+    addMessage("If lowering monthly bills is your goal, the smartest place to start is with payment-lowering or debt-consolidation options before making any larger home move.");
+    addMessage("That gives you faster financial relief and puts you in a better position for everything that comes next.");
+    addMessage("I can help you get started now. What’s your full name?");
+    chatState.mode = "funding";
+    chatState.leadType = "funding";
+    chatState.captureStep = "name";
+    return;
+  }
+
+  const visibleMatch = searchVisiblePage(text);
+  const knowledgeMatches = searchKnowledgeBase(text);
+
+  if (visibleMatch) {
+    routeFromVisibleMatch(visibleMatch);
+    addMessage(`${visibleMatch.label}: ${visibleMatch.cta}`);
+  }
+
+  if (knowledgeMatches.length) {
+    addMessage("I found a few relevant options. Tell me whether your main goal is lower bills, improving home value, or preparing to sell, and I’ll guide you to the best next step.");
+    addDecisionCTA(text);
+    return;
+  }
+
+  addMessage("I can help you search the page and knowledge base for homeowner options, upgrade ROI, funding, selling guidance, solar, insurance, and partner pricing. Tell me your goal and I’ll guide you to the best next step.");
+}
+    
     function isValidEmail(email) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
