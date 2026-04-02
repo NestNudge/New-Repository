@@ -2621,3 +2621,29 @@ footer p {
     padding-right: 18px;
   }
 }
+
+/* OFFERS PAGE NAV TEXT FIX */
+.offers-page header,
+body.offers-page header {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+}
+
+.offers-page nav a,
+.offers-page .main-nav a,
+.offers-page .dropbtn,
+body.offers-page nav a,
+body.offers-page .main-nav a,
+body.offers-page .dropbtn {
+  color: #111827 !important;
+}
+
+.offers-page .cta-button,
+body.offers-page .cta-button {
+  color: #ffffff !important;
+}
+
+.offers-page .dropdown-content a,
+body.offers-page .dropdown-content a {
+  color: #333 !important;
+}
