@@ -2647,10 +2647,3 @@ body.offers-page .cta-button {
 body.offers-page .dropdown-content a {
   color: #333 !important;
 }
-
-/* HOME PAGE MOBILE HERO OFFSET FIX */
-@media (max-width: 768px) {
-  .hero-container {
-    padding: 210px 16px 48px !important;
-  }
-}
