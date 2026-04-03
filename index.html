@@ -937,6 +937,8 @@ function processUserMessage(text) {
     chatState.audience = intent.audience;
 
     if (intent.audience === "consumer") {
+      const homeStart = document.getElementById("hero-form");
+      if (homeStart) homeStart.scrollIntoView({ behavior: "smooth", block: "start" });
       addMessage("Perfect — I’ll guide you like a homeowner looking for the best next step.");
       addMessage("You can start with one of these: lower monthly payments, roof quotes and ROI, windows or doors, solar or insurance savings, or selling with a realtor.");
       showChatOptionButtons([
@@ -946,6 +948,7 @@ function processUserMessage(text) {
         { label: "Selling", value: "selling my home" }
       ]);
     } else {
+      scrollToPartners();
       addMessage("Perfect — I’ll guide you like a contractor or partner looking for the best growth path.");
       addMessage("The right plan depends on whether you are testing the platform, building steady lead flow, or scaling an established business.");
       addMessage("Most new companies start with the $29 starter plan because it is the lowest-risk way to test lead flow and see how the system fits their market.");
@@ -982,8 +985,9 @@ function processUserMessage(text) {
 
   if (intent.type === "buying") {
     chatState.mode = "buying";
+    scrollToEstimator();
     addMessage("Buying is a great time to think ahead. The best buyers look for upgrade potential, future value, and projects that may improve comfort or resale later.");
-    addMessage("Would you like to compare roofing, entry doors, or impact windows first?");
+    addMessage("I’ve taken you to the upgrade estimator so you can compare roofing, entry doors, and impact windows.");
     return;
   }
 
@@ -1150,7 +1154,8 @@ function processUserMessage(text) {
       lower.includes("debt") ||
       lower.includes("credit")
     ) {
-      routeFromVisibleMatch(searchVisiblePage("funding lower monthly payments"));
+      scrollToLoan();
+    routeFromVisibleMatch(searchVisiblePage("funding lower monthly payments"));
       addMessage("If lowering monthly bills is your goal, the smartest place to start is with payment-lowering or debt-consolidation options before making any larger home move.");
       addMessage("That gives you faster financial relief and puts you in a better position for everything that comes next.");
       addMessage("I can help you get started now. What’s your full name?");
