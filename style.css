@@ -878,3 +878,101 @@ body:not(.roof-page) .hero-benefits li {
     padding: 120px 32px 70px;
   }
 }
+
+/* ==========================================
+   FINAL ROOF PAGE OVERRIDES
+   KEEP THIS AT THE VERY BOTTOM OF style.css
+========================================== */
+
+body.roof-page {
+  color: #111827 !important;
+  background: #ffffff !important;
+}
+
+body.roof-page header {
+  position: relative !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+}
+
+body.roof-page nav,
+body.roof-page .main-nav {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.roof-page nav a,
+body.roof-page .main-nav a,
+body.roof-page .dropbtn,
+body.roof-page .dropdown:nth-child(4) .dropbtn {
+  color: #111827 !important;
+}
+
+body.roof-page .cta-button {
+  color: #ffffff !important;
+}
+
+body.roof-page .dropdown-content a {
+  color: #333333 !important;
+}
+
+/* Force visible text on the roof page */
+body.roof-page h1,
+body.roof-page h2,
+body.roof-page h3,
+body.roof-page h4,
+body.roof-page p,
+body.roof-page li,
+body.roof-page span,
+body.roof-page strong,
+body.roof-page label,
+body.roof-page .hero-left,
+body.roof-page .hero-left h1,
+body.roof-page .hero-left p,
+body.roof-page .hero-text,
+body.roof-page .hero-text h1,
+body.roof-page .hero-text p,
+body.roof-page .hero-benefits li,
+body.roof-page .loan-text,
+body.roof-page .loan-text h2,
+body.roof-page .loan-text p,
+body.roof-page .loan-text li,
+body.roof-page .selling-text,
+body.roof-page .selling-text h2,
+body.roof-page .selling-text p {
+  color: #111827 !important;
+}
+
+/* Keep dark section readable */
+body.roof-page .phase-one-loan,
+body.roof-page .phase-one-loan .loan-text,
+body.roof-page .phase-one-loan .loan-text h2,
+body.roof-page .phase-one-loan .loan-text p,
+body.roof-page .phase-one-loan .loan-text li,
+body.roof-page .phase-one-loan .loan-mini-step {
+  color: #ffffff !important;
+}
+
+body.roof-page .phase-one-loan .loan-highlight-badge {
+  color: #166534 !important;
+}
+
+/* Mobile override too */
+@media (max-width: 768px) {
+  body.roof-page header {
+    position: relative !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+  }
+
+  body.roof-page nav a,
+  body.roof-page .main-nav a,
+  body.roof-page .dropbtn,
+  body.roof-page .dropdown:nth-child(4) .dropbtn {
+    color: #111827 !important;
+  }
+
+  body.roof-page .cta-button {
+    color: #ffffff !important;
+  }
+}
