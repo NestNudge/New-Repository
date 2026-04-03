@@ -784,9 +784,9 @@
     function getTimeBasedGreeting() {
       const hour = new Date().getHours();
 
-      if (hour < 12) return "Hello, this is Michael with NestNudge, how can I support you this morning?";
-      if (hour < 18) return "Hello, this is Michael with NestNudge, how can I support you this afternoon?";
-      return "Hello, this is Michael with NestNudge, how can I support you this evening?";
+      if (hour < 12) return "Good morning — I’m Michael with NestNudge. How can I help you today?";
+      if (hour < 18) return "Good afternoon — I’m Michael with NestNudge. How can I help you today?";
+      return "Good evening — I’m Michael with NestNudge. How can I help you today?";
     }
 
     function setInitialChatGreeting() {
@@ -880,12 +880,47 @@
     function detectIntent(text) {
       const value = text.toLowerCase();
 
+      if (
+        value.includes("i am looking for a roofer") ||
+        value.includes("looking for a roofer") ||
+        value.includes("need a roofer")
+      ) return { type: "connection", target: "roofer" };
+
+      if (
+        value.includes("i am looking for a contractor") ||
+        value.includes("looking for a contractor") ||
+        value.includes("need a contractor")
+      ) return { type: "connection", target: "contractor" };
+
+      if (
+        value.includes("i am looking for a realtor") ||
+        value.includes("looking for a realtor") ||
+        value.includes("need a realtor")
+      ) return { type: "connection", target: "realtor" };
+
+      if (
+        value.includes("i am looking for a financial advisor") ||
+        value.includes("looking for a financial advisor") ||
+        value.includes("need a financial advisor") ||
+        value.includes("financial advisor")
+      ) return { type: "connection", target: "financial_advisor" };
+
       if (value.includes("roof") || value.includes("roofing")) return { type: "service", service: "roof" };
       if (value.includes("door") || value.includes("entry door") || value.includes("front door")) return { type: "service", service: "doors" };
       if (value.includes("window") || value.includes("impact window") || value.includes("hurricane window")) return { type: "service", service: "windows" };
       if (value.includes("buy") || value.includes("buying") || value.includes("purchase")) return { type: "buying" };
       if (value.includes("sell") || value.includes("selling") || value.includes("realtor") || value.includes("agent")) return { type: "realtor" };
-      if (value.includes("funding") || value.includes("finance") || value.includes("loan") || value.includes("payment") || value.includes("debt") || value.includes("credit")) return { type: "funding" };
+      if (
+        value.includes("funding") ||
+        value.includes("finance") ||
+        value.includes("loan") ||
+        value.includes("payment") ||
+        value.includes("payments") ||
+        value.includes("debt") ||
+        value.includes("credit") ||
+        value.includes("bill") ||
+        value.includes("bills")
+      ) return { type: "funding" };
       if (value.includes("solar") || value.includes("insurance") || value.includes("offer")) return { type: "offers" };
       if (value.includes("change") || value.includes("instead") || value.includes("different")) return { type: "change" };
 
@@ -919,7 +954,46 @@
     }
 
     function processUserMessage(text) {
+      if (chatState.captureStep) {
+        handleCaptureStep(text);
+        return;
+      }
+
       const intent = detectIntent(text);
+
+      if (intent.type === "connection") {
+        if (intent.target === "roofer") {
+          addMessage("I can definitely help with that. Give me a moment while I connect you with one of our roofing partners to assist you.");
+          setTimeout(() => {
+            redirectToRoofQuotes();
+          }, 900);
+          return;
+        }
+
+        if (intent.target === "contractor") {
+          addMessage("I can definitely help with that. Give me a moment while I connect you with one of our partners to assist you.");
+          setTimeout(() => {
+            scrollToHeroForm();
+          }, 700);
+          return;
+        }
+
+        if (intent.target === "realtor") {
+          addMessage("I can definitely help with that. Give me a moment while I connect you with one of our realtor partners to assist you.");
+          setTimeout(() => {
+            scrollToRealtor();
+          }, 700);
+          return;
+        }
+
+        if (intent.target === "financial_advisor") {
+          addMessage("I can definitely help with that. Give me a moment while I connect you with one of our financial partners to assist you.");
+          setTimeout(() => {
+            scrollToLoan();
+          }, 700);
+          return;
+        }
+      }
 
       if (intent.type === "service") {
         chatState.mode = "service";
@@ -936,14 +1010,18 @@
           );
         }
 
-        addMessage("Would you like financing options, or would you like to explore another upgrade?");
+        if (intent.service === "roof") {
+          addMessage("If you'd like, I can also point you toward roof quotes or help you compare the next best step.");
+        } else {
+          addMessage("I’d be happy to help you compare your options from here. Would you like financing help, resale guidance, or another upgrade?");
+        }
         return;
       }
 
       if (intent.type === "buying") {
         chatState.mode = "buying";
         chatState.captureStep = "";
-        addMessage("Buying is a great time to think about future value. I can help you explore which upgrades might have the strongest ROI after purchase.");
+        addMessage("Absolutely — buying is a great time to think about future value. I can help you explore which upgrades may have the strongest ROI after purchase.");
         addMessage("Would you like to compare roofing, entry doors, or impact windows?");
         return;
       }
@@ -952,7 +1030,7 @@
         chatState.mode = "funding";
         chatState.leadType = "funding";
         chatState.captureStep = "name";
-        addMessage("Absolutely — I can help with funding options. What’s your full name?");
+        addMessage("Absolutely — I’d be happy to help with that. Let’s start by seeing what options may fit you best. What’s your full name?");
         return;
       }
 
@@ -960,27 +1038,23 @@
         chatState.mode = "realtor";
         chatState.leadType = "realtor";
         chatState.captureStep = "name";
-        addMessage("Absolutely — I can connect you with a local realtor. What’s your full name?");
+        addMessage("Absolutely — I can help connect you with a local realtor. What’s your full name?");
         return;
       }
 
       if (intent.type === "offers") {
-        addMessage("NestNudge includes educational savings guides for loans, solar, insurance, and credit. You can explore them in Featured Ways to Save or visit /offers.html.");
+        addMessage("Absolutely — NestNudge includes savings paths for loans, solar, insurance, and credit. I can point you to the best one based on what you’re trying to improve.");
+        addMessage("Are you mainly looking to lower bills, improve cash flow, or plan your next home move?");
         return;
       }
 
       if (intent.type === "change") {
-        addMessage("No problem — you can switch anytime. Are you interested in roofing, buying, entry doors, impact windows, funding, offers, or a realtor?");
+        addMessage("No problem at all — we can switch directions. Are you looking for roofing, a contractor, a realtor, financial help, or something else for your home?");
         chatState.captureStep = "";
         return;
       }
 
-      if (chatState.captureStep) {
-        handleCaptureStep(text);
-        return;
-      }
-
-      addMessage("I can help with roofing, buying, entry doors, impact windows, funding, offers, or a realtor. Which one would you like to explore?");
+      addMessage("I’m here to help. You can tell me things like “I am looking for a roofer,” “I am looking for a contractor,” “I am looking for a realtor,” or “I am looking for a financial advisor,” and I’ll point you in the right direction.");
     }
 
     function isValidEmail(email) {
