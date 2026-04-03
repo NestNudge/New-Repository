@@ -2469,3 +2469,16 @@ body.offers-page .dropdown-content a {
     bottom: 24px;
   }
 }
+
+/* =========================
+   ROOF PAGE CONTENT TEXT FIX
+========================= */
+.roof-page,
+.roof-page h1,
+.roof-page h2,
+.roof-page h3,
+.roof-page p,
+.roof-page li,
+.roof-page label {
+  color: #111827;
+}
