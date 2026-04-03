@@ -47,6 +47,7 @@ section {
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
 /* =========================
@@ -97,7 +98,9 @@ select:focus {
   border-color: var(--primary);
 }
 
-/* HEADER */
+/* =========================
+   HEADER / NAV
+========================= */
 header {
   position: absolute;
   top: 0;
@@ -191,26 +194,9 @@ nav a,
   display: block;
 }
 
+/* remove single green-only nav item override */
 .dropdown:nth-child(4) .dropbtn {
-  color: #2e7d32;
-}
-
-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 16px;
-  z-index: 5000;
-}
-
-.main-nav,
-.main-nav a,
-.dropbtn,
-.dropdown,
-.dropdown-content {
-  position: relative;
-  z-index: 5001;
+  color: var(--white);
 }
 
 /* =========================
@@ -309,34 +295,10 @@ header {
   gap: 10px;
 }
 
-.hero-benefits li i,
-.hero-benefits li svg,
-.hero-benefits li .check-icon,
-.hero-benefits li::before {
-  color: #ffffff !important;
-  fill: #ffffff !important;
-  stroke: #ffffff !important;
-  opacity: 1 !important;
-  flex-shrink: 0;
-}
-
 .hero-right {
   width: 100%;
   display: flex;
   justify-content: center;
-}
-
-.hero-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-image img {
-  width: 100%;
-  max-width: 420px;
-  border-radius: 16px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
 
 .hero-form {
@@ -361,7 +323,7 @@ header {
 }
 
 /* =========================
-   INFO / INTRO / PROPERTY
+   GENERAL CONTENT
 ========================= */
 .info-strip {
   text-align: center;
@@ -381,12 +343,88 @@ header {
   line-height: 1.7;
 }
 
-.offers-intro-strip {
-  padding: 60px 20px 40px;
-  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+/* =========================
+   LOAN / FORMS / SELLING
+========================= */
+.loan-section {
+  background: #f7f7f7;
+  padding: 50px 16px;
+  border-radius: 24px;
+  margin: 20px auto 50px;
 }
 
-.offers-intro-wrap {
+.loan-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: stretch;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.loan-text,
+.loan-form {
+  min-width: 0;
+}
+
+.loan-text h2,
+.selling-text h2 {
+  color: var(--primary);
+  margin-top: 0;
+  font-size: 28px;
+}
+
+.loan-text p,
+.selling-text p,
+.loan-text li {
+  color: #475569;
+}
+
+.loan-form {
+  background: var(--white);
+  padding: 22px 18px;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.loan-form button {
+  width: 100%;
+}
+
+.selling-section {
+  padding: 20px 16px 50px;
+}
+
+.selling-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.selling-image img {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.realtor-contact {
+  padding: 0 16px 50px;
+}
+
+/* =========================
+   PHASE 1 LOAN
+========================= */
+.phase-one-loan {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #334155 100%);
+  color: #fff;
+  padding: 72px 20px;
+  border-radius: 0;
+  margin: 0;
+}
+
+.phase-one-loan .loan-container {
   max-width: 1180px;
   margin: 0 auto;
   display: grid;
@@ -395,467 +433,43 @@ header {
   align-items: center;
 }
 
-.offers-intro-copy h2 {
-  font-size: clamp(2rem, 3vw, 3rem);
+.phase-one-loan .loan-text h2 {
   color: var(--primary);
-  margin-bottom: 12px;
 }
 
-.offers-intro-copy p {
-  color: #475569;
-  font-size: 1.04rem;
-  margin-bottom: 18px;
-  max-width: 620px;
+.phase-one-loan .loan-text p,
+.phase-one-loan .loan-text li {
+  color: rgba(255, 255, 255, 0.88);
 }
 
-.offers-intro-copy ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 20px;
-  display: grid;
-  gap: 10px;
-}
-
-.offers-intro-copy li {
-  font-weight: 600;
-  color: #1e293b;
-}
-
-.offers-intro-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.offers-intro-btn,
-.offers-intro-btn-outline,
-.offers-btn,
-.offers-btn-outline {
-  display: inline-block;
-  padding: 14px 20px;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 700;
-  transition: 0.2s ease;
-}
-
-.offers-intro-btn,
-.offers-btn {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  color: #fff;
-}
-
-.offers-intro-btn:hover,
-.offers-btn:hover {
-  background: var(--primary-dark);
-}
-
-.offers-intro-btn-outline,
-.offers-btn-outline {
-  background: #fff;
-  color: var(--primary);
-  border: 2px solid var(--primary);
-}
-
-.offers-intro-btn-outline:hover,
-.offers-btn-outline:hover {
-  background: #f0fdf4;
-}
-
-.offers-intro-card {
+.phase-one-loan .loan-form {
   background: #fff;
   border-radius: 22px;
-  overflow: hidden;
-  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
-  border: 1px solid rgba(15, 23, 42, 0.08);
+  padding: 26px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
 }
 
-.offers-intro-card img,
-.offers-hero-card img {
-  width: 100%;
-  height: 360px;
-  object-fit: cover;
-  object-position: center;
-}
-
-#property-insights-section {
-  display: none;
-}
-
-/* =========================
-   COST GUIDE / RESULTS
-========================= */
-.cost-guide-section {
-  padding: 50px 16px;
-  background: #f8faf8;
-}
-
-.cost-guide-wrap {
-  max-width: 1100px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.cost-guide-wrap h2 {
-  margin: 0 0 12px;
-  color: var(--primary);
-  font-size: 28px;
-}
-
-.cost-guide-wrap p {
-  max-width: 760px;
-  margin: 0 auto 22px;
-  line-height: 1.6;
-}
-
-.upgrade-selector {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  justify-content: center;
-  margin-bottom: 24px;
-}
-
-.upgrade-selector button {
-  width: 100%;
-  min-width: 0;
-}
-
-.results-panel {
-  background: #f9fbfc;
-  border: 1px solid #e6ecef;
-  border-radius: 20px;
-  padding: 22px 14px 120px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.results-panel h3 {
+.phase-one-loan .loan-form h3 {
   color: var(--primary);
 }
 
-.results-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  margin: 22px 0 18px;
-}
-
-.result-box {
-  background: #fff;
-  border: 1px solid #e7ecef;
-  border-radius: 14px;
-  padding: 18px 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
-}
-
-.result-box .label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 14px;
-  color: #5b6470;
-}
-
-.result-box strong {
-  display: block;
-  font-size: 22px;
-  color: #111827;
-}
-
-.graph-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 18px;
-  height: 240px;
-  margin: 24px 0;
-  padding: 16px 8px 74px;
-  overflow: visible;
-}
-
-.bar {
-  width: 78px;
-  min-height: 40px;
-  position: relative;
-  border-radius: 16px 16px 0 0;
-  transition: 0.8s ease;
-  background: #ddd;
-}
-
-.current-bar {
-  background: #999;
-}
-
-.new-bar {
-  background: var(--primary);
-}
-
-.bar span {
-  position: absolute;
-  left: 50%;
-  bottom: -52px;
-  transform: translateX(-50%);
-  width: 110px;
-  text-align: center;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.2;
-  color: var(--dark);
-}
-
-#currentValue,
-#newValue,
-#valueGain {
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  background: #ffffff;
-  border: 1px solid #e7ecef;
-  border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  padding: 14px 16px;
-  text-align: center;
-}
-
-#currentValue,
-#newValue {
-  margin-top: 0;
-  margin-bottom: 16px;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-#valueGain {
-  margin-top: 0;
-  margin-bottom: 22px;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.45;
-  color: var(--primary);
-}
-
-.conversion-cta {
-  margin-top: 24px;
-  padding: 0 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.conversion-cta button,
-.conversion-cta .cta-btn {
-  width: 100%;
-  min-width: 0;
-  padding: 14px 18px;
-  border-radius: 12px;
-}
-
-/* =========================
-   SERVICES CAROUSEL
-========================= */
-.services-carousel {
-  padding: 60px 16px;
-  background: #f9f9f9;
-  text-align: center;
-  overflow: hidden;
-}
-
-.services-carousel h2 {
-  margin: 0 0 28px;
-  color: var(--primary);
-  font-size: 28px;
-}
-
-.carousel-wrapper {
-  overflow: hidden;
-  position: relative;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.carousel-track {
-  display: flex;
-  gap: 20px;
-  width: max-content;
-  animation: scrollLeft 55s linear infinite;
-}
-
-.carousel-wrapper:hover .carousel-track {
-  animation-play-state: paused;
-}
-
-.carousel-track .service-card {
-  min-width: 260px;
-  max-width: 260px;
-  flex-shrink: 0;
-}
-
-@keyframes scrollLeft {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.service-card,
-.featured-offer-card,
-.offer-card {
-  overflow: hidden;
-}
-
-.service-card {
-  position: relative;
-  border-radius: 18px;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-  transition: transform 0.3s ease;
-  background: var(--white);
-}
-
-.service-card:hover {
-  transform: translateY(-4px) scale(1.01);
-}
-
-.service-card img {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  object-position: center;
-}
-
-.service-card .overlay {
-  position: absolute;
-  inset: auto 0 0 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.88), transparent);
-  color: var(--white);
-  padding: 18px;
-  text-align: left;
-}
-
-.service-card h3 {
-  margin: 0 0 6px;
-  font-size: 18px;
-}
-
-.service-card p {
-  margin: 0 0 10px;
-  font-size: 14px;
-  line-height: 1.4;
-  opacity: 0.96;
-}
-
-.service-learn-more,
-.featured-offer-btn,
-.money-link,
-.offer-learn-more {
-  display: inline-block;
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: opacity 0.2s ease;
-}
-
-.service-learn-more:hover,
-.featured-offer-btn:hover,
-.money-link:hover,
-.offer-learn-more:hover {
-  opacity: 0.85;
-}
-
-.service-learn-more {
-  color: #fff;
-  margin-top: 6px;
-}
-
-.featured-offer-btn,
-.offer-learn-more {
-  color: var(--primary);
-}
-
-/* =========================
-   FEATURED OFFERS
-========================= */
-.featured-offers-home {
-  padding: 72px 20px;
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-}
-
-.featured-offers-inner {
-  max-width: 1180px;
-  margin: 0 auto;
-}
-
-.featured-offers-heading {
-  text-align: center;
-  max-width: 820px;
-  margin: 0 auto 34px;
-}
-
-.featured-offers-heading h2 {
-  font-size: clamp(1.9rem, 3vw, 2.8rem);
-  margin-bottom: 10px;
-  color: var(--primary);
-}
-
-.featured-offers-heading p {
+.phase-one-loan .loan-form p {
   color: #64748b;
-  font-size: 1.02rem;
-  line-height: 1.7;
 }
 
-.featured-offers-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 22px;
-}
-
-.featured-offer-card {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 18px;
-  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.featured-offer-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 36px rgba(15, 23, 42, 0.1);
-}
-
-.featured-offer-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  object-position: center;
-}
-
-.featured-offer-content {
-  padding: 22px;
-}
-
-.featured-offer-label {
+.loan-highlight-badge {
   display: inline-block;
-  padding: 6px 11px;
+  background: #dcfce7;
+  color: #166534;
+  padding: 8px 14px;
   border-radius: 999px;
-  background: #eefbf2;
-  color: #1f6f35;
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.featured-offer-content h3 {
-  color: var(--primary);
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-}
-
-.featured-offer-content p {
-  color: #64748b;
   margin-bottom: 16px;
-  min-height: 118px;
-  line-height: 1.65;
 }
 
 /* =========================
-   TESTIMONIALS / CAROUSEL
+   TESTIMONIALS
 ========================= */
 .testimonials {
   padding: 56px 20px;
@@ -866,13 +480,6 @@ header {
   color: var(--primary);
   margin: 0 0 24px;
   font-size: 28px;
-}
-
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 340px));
-  gap: 22px;
-  justify-content: center;
 }
 
 .testimonial-carousel-wrap {
@@ -908,18 +515,7 @@ header {
   background: #ffffff;
   border: 1px solid #e5e7eb;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  cursor: pointer;
-  transition: all 0.25s ease;
   text-align: left;
-}
-
-.testimonial-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
-}
-
-.testimonial-card:active {
-  transform: translateY(-2px) scale(0.98);
 }
 
 .testimonial-header {
@@ -937,43 +533,27 @@ header {
   flex-shrink: 0;
 }
 
-.testimonial-meta {
-  min-width: 0;
-}
-
 .testimonial-name {
   font-weight: 600;
   font-size: 16px;
   color: #111827;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.verified {
-  color: #1d9bf0;
-  font-size: 14px;
-  line-height: 1;
 }
 
 .testimonial-service {
   font-size: 13px;
   color: #6b7280;
-  margin-top: 2px;
 }
 
 .testimonial-stars {
   color: #facc15;
   font-size: 18px;
   margin: 8px 0 10px;
-  letter-spacing: 1px;
 }
 
 .testimonial-review {
   font-size: 15px;
   line-height: 1.6;
   color: #374151;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   margin: 0;
 }
 
@@ -984,273 +564,12 @@ header {
   border-radius: 999px;
   background: #ffffff;
   color: #111827;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   cursor: pointer;
   font-size: 24px;
-  line-height: 1;
-  flex: 0 0 auto;
-  transition: all 0.2s ease;
-}
-
-.testimonial-nav:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-}
-
-.testimonial-nav:active {
-  transform: scale(0.96);
 }
 
 /* =========================
-   LOAN / REALTOR / SELLING
-========================= */
-.loan-section {
-  background: #f7f7f7;
-  padding: 50px 16px;
-  border-radius: 24px;
-  margin: 20px auto 50px;
-}
-
-.loan-container {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  align-items: stretch;
-  max-width: 1100px;
-  margin: auto;
-}
-
-.loan-text,
-.loan-form {
-  min-width: 0;
-}
-
-.loan-text h2,
-.selling-text h2 {
-  color: var(--primary);
-  margin-top: 0;
-  font-size: 28px;
-}
-
-.loan-text ul {
-  margin: 20px 0;
-  padding-left: 18px;
-  line-height: 1.8;
-}
-
-.loan-form {
-  background: var(--white);
-  padding: 22px 18px;
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-}
-
-.loan-form button {
-  width: 100%;
-}
-
-.selling-section {
-  padding: 20px 16px 50px;
-}
-
-.selling-container {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  max-width: 1100px;
-  margin: auto;
-}
-
-.selling-text,
-.selling-image {
-  min-width: 0;
-}
-
-.selling-text p {
-  line-height: 1.7;
-}
-
-.selling-image img {
-  width: 100%;
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-}
-
-.realtor-contact {
-  padding: 0 16px 50px;
-}
-
-/* =========================
-   PHASE 1 LOAN
-========================= */
-.phase-one-loan {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #334155 100%);
-  color: #fff;
-  padding: 72px 20px;
-  border-radius: 0;
-  margin: 0;
-}
-
-.phase-one-loan .loan-container {
-  max-width: 1180px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 28px;
-  align-items: center;
-}
-
-.phase-one-loan .loan-text h2 {
-  font-size: clamp(2rem, 3vw, 3.1rem);
-  line-height: 1.08;
-  margin-bottom: 14px;
-  color: var(--primary);
-}
-
-.phase-one-loan .loan-text p {
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 1.06rem;
-  margin-bottom: 18px;
-  max-width: 620px;
-}
-
-.phase-one-loan .loan-text ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 22px;
-  display: grid;
-  gap: 10px;
-}
-
-.phase-one-loan .loan-text li {
-  font-weight: 600;
-  color: #e2e8f0;
-}
-
-.loan-highlight-badge {
-  display: inline-block;
-  background: #dcfce7;
-  color: #166534;
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 0.88rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.loan-mini-steps {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 22px;
-}
-
-.loan-mini-step {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
-  padding: 16px;
-  text-align: center;
-  color: #fff;
-  font-weight: 700;
-}
-
-.phase-one-loan .loan-form {
-  background: #fff;
-  border-radius: 22px;
-  padding: 26px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
-}
-
-.phase-one-loan .loan-form h3 {
-  color: var(--primary);
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-}
-
-.phase-one-loan .loan-form p {
-  color: #64748b;
-  margin-bottom: 18px;
-}
-
-.phase-one-loan .loan-form form {
-  display: grid;
-  gap: 12px;
-}
-
-.phase-one-loan .loan-form input,
-.phase-one-loan .loan-form select {
-  width: 100%;
-  padding: 14px 15px;
-  border: 1px solid #cbd5e1;
-  border-radius: 12px;
-  font-size: 1rem;
-  outline: none;
-}
-
-.phase-one-loan .loan-form input:focus,
-.phase-one-loan .loan-form select:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.12);
-}
-
-.phase-one-loan .loan-form button {
-  padding: 15px 18px;
-  border-radius: 999px;
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-.loan-trust-note {
-  margin-top: 12px;
-  font-size: 0.92rem;
-  color: #64748b;
-  text-align: center;
-}
-
-/* =========================
-   FINAL CTA
-========================= */
-.final-money-cta {
-  padding: 64px 20px;
-  background: linear-gradient(135deg, #ecfdf3 0%, #eff6ff 100%);
-}
-
-.final-money-cta-inner {
-  max-width: 980px;
-  margin: 0 auto;
-  text-align: center;
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 24px;
-  padding: 42px 28px;
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
-}
-
-.final-money-cta-inner h2 {
-  font-size: clamp(2rem, 3vw, 3rem);
-  margin-bottom: 12px;
-  color: var(--primary);
-}
-
-.final-money-cta-inner p {
-  color: #64748b;
-  margin-bottom: 20px;
-  font-size: 1.05rem;
-}
-
-.final-money-cta-inner a {
-  display: inline-block;
-  padding: 14px 22px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  color: #fff;
-  text-decoration: none;
-  font-weight: 700;
-}
-
-/* =========================
-   PARTNER SECTION
+   PARTNERS
 ========================= */
 .partners-section {
   padding: 80px 20px;
@@ -1266,394 +585,19 @@ header {
   align-items: center;
 }
 
-.partners-badge {
-  display: inline-block;
-  margin-bottom: 14px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: #eefbf2;
-  color: #1f6f35;
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-
-.partners-copy h2 {
-  margin: 0 0 12px;
-  font-size: clamp(2rem, 3vw, 3rem);
-  color: var(--primary);
-  line-height: 1.08;
-}
-
-.partners-lead {
-  font-size: 1.08rem;
-  color: #334155;
-  margin-bottom: 14px;
-}
-
-.partners-copy p {
-  color: #475569;
-  line-height: 1.75;
-}
-
-.partners-benefits {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
-  display: grid;
-  gap: 10px;
-}
-
-.partners-benefits li {
-  color: #1e293b;
-  font-weight: 600;
-}
-
-.partners-trust-line {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 10px 14px;
-  border-radius: 12px;
-  background: #f0fdf4;
-  color: #166534;
-  font-weight: 700;
-}
-
-.partners-pricing-card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 24px;
-  padding: 28px;
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
-}
-
-.partners-pricing-top h3 {
-  margin: 8px 0 10px;
-  color: var(--primary);
-  font-size: 1.55rem;
-}
-
-.partners-pricing-top p {
-  color: #64748b;
-  line-height: 1.7;
-}
-
-.pricing-kicker {
-  display: inline-block;
-  padding: 7px 12px;
-  border-radius: 999px;
-  background: #ecfdf3;
-  color: #166534;
-  font-size: 0.8rem;
-  font-weight: 800;
-}
-
-.trial-box {
-  margin: 20px 0 16px;
-  padding: 18px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #eff6ff, #ecfdf3);
-  border: 1px solid #cfe8d5;
-}
-
-.trial-box h4 {
-  margin: 0 0 8px;
-  color: var(--primary);
-}
-
-.trial-price {
-  margin: 0 0 8px;
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--primary);
-}
-
-.trial-price span {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #475569;
-  margin-left: 4px;
-}
-
-.trial-note {
-  margin: 0;
-  color: #475569;
-}
-
-.partner-plan-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin-top: 14px;
-}
-
-.partner-plan {
-  position: relative;
-  padding: 18px;
-  border: 1px solid #e5e7eb;
-  border-radius: 18px;
-  background: #fff;
-}
-
-.featured-plan {
-  border-color: var(--primary);
-  box-shadow: 0 12px 26px rgba(46, 204, 113, 0.12);
-  margin-bottom: 14px;
-}
-
-.compact-plan {
-  min-height: 100%;
-}
-
-.best-value-plan {
-  background: #f8fff9;
-}
-
-.plan-label {
-  position: absolute;
-  top: -10px;
-  right: 14px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: var(--primary);
-  color: #fff;
-  font-size: 0.76rem;
-  font-weight: 800;
-}
-
+.partners-copy h2,
+.partners-pricing-top h3,
+.trial-box h4,
 .partner-plan h4 {
-  margin: 0 0 8px;
   color: var(--primary);
 }
 
-.partner-price {
-  margin: 0 0 8px;
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--primary);
-}
-
-.partner-price span {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #64748b;
-  margin-left: 4px;
-}
-
-.partner-plan p {
-  margin: 0;
-  color: #64748b;
-  line-height: 1.6;
-}
-
-.partners-main-cta {
-  width: 100%;
-  text-align: center;
-  margin-top: 18px;
-}
-
-.partners-secondary-link {
-  display: block;
-  text-align: center;
-  margin-top: 12px;
-  font-weight: 700;
-  color: var(--primary);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
+.partners-copy p,
+.partner-plan p,
+.partners-pricing-top p,
+.trial-note,
 .partners-microcopy {
-  text-align: center;
-  margin-top: 14px;
-  font-size: 0.92rem;
-  color: #64748b;
-}
-
-/* =========================
-   ROOF PAGE HEADER / NAV TEXT FIX
-========================= */
-.roof-page header,
-body.roof-page header {
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(8px);
-}
-
-.roof-page nav a,
-.roof-page .main-nav a,
-.roof-page .dropbtn,
-body.roof-page nav a,
-body.roof-page .main-nav a,
-body.roof-page .dropbtn {
-  color: #111827 !important;
-}
-
-.roof-page .cta-button,
-body.roof-page .cta-button {
-  color: #ffffff !important;
-}
-
-.roof-page .dropdown-content a,
-body.roof-page .dropdown-content a {
-  color: #333 !important;
-}
-
-/* =========================
-   OFFERS PAGE
-========================= */
-.offers-page {
-  background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%);
-}
-
-.offers-hero {
-  padding: 70px 20px 50px;
-  background: linear-gradient(135deg, #ecfdf3 0%, #eff6ff 60%, #ffffff 100%);
-}
-
-.offers-hero-inner {
-  max-width: 1180px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 32px;
-  align-items: center;
-}
-
-.offers-kicker {
-  display: inline-block;
-  background: #dff7e8;
-  color: #155724;
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.offers-hero h1 {
-  font-size: clamp(2.2rem, 4vw, 4rem);
-  line-height: 1.05;
-  margin-bottom: 16px;
-  color: var(--primary);
-}
-
-.offers-hero p {
-  font-size: 1.08rem;
   color: #475569;
-  margin-bottom: 22px;
-  max-width: 620px;
-}
-
-.offers-hero-points {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 24px;
-  display: grid;
-  gap: 10px;
-}
-
-.offers-hero-points li {
-  color: #1e293b;
-  font-weight: 600;
-}
-
-.offers-hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.offers-section {
-  padding: 64px 20px;
-}
-
-.offers-wrap {
-  max-width: 1180px;
-  margin: 0 auto;
-}
-
-.offers-section-title {
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto 34px;
-}
-
-.offers-section-title h2 {
-  font-size: clamp(1.9rem, 3vw, 2.8rem);
-  margin-bottom: 12px;
-  color: var(--primary);
-}
-
-.offers-section-title p {
-  color: #64748b;
-  font-size: 1.02rem;
-}
-
-.offers-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-}
-
-.offer-card {
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.08);
-  display: flex;
-  flex-direction: column;
-}
-
-.offer-card img {
-  width: 100%;
-  height: 190px;
-  object-fit: cover;
-  object-position: top;
-  border-bottom: 1px solid #eee;
-}
-
-.offer-card-content {
-  padding: 24px;
-}
-
-.offer-badge {
-  display: inline-block;
-  padding: 7px 12px;
-  border-radius: 999px;
-  background: #eefbf2;
-  color: #1f6f35;
-  font-size: 0.82rem;
-  font-weight: 700;
-  margin-bottom: 14px;
-}
-
-.offer-card-content h3 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-  color: var(--primary);
-}
-
-.offer-payout {
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 12px;
-}
-
-.offer-card-content p {
-  color: #475569;
-  margin-bottom: 14px;
-}
-
-.offer-card-content ul {
-  padding-left: 18px;
-  margin: 0 0 20px;
-  color: #1f2937;
-}
-
-.offer-card-content li {
-  margin-bottom: 8px;
-}
-
-.offer-card-wide {
-  grid-column: 1 / -1;
 }
 
 /* =========================
@@ -1681,108 +625,13 @@ body.roof-page .dropdown-content a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-}
-
-.chat-header-agent {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 0;
-}
-
-.chat-agent-avatar {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.85);
-  flex-shrink: 0;
-}
-
-.chat-header-text {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.chat-agent-name {
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.1;
-}
-
-.chat-agent-status {
-  font-size: 12px;
-  opacity: 0.92;
-  margin-top: 3px;
-}
-
-#chatCloseBtn {
-  background: rgba(255, 255, 255, 0.16);
-  color: #fff;
-  border: none;
-  width: 34px;
-  height: 34px;
-  min-width: 34px;
-  border-radius: 999px;
-  font-size: 18px;
-  line-height: 1;
-  padding: 0;
-  cursor: pointer;
-}
-
-#chatCloseBtn:hover {
-  background: rgba(255, 255, 255, 0.28);
-  transform: none;
-}
-
-#chatBox {
-  display: block;
-  background: #fff;
 }
 
 #chatMessages {
   padding: 16px;
   max-height: 320px;
   overflow-y: auto;
-  background: radial-gradient(circle at top right, rgba(46, 204, 113, 0.08), transparent 28%), #f9fbfa;
-}
-
-.chat-message-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.message-avatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-}
-
-.message-stack {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  max-width: calc(100% - 52px);
-}
-
-.message-meta {
-  font-size: 12px;
-  font-weight: 700;
-  color: #5b6470;
-  margin: 0 0 4px 2px;
-}
-
-#chatMessages p {
-  margin: 0;
-  line-height: 1.45;
-  font-size: 14px;
+  background: #f9fbfa;
 }
 
 .bot {
@@ -1790,9 +639,6 @@ body.roof-page .dropdown-content a {
   color: #1f2937;
   padding: 12px 14px;
   border-radius: 16px 16px 16px 6px;
-  max-width: 100%;
-  width: fit-content;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
@@ -1801,34 +647,6 @@ body.roof-page .dropdown-content a {
   color: #fff;
   padding: 12px 14px;
   border-radius: 16px 16px 6px 16px;
-  max-width: 90%;
-  width: fit-content;
-  margin-left: auto;
-  text-align: left;
-  box-shadow: 0 8px 18px rgba(39, 174, 96, 0.22);
-}
-
-.chat-quick-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 0 12px 12px;
-  background: #f9fbfa;
-}
-
-.chat-quick-actions button {
-  width: auto;
-  min-width: auto;
-  padding: 8px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  background: #eef7f0;
-  color: #256628;
-  border: 1px solid rgba(46, 125, 50, 0.15);
-}
-
-.chat-quick-actions button:hover {
-  background: #e3f3e7;
 }
 
 #chatInput {
@@ -1837,87 +655,18 @@ body.roof-page .dropdown-content a {
   padding: 15px 16px;
   border: none;
   border-top: 1px solid #e5e7eb;
-  border-radius: 0;
   background: #fff;
   font-size: 14px;
-  outline: none;
+  color: #111827;
 }
 
 #chatInput::placeholder {
   color: #94a3b8;
 }
 
-#chatInput:focus {
-  background: #fcfffd;
-}
-
-.chat-hidden {
-  display: none !important;
-}
-
-#chatReopen {
-  position: fixed;
-  right: 12px;
-  bottom: 12px;
-  z-index: 9998;
-  display: none;
-  align-items: center;
-  gap: 12px;
-  background: linear-gradient(135deg, #77c96b, #b5e06a);
-  color: #fff;
-  border: none;
-  padding: 10px 14px 10px 10px;
-  border-radius: 999px;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
-  font-weight: 700;
-  min-width: 250px;
-  text-align: left;
-}
-
-.chat-reopen-avatar {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-  border: 2px solid rgba(255, 255, 255, 0.9);
-}
-
-.chat-reopen-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
-}
-
-.chat-reopen-text strong {
-  font-size: 15px;
-  color: #fff;
-}
-
-.chat-reopen-text small {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.95);
-  margin-top: 3px;
-}
-
-.show-chat-bubble {
-  display: inline-flex !important;
-}
-
 /* =========================
    FOOTER
 ========================= */
-footer {
-  text-align: center;
-  padding: 24px 16px;
-  background: var(--dark);
-  color: var(--white);
-}
-
-footer p {
-  margin: 0;
-}
-
 .site-footer {
   background: #111827;
   color: #f9fafb;
@@ -1931,127 +680,112 @@ footer p {
   display: grid;
   grid-template-columns: 1.1fr 1.9fr;
   gap: 32px;
-  align-items: start;
 }
 
-.footer-brand h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
-  font-size: 1.4rem;
-  color: #ffffff;
-}
-
-.footer-brand p {
-  margin: 0;
-  color: #d1d5db;
-  line-height: 1.7;
-  max-width: 360px;
-}
-
-.footer-links {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
+.footer-brand h3,
 .footer-column h4 {
-  margin-top: 0;
-  margin-bottom: 12px;
-  font-size: 1rem;
   color: #ffffff;
 }
 
-.footer-column a {
-  display: block;
+.footer-brand p,
+.footer-column a,
+.footer-bottom p {
   color: #d1d5db;
-  text-decoration: none;
-  margin-bottom: 10px;
-  transition: color 0.2s ease;
 }
 
 .footer-column a:hover {
   color: #ffffff;
 }
 
-.footer-bottom {
-  max-width: 1240px;
-  margin: 28px auto 0;
-  padding-top: 18px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.footer-bottom p {
-  margin: 0;
-  color: #9ca3af;
-  font-size: 0.92rem;
-}
-
 /* =========================
-   OFFERS PAGE HEADER TEXT FIX
+   OFFERS PAGE OVERRIDES
 ========================= */
-.offers-page header,
-body.offers-page header {
+.offers-page header {
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(8px);
 }
 
 .offers-page nav a,
 .offers-page .main-nav a,
-.offers-page .dropbtn,
-body.offers-page nav a,
-body.offers-page .main-nav a,
-body.offers-page .dropbtn {
+.offers-page .dropbtn {
   color: #111827 !important;
 }
 
-.offers-page .cta-button,
-body.offers-page .cta-button {
+.offers-page .cta-button {
   color: #ffffff !important;
 }
 
-.offers-page .dropdown-content a,
-body.offers-page .dropdown-content a {
+.offers-page .dropdown-content a {
   color: #333 !important;
+}
+
+/* =========================
+   ROOF PAGE OVERRIDES
+========================= */
+body.roof-page,
+body.roof-page h1,
+body.roof-page h2,
+body.roof-page h3,
+body.roof-page p,
+body.roof-page li,
+body.roof-page label,
+body.roof-page strong,
+body.roof-page span {
+  color: #111827 !important;
+}
+
+body.roof-page header {
+  background: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(8px);
+}
+
+body.roof-page nav,
+body.roof-page .main-nav {
+  background: transparent !important;
+}
+
+body.roof-page nav a,
+body.roof-page .main-nav a,
+body.roof-page .dropbtn {
+  color: #111827 !important;
+}
+
+body.roof-page .cta-button {
+  color: #ffffff !important;
+}
+
+body.roof-page .dropdown-content a {
+  color: #333 !important;
+}
+
+/* Fix hero text specifically on roof page */
+body.roof-page .hero-left,
+body.roof-page .hero-left h1,
+body.roof-page .hero-left p,
+body.roof-page .hero-text,
+body.roof-page .hero-text h1,
+body.roof-page .hero-text p,
+body.roof-page .hero-benefits li {
+  color: #111827 !important;
+}
+
+/* Keep white text only when hero actually needs it */
+body:not(.roof-page) .hero-left,
+body:not(.roof-page) .hero-left h1,
+body:not(.roof-page) .hero-left p,
+body:not(.roof-page) .hero-text,
+body:not(.roof-page) .hero-text h1,
+body:not(.roof-page) .hero-text p,
+body:not(.roof-page) .hero-benefits li {
+  color: #fff;
 }
 
 /* =========================
    RESPONSIVE
 ========================= */
-@media (max-width: 1100px) {
-  .featured-offers-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 980px) {
-  .offers-hero-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .offer-card-wide {
-    grid-column: auto;
-  }
-
-  .offers-hero-card img {
-    height: 300px;
-  }
-}
-
 @media (max-width: 900px) {
-  .offers-intro-wrap,
-  .phase-one-loan .loan-container,
-  .loan-mini-steps,
   .partners-container,
   .footer-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .offers-intro-card img {
-    height: 280px;
-  }
-
-  .partner-plan-row,
-  .footer-links {
     grid-template-columns: 1fr;
   }
 }
@@ -2064,15 +798,11 @@ body.offers-page .dropdown-content a {
     width: 100%;
     z-index: 1000;
     padding: 10px 12px;
-    background: rgba(15, 23, 42, 0.96);
-    backdrop-filter: blur(8px);
   }
 
   nav,
   .main-nav {
     justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
     gap: 8px 10px;
     width: 100%;
   }
@@ -2085,39 +815,8 @@ body.offers-page .dropdown-content a {
     white-space: nowrap;
   }
 
-  .dropdown {
-    flex: 0 0 auto;
-  }
-
-  .cta-button {
-    padding: 10px 14px;
-    font-size: 13px;
-    margin-top: 4px;
-  }
-
-  .dropdown::after {
-    display: none;
-  }
-
   .dropdown-content {
     min-width: 180px;
-  }
-
-  .hero,
-  .hero-full,
-  .hero-split {
-    min-height: 100vh;
-  }
-
-  .hero-bg {
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-  }
-
-  .hero-overlay {
-    align-items: flex-start;
-    background: rgba(0, 0, 0, 0.45);
   }
 
   .hero-container {
@@ -2125,106 +824,8 @@ body.offers-page .dropdown-content a {
     gap: 20px;
   }
 
-  .hero-left,
-  .hero-text {
-    max-width: 100%;
-    margin-left: 0;
-    padding-left: 0;
-  }
-
-  .hero-left h1,
-  .hero-text h1 {
-    font-size: 2.25rem;
-    line-height: 1.05;
-    margin-bottom: 14px;
-    max-width: 100%;
-    width: 100%;
-    margin-left: 0;
-    padding-left: 0;
-    text-align: left;
-  }
-
-  .hero-left p,
-  .hero-text p {
-    font-size: 1rem;
-    line-height: 1.55;
-    margin-bottom: 16px;
-    max-width: 100%;
-  }
-
-  .hero-benefits {
-    margin-top: 16px;
-    padding: 14px 14px 12px;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 14px;
-    backdrop-filter: blur(4px);
-  }
-
-  .hero-benefits li {
-    color: #ffffff !important;
-    font-size: 15px;
-    line-height: 1.45;
-    font-weight: 600;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
-  }
-
   .hero-form {
     max-width: 100%;
-  }
-
-  .offers-hero {
-    padding: 150px 16px 42px;
-  }
-
-  .offers-hero-inner {
-    gap: 20px;
-  }
-
-  .offers-hero h1 {
-    font-size: 2.15rem;
-    line-height: 1.04;
-    margin-bottom: 14px;
-    color: var(--primary) !important;
-    max-width: 100%;
-    width: 100%;
-    margin-left: 0;
-    padding-left: 0;
-    text-align: left;
-  }
-
-  .offers-hero p {
-    font-size: 1rem;
-    line-height: 1.55;
-    margin-bottom: 18px;
-    color: #334155 !important;
-    max-width: 100%;
-  }
-
-  .offers-hero-points {
-    margin: 0 0 20px;
-    padding: 14px;
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.88);
-  }
-
-  .offers-hero-points li {
-    color: #0f172a !important;
-    font-weight: 700;
-  }
-
-  .offers-page header {
-    background: rgba(255, 255, 255, 0.96);
-    backdrop-filter: blur(8px);
-  }
-
-  .offers-page nav a,
-  .offers-page .main-nav a,
-  .offers-page .dropbtn {
-    color: #111827 !important;
-  }
-
-  .offers-page .cta-button {
-    color: #ffffff !important;
   }
 
   .testimonial-carousel-wrap {
@@ -2235,22 +836,6 @@ body.offers-page .dropdown-content a {
     min-width: 280px;
     width: 280px;
   }
-
-  .testimonial-nav {
-    width: 38px;
-    height: 38px;
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 680px) {
-  .featured-offers-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .featured-offer-content p {
-    min-height: auto;
-  }
 }
 
 @media (min-width: 768px) {
@@ -2260,7 +845,6 @@ body.offers-page .dropdown-content a {
 
   nav,
   .main-nav {
-    justify-content: center;
     gap: 14px 18px;
   }
 
@@ -2268,87 +852,6 @@ body.offers-page .dropdown-content a {
     padding: 120px 24px 60px;
     grid-template-columns: minmax(0, 1.35fr) minmax(360px, 420px);
     gap: 56px;
-  }
-
-  .hero-left h1,
-  .hero-text h1 {
-    font-size: 48px;
-  }
-
-  .hero-left p,
-  .hero-text p {
-    font-size: 17px;
-  }
-
-  .hero-benefits li {
-    font-size: 16px;
-  }
-
-  .hero-right {
-    justify-content: flex-end;
-  }
-
-  .upgrade-selector {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .upgrade-selector button {
-    width: auto;
-    min-width: 190px;
-  }
-
-  .results-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .graph-container {
-    gap: 24px;
-    height: 260px;
-    padding-bottom: 76px;
-  }
-
-  .bar {
-    width: 92px;
-  }
-
-  .bar span {
-    width: 120px;
-    font-size: 15px;
-  }
-
-  .conversion-cta {
-    padding: 0 20px;
-  }
-
-  .carousel-track .service-card {
-    min-width: 300px;
-    max-width: 300px;
-  }
-
-  .service-card img {
-    height: 260px;
-  }
-
-  .loan-container,
-  .selling-container {
-    gap: 32px;
-  }
-
-  #chatWidget {
-    left: auto;
-    right: 12px;
-    width: 390px;
-    max-height: none;
-  }
-
-  #chatMessages {
-    max-height: 340px;
-  }
-
-  #chatReopen {
-    right: 12px;
-    bottom: 12px;
   }
 }
 
@@ -2374,111 +877,4 @@ body.offers-page .dropdown-content a {
     gap: 80px;
     padding: 120px 32px 70px;
   }
-
-  .hero-left {
-    max-width: 760px;
-  }
-
-  .hero-left h1,
-  .hero-text h1 {
-    font-size: 56px;
-  }
-
-  .hero-left p,
-  .hero-text p {
-    font-size: 18px;
-  }
-
-  .hero-form {
-    max-width: 430px;
-    margin-left: auto;
-    padding: 28px;
-  }
-
-  .graph-container {
-    gap: 40px;
-    height: 300px;
-    margin: 34px 0 28px;
-  }
-
-  .bar {
-    width: 120px;
-  }
-
-  .bar span {
-    width: 130px;
-  }
-
-  .conversion-cta {
-    flex-direction: row;
-    justify-content: center;
-    gap: 14px;
-  }
-
-  .conversion-cta button,
-  .conversion-cta .cta-btn {
-    width: auto;
-    min-width: 220px;
-  }
-
-  .carousel-wrapper {
-    max-width: 1600px;
-  }
-
-  .loan-container,
-  .selling-container {
-    flex-direction: row;
-    align-items: center;
-    gap: 40px;
-  }
-
-  .loan-text,
-  .loan-form,
-  .selling-text,
-  .selling-image {
-    flex: 1;
-    min-width: 280px;
-  }
-
-  .results-panel {
-    padding: 28px 22px 32px;
-  }
-
-  .featured-offers-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .offers-intro-wrap,
-  .phase-one-loan .loan-container,
-  .offers-hero-inner {
-    grid-template-columns: 1.05fr 0.95fr;
-  }
-
-  .loan-mini-steps {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  #chatWidget {
-    right: 24px;
-    bottom: 24px;
-    width: 400px;
-  }
-
-  #chatReopen {
-    right: 24px;
-    bottom: 24px;
-  }
-}
-
-/* =========================
-   ROOF PAGE CONTENT TEXT FIX
-========================= */
-.roof-page,
-.roof-page h1,
-.roof-page h2,
-.roof-page h3,
-.roof-page p,
-.roof-page li,
-.roof-page label {
-  color: #111827;
 }
