@@ -3,185 +3,424 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Partner With NestNudge | Grow With Vetted Local Leads</title>
-  <meta name="description" content="For contractors, loan reps, and realtors who want a better way to grow with vetted local leads, ZIP-based opportunities, and a personalized back-office platform.">
-  <link rel="canonical" href="https://www.nestnudge.com/partners.html">
+  <title>For Partners | NestNudge</title>
+  <meta name="description" content="Join NestNudge as a contractor, realtor, or loan partner. Get matched homeowner opportunities, ZIP-based lead access, and a better way to grow your business.">
   <link rel="icon" href="/nestnudge.ico">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .partners-page {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+
+    .partners-hero {
+      background: linear-gradient(135deg, #1f6b3c, #2E7D32);
+      color: #fff;
+      border-radius: 24px;
+      padding: 46px 34px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.14);
+      margin-bottom: 28px;
+    }
+
+    .partners-hero h1 {
+      margin: 0 0 14px;
+      font-size: 2.5rem;
+      line-height: 1.1;
+    }
+
+    .partners-hero p {
+      margin: 0 0 18px;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.95);
+      max-width: 720px;
+    }
+
+    .partners-hero ul {
+      margin: 0 0 24px;
+      padding-left: 18px;
+      line-height: 1.8;
+    }
+
+    .partners-hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .partners-btn,
+    .partners-btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .partners-btn {
+      background: #fff;
+      color: #1f6b3c;
+    }
+
+    .partners-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .partners-btn-outline {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.24);
+    }
+
+    .partners-btn-outline:hover {
+      background: rgba(255,255,255,0.18);
+    }
+
+    .partners-hero-card {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 24px;
+    }
+
+    .partners-hero-card h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+    }
+
+    .partners-hero-card p {
+      margin: 0 0 14px;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .partners-stat {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .partners-stat-item {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 14px;
+      padding: 12px 14px;
+    }
+
+    .partners-stat-item strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 2px;
+    }
+
+    .partners-section {
+      background: #fff;
+      border-radius: 22px;
+      padding: 30px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+      margin-bottom: 24px;
+    }
+
+    .partners-section h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+      color: #111827;
+    }
+
+    .partners-section p.section-subtext {
+      margin-top: 0;
+      margin-bottom: 24px;
+      color: #5c6670;
+      line-height: 1.65;
+      max-width: 850px;
+    }
+
+    .partners-benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .partners-benefit-card {
+      background: #f8faf8;
+      border: 1px solid #e7efe7;
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .partners-benefit-card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    .partners-benefit-card p {
+      margin: 0;
+      color: #63707b;
+      line-height: 1.6;
+    }
+
+    .partners-pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .partners-pricing-card {
+      background: #fbfdfb;
+      border: 1px solid #e5ece7;
+      border-radius: 18px;
+      padding: 24px;
+    }
+
+    .partners-pricing-card.featured {
+      border: 2px solid #2E7D32;
+      box-shadow: 0 12px 30px rgba(46,125,50,0.12);
+    }
+
+    .partners-pricing-card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+    }
+
+    .partners-price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 12px;
+    }
+
+    .partners-pricing-card p {
+      color: #5f6a74;
+      line-height: 1.6;
+    }
+
+    .partners-pricing-card ul {
+      padding-left: 18px;
+      line-height: 1.8;
+      color: #58626c;
+      margin: 16px 0 20px;
+    }
+
+    .partners-pricing-card a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .partners-pricing-card .primary-link {
+      background: #2E7D32;
+      color: #fff;
+    }
+
+    .partners-pricing-card .secondary-link {
+      background: #edf2f7;
+      color: #111827;
+    }
+
+    .partners-cta-strip {
+      background: linear-gradient(135deg, #f7fbf7, #eef8ef);
+      border: 1px solid #dceadf;
+      border-radius: 22px;
+      padding: 28px;
+      text-align: center;
+    }
+
+    .partners-cta-strip h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .partners-cta-strip p {
+      margin: 0 auto 18px;
+      max-width: 760px;
+      color: #5e6973;
+      line-height: 1.65;
+    }
+
+    .partners-cta-strip .partners-hero-actions {
+      justify-content: center;
+    }
+
+    @media (max-width: 980px) {
+      .partners-hero,
+      .partners-benefits-grid,
+      .partners-pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .partners-hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <header>
     <nav class="main-nav">
       <a href="/">Home</a>
+      <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
       <a href="/offers.html">Offers</a>
       <a href="/partners.html">For Partners</a>
       <a href="/contractor-login.php">Partner Login</a>
-      <a class="cta-button" href="/contractor-signup.php">Become a Partner</a>
+      <a class="cta-button" href="/contractor-signup.php">Apply Now</a>
     </nav>
   </header>
 
-  <section class="partner-hero">
-    <div class="partner-hero-inner">
-      <span class="partners-badge">For Contractors, Loan Reps & Realtors</span>
-      <h1>Grow With a Partner Platform Built for Local Business</h1>
-      <p>
-        Get your own custom share link, access vetted lead opportunities by ZIP code,
-        and manage your growth through a personalized partner back office.
-      </p>
-
-      <div class="partner-hero-cta">
-        <a href="/contractor-signup.php" class="cta-btn">Start with Starter Access</a>
-        <a href="#partner-pricing" class="partner-outline-btn">See Pricing</a>
-      </div>
-
-      <div class="partner-proof">
-        Vetted leads. ZIP-based opportunities. More control over your pipeline.
-      </div>
-    </div>
-  </section>
-
-  <section class="partner-features">
-    <div class="partner-features-inner">
-      <div class="partner-section-heading">
-        <h2>What You Get</h2>
+  <div class="partners-page">
+    <section class="partners-hero">
+      <div>
+        <h1>Turn Local Homeowner Interest Into Real Business Growth</h1>
         <p>
-          NestNudge is more than a lead source. It is a partner system designed to help you
-          organize, share, compete, and grow.
+          NestNudge gives contractors, realtors, and financial partners a better way to grow with matched opportunities, ZIP-based lead visibility, and a cleaner system for managing the next step.
         </p>
-      </div>
 
-      <div class="partner-feature-grid">
-        <div class="partner-feature-card">
-          <h3>Your Own Partner Link</h3>
-          <p>Share your custom link with prospects and drive business through your own branded path.</p>
-        </div>
+        <ul>
+          <li>✔ Get matched to homeowner interest earlier in the decision process</li>
+          <li>✔ Focus on the opportunities that fit your specialties and coverage</li>
+          <li>✔ Choose the plan that matches your stage of growth</li>
+        </ul>
 
-        <div class="partner-feature-card">
-          <h3>Vetted Local Opportunities</h3>
-          <p>Access higher-quality lead opportunities filtered by ZIP code and local relevance.</p>
-        </div>
-
-        <div class="partner-feature-card">
-          <h3>Daily Lead Access</h3>
-          <p>See consistent opportunities instead of waiting around for random inbound interest.</p>
-        </div>
-
-        <div class="partner-feature-card">
-          <h3>Bid on Stronger-Fit Leads</h3>
-          <p>Compete for leads that better match your target market and service area.</p>
-        </div>
-
-        <div class="partner-feature-card">
-          <h3>Back Office Control</h3>
-          <p>Use your partner dashboard to manage activity, organize pipeline, and grow more intentionally.</p>
-        </div>
-
-        <div class="partner-feature-card">
-          <h3>Built for Service Pros</h3>
-          <p>Designed for contractors, loan reps, and realtors who want more control over growth.</p>
+        <div class="partners-hero-actions">
+          <a href="/contractor-signup.php" class="partners-btn">Apply to Become a Partner</a>
+          <a href="/contractor-login.php" class="partners-btn-outline">Partner Login</a>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="partner-roi-strip">
-    <div class="partner-roi-inner">
-      <h2>Why the pricing works</h2>
-      <p>
-        If one solid deal can cover your membership, the real opportunity is building a repeatable system
-        that helps you stay in front of better local business.
-      </p>
-    </div>
-  </section>
-
-  <section class="partner-pricing-section" id="partner-pricing">
-    <div class="partner-pricing-inner">
-      <div class="partner-section-heading">
-        <h2>Choose the Membership That Fits Your Business</h2>
+      <div class="partners-hero-card">
+        <h3>Why partners choose NestNudge</h3>
         <p>
-          Start with a low-friction entry point, then move into the plan that best supports your growth.
+          Instead of chasing random leads, you get a cleaner path into better-fit homeowner opportunities.
         </p>
-      </div>
 
-      <div class="partner-pricing-grid">
-        <div class="partner-pricing-plan starter-plan">
-          <span class="pricing-kicker">Best First Step</span>
-          <h3>Starter Access</h3>
-          <p class="partner-price">$29<span> first month</span></p>
-          <p>Test the platform, explore the workflow, and see how the lead flow fits your business.</p>
-          <a href="/contractor-signup.php" class="cta-btn">Start Now</a>
-        </div>
-
-        <div class="partner-pricing-plan featured-plan">
-          <span class="plan-label">Most Popular</span>
-          <h3>Monthly</h3>
-          <p class="partner-price">$99<span> / month</span></p>
-          <p>Flexible access for partners who want to grow steadily without a longer commitment.</p>
-          <a href="/contractor-signup.php" class="cta-btn">Choose Monthly</a>
-        </div>
-
-        <div class="partner-pricing-plan">
-          <h3>Quarterly</h3>
-          <p class="partner-price">$299<span> / 3 months</span></p>
-          <p>A strong option for partners ready to commit to consistent lead flow and local growth.</p>
-          <a href="/contractor-signup.php" class="cta-btn">Choose Quarterly</a>
-        </div>
-
-        <div class="partner-pricing-plan best-value-plan">
-          <span class="pricing-kicker">Best Value</span>
-          <h3>Yearly</h3>
-          <p class="partner-price">$499<span> / year</span></p>
-          <p>The smartest choice for long-term partners who want the lowest effective cost.</p>
-          <a href="/contractor-signup.php" class="cta-btn">Choose Yearly</a>
+        <div class="partners-stat">
+          <div class="partners-stat-item">
+            <strong>ZIP-based visibility</strong>
+            <span>See opportunities that match your service area.</span>
+          </div>
+          <div class="partners-stat-item">
+            <strong>Cleaner lead flow</strong>
+            <span>Better structure for roofing, funding, realtor, and home-value requests.</span>
+          </div>
+          <div class="partners-stat-item">
+            <strong>Growth-first plans</strong>
+            <span>Start small, then move into stronger access as your business grows.</span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="partner-faq">
-    <div class="partner-faq-inner">
-      <div class="partner-section-heading">
-        <h2>Partner Questions</h2>
-      </div>
-
-      <div class="partner-faq-grid">
-        <div class="partner-faq-item">
-          <h3>Who is this for?</h3>
-          <p>Contractors, loan reps, and realtors looking for a more organized way to grow locally.</p>
-        </div>
-
-        <div class="partner-faq-item">
-          <h3>What makes the leads different?</h3>
-          <p>They are positioned as vetted opportunities with ZIP-based relevance, which helps improve fit.</p>
-        </div>
-
-        <div class="partner-faq-item">
-          <h3>Why offer a starter plan?</h3>
-          <p>It lowers the barrier to entry and helps partners experience the platform before committing further.</p>
-        </div>
-
-        <div class="partner-faq-item">
-          <h3>Why is yearly the best value?</h3>
-          <p>It rewards serious partners and makes the long-term economics easier for both sides.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="final-money-cta">
-    <div class="final-money-cta-inner">
-      <h2>Ready to Grow With More Control?</h2>
-      <p>
-        Start with a low-friction offer, test the platform, and build a more predictable pipeline with NestNudge.
+    <section class="partners-section">
+      <h2>How the platform helps you grow</h2>
+      <p class="section-subtext">
+        NestNudge is built to help serious partners respond faster, compete more clearly, and build a stronger pipeline without feeling buried in clutter or low-intent traffic.
       </p>
-      <a href="/contractor-signup.php">Become a Partner</a>
-    </div>
-  </section>
 
-  <footer>
-    <p>© NestNudge</p>
-  </footer>
+      <div class="partners-benefits-grid">
+        <div class="partners-benefit-card">
+          <h3>Matched Opportunity Flow</h3>
+          <p>
+            Get access to incoming homeowner and realtor requests that align with the services you actually provide.
+          </p>
+        </div>
+
+        <div class="partners-benefit-card">
+          <h3>Better Market Focus</h3>
+          <p>
+            Stay focused on the ZIP codes and opportunity types that make the most sense for your business.
+          </p>
+        </div>
+
+        <div class="partners-benefit-card">
+          <h3>Scalable Access</h3>
+          <p>
+            Start with a lower-friction entry point, then move into stronger access and more consistent opportunity flow as you grow.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="partners-section">
+      <h2>Choose the plan that fits your stage</h2>
+      <p class="section-subtext">
+        Whether you are testing the platform, building consistency, or scaling an established business, NestNudge gives you a cleaner way to approach growth.
+      </p>
+
+      <div class="partners-pricing-grid">
+        <div class="partners-pricing-card">
+          <h3>Starter</h3>
+          <div class="partners-price">$99/mo</div>
+          <p>
+            Best for newer companies that want to start exploring partner access with lower commitment.
+          </p>
+          <ul>
+            <li>Standard lead access</li>
+            <li>Basic visibility</li>
+            <li>Manual claim workflow</li>
+          </ul>
+          <a href="/contractor-signup.php" class="secondary-link">Start Here</a>
+        </div>
+
+        <div class="partners-pricing-card featured">
+          <h3>Growth</h3>
+          <div class="partners-price">$249/mo</div>
+          <p>
+            Best for businesses that want steadier lead flow and stronger day-to-day opportunity access.
+          </p>
+          <ul>
+            <li>Priority lead access</li>
+            <li>Faster release windows</li>
+            <li>Preferred claim visibility</li>
+          </ul>
+          <a href="/contractor-signup.php" class="primary-link">Choose Growth</a>
+        </div>
+
+        <div class="partners-pricing-card">
+          <h3>Premium</h3>
+          <div class="partners-price">$499/mo</div>
+          <p>
+            Best for established businesses that want higher-value opportunity access and stronger support.
+          </p>
+          <ul>
+            <li>Top-tier access</li>
+            <li>High-value market preference</li>
+            <li>Dedicated support</li>
+          </ul>
+          <a href="/contractor-signup.php" class="secondary-link">Request Premium</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="partners-cta-strip">
+      <h2>Ready to grow with NestNudge?</h2>
+      <p>
+        Apply to become a partner, or log in if you already have access to your dashboard and live opportunities.
+      </p>
+
+      <div class="partners-hero-actions">
+        <a href="/contractor-signup.php" class="partners-btn">Apply Now</a>
+        <a href="/contractor-login.php" class="partners-btn-outline" style="color:#1f6b3c;border-color:#cfe0d1;background:#fff;">Partner Login</a>
+      </div>
+    </section>
+  </div>
 
 </body>
 </html>
