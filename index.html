@@ -1200,12 +1200,26 @@
         keywords: ["realtor", "selling", "agent", "sell", "home value", "listing"],
         cta: "The realtor section helps visitors connect with a local expert."
       },
-      {
-        id: "partners",
-        label: "Partner Platform",
-        keywords: ["partner", "contractor", "pricing", "startup package", "lead flow", "lead opportunities", "zip code", "business growth"],
-        cta: "The partner section explains pricing, lead access, and growth options."
-      }
+     {
+  id: "partners",
+  label: "Partner Platform",
+  keywords: [
+    "partner",
+    "contractor",
+    "pricing",
+    "startup package",
+    "lead flow",
+    "lead opportunities",
+    "zip code",
+    "business growth",
+    "partner details",
+    "apply",
+    "monthly plan",
+    "quarterly",
+    "yearly"
+  ],
+  cta: "The partner section explains pricing, lead access, and growth options."
+}
     ];
 
     function getTimeBasedGreeting() {
@@ -1276,38 +1290,26 @@
       if (reopen) reopen.classList.remove("show-chat-bubble");
     }
 
-    function quickSelect(topic) {
-      const map = {
-        homeowner: "I am a homeowner",
-        contractor: "I am a contractor or partner",
-        roof: "roof",
-        buying: "buying a home",
-        doors: "entry door",
-        windows: "impact windows",
-        realtor: "realtor",
-        funding: "lower monthly payments",
-        offers: "offers",
-        partners: "partner plans"
-      };
+function quickSelect(topic) {
+  const map = {
+    homeowner: "I am a homeowner",
+    contractor: "I am a contractor or partner",
+    roof: "roof",
+    buying: "buying a home",
+    doors: "entry door",
+    windows: "impact windows",
+    realtor: "realtor",
+    funding: "lower monthly payments",
+    offers: "offers",
+    partners: "partner plans",
+    partnerdetails: "partner details",
+    applypartner: "apply to become a partner"
+  };
 
-      const value = map[topic] || topic;
-      addMessage(value, "user");
-      processUserMessage(value);
-    }
-
-    function handleChat(e) {
-      if (e.key !== "Enter" || chatState.isSubmitting) return;
-
-      const input = document.getElementById("chatInput");
-      if (!input) return;
-
-      const value = input.value.trim();
-      if (!value) return;
-
-      addMessage(value, "user");
-      input.value = "";
-      processUserMessage(value);
-    }
+  const value = map[topic] || topic;
+  addMessage(value, "user");
+  processUserMessage(value);
+}
 
     function detectAudience(text) {
       const value = text.toLowerCase();
@@ -1597,27 +1599,33 @@ function detectIntent(text) {
   if (intent.type === "audience") {
     chatState.audience = intent.audience;
 
-    if (intent.audience === "consumer") {
-      addMessage("Perfect — I’ll guide you like a homeowner looking for the best next step.");
-      addMessage("You can start with one of these: lower monthly payments, roof quotes and ROI, windows or doors, solar or insurance savings, or selling with a realtor.");
-      showChatOptionButtons([
-        { label: "Lower Bills", value: "lower monthly payments" },
-        { label: "Roof Quotes", value: "roof quotes" },
-        { label: "Windows", value: "impact windows" },
-        { label: "Selling", value: "selling my home" }
-      ]);
-    } else {
-      addMessage("Perfect — I’ll guide you like a contractor or partner looking for the best growth path.");
-      addMessage("You can start with startup pricing, monthly plans, lead opportunities, or ZIP code targeting.");
-      showChatOptionButtons([
-        { label: "$29 Startup", value: "$29 startup package" },
-        { label: "$99 Monthly", value: "$99 monthly plan" },
-        { label: "Lead Flow", value: "lead opportunities" },
-        { label: "ZIP Targeting", value: "ZIP code leads" }
-      ]);
-    }
-    return;
+   if (intent.type === "audience") {
+  chatState.audience = intent.audience;
+
+  if (intent.audience === "consumer") {
+    addMessage("Perfect — I’ll guide you like a homeowner looking for the best next step.");
+    addMessage("You can start with one of these: lower monthly payments, roof quotes and ROI, windows or doors, solar or insurance savings, or selling with a realtor.");
+    showChatOptionButtons([
+      { label: "Lower Bills", value: "lower monthly payments" },
+      { label: "Roof Quotes", value: "roof quotes" },
+      { label: "Windows", value: "impact windows" },
+      { label: "Selling", value: "selling my home" }
+    ]);
+  } else {
+    addMessage("Perfect — I’ll guide you like a contractor or partner looking for the best growth path.");
+    addMessage("The right plan depends on whether you are testing the platform, building steady lead flow, or scaling an established business.");
+    addMessage("Most new companies start with the $29 starter plan because it is the lowest-risk way to test lead flow and see how the system fits their market.");
+    addMessage("More established businesses usually move into the $99 monthly plan or longer-term options when they want consistency and stronger pipeline control.");
+    addMessage("Which best describes you right now: testing the platform, growing steadily, or scaling an established business?");
+    showChatOptionButtons([
+      { label: "Testing", value: "I want to test the platform" },
+      { label: "Growing", value: "I want steady lead flow" },
+      { label: "Scaling", value: "I want long term growth" },
+      { label: "Lead Quality", value: "tell me about lead quality" }
+    ]);
   }
+  return;
+}
 
   if (intent.type === "service") {
     chatState.mode = "service";
@@ -1653,11 +1661,143 @@ function detectIntent(text) {
     addMessage("If your goal is to lower your monthly bills, the strongest first step is usually reducing your current payments before taking on any large home projects.");
     addMessage("Most homeowners start here because it creates breathing room right away and makes every next decision easier.");
     addMessage("Once your monthly pressure is lower, you can decide whether to move into upgrades like roofing, windows, or solar from a stronger financial position.");
-    addMessage("I can help you get started now. What’s your full name?");
+   addMessage("Most people who go through this see a noticeable drop in their monthly payments within a short period.");
+
+addMessage("It only takes a minute to check what you qualify for.");
+
+addMessage("Let’s get you started — what’s your full name?");
 
     chatState.captureStep = "name";
     return;
   }
+  
+  if (
+  lower.includes("test the platform") ||
+  lower.includes("startup") ||
+  lower.includes("$29") ||
+  lower.includes("new company") ||
+  lower.includes("just starting")
+) {
+  chatState.mode = "partner";
+  routeFromVisibleMatch(searchVisiblePage("partner pricing startup package $29"));
+
+  addMessage("If you are just getting started, the $29 starter plan is usually the smartest move.");
+  addMessage("It gives you a low-risk way to test lead flow, understand how the platform works, and see whether the opportunities fit your market before making a bigger commitment.");
+  addMessage("For most new companies, that is the right first decision because it reduces risk while still creating a real chance to win business.");
+  addMessage("Would you like to see partner details now, or are you ready to apply?");
+  showChatOptionButtons([
+    { label: "See Details", value: "partner details" },
+    { label: "Apply Now", value: "apply to become a partner" }
+  ]);
+  return;
+}
+
+if (
+  lower.includes("steady lead flow") ||
+  lower.includes("$99") ||
+  lower.includes("monthly plan") ||
+  lower.includes("growing") ||
+  lower.includes("consistent leads")
+) {
+  chatState.mode = "partner";
+  routeFromVisibleMatch(searchVisiblePage("partner pricing $99 monthly plan lead flow"));
+
+  addMessage("If your business is already moving and you want more consistency, the $99 monthly plan is usually the best fit.");
+  addMessage("It is designed for businesses that want regular access to opportunities without overcommitting too early.");
+  addMessage("For many contractors, this is where the platform starts becoming a real pipeline tool instead of just a test.");
+  addMessage("Would you like to review the plan details or apply now?");
+  showChatOptionButtons([
+    { label: "See Details", value: "partner details" },
+    { label: "Apply Now", value: "apply to become a partner" }
+  ]);
+  return;
+}
+
+if (
+  lower.includes("long term growth") ||
+  lower.includes("scaling") ||
+  lower.includes("$299") ||
+  lower.includes("$499") ||
+  lower.includes("yearly") ||
+  lower.includes("quarterly") ||
+  lower.includes("established business")
+) {
+  chatState.mode = "partner";
+  routeFromVisibleMatch(searchVisiblePage("partner pricing quarterly yearly long term growth"));
+
+  addMessage("If you already know your business needs a better lead source, the quarterly or yearly options are usually the strongest value.");
+  addMessage("They fit companies that want better economics over time, more consistency, and a more committed growth path.");
+  addMessage("At that stage, the decision is less about testing and more about building a stronger system for predictable opportunity flow.");
+  addMessage("Would you like to compare the quarterly and yearly options, or go straight to partner details?");
+  showChatOptionButtons([
+    { label: "Compare Plans", value: "compare quarterly and yearly plans" },
+    { label: "See Details", value: "partner details" }
+  ]);
+  return;
+}
+
+if (
+  lower.includes("lead quality") ||
+  lower.includes("lead flow") ||
+  lower.includes("zip") ||
+  lower.includes("zip code") ||
+  lower.includes("opportunities")
+) {
+  chatState.mode = "partner";
+  routeFromVisibleMatch(searchVisiblePage("partner lead flow zip code opportunities"));
+
+  addMessage("NestNudge is built around homeowner interest earlier in the decision process, not just random cold leads.");
+  addMessage("That matters because better-fit opportunities usually lead to better conversations, better close rates, and stronger ROI.");
+  addMessage("The real value is not just getting leads — it is getting more control over where you grow and how you respond.");
+  addMessage("Would you like to see partner details, or are you ready to apply?");
+  showChatOptionButtons([
+    { label: "See Details", value: "partner details" },
+    { label: "Apply Now", value: "apply to become a partner" }
+  ]);
+  return;
+}
+
+if (lower.includes("partner details")) {
+  chatState.mode = "partner";
+  routeFromVisibleMatch(searchVisiblePage("partner pricing plans lead flow"));
+
+  addMessage("Here are the partner details. This section shows the starter option, monthly access, and longer-term plans so you can choose the fit that matches your business stage.");
+  addMessage("If you want, I can still help you decide which plan makes the most sense before you apply.");
+  return;
+}
+
+if (
+  lower.includes("apply to become a partner") ||
+  lower.includes("apply now") ||
+  lower.includes("become a partner")
+) {
+  chatState.mode = "partner";
+  addMessage("Perfect — I’m sending you to the partner application now so you can get started.");
+
+  setTimeout(() => {
+    window.location.href = "/contractor-signup.php";
+  }, 700);
+
+  return;
+}
+
+if (
+  lower.includes("compare quarterly and yearly plans") ||
+  lower.includes("compare plans")
+) {
+  chatState.mode = "partner";
+  routeFromVisibleMatch(searchVisiblePage("partner pricing quarterly yearly"));
+
+  addMessage("The quarterly plan is a stronger mid-level commitment for businesses that want stable lead access without going all in for the year.");
+  addMessage("The yearly plan is the best long-term value and usually makes the most sense for established businesses that already know they want a better lead source.");
+  addMessage("If you want the safer middle step, go quarterly. If you want the best long-term economics, go yearly.");
+  addMessage("Would you like to review the pricing section again, or are you ready to apply?");
+  showChatOptionButtons([
+    { label: "See Details", value: "partner details" },
+    { label: "Apply Now", value: "apply to become a partner" }
+  ]);
+  return;
+}
 
   if (intent.type === "realtor") {
     chatState.mode = "realtor";
