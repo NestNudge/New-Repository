@@ -1610,7 +1610,7 @@ function detectIntent(text) {
         return;
       }
       
-      function processUserMessage(text) {
+  function processUserMessage(text) {
   if (chatState.captureStep) {
     handleCaptureStep(text);
     return;
@@ -1624,298 +1624,339 @@ function detectIntent(text) {
   const intent = detectIntent(text);
   const lower = text.toLowerCase();
 
-if (intent.type === "audience") {
-  chatState.audience = intent.audience;
+  if (intent.type === "audience") {
+    chatState.audience = intent.audience;
 
-  if (intent.audience === "consumer") {
-    routeFromVisibleMatch(searchVisiblePage("check options homeowner options"));
-    addMessage("Perfect — I’ll guide you like a homeowner looking for the best next step.");
-    addMessage("You can start with lower monthly payments, roof quotes and ROI, windows or doors, solar or insurance savings, or selling with a realtor.");
-    showChatOptionButtons([
-      { label: "Lower Bills", value: "lower monthly payments" },
-      { label: "Roof Quotes", value: "roof quotes" },
-      { label: "Windows", value: "impact windows" },
-      { label: "Selling", value: "selling my home" }
-    ]);
-  } else {
-    routeFromVisibleMatch(searchVisiblePage("partner pricing plans lead flow"));
-    addMessage("Perfect — I’ll guide you like a contractor or partner looking for the best growth path.");
-    addMessage("The right plan depends on whether you are testing the platform, building steady lead flow, or scaling an established business.");
-    addMessage("Most new companies start with the $29 starter plan because it is the lowest-risk way to test lead flow and see how the system fits their market.");
-    addMessage("More established businesses usually move into the $99 monthly plan or longer-term options when they want consistency and stronger pipeline control.");
-    addMessage("Which best describes you right now: testing the platform, growing steadily, or scaling an established business?");
-    showChatOptionButtons([
-      { label: "Testing", value: "I want to test the platform" },
-      { label: "Growing", value: "I want steady lead flow" },
-      { label: "Scaling", value: "I want long term growth" },
-      { label: "Lead Quality", value: "tell me about lead quality" }
-    ]);
+    if (intent.audience === "consumer") {
+      routeFromVisibleMatch(searchVisiblePage("check options homeowner options"));
+      addMessage("Perfect — I’ll guide you like a homeowner looking for the best next step.");
+      addMessage("You can start with lower monthly payments, roof quotes and ROI, windows or doors, solar or insurance savings, or selling with a realtor.");
+      showChatOptionButtons([
+        { label: "Lower Bills", value: "lower monthly payments" },
+        { label: "Roof Quotes", value: "roof quotes" },
+        { label: "Windows", value: "impact windows" },
+        { label: "Selling", value: "selling my home" }
+      ]);
+    } else {
+      routeFromVisibleMatch(searchVisiblePage("partner pricing plans lead flow"));
+      addMessage("Perfect — I’ll guide you like a contractor or partner looking for the best growth path.");
+      addMessage("The right plan depends on whether you are testing the platform, building steady lead flow, or scaling an established business.");
+      addMessage("Most new companies start with the $29 starter plan because it is the lowest-risk way to test lead flow and see how the system fits their market.");
+      addMessage("More established businesses usually move into the $99 monthly plan or longer-term options when they want consistency and stronger pipeline control.");
+      addMessage("Which best describes you right now: testing the platform, growing steadily, or scaling an established business?");
+      showChatOptionButtons([
+        { label: "Testing", value: "I want to test the platform" },
+        { label: "Growing", value: "I want steady lead flow" },
+        { label: "Scaling", value: "I want long term growth" },
+        { label: "Lead Quality", value: "tell me about lead quality" }
+      ]);
+    }
+    return;
   }
 
-  return;
-}
+  if (intent.type === "service") {
+    chatState.mode = "service";
+    chatState.service = intent.service;
+    chatState.leadType = "funding";
+    chatState.captureStep = "";
 
-      if (intent.type === "buying") {
-        chatState.mode = "buying";
-        routeFromVisibleMatch(searchVisiblePage("buying upgrade roi cost guide"));
-        addMessage("Buying is a great time to think ahead. The best buyers look for upgrade potential, future value, and projects that may improve comfort or resale later.");
-        addMessage("The estimator on this page can help you compare roofing, entry doors, or impact windows first.");
-        showChatOptionButtons([
-          { label: "Roof Quotes", value: "roof quotes" },
-          { label: "Entry Door", value: "entry door" },
-          { label: "Impact Windows", value: "impact windows" }
-        ]);
-        return;
-      }
+    showUpgrade(intent.service);
+    routeFromVisibleMatch(searchVisiblePage(text));
 
-      if (intent.type === "funding") {
-        chatState.mode = "funding";
-        chatState.leadType = "funding";
-        routeFromVisibleMatch(searchVisiblePage("funding lower monthly payments loan debt credit bills"));
-
-        addMessage("If your goal is to lower your monthly bills, the strongest first step is usually reducing your current payments before taking on any large home projects.");
-        addMessage("Most homeowners start here because it creates breathing room right away and makes every next decision easier.");
-        addMessage("Once your monthly pressure is lower, you can decide whether to move into upgrades like roofing, windows, or solar from a stronger financial position.");
-        addMessage("Most people who go through this see a noticeable drop in their monthly payments within a short period.");
-        addMessage("It only takes a minute to check what you qualify for.");
-        addMessage("Let’s get you started — what’s your full name?");
-
-        chatState.captureStep = "name";
-        return;
-      }
-
-      if (
-        lower.includes("test the platform") ||
-        lower.includes("startup") ||
-        lower.includes("$29") ||
-        lower.includes("new company") ||
-        lower.includes("just starting")
-      ) {
-        chatState.mode = "partner";
-        routeFromVisibleMatch(searchVisiblePage("partner pricing startup package $29"));
-
-        addMessage("If you are just getting started, the $29 starter plan is usually the smartest move.");
-        addMessage("It gives you a low-risk way to test lead flow, understand how the platform works, and see whether the opportunities fit your market before making a bigger commitment.");
-        addMessage("For most new companies, that is the right first decision because it reduces risk while still creating a real chance to win business.");
-        addMessage("Would you like to see partner details now, or are you ready to apply?");
-        showChatOptionButtons([
-          { label: "See Details", value: "partner details" },
-          { label: "Apply Now", value: "apply to become a partner" }
-        ]);
-        return;
-      }
-
-      if (
-        lower.includes("steady lead flow") ||
-        lower.includes("$99") ||
-        lower.includes("monthly plan") ||
-        lower.includes("growing") ||
-        lower.includes("consistent leads")
-      ) {
-        chatState.mode = "partner";
-        routeFromVisibleMatch(searchVisiblePage("partner pricing $99 monthly plan lead flow"));
-
-        addMessage("If your business is already moving and you want more consistency, the $99 monthly plan is usually the best fit.");
-        addMessage("It is designed for businesses that want regular access to opportunities without overcommitting too early.");
-        addMessage("For many contractors, this is where the platform starts becoming a real pipeline tool instead of just a test.");
-        addMessage("Would you like to review the plan details or apply now?");
-        showChatOptionButtons([
-          { label: "See Details", value: "partner details" },
-          { label: "Apply Now", value: "apply to become a partner" }
-        ]);
-        return;
-      }
-
-      if (
-        lower.includes("long term growth") ||
-        lower.includes("scaling") ||
-        lower.includes("$299") ||
-        lower.includes("$499") ||
-        lower.includes("yearly") ||
-        lower.includes("quarterly") ||
-        lower.includes("established business")
-      ) {
-        chatState.mode = "partner";
-        routeFromVisibleMatch(searchVisiblePage("partner pricing quarterly yearly long term growth"));
-
-        addMessage("If you already know your business needs a better lead source, the quarterly or yearly options are usually the strongest value.");
-        addMessage("They fit companies that want better economics over time, more consistency, and a more committed growth path.");
-        addMessage("At that stage, the decision is less about testing and more about building a stronger system for predictable opportunity flow.");
-        addMessage("Would you like to compare the quarterly and yearly options, or go straight to partner details?");
-        showChatOptionButtons([
-          { label: "Compare Plans", value: "compare quarterly and yearly plans" },
-          { label: "See Details", value: "partner details" }
-        ]);
-        return;
-      }
-
-      if (
-        lower.includes("lead quality") ||
-        lower.includes("lead flow") ||
-        lower.includes("zip") ||
-        lower.includes("zip code") ||
-        lower.includes("opportunities")
-      ) {
-        chatState.mode = "partner";
-        routeFromVisibleMatch(searchVisiblePage("partner lead flow zip code opportunities"));
-
-        addMessage("NestNudge is built around homeowner interest earlier in the decision process, not just random cold leads.");
-        addMessage("That matters because better-fit opportunities usually lead to better conversations, better close rates, and stronger ROI.");
-        addMessage("The real value is not just getting leads — it is getting more control over where you grow and how you respond.");
-        addMessage("Would you like to see partner details, or are you ready to apply?");
-        showChatOptionButtons([
-          { label: "See Details", value: "partner details" },
-          { label: "Apply Now", value: "apply to become a partner" }
-        ]);
-        return;
-      }
-
-      if (lower.includes("partner details")) {
-        chatState.mode = "partner";
-        routeFromVisibleMatch(searchVisiblePage("partner pricing plans lead flow"));
-
-        addMessage("Here are the partner details. This section shows the starter option, monthly access, and longer-term plans so you can choose the fit that matches your business stage.");
-        addMessage("If you want, I can still help you decide which plan makes the most sense before you apply.");
-        return;
-      }
-
-      if (
-        lower.includes("apply to become a partner") ||
-        lower.includes("apply now") ||
-        lower.includes("become a partner")
-      ) {
-        chatState.mode = "partner";
-        addMessage("Perfect — I’m sending you to the partner application now so you can get started.");
-        setTimeout(() => {
-          window.location.href = "/contractor-signup.php";
-        }, 700);
-        return;
-      }
-
-      if (
-        lower.includes("compare quarterly and yearly plans") ||
-        lower.includes("compare plans")
-      ) {
-        chatState.mode = "partner";
-        routeFromVisibleMatch(searchVisiblePage("partner pricing quarterly yearly"));
-
-        addMessage("The quarterly plan is a stronger mid-level commitment for businesses that want stable lead access without going all in for the year.");
-        addMessage("The yearly plan is the best long-term value and usually makes the most sense for established businesses that already know they want a better lead source.");
-        addMessage("If you want the safer middle step, go quarterly. If you want the best long-term economics, go yearly.");
-        addMessage("Would you like to review the pricing section again, or are you ready to apply?");
-        showChatOptionButtons([
-          { label: "See Details", value: "partner details" },
-          { label: "Apply Now", value: "apply to become a partner" }
-        ]);
-        return;
-      }
-
-      if (intent.type === "realtor") {
-        chatState.mode = "realtor";
-        chatState.leadType = "realtor";
-        routeFromVisibleMatch(searchVisiblePage("realtor selling home value listing"));
-        addMessage("When selling is the goal, the smartest decision is usually to focus on the upgrades that improve selling power and put more money back in your pocket without overspending.");
-        addMessage("I can connect you with a local realtor now. What’s your full name?");
-        chatState.captureStep = "name";
-        return;
-      }
-
-      if (intent.type === "knowledge") {
-        if (
-          lower.includes("bill") ||
-          lower.includes("bills") ||
-          lower.includes("payment") ||
-          lower.includes("payments") ||
-          lower.includes("debt") ||
-          lower.includes("credit")
-        ) {
-          routeFromVisibleMatch(searchVisiblePage("funding lower monthly payments"));
-          addMessage("If lowering monthly bills is your goal, the smartest place to start is with payment-lowering or debt-consolidation options before making any larger home move.");
-          addMessage("That gives you faster financial relief and puts you in a better position for everything that comes next.");
-          addMessage("I can help you get started now. What’s your full name?");
-          chatState.mode = "funding";
-          chatState.leadType = "funding";
-          chatState.captureStep = "name";
-          return;
-        }
-
-        if (lower.includes("solar")) {
-          routeFromVisibleMatch(searchVisiblePage("offers solar"));
-          addMessage("Solar is usually worth exploring when your goal is long-term utility savings and a more efficient home.");
-          addMessage("The Featured Ways to Save section can help you start there, and I can keep guiding you after that.");
-          return;
-        }
-
-        if (lower.includes("insurance")) {
-          routeFromVisibleMatch(searchVisiblePage("offers insurance"));
-          addMessage("Insurance savings can be one of the fastest ways to improve monthly cash flow without taking on a major project.");
-          addMessage("The Featured Ways to Save section is the best place to start comparing that option.");
-          return;
-        }
-
-        if (lower.includes("offer")) {
-          routeFromVisibleMatch(searchVisiblePage("offers featured ways to save"));
-          addMessage("I’ve taken you to the Featured Ways to Save section so you can explore the strongest money-saving options first.");
-          return;
-        }
-
-        const visibleMatch = searchVisiblePage(text);
-        const knowledgeMatches = searchKnowledgeBase(text);
-
-        if (visibleMatch) {
-          routeFromVisibleMatch(visibleMatch);
-          addMessage(`${visibleMatch.label}: ${visibleMatch.cta}`);
-        }
-
-        if (knowledgeMatches.length) {
-          addMessage("I found a few relevant options. Tell me whether your main goal is lower bills, improving home value, or preparing to sell, and I’ll guide you to the best next step.");
-          addDecisionCTA(text);
-          return;
-        }
-      }
-
-      if (intent.type === "change") {
-        chatState.captureStep = "";
-        chatState.mode = "general";
-        chatState.service = "";
-        addMessage("No problem — we can change direction. Are you looking for help as a homeowner, or are you a contractor/partner exploring leads and plans?");
-        return;
-      }
-
-      if (
-        lower.includes("bill") ||
-        lower.includes("bills") ||
-        lower.includes("payment") ||
-        lower.includes("payments") ||
-        lower.includes("debt") ||
-        lower.includes("credit")
-      ) {
-        routeFromVisibleMatch(searchVisiblePage("funding lower monthly payments"));
-        addMessage("If lowering monthly bills is your goal, the smartest place to start is with payment-lowering or debt-consolidation options before making any larger home move.");
-        addMessage("That gives you faster financial relief and puts you in a better position for everything that comes next.");
-        addMessage("I can help you get started now. What’s your full name?");
-        chatState.mode = "funding";
-        chatState.leadType = "funding";
-        chatState.captureStep = "name";
-        return;
-      }
-
-      const visibleMatch = searchVisiblePage(text);
-      const knowledgeMatches = searchKnowledgeBase(text);
-
-      if (visibleMatch) {
-        routeFromVisibleMatch(visibleMatch);
-        addMessage(`${visibleMatch.label}: ${visibleMatch.cta}`);
-      }
-
-      if (knowledgeMatches.length) {
-        addMessage("I found a few relevant options. Tell me whether your main goal is lower bills, improving home value, or preparing to sell, and I’ll guide you to the best next step.");
-        addDecisionCTA(text);
-        return;
-      }
-
-      addMessage("I can help you search the page and knowledge base for homeowner options, upgrade ROI, funding, selling guidance, solar, insurance, and partner pricing. Tell me your goal and I’ll guide you to the best next step.");
+    const summary = getUpgradeSummary(intent.service);
+    if (summary) {
+      addMessage(`${summary.title} typically ranges from ${formatMoney(summary.costLow)} to ${formatMoney(summary.costHigh)} and may add about ${formatMoney(summary.valueLow)} to ${formatMoney(summary.valueHigh)} in value. Estimated ROI can be around ${summary.avgROI}%.`);
     }
+
+    addDecisionCTA(text);
+    return;
+  }
+
+  if (intent.type === "buying") {
+    chatState.mode = "buying";
+    routeFromVisibleMatch(searchVisiblePage("buying upgrade roi cost guide"));
+    addMessage("Buying is a great time to think ahead. The best buyers look for upgrade potential, future value, and projects that may improve comfort or resale later.");
+    addMessage("The estimator on this page can help you compare roofing, entry doors, or impact windows first.");
+    showChatOptionButtons([
+      { label: "Roof Quotes", value: "roof quotes" },
+      { label: "Entry Door", value: "entry door" },
+      { label: "Impact Windows", value: "impact windows" }
+    ]);
+    return;
+  }
+
+  if (intent.type === "funding") {
+    chatState.mode = "funding";
+    chatState.leadType = "funding";
+    routeFromVisibleMatch(searchVisiblePage("funding lower monthly payments loan debt credit bills"));
+
+    addMessage("If your goal is to lower your monthly bills, the strongest first step is usually reducing your current payments before taking on any large home projects.");
+    addMessage("Most homeowners start here because it creates breathing room right away and makes every next decision easier.");
+    addMessage("Once your monthly pressure is lower, you can decide whether to move into upgrades like roofing, windows, or solar from a stronger financial position.");
+    addMessage("Most people who go through this see a noticeable drop in their monthly payments within a short period.");
+    addMessage("It only takes a minute to check what you qualify for.");
+    addMessage("Let’s get you started — what’s your full name?");
+
+    chatState.captureStep = "name";
+    return;
+  }
+
+  if (
+    lower.includes("test the platform") ||
+    lower.includes("startup") ||
+    lower.includes("$29") ||
+    lower.includes("new company") ||
+    lower.includes("just starting")
+  ) {
+    chatState.mode = "partner";
+    routeFromVisibleMatch(searchVisiblePage("partner pricing startup package $29"));
+
+    addMessage("If you are just getting started, the $29 starter plan is usually the smartest move.");
+    addMessage("It gives you a low-risk way to test lead flow, understand how the platform works, and see whether the opportunities fit your market before making a bigger commitment.");
+    addMessage("For most new companies, that is the right first decision because it reduces risk while still creating a real chance to win business.");
+    addMessage("Would you like to see partner details now, or are you ready to apply?");
+    showChatOptionButtons([
+      { label: "See Details", value: "partner details" },
+      { label: "Apply Now", value: "apply to become a partner" }
+    ]);
+    return;
+  }
+
+  if (
+    lower.includes("steady lead flow") ||
+    lower.includes("$99") ||
+    lower.includes("monthly plan") ||
+    lower.includes("growing") ||
+    lower.includes("consistent leads")
+  ) {
+    chatState.mode = "partner";
+    routeFromVisibleMatch(searchVisiblePage("partner pricing $99 monthly plan lead flow"));
+
+    addMessage("If your business is already moving and you want more consistency, the $99 monthly plan is usually the best fit.");
+    addMessage("It is designed for businesses that want regular access to opportunities without overcommitting too early.");
+    addMessage("For many contractors, this is where the platform starts becoming a real pipeline tool instead of just a test.");
+    addMessage("Would you like to review the plan details or apply now?");
+    showChatOptionButtons([
+      { label: "See Details", value: "partner details" },
+      { label: "Apply Now", value: "apply to become a partner" }
+    ]);
+    return;
+  }
+
+  if (
+    lower.includes("long term growth") ||
+    lower.includes("scaling") ||
+    lower.includes("$299") ||
+    lower.includes("$499") ||
+    lower.includes("yearly") ||
+    lower.includes("quarterly") ||
+    lower.includes("established business")
+  ) {
+    chatState.mode = "partner";
+    routeFromVisibleMatch(searchVisiblePage("partner pricing quarterly yearly long term growth"));
+
+    addMessage("If you already know your business needs a better lead source, the quarterly or yearly options are usually the strongest value.");
+    addMessage("They fit companies that want better economics over time, more consistency, and a more committed growth path.");
+    addMessage("At that stage, the decision is less about testing and more about building a stronger system for predictable opportunity flow.");
+    addMessage("Would you like to compare the quarterly and yearly options, or go straight to partner details?");
+    showChatOptionButtons([
+      { label: "Compare Plans", value: "compare quarterly and yearly plans" },
+      { label: "See Details", value: "partner details" }
+    ]);
+    return;
+  }
+
+  if (
+    lower.includes("lead quality") ||
+    lower.includes("lead flow") ||
+    lower.includes("zip") ||
+    lower.includes("zip code") ||
+    lower.includes("opportunities")
+  ) {
+    chatState.mode = "partner";
+    routeFromVisibleMatch(searchVisiblePage("partner lead flow zip code opportunities"));
+
+    addMessage("NestNudge is built around homeowner interest earlier in the decision process, not just random cold leads.");
+    addMessage("That matters because better-fit opportunities usually lead to better conversations, better close rates, and stronger ROI.");
+    addMessage("The real value is not just getting leads — it is getting more control over where you grow and how you respond.");
+    addMessage("Would you like to see partner details, or are you ready to apply?");
+    showChatOptionButtons([
+      { label: "See Details", value: "partner details" },
+      { label: "Apply Now", value: "apply to become a partner" }
+    ]);
+    return;
+  }
+
+  if (lower.includes("partner details")) {
+    chatState.mode = "partner";
+    routeFromVisibleMatch(searchVisiblePage("partner pricing plans lead flow"));
+
+    addMessage("Here are the partner details. This section shows the starter option, monthly access, and longer-term plans so you can choose the fit that matches your business stage.");
+    addMessage("If you want, I can still help you decide which plan makes the most sense before you apply.");
+    return;
+  }
+
+  if (
+    lower.includes("apply to become a partner") ||
+    lower.includes("apply now") ||
+    lower.includes("become a partner")
+  ) {
+    chatState.mode = "partner";
+    addMessage("Perfect — I’m sending you to the partner application now so you can get started.");
+    setTimeout(() => {
+      window.location.href = "/contractor-signup.php";
+    }, 700);
+    return;
+  }
+
+  if (
+    lower.includes("compare quarterly and yearly plans") ||
+    lower.includes("compare plans")
+  ) {
+    chatState.mode = "partner";
+    routeFromVisibleMatch(searchVisiblePage("partner pricing quarterly yearly"));
+
+    addMessage("The quarterly plan is a stronger mid-level commitment for businesses that want stable lead access without going all in for the year.");
+    addMessage("The yearly plan is the best long-term value and usually makes the most sense for established businesses that already know they want a better lead source.");
+    addMessage("If you want the safer middle step, go quarterly. If you want the best long-term economics, go yearly.");
+    addMessage("Would you like to review the pricing section again, or are you ready to apply?");
+    showChatOptionButtons([
+      { label: "See Details", value: "partner details" },
+      { label: "Apply Now", value: "apply to become a partner" }
+    ]);
+    return;
+  }
+
+  if (intent.type === "realtor") {
+    chatState.mode = "realtor";
+    chatState.leadType = "realtor";
+    routeFromVisibleMatch(searchVisiblePage("realtor selling home value listing"));
+    addMessage("When selling is the goal, the smartest decision is usually to focus on the upgrades that improve selling power and put more money back in your pocket without overspending.");
+    addMessage("I can connect you with a local realtor now. What’s your full name?");
+    chatState.captureStep = "name";
+    return;
+  }
+
+  if (intent.type === "knowledge") {
+    if (
+      lower.includes("bill") ||
+      lower.includes("bills") ||
+      lower.includes("payment") ||
+      lower.includes("payments") ||
+      lower.includes("debt") ||
+      lower.includes("credit")
+    ) {
+      routeFromVisibleMatch(searchVisiblePage("funding lower monthly payments"));
+      addMessage("If your goal is to lower your monthly bills, the strongest first move is usually reducing your current payments before taking on any major home project.");
+      addMessage("That creates breathing room fast and puts you in a better position to decide whether to move into upgrades like roofing, windows, or solar.");
+      addMessage("Most people start here because it is the fastest path to financial relief.");
+      addMessage("I can help you get started now. What’s your full name?");
+      chatState.mode = "funding";
+      chatState.leadType = "funding";
+      chatState.captureStep = "name";
+      return;
+    }
+
+    if (lower.includes("solar")) {
+      routeFromVisibleMatch(searchVisiblePage("offers solar"));
+      addMessage("Solar is usually worth exploring when your goal is long-term utility savings and a more efficient home.");
+      addMessage("It tends to make the most sense for homeowners who want predictable monthly costs and stronger long-term value.");
+      addMessage("The best next step is to review the savings path first, then decide whether it fits your home and timing.");
+      return;
+    }
+
+    if (lower.includes("insurance")) {
+      routeFromVisibleMatch(searchVisiblePage("offers insurance"));
+      addMessage("Insurance savings can be one of the fastest ways to keep more money in your pocket without taking on a major project.");
+      addMessage("For many homeowners, that makes it a smart first move before larger upgrade decisions.");
+      addMessage("The best next step is to review the savings options and see whether that improves your monthly position.");
+      return;
+    }
+
+    if (lower.includes("offer") || lower.includes("offers")) {
+      routeFromVisibleMatch(searchVisiblePage("offers featured ways to save"));
+      addMessage("I’ve taken you to the Featured Ways to Save section because that is the best place to start if your goal is to improve monthly cash flow before making a bigger home decision.");
+      addMessage("From there, I can help you narrow down which option fits best.");
+      return;
+    }
+
+    if (
+      lower.includes("partner") ||
+      lower.includes("contractor") ||
+      lower.includes("pricing") ||
+      lower.includes("startup package") ||
+      lower.includes("lead")
+    ) {
+      routeFromVisibleMatch(searchVisiblePage("partner pricing lead flow"));
+      addMessage("If you are looking at the partner side, the best decision depends on where your business is right now.");
+      addMessage("Newer businesses usually start with the $29 plan to test fit with very little risk. Businesses that want steady opportunity flow usually fit the $99 monthly plan better.");
+      addMessage("If you already know you want a stronger long-term lead source, comparing quarterly and yearly value is the smarter move.");
+      addMessage("Are you testing, growing steadily, or scaling?");
+      showChatOptionButtons([
+        { label: "Testing", value: "I want to test the platform" },
+        { label: "Growing", value: "I want steady lead flow" },
+        { label: "Scaling", value: "I want long term growth" }
+      ]);
+      return;
+    }
+
+    const knowledgeVisibleMatch = searchVisiblePage(text);
+    const knowledgeMatches = searchKnowledgeBase(text);
+
+    if (knowledgeVisibleMatch) {
+      routeFromVisibleMatch(knowledgeVisibleMatch);
+      addMessage(`${knowledgeVisibleMatch.label}: ${knowledgeVisibleMatch.cta}`);
+    }
+
+    if (knowledgeMatches.length) {
+      addMessage("I found relevant guidance for that. The best next move now is to narrow the goal so I can guide you more precisely.");
+      addDecisionCTA(text);
+      return;
+    }
+  }
+
+  if (intent.type === "change") {
+    chatState.captureStep = "";
+    chatState.mode = "general";
+    chatState.service = "";
+    addMessage("No problem — we can change direction. Are you looking for help as a homeowner, or are you a contractor/partner exploring leads and plans?");
+    return;
+  }
+
+  if (
+    lower.includes("bill") ||
+    lower.includes("bills") ||
+    lower.includes("payment") ||
+    lower.includes("payments") ||
+    lower.includes("debt") ||
+    lower.includes("credit")
+  ) {
+    routeFromVisibleMatch(searchVisiblePage("funding lower monthly payments"));
+    addMessage("If lowering monthly bills is your goal, the smartest place to start is with payment-lowering or debt-consolidation options before making any larger home move.");
+    addMessage("That gives you faster financial relief and puts you in a better position for everything that comes next.");
+    addMessage("I can help you get started now. What’s your full name?");
+    chatState.mode = "funding";
+    chatState.leadType = "funding";
+    chatState.captureStep = "name";
+    return;
+  }
+
+  const visibleMatch = searchVisiblePage(text);
+  const knowledgeMatches = searchKnowledgeBase(text);
+
+  if (visibleMatch) {
+    routeFromVisibleMatch(visibleMatch);
+    addMessage(`${visibleMatch.label}: ${visibleMatch.cta}`);
+  }
+
+  if (knowledgeMatches.length) {
+    addMessage("I found relevant guidance for that. The best next move now is to narrow the goal so I can guide you more precisely.");
+    addDecisionCTA(text);
+    return;
+  }
+
+  addMessage("I can help you find the strongest next step based on your goal — lower monthly bills, improve home value, prepare to sell, or grow your business. Tell me what outcome you want most, and I’ll guide you there.");
+}
 
 
     function isValidEmail(email) {
