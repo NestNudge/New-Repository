@@ -1,424 +1,187 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['contractor'])) {
-  header("Location: /contractor-login.php");
-  exit;
-}
-
-$contractor = $_SESSION['contractor'];
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="/nestnudge.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Partner Dashboard | NestNudge</title>
-  <meta name="description" content="NestNudge contractor dashboard for bidding, lead review, claiming, and account management.">
-  <meta name="robots" content="noindex,follow">
+  <title>Partner With NestNudge | Grow With Vetted Local Leads</title>
+  <meta name="description" content="For contractors, loan reps, and realtors who want a better way to grow with vetted local leads, ZIP-based opportunities, and a personalized back-office platform.">
+  <link rel="canonical" href="https://www.nestnudge.com/partners.html">
+  <link rel="icon" href="/nestnudge.ico">
   <link rel="stylesheet" href="style.css">
-  <style>
-    :root{--nn-green:#2e7d32;--nn-green-dark:#1f6b3c;--nn-ink:#111827;--nn-text:#4b5563;--nn-muted:#6b7280;--nn-border:#e5e7eb;--nn-card:#fff;--nn-shadow:0 12px 28px rgba(15,23,42,.08)}
-    *{box-sizing:border-box} body{background:#f5f7f6;color:var(--nn-ink)}
-    .dashboard-shell{max-width:1320px;margin:0 auto;padding:28px 20px 60px}
-    .dashboard-hero{background:linear-gradient(135deg,var(--nn-green-dark),var(--nn-green));color:#fff;border-radius:22px;padding:30px 28px;box-shadow:0 16px 34px rgba(0,0,0,.14);margin-bottom:24px}
-    .dashboard-hero-top{display:flex;justify-content:space-between;gap:18px;align-items:start;flex-wrap:wrap;margin-bottom:18px}
-    .hero-copy h1{margin:0 0 10px;font-size:2.1rem;line-height:1.1}
-    .hero-copy p{margin:0;max-width:760px;line-height:1.6;color:rgba(255,255,255,.94)}
-    .hero-plan{min-width:220px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:16px 18px}
-    .hero-plan .label{display:block;font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;font-weight:700;opacity:.85;margin-bottom:6px}
-    .hero-plan strong{display:block;font-size:1.2rem;margin-bottom:5px}
-    .hero-plan span{font-size:.95rem;color:rgba(255,255,255,.92)}
-    .hero-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-    .hero-stat{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:16px 18px}
-    .hero-stat p{margin:0 0 8px;font-size:.9rem;color:rgba(255,255,255,.84)}
-    .hero-stat h3{margin:0;font-size:1.65rem;line-height:1;color:#fff}
-    .alerts-bar{margin-top:18px;display:grid;gap:10px}
-    .alert-item{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;font-weight:600}
-    .dashboard-grid{display:grid;grid-template-columns:280px 1fr;gap:24px;align-items:start}
-    .dashboard-sidebar,.dashboard-card,.lead-row,.metric-card,.action-card,.plan-card{background:var(--nn-card);border-radius:18px;box-shadow:var(--nn-shadow)}
-    .dashboard-sidebar{padding:22px 18px;position:sticky;top:20px}
-    .partner-profile{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--nn-border)}
-    .partner-avatar{width:48px;height:48px;border-radius:50%;background:var(--nn-green);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
-    .partner-profile strong{display:block;margin-bottom:2px}.partner-profile span{color:var(--nn-muted);font-size:.92rem}
-    .dashboard-sidebar h3{margin:0 0 14px;font-size:1.05rem}
-    .sidebar-nav{display:grid;gap:10px}
-    .sidebar-nav button{width:100%;text-align:left;border:none;background:#f4f7f4;border-radius:12px;padding:13px 14px;font-weight:700;cursor:pointer;transition:.2s ease;color:#1f2937}
-    .sidebar-nav button:hover,.sidebar-nav button.active{background:var(--nn-green);color:#fff}
-    .sidebar-note{margin-top:18px;font-size:.92rem;color:var(--nn-text);line-height:1.6}
-    .logout-wrap{margin-top:20px;padding-top:16px;border-top:1px solid var(--nn-border)} .logout-wrap a{text-decoration:none;color:var(--nn-green);font-weight:800}
-    .dashboard-main{display:grid;gap:24px}
-    .dashboard-card{padding:24px;border:1px solid #eef2ef}
-    .section-header{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:18px}
-    .section-header h2{margin:0 0 6px;font-size:1.45rem}
-    .section-subtext{margin:0;color:var(--nn-text);line-height:1.6;max-width:760px}
-    .section-kicker{display:inline-block;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;font-weight:800;color:var(--nn-green);margin-bottom:6px}
-    .action-grid,.metric-grid,.plan-grid,.two-col-grid{display:grid;gap:16px}
-    .action-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .metric-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
-    .plan-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-    .two-col-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .action-card,.utility-card{padding:18px;border:1px solid #e8efe8;background:#f9fcfa;border-radius:16px}
-    .action-card h3,.utility-card h3{margin:0 0 8px}.action-card p,.utility-card p{margin:0 0 16px;color:var(--nn-text);line-height:1.55}
-    .metric-card{padding:18px;border:1px solid #eef2ef}.metric-card p{margin:0 0 8px;color:var(--nn-muted);font-size:.94rem}.metric-card h3{margin:0;font-size:1.55rem}
-    .filters{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:12px;margin-bottom:18px}
-    .filters input,.filters select{width:100%;padding:12px 13px;border:1px solid #d9dfe5;border-radius:12px;font-size:.95rem;background:#fff}
-    .lead-list{display:grid;gap:14px}
-    .lead-row{padding:18px;display:grid;grid-template-columns:1.4fr 1.25fr .8fr .8fr 1fr;gap:14px;align-items:center;border:1px solid #edf0f2}
-    .lead-main strong{display:block;font-size:1rem;margin-bottom:4px}.lead-main span,.lead-meta,.lead-price{color:#66707a;font-size:.93rem;line-height:1.45}
-    .lead-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.lead-badge{background:#eef7ef;color:#256b2a;border-radius:999px;padding:6px 10px;font-size:.78rem;font-weight:700;text-transform:capitalize}
-    .status-pill{display:inline-block;border-radius:999px;padding:7px 11px;font-size:.78rem;font-weight:800;background:#f5f7fa;color:#425466}
-    .status-pill.new{background:#e9f7ec;color:#1b7a33}.status-pill.hot{background:#fff2e8;color:#c25b0a}.status-pill.sold{background:#eef1f5;color:#52606d}
-    .lead-actions{display:grid;gap:8px}
-    .btn-primary,.btn-secondary,.btn-disabled,.plan-card button{border:none;border-radius:10px;padding:11px 14px;font-weight:800;cursor:pointer}
-    .btn-primary{background:var(--nn-green);color:#fff}.btn-secondary{background:#edf2f7;color:#1f2937}.btn-disabled{background:#d9e1e6;color:#6b7680;cursor:not-allowed}
-    .plan-card{border:1px solid #e5ece7;background:#fbfdfb;padding:22px}.plan-card.featured{border:2px solid var(--nn-green);box-shadow:0 12px 30px rgba(46,125,50,.12)}
-    .plan-card h3{margin:0 0 8px;font-size:1.2rem}.plan-card .price{font-size:2rem;font-weight:800;margin:8px 0 14px;color:var(--nn-ink)} .plan-card p{color:var(--nn-text);line-height:1.55}
-    .plan-card ul{padding-left:18px;color:#58626c;line-height:1.7;margin:14px 0 18px}
-    .hidden-section{display:none}.table-note{margin-top:14px;color:#6a7580;font-size:.9rem}
-    @media (max-width:1180px){.metric-grid,.plan-grid,.action-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:1fr 1fr}.lead-row{grid-template-columns:1fr}}
-    @media (max-width:920px){.dashboard-grid{grid-template-columns:1fr}.dashboard-sidebar{position:static}.hero-stats,.metric-grid,.plan-grid,.action-grid,.two-col-grid,.filters{grid-template-columns:1fr}.dashboard-hero h1{font-size:1.85rem}}
-  </style>
 </head>
 <body>
+
   <header>
-    <nav>
+    <nav class="main-nav">
       <a href="/">Home</a>
-      <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
+      <a href="/offers.html">Offers</a>
+      <a href="/partners.html">For Partners</a>
       <a href="/contractor-login.php">Partner Login</a>
-      <a href="/#services">Services</a>
-      <a href="/#contact-form">Contact</a>
+      <a class="cta-button" href="/contractor-signup.php">Become a Partner</a>
     </nav>
   </header>
 
-  <div class="dashboard-shell">
-    <section class="dashboard-hero">
-      <div class="dashboard-hero-top">
-        <div class="hero-copy">
-          <h1>Partner Dashboard</h1>
-          <p>Welcome back, <?php echo htmlspecialchars($contractor['company']); ?>. Review matched opportunities, claim exclusive leads, and stay focused on the jobs that best fit your service areas and specialties.</p>
-        </div>
-        <div class="hero-plan">
-          <span class="label">Current Plan</span>
-          <strong><?php echo htmlspecialchars($contractor['plan']); ?></strong>
-          <span>Matched to your specialties and South Florida coverage.</span>
-        </div>
+  <section class="partner-hero">
+    <div class="partner-hero-inner">
+      <span class="partners-badge">For Contractors, Loan Reps & Realtors</span>
+      <h1>Grow With a Partner Platform Built for Local Business</h1>
+      <p>
+        Get your own custom share link, access vetted lead opportunities by ZIP code,
+        and manage your growth through a personalized partner back office.
+      </p>
+
+      <div class="partner-hero-cta">
+        <a href="/contractor-signup.php" class="cta-btn">Start with Starter Access</a>
+        <a href="#partner-pricing" class="partner-outline-btn">See Pricing</a>
       </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><p>New Leads Today</p><h3 id="stat-new-leads">0</h3></div>
-        <div class="hero-stat"><p>Hot Leads</p><h3 id="stat-hot-leads">0</h3></div>
-        <div class="hero-stat"><p>Claimed by You</p><h3 id="stat-claimed-leads">0</h3></div>
+
+      <div class="partner-proof">
+        Vetted leads. ZIP-based opportunities. More control over your pipeline.
       </div>
-      <div class="alerts-bar" id="alertsBar"></div>
-    </section>
-
-    <div class="dashboard-grid">
-      <aside class="dashboard-sidebar">
-        <div class="partner-profile">
-          <div class="partner-avatar">NN</div>
-          <div>
-            <strong><?php echo htmlspecialchars($contractor['company']); ?></strong>
-            <span><?php echo htmlspecialchars($contractor['plan']); ?> Plan</span>
-          </div>
-        </div>
-        <h3>Dashboard Menu</h3>
-        <div class="sidebar-nav">
-          <button class="active" data-target="overview">Dashboard</button>
-          <button data-target="leads">Leads</button>
-          <button data-target="performance">Performance</button>
-          <button data-target="plans">Plans</button>
-          <button data-target="account">Account</button>
-        </div>
-        <p class="sidebar-note">Your account is filtered by specialties and South Florida service coverage, so you only see the opportunities that match your business profile.</p>
-        <div class="logout-wrap"><a href="/contractor-logout.php">Log Out</a></div>
-      </aside>
-
-      <main class="dashboard-main">
-        <section id="section-overview" class="dashboard-section">
-          <div class="dashboard-card">
-            <div class="section-header">
-              <div>
-                <span class="section-kicker">Start Here</span>
-                <h2>Today’s Top Actions</h2>
-                <p class="section-subtext">Jump into the most important next step: review new leads, claim exclusive opportunities, or upgrade your plan.</p>
-              </div>
-            </div>
-            <div class="action-grid">
-              <div class="action-card"><h3>Review New Leads</h3><p>See the newest homeowner and realtor requests matched to your specialties.</p><button class="btn-primary" data-jump="leads">Open Leads</button></div>
-              <div class="action-card"><h3>Claim Opportunities</h3><p>Exclusive lead claiming removes the lead from the rest of the contractor market.</p><button class="btn-secondary" data-jump="leads">Claim Leads</button></div>
-              <div class="action-card"><h3>Upgrade Your Plan</h3><p>Move into stronger access and faster release windows when you are ready to grow.</p><button class="btn-secondary" data-jump="plans">See Plans</button></div>
-            </div>
-          </div>
-
-          <div class="dashboard-card">
-            <div class="section-header">
-              <div>
-                <span class="section-kicker">Summary</span>
-                <h2>Performance Snapshot</h2>
-                <p class="section-subtext">Track marketplace activity, average lead cost, and how many matched opportunities are currently visible to you.</p>
-              </div>
-            </div>
-            <div class="metric-grid">
-              <div class="metric-card"><p>Matched Leads</p><h3 id="stat-matched-leads">0</h3></div>
-              <div class="metric-card"><p>Average Lead Price</p><h3 id="stat-avg-price">$0</h3></div>
-              <div class="metric-card"><p>Plan Status</p><h3><?php echo htmlspecialchars($contractor['plan']); ?></h3></div>
-              <div class="metric-card"><p>Access Type</p><h3>Filtered</h3></div>
-            </div>
-          </div>
-        </section>
-
-        <section id="section-leads" class="dashboard-section hidden-section">
-          <div class="dashboard-card">
-            <div class="section-header">
-              <div>
-                <span class="section-kicker">Marketplace</span>
-                <h2>Available Leads</h2>
-                <p class="section-subtext">Browse real incoming homeowner and realtor requests from NestNudge and claim the opportunities that best fit your business.</p>
-              </div>
-            </div>
-            <div class="filters">
-              <input type="text" id="leadSearch" placeholder="Search city, source, ZIP, or service">
-              <select id="serviceFilter">
-                <option value="all">All Services</option><option value="estimator">Estimator</option><option value="loan">Funding</option><option value="roof">Roofing</option><option value="realtor">Realtor</option>
-              </select>
-              <select id="statusFilter">
-                <option value="all">All Statuses</option><option value="new">New</option><option value="hot">Hot</option><option value="sold">Sold</option>
-              </select>
-              <select id="cityFilter"><option value="all">All Locations</option></select>
-            </div>
-            <div class="lead-list" id="leadList">
-              <div class="lead-row"><div class="lead-main"><strong>Loading leads...</strong><span>Please wait while we pull your latest lead activity.</span></div></div>
-            </div>
-            <p class="table-note">Claimed leads are removed from the rest of the contractor marketplace. This is the core revenue action area of your dashboard.</p>
-          </div>
-        </section>
-
-        <section id="section-performance" class="dashboard-section hidden-section">
-          <div class="dashboard-card">
-            <div class="section-header"><div><span class="section-kicker">Performance</span><h2>Lead Activity Summary</h2><p class="section-subtext">Use these metrics to understand volume, urgency, and pricing trends across your matched opportunities.</p></div></div>
-            <div class="metric-grid">
-              <div class="metric-card"><p>New Leads Today</p><h3 id="perf-new-leads">0</h3></div>
-              <div class="metric-card"><p>Matched Leads</p><h3 id="perf-matched-leads">0</h3></div>
-              <div class="metric-card"><p>Hot Leads</p><h3 id="perf-hot-leads">0</h3></div>
-              <div class="metric-card"><p>Claimed by You</p><h3 id="perf-claimed-leads">0</h3></div>
-            </div>
-          </div>
-        </section>
-
-        <section id="section-plans" class="dashboard-section hidden-section">
-          <div class="dashboard-card">
-            <div class="section-header"><div><span class="section-kicker">Plans</span><h2>Membership & Lead Access</h2><p class="section-subtext">Choose the level of access that fits your growth stage, response speed, and desired opportunity flow.</p></div></div>
-            <div class="plan-grid">
-              <div class="plan-card"><h3>Starter</h3><div class="price">$99<span style="font-size:.95rem;font-weight:600;">/mo</span></div><p>Best for partners getting familiar with the marketplace and lead claim workflow.</p><ul><li>Standard lead access</li><li>Basic market visibility</li><li>Manual claim workflow</li></ul><button class="btn-secondary">Select Plan</button></div>
-              <div class="plan-card featured"><h3>Growth</h3><div class="price">$249<span style="font-size:.95rem;font-weight:600;">/mo</span></div><p>Best for businesses that want stronger consistency and faster access to matched opportunities.</p><ul><li>Priority lead access</li><li>Faster release windows</li><li>Preferred claim visibility</li></ul><button class="btn-primary">Choose Growth</button></div>
-              <div class="plan-card"><h3>Premium</h3><div class="price">$499<span style="font-size:.95rem;font-weight:600;">/mo</span></div><p>Best for established teams that want the highest-value markets and dedicated support.</p><ul><li>Top-tier opportunity access</li><li>High-value market preference</li><li>Dedicated account support</li></ul><button class="btn-secondary">Request Premium</button></div>
-            </div>
-          </div>
-        </section>
-
-        <section id="section-account" class="dashboard-section hidden-section">
-          <div class="dashboard-card">
-            <div class="section-header"><div><span class="section-kicker">Account</span><h2>Account & Billing</h2><p class="section-subtext">Manage company details, billing methods, and notification preferences as the next layer of your partner setup.</p></div></div>
-            <div class="two-col-grid">
-              <div class="utility-card"><h3>Company Profile</h3><p>Update specialties, service areas, and partner positioning to improve lead matching quality.</p><button class="btn-secondary">Edit Profile</button></div>
-              <div class="utility-card"><h3>Billing Method</h3><p>Connect a card and prepare for monthly plans or exclusive lead purchases.</p><button class="btn-secondary">Update Billing</button></div>
-              <div class="utility-card"><h3>Notifications</h3><p>Control live lead alerts and future email or SMS notifications.</p><button class="btn-secondary">Manage Alerts</button></div>
-              <div class="utility-card"><h3>Support</h3><p>Request help with claiming, plan changes, lead questions, or platform setup.</p><button class="btn-secondary">Contact Support</button></div>
-            </div>
-          </div>
-        </section>
-      </main>
     </div>
-  </div>
+  </section>
 
-  <footer><p>© NestNudge</p></footer>
+  <section class="partner-features">
+    <div class="partner-features-inner">
+      <div class="partner-section-heading">
+        <h2>What You Get</h2>
+        <p>
+          NestNudge is more than a lead source. It is a partner system designed to help you
+          organize, share, compete, and grow.
+        </p>
+      </div>
 
-  <script>
-    const navButtons = document.querySelectorAll(".sidebar-nav button");
-    const sections = document.querySelectorAll(".dashboard-section");
-    const jumpButtons = document.querySelectorAll("[data-jump]");
-    let allLeads = [];
+      <div class="partner-feature-grid">
+        <div class="partner-feature-card">
+          <h3>Your Own Partner Link</h3>
+          <p>Share your custom link with prospects and drive business through your own branded path.</p>
+        </div>
 
-    function showSection(target) {
-      sections.forEach(section => section.classList.add("hidden-section"));
-      const section = document.getElementById("section-" + target);
-      if (section) section.classList.remove("hidden-section");
-      navButtons.forEach(button => {
-        button.classList.remove("active");
-        if (button.dataset.target === target) button.classList.add("active");
-      });
-    }
+        <div class="partner-feature-card">
+          <h3>Vetted Local Opportunities</h3>
+          <p>Access higher-quality lead opportunities filtered by ZIP code and local relevance.</p>
+        </div>
 
-    navButtons.forEach(button => button.addEventListener("click", function () { showSection(this.dataset.target); }));
-    jumpButtons.forEach(button => button.addEventListener("click", function () { showSection(this.dataset.jump); }));
+        <div class="partner-feature-card">
+          <h3>Daily Lead Access</h3>
+          <p>See consistent opportunities instead of waiting around for random inbound interest.</p>
+        </div>
 
-    function escapeHtml(value) {
-      return String(value || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-    }
+        <div class="partner-feature-card">
+          <h3>Bid on Stronger-Fit Leads</h3>
+          <p>Compete for leads that better match your target market and service area.</p>
+        </div>
 
-    function formatLeadTitle(lead) {
-      if (lead.lead_type === "realtor") return `Realtor Lead — ZIP ${lead.zip || "N/A"}`;
-      const projectMap = { estimator: "Home Value Request", loan: "Funding Request", roof: "Roof Request" };
-      return `${projectMap[lead.project_type] || "Homeowner Request"} — ZIP ${lead.zip || "N/A"}`;
-    }
+        <div class="partner-feature-card">
+          <h3>Back Office Control</h3>
+          <p>Use your partner dashboard to manage activity, organize pipeline, and grow more intentionally.</p>
+        </div>
 
-    function renderAlerts(alerts) {
-      const bar = document.getElementById("alertsBar");
-      if (!bar) return;
-      if (!alerts || !alerts.length) {
-        bar.innerHTML = `<div class="alert-item">No new alerts right now. We’ll keep watching for matching opportunities.</div>`;
-        return;
-      }
-      bar.innerHTML = alerts.slice(0, 3).map(alert => `<div class="alert-item">${escapeHtml(alert)}</div>`).join("");
-    }
+        <div class="partner-feature-card">
+          <h3>Built for Service Pros</h3>
+          <p>Designed for contractors, loan reps, and realtors who want more control over growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    function renderStats(leads) {
-      const today = new Date().toISOString().slice(0, 10);
-      const todayLeadCount = leads.filter(lead => String(lead.timestamp || "").startsWith(today)).length;
-      const hotCount = leads.filter(lead => lead.status === "hot" && !lead.claimed).length;
-      const claimedByYou = leads.filter(lead => lead.claimed && lead.claimed.contractor_id === '<?php echo addslashes($contractor['id']); ?>').length;
-      const avgPrice = leads.length ? Math.round(leads.reduce((sum, lead) => sum + (Number(lead.price) || 0), 0) / leads.length) : 0;
-      const mappings = {
-        "stat-new-leads": todayLeadCount,
-        "stat-matched-leads": leads.length,
-        "stat-hot-leads": hotCount,
-        "stat-claimed-leads": claimedByYou,
-        "stat-avg-price": "$" + avgPrice,
-        "perf-new-leads": todayLeadCount,
-        "perf-matched-leads": leads.length,
-        "perf-hot-leads": hotCount,
-        "perf-claimed-leads": claimedByYou
-      };
-      Object.entries(mappings).forEach(([id, value]) => { const el = document.getElementById(id); if (el) el.textContent = value; });
-    }
+  <section class="partner-roi-strip">
+    <div class="partner-roi-inner">
+      <h2>Why the pricing works</h2>
+      <p>
+        If one solid deal can cover your membership, the real opportunity is building a repeatable system
+        that helps you stay in front of better local business.
+      </p>
+    </div>
+  </section>
 
-    function renderLeads(leads) {
-      const leadList = document.getElementById("leadList");
-      const cityFilter = document.getElementById("cityFilter");
-      if (!leadList) return;
+  <section class="partner-pricing-section" id="partner-pricing">
+    <div class="partner-pricing-inner">
+      <div class="partner-section-heading">
+        <h2>Choose the Membership That Fits Your Business</h2>
+        <p>
+          Start with a low-friction entry point, then move into the plan that best supports your growth.
+        </p>
+      </div>
 
-      if (!Array.isArray(leads) || !leads.length) {
-        leadList.innerHTML = `<div class="lead-row"><div class="lead-main"><strong>No matched leads found yet</strong><span>As new matching submissions come in, they will appear here automatically.</span></div></div>`;
-        return;
-      }
+      <div class="partner-pricing-grid">
+        <div class="partner-pricing-plan starter-plan">
+          <span class="pricing-kicker">Best First Step</span>
+          <h3>Starter Access</h3>
+          <p class="partner-price">$29<span> first month</span></p>
+          <p>Test the platform, explore the workflow, and see how the lead flow fits your business.</p>
+          <a href="/contractor-signup.php" class="cta-btn">Start Now</a>
+        </div>
 
-      const locations = [...new Set(leads.map(l => (l.city || l.zip || "")).filter(Boolean))];
-      if (cityFilter) {
-        cityFilter.innerHTML = `<option value="all">All Locations</option>` + locations.map(loc => `<option value="${escapeHtml(loc.toLowerCase())}">${escapeHtml(loc)}</option>`).join("");
-      }
+        <div class="partner-pricing-plan featured-plan">
+          <span class="plan-label">Most Popular</span>
+          <h3>Monthly</h3>
+          <p class="partner-price">$99<span> / month</span></p>
+          <p>Flexible access for partners who want to grow steadily without a longer commitment.</p>
+          <a href="/contractor-signup.php" class="cta-btn">Choose Monthly</a>
+        </div>
 
-      leadList.innerHTML = leads.map(lead => {
-        const isClaimed = !!lead.claimed;
-        const soldByYou = isClaimed && lead.claimed.contractor_id === '<?php echo addslashes($contractor['id']); ?>';
-        const displayStatus = isClaimed ? "sold" : lead.status;
-        const detailText = lead.lead_type === "realtor"
-          ? `Name: ${escapeHtml(lead.name)} · Email: ${escapeHtml(lead.email)} · Phone: ${escapeHtml(lead.phone)}`
-          : `Name: ${escapeHtml(lead.name)} · Address: ${escapeHtml(lead.address || "Not provided")} · Email: ${escapeHtml(lead.email)} · Phone: ${escapeHtml(lead.phone)}`;
+        <div class="partner-pricing-plan">
+          <h3>Quarterly</h3>
+          <p class="partner-price">$299<span> / 3 months</span></p>
+          <p>A strong option for partners ready to commit to consistent lead flow and local growth.</p>
+          <a href="/contractor-signup.php" class="cta-btn">Choose Quarterly</a>
+        </div>
 
-        return `<div class="lead-row" data-service="${escapeHtml(lead.project_type)}" data-status="${escapeHtml(displayStatus)}" data-city="${escapeHtml((lead.city || lead.zip || "").toLowerCase())}">
-          <div class="lead-main">
-            <strong>${escapeHtml(formatLeadTitle(lead))}</strong>
-            <span>${escapeHtml(lead.timestamp || "")} · Source: ${escapeHtml(lead.source || "NestNudge")}</span>
-            <div class="lead-badges">
-              <span class="lead-badge">${escapeHtml(lead.project_type)}</span>
-              <span class="lead-badge">${escapeHtml(lead.lead_type)}</span>
-              ${lead.city ? `<span class="lead-badge">${escapeHtml(lead.city)}</span>` : ""}
-            </div>
-          </div>
-          <div class="lead-meta">${detailText}</div>
-          <div><span class="status-pill ${escapeHtml(displayStatus)}">${isClaimed ? (soldByYou ? "Claimed by You" : "Sold") : (lead.status === "hot" ? "Hot Lead" : "New Lead")}</span></div>
-          <div class="lead-price"><strong>$${escapeHtml(lead.price)}</strong><br>${isClaimed ? `Claimed ${escapeHtml(lead.claimed.claimed_at || "")}` : "Exclusive claim available"}</div>
-          <div class="lead-actions">${isClaimed ? `<button class="btn-disabled" disabled>${soldByYou ? "Already Yours" : "Unavailable"}</button>` : `<button class="btn-primary" onclick="buyLead('${escapeHtml(lead.id)}')">Buy Lead</button>`}<button class="btn-secondary" onclick="showLeadDetails(${encodeURIComponent(JSON.stringify(lead))})">View Details</button></div>
-        </div>`;
-      }).join("");
+        <div class="partner-pricing-plan best-value-plan">
+          <span class="pricing-kicker">Best Value</span>
+          <h3>Yearly</h3>
+          <p class="partner-price">$499<span> / year</span></p>
+          <p>The smartest choice for long-term partners who want the lowest effective cost.</p>
+          <a href="/contractor-signup.php" class="cta-btn">Choose Yearly</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      attachFilters();
-    }
+  <section class="partner-faq">
+    <div class="partner-faq-inner">
+      <div class="partner-section-heading">
+        <h2>Partner Questions</h2>
+      </div>
 
-    function attachFilters() {
-      const leadSearch = document.getElementById("leadSearch");
-      const serviceFilter = document.getElementById("serviceFilter");
-      const statusFilter = document.getElementById("statusFilter");
-      const cityFilter = document.getElementById("cityFilter");
-      const leadRows = document.querySelectorAll(".lead-row");
+      <div class="partner-faq-grid">
+        <div class="partner-faq-item">
+          <h3>Who is this for?</h3>
+          <p>Contractors, loan reps, and realtors looking for a more organized way to grow locally.</p>
+        </div>
 
-      function filterLeads() {
-        const search = (leadSearch?.value || "").toLowerCase();
-        const service = serviceFilter?.value || "all";
-        const status = statusFilter?.value || "all";
-        const city = cityFilter?.value || "all";
-        leadRows.forEach(row => {
-          const rowText = row.textContent.toLowerCase();
-          const rowService = row.dataset.service;
-          const rowStatus = row.dataset.status;
-          const rowCity = row.dataset.city;
-          const matchesSearch = rowText.includes(search);
-          const matchesService = service === "all" || rowService === service;
-          const matchesStatus = status === "all" || rowStatus === status;
-          const matchesCity = city === "all" || rowCity === city;
-          row.style.display = (matchesSearch && matchesService && matchesStatus && matchesCity) ? "grid" : "none";
-        });
-      }
+        <div class="partner-faq-item">
+          <h3>What makes the leads different?</h3>
+          <p>They are positioned as vetted opportunities with ZIP-based relevance, which helps improve fit.</p>
+        </div>
 
-      if (leadSearch) leadSearch.oninput = filterLeads;
-      if (serviceFilter) serviceFilter.onchange = filterLeads;
-      if (statusFilter) statusFilter.onchange = filterLeads;
-      if (cityFilter) cityFilter.onchange = filterLeads;
-    }
+        <div class="partner-faq-item">
+          <h3>Why offer a starter plan?</h3>
+          <p>It lowers the barrier to entry and helps partners experience the platform before committing further.</p>
+        </div>
 
-    async function buyLead(leadId) {
-      const formData = new URLSearchParams();
-      formData.append("lead_id", leadId);
-      try {
-        const response = await fetch("/buy-lead.php", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: formData.toString()
-        });
-        const result = await response.json();
-        if (!result.success) { alert(result.message || "Could not claim lead."); return; }
-        alert("Lead successfully claimed.");
-        await loadRealLeads();
-      } catch (error) {
-        console.error(error);
-        alert("There was a problem claiming this lead.");
-      }
-    }
+        <div class="partner-faq-item">
+          <h3>Why is yearly the best value?</h3>
+          <p>It rewards serious partners and makes the long-term economics easier for both sides.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    function showLeadDetails(encodedLead) {
-      const lead = JSON.parse(decodeURIComponent(encodedLead));
-      alert(`Lead Details
+  <section class="final-money-cta">
+    <div class="final-money-cta-inner">
+      <h2>Ready to Grow With More Control?</h2>
+      <p>
+        Start with a low-friction offer, test the platform, and build a more predictable pipeline with NestNudge.
+      </p>
+      <a href="/contractor-signup.php">Become a Partner</a>
+    </div>
+  </section>
 
-Name: ${lead.name || "N/A"}
-Email: ${lead.email || "N/A"}
-Phone: ${lead.phone || "N/A"}
-Address: ${lead.address || "N/A"}
-ZIP: ${lead.zip || "N/A"}
-Service: ${lead.project_type || "N/A"}
-Source: ${lead.source || "N/A"}`);
-    }
+  <footer>
+    <p>© NestNudge</p>
+  </footer>
 
-    async function loadRealLeads() {
-      try {
-        const response = await fetch("/get-dashboard-leads.php", { cache: "no-store" });
-        if (!response.ok) throw new Error("Failed to load dashboard leads");
-        const data = await response.json();
-        allLeads = data.leads || [];
-        renderAlerts(data.alerts || []);
-        renderStats(allLeads);
-        renderLeads(allLeads);
-      } catch (error) {
-        console.error(error);
-        const leadList = document.getElementById("leadList");
-        if (leadList) {
-          leadList.innerHTML = `<div class="lead-row"><div class="lead-main"><strong>Could not load live leads</strong><span>Please check get-dashboard-leads.php, claimed-leads.json, and your lead files.</span></div></div>`;
-        }
-      }
-    }
-
-    loadRealLeads();
-    setInterval(loadRealLeads, 30000);
-  </script>
 </body>
 </html>
