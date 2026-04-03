@@ -558,62 +558,58 @@
         <h2>Turn Local Homeowner Interest Into Real Business Growth</h2>
 
         <p class="partners-lead">
-          NestNudge gives partners a better way to grow: your own personalized partner back office,
-          a custom share link, and access to vetted local opportunities by ZIP code.
+          NestNudge gives partners a cleaner way to grow with matched homeowner opportunities, ZIP-based visibility, and a platform built to support the next stage of your business.
         </p>
 
         <p>
-          Instead of chasing random leads, you get a system built to help you manage your pipeline,
-          respond faster, and compete for better-fit opportunities in your market.
+          Instead of chasing random leads, you get a system designed to help you manage your pipeline, respond faster, and compete for better-fit opportunities in your market.
         </p>
 
         <ul class="partners-benefits">
-          <li>✔ Your own custom partner link to share with prospects</li>
-          <li>✔ Access to daily vetted lead opportunities</li>
-          <li>✔ Bid on high-quality local leads by ZIP code</li>
-          <li>✔ A back-office platform to organize and manage your pipeline</li>
-          <li>✔ Built for contractors, loan reps, and realtors who want more control</li>
+          <li>✔ Get matched to homeowner interest earlier in the decision process</li>
+          <li>✔ Focus on ZIP-based opportunities that fit your coverage</li>
+          <li>✔ Choose the plan that matches your stage of growth</li>
+          <li>✔ Use a cleaner system for visibility, response, and follow-up</li>
         </ul>
 
         <div class="partners-trust-line">
-          Close one solid deal and the platform can pay for itself.
+          Start with a test entry, then move into monthly, quarterly, or yearly value as your business grows.
         </div>
       </div>
 
       <div class="partners-pricing-card">
         <div class="partners-pricing-top">
-          <span class="pricing-kicker">Start Risk-Free</span>
-          <h3>Try the platform, then choose the plan that fits your business</h3>
+          <span class="pricing-kicker">Growth-First Pricing</span>
+          <h3>Choose the plan that fits your stage</h3>
           <p>
-            Get started with a low-friction entry point, then scale into a full membership
-            once you see the value.
+            Start small, build steady access, or lock in longer-term value once you know the platform fits your business.
           </p>
         </div>
 
         <div class="trial-box">
-          <h4>Starter Access</h4>
-          <p class="trial-price">$29 <span>first month</span></p>
-          <p class="trial-note">Low-risk way to test the platform and lead flow.</p>
+          <h4>Starter</h4>
+          <p class="trial-price">$29 <span>test entry</span></p>
+          <p class="trial-note">Low-risk way to test lead flow and platform fit.</p>
         </div>
 
         <div class="partner-plan featured-plan">
-          <div class="plan-label">Most Popular</div>
-          <h4>Monthly</h4>
+          <div class="plan-label">Monthly Growth</div>
+          <h4>Growth Monthly</h4>
           <p class="partner-price">$99<span>/month</span></p>
-          <p>Flexible access for partners who want to grow steadily.</p>
+          <p>Flexible access for partners who want steady opportunity flow.</p>
         </div>
 
         <div class="partner-plan-row">
           <div class="partner-plan compact-plan">
             <h4>Quarterly</h4>
             <p class="partner-price">$299<span>/3 months</span></p>
-            <p>Stronger commitment with stable lead access.</p>
+            <p>Stronger continuity and value without a full-year commitment.</p>
           </div>
 
           <div class="partner-plan compact-plan best-value-plan">
             <h4>Yearly</h4>
             <p class="partner-price">$499<span>/year</span></p>
-            <p>Best value for long-term growth.</p>
+            <p>Best long-term value for established businesses.</p>
           </div>
         </div>
 
@@ -621,7 +617,7 @@
         <a href="/contractor-signup.php" class="partners-secondary-link">Apply to Become a Partner</a>
 
         <div class="partners-microcopy">
-          Vetted leads. ZIP-based opportunities. More control over how you grow.
+          ZIP-based opportunities. Cleaner lead flow. More control over how you grow.
         </div>
       </div>
     </div>
@@ -659,12 +655,13 @@
         <button type="button" onclick="quickSelect('windows')">Impact Windows</button>
         <button type="button" onclick="quickSelect('realtor')">Realtor</button>
         <button type="button" onclick="quickSelect('funding')">Funding</button>
+        <button type="button" onclick="quickSelect('partners')">Partners</button>
       </div>
 
       <input
         type="text"
         id="chatInput"
-        placeholder="Ask about roof, buying, doors, windows, funding, offers, or realtor..."
+        placeholder="Ask about roof, buying, doors, windows, funding, realtor, partners, pricing, or partner login..."
         onkeypress="handleChat(event)"
       >
     </div>
@@ -697,6 +694,28 @@
       showUpgrade(type);
       const section = document.getElementById("cost-guide");
       if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function scrollToHeroForm() {
+      const section = document.getElementById("hero-form");
+      if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function scrollToPartners() {
+      const section = document.getElementById("partners");
+      if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function redirectToRoofQuotes() {
+      window.location.href = "/roof-quotes-miami-fort-lauderdale.html";
+    }
+
+    function redirectToPartnerLogin() {
+      window.location.href = "/contractor-login.php";
+    }
+
+    function redirectToPartnerSignup() {
+      window.location.href = "/contractor-signup.php";
     }
   </script>
 
@@ -900,7 +919,8 @@
         doors: "entry door",
         windows: "impact windows",
         realtor: "realtor",
-        funding: "funding"
+        funding: "funding",
+        partners: "partner pricing"
       };
       const value = map[topic] || topic;
       addMessage(value, "user");
@@ -948,6 +968,15 @@
         value.includes("need a financial advisor") ||
         value.includes("financial advisor")
       ) return { type: "connection", target: "financial_advisor" };
+
+      if (
+        value.includes("partner") ||
+        value.includes("pricing") ||
+        value.includes("contractor login") ||
+        value.includes("partner login") ||
+        value.includes("apply to become a partner") ||
+        value.includes("apply now")
+      ) return { type: "partner" };
 
       if (value.includes("roof") || value.includes("roofing")) return { type: "service", service: "roof" };
       if (value.includes("door") || value.includes("entry door") || value.includes("front door")) return { type: "service", service: "doors" };
@@ -1039,6 +1068,13 @@
         }
       }
 
+      if (intent.type === "partner") {
+        addMessage("Absolutely — I’d be happy to help with that. NestNudge offers a simple pricing ladder based on your stage of growth.");
+        addMessage("You can start with Starter test entry for $29, move into Monthly Growth at $99 per month, or step into Quarterly and Yearly value at $299 and $499.");
+        addMessage("Would you like to review partner pricing, apply now, or log in?");
+        return;
+      }
+
       if (intent.type === "service") {
         chatState.mode = "service";
         chatState.service = intent.service;
@@ -1093,12 +1129,12 @@
       }
 
       if (intent.type === "change") {
-        addMessage("No problem at all — we can switch directions. Are you looking for roofing, a contractor, a realtor, financial help, or something else for your home?");
+        addMessage("No problem at all — we can switch directions. Are you looking for roofing, a contractor, a realtor, financial help, or partner pricing?");
         chatState.captureStep = "";
         return;
       }
 
-      addMessage("I’m here to help. You can tell me things like “I am looking for a roofer,” “I am looking for a contractor,” “I am looking for a realtor,” or “I am looking for a financial advisor,” and I’ll point you in the right direction.");
+      addMessage("I’m here to help. You can ask about roofing, funding, selling, partner pricing, partner login, or say things like “I am looking for a roofer” and I’ll point you in the right direction.");
     }
 
     function isValidEmail(email) {
