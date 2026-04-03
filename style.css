@@ -1469,6 +1469,34 @@ header {
 }
 
 /* =========================
+   ROOF PAGE HEADER / NAV TEXT FIX
+========================= */
+.roof-page header,
+body.roof-page header {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+}
+
+.roof-page nav a,
+.roof-page .main-nav a,
+.roof-page .dropbtn,
+body.roof-page nav a,
+body.roof-page .main-nav a,
+body.roof-page .dropbtn {
+  color: #111827 !important;
+}
+
+.roof-page .cta-button,
+body.roof-page .cta-button {
+  color: #ffffff !important;
+}
+
+.roof-page .dropdown-content a,
+body.roof-page .dropdown-content a {
+  color: #333 !important;
+}
+
+/* =========================
    OFFERS PAGE
 ========================= */
 .offers-page {
