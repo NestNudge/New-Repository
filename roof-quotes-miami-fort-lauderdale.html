@@ -23,6 +23,93 @@
   <meta name="twitter:image" content="https://www.nestnudge.com/image/roof-1.webp">
 
   <link rel="stylesheet" href="style.css">
+  <style>
+  /* FORCE roof quotes page text + nav colors */
+  body.roof-page {
+    color: #111827 !important;
+    background: #ffffff !important;
+  }
+
+  body.roof-page header {
+    position: relative !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06) !important;
+  }
+
+  body.roof-page nav,
+  body.roof-page .main-nav {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  body.roof-page nav a,
+  body.roof-page .main-nav a,
+  body.roof-page .dropbtn {
+    color: #111827 !important;
+  }
+
+  body.roof-page .cta-button {
+    color: #ffffff !important;
+  }
+
+  body.roof-page .dropdown-content a {
+    color: #333333 !important;
+  }
+
+  body.roof-page h1,
+  body.roof-page h2,
+  body.roof-page h3,
+  body.roof-page h4,
+  body.roof-page p,
+  body.roof-page li,
+  body.roof-page span,
+  body.roof-page strong,
+  body.roof-page label {
+    color: #111827 !important;
+  }
+
+  body.roof-page .hero-left,
+  body.roof-page .hero-left h1,
+  body.roof-page .hero-left p,
+  body.roof-page .hero-text,
+  body.roof-page .hero-text h1,
+  body.roof-page .hero-text p,
+  body.roof-page .hero-benefits li {
+    color: #111827 !important;
+  }
+
+  /* keep dark sections readable */
+  body.roof-page .phase-one-loan,
+  body.roof-page .phase-one-loan .loan-text,
+  body.roof-page .phase-one-loan .loan-text h2,
+  body.roof-page .phase-one-loan .loan-text p,
+  body.roof-page .phase-one-loan .loan-text li,
+  body.roof-page .phase-one-loan .loan-mini-step {
+    color: #ffffff !important;
+  }
+
+  body.roof-page .phase-one-loan .loan-highlight-badge {
+    color: #166534 !important;
+  }
+
+  @media (max-width: 768px) {
+    body.roof-page header {
+      position: relative !important;
+      background: rgba(255, 255, 255, 0.98) !important;
+    }
+
+    body.roof-page nav a,
+    body.roof-page .main-nav a,
+    body.roof-page .dropbtn {
+      color: #111827 !important;
+    }
+
+    body.roof-page .cta-button {
+      color: #ffffff !important;
+    }
+  }
+</style>
 
   <style>
     .roof-page-section {
@@ -216,7 +303,7 @@
   }
   </script>
 </head>
-<body>
+<body class="roof-page">
 
   <!-- HEADER -->
   <header>
