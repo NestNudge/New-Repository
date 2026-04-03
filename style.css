@@ -97,16 +97,14 @@ select:focus {
   border-color: var(--primary);
 }
 
-/* =========================
-   HEADER / NAV
-========================= */
+/* HEADER */
 header {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   padding: 16px;
-  z-index: 200;
+  z-index: 5000;
 }
 
 nav,
@@ -116,6 +114,10 @@ nav,
   justify-content: center;
   align-items: center;
   gap: 10px 14px;
+  position: relative;
+  z-index: 5001;
+  background: transparent;
+  box-shadow: none;
 }
 
 nav a,
@@ -133,16 +135,10 @@ nav a,
   padding: 12px 18px;
 }
 
-.main-nav {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-}
-
+/* DROPDOWNS */
 .dropdown {
   position: relative;
+  z-index: 5001;
 }
 
 .dropbtn {
