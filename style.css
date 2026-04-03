@@ -2467,3 +2467,15 @@ body.offers-page .dropdown-content a {
     font-size: 20px;
   }
 }
+
+.dropdown:nth-child(4) .dropbtn {
+  color: #2E7D32;
+}
+
+.main-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
