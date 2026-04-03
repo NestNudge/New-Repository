@@ -199,6 +199,24 @@ nav a,
   color: #2e7d32;
 }
 
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px;
+  z-index: 5000;
+}
+
+.main-nav,
+.main-nav a,
+.dropbtn,
+.dropdown,
+.dropdown-content {
+  position: relative;
+  z-index: 5001;
+}
+
 /* =========================
    HERO
 ========================= */
