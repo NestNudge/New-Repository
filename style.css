@@ -2028,13 +2028,7 @@ body.roof-page .phase-one-loan .loan-highlight-badge {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
-
 /* FIX: NAV TEXT ON GALLERY PAGE */
-body .main-nav a,
-body .main-nav .dropbtn {
-  color: #111827 !important;
-}
-
 /* Optional: hover */
 body .main-nav a:hover,
 body .main-nav .dropbtn:hover {
