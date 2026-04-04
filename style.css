@@ -2034,3 +2034,14 @@ body .main-nav a:hover,
 body .main-nav .dropbtn:hover {
   color: #2e7d32 !important;
 }
+/* =========================
+   GALLERY PAGE NAV FIX ONLY
+========================= */
+.gallery-page .main-nav a,
+.gallery-page .main-nav .dropbtn {
+  color: #111827 !important;
+}
+
+.gallery-page .main-nav a:hover {
+  color: #2e7d32 !important;
+}
