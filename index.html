@@ -991,37 +991,37 @@
       if (!grid) return;
 
       const fallbackCards = [
-        {
-          first_name: "Recent",
-          last_name: "Project",
-          state: "FL",
-          project_type: "Roof Replacement",
-          description: "See what other NestNudge members are posting and planning right now.",
-          profile_image: "",
-          images: [{ file: "/image/upgrade-roof-guide.jpg", title: "Project preview" }],
-          share_slug: ""
-        },
-        {
-          first_name: "Member",
-          last_name: "Spotlight",
-          state: "TX",
-          project_type: "Kitchen Remodel",
-          description: "Real project examples help visitors feel more confident before they request quotes.",
-          profile_image: "",
-          images: [{ file: "/image/hero-smart-money-homeowners.jpg", title: "Project preview" }],
-          share_slug: ""
-        },
-        {
-          first_name: "Homeowner",
-          last_name: "Update",
-          state: "CA",
-          project_type: "Solar Panel Installation",
-          description: "The Gallery adds trust, social proof, and a real-world view of active homeowner projects.",
-          profile_image: "",
-          images: [{ file: "/image/featured-solar-savings.jpg", title: "Project preview" }],
-          share_slug: ""
-        }
-      ];
+  {
+    first_name: "Daniel",
+    last_name: "R.",
+    state: "FL",
+    project_type: "Roof Replacement",
+    description: "Upgraded our roof after storm damage. Went with a more durable material and it completely changed the look of the house.",
+    profile_image: "/image/gallery-user-1.jpg",
+    images: [{ file: "/image/upgrade-roof-guide.jpg", title: "Roof upgrade" }],
+    share_slug: ""
+  },
+  {
+    first_name: "Melissa",
+    last_name: "T.",
+    state: "TX",
+    project_type: "Kitchen Remodel",
+    description: "We opened up the kitchen layout and added new cabinets and lighting. It made the entire space feel bigger and more modern.",
+    profile_image: "/image/gallery-user-2.jpg",
+    images: [{ file: "/image/hero-smart-money-homeowners.jpg", title: "Kitchen remodel" }],
+    share_slug: ""
+  },
+  {
+    first_name: "Anthony",
+    last_name: "S.",
+    state: "CA",
+    project_type: "Solar Panel Installation",
+    description: "Installed solar panels to reduce energy costs. The setup was smoother than expected and we’re already seeing savings.",
+    profile_image: "/image/gallery-user-3.jpg",
+    images: [{ file: "/image/featured-solar-savings.jpg", title: "Solar install" }],
+    share_slug: ""
+  }
+];
 
       try {
         const response = await fetch("/data/gallery-posts.json", { cache: "no-store" });
