@@ -1,3 +1,4 @@
+
 :root {
   --primary: #1f7a3d;
   --primary-dark: #155c2d;
@@ -57,7 +58,9 @@ button {
   max-width: 100%;
 }
 
-/* Header / Nav */
+/* =========================
+   HEADER / NAV
+========================= */
 
 header {
   position: sticky;
@@ -79,27 +82,9 @@ header {
   min-height: 78px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  position: relative;
-}
-
-.brand-logo {
-  display: inline-flex;
-  align-items: center;
+  justify-content: center;
   gap: 10px;
-  min-height: 46px;
-  font-weight: 800;
-  font-size: 1.18rem;
-  color: var(--primary);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.brand-logo img {
-  height: 40px;
-  width: auto;
-  object-fit: contain;
+  position: relative;
 }
 
 .nav-toggle {
@@ -117,7 +102,6 @@ header {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-left: auto;
 }
 
 .nav-links > a,
@@ -248,16 +232,10 @@ header {
 
 .gallery-preview-btn-outline,
 .offers-intro-btn-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  border-radius: 999px;
   background: #fff;
   color: var(--primary);
   border: 2px solid var(--primary);
   padding: 0 18px;
-  font-weight: 700;
 }
 
 .offers-intro-btn-outline:hover,
@@ -275,7 +253,9 @@ header {
   border-radius: 0;
 }
 
-/* Hero */
+/* =========================
+   HERO
+========================= */
 
 .hero-split {
   position: relative;
@@ -308,22 +288,14 @@ header {
 }
 
 .hero-left h1 {
-  font-size: clamp(2.5rem, 5vw, 5rem);
-  line-height: 0.97;
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
+  line-height: 0.98;
   letter-spacing: -0.04em;
-  margin: 0 0 12px;
-  max-width: 10ch;
-}
-
-.hero-left h2 {
   margin: 0 0 18px;
-  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
-  line-height: 1.2;
-  color: #334155;
-  font-weight: 700;
+  max-width: 11ch;
 }
 
-.hero-sub {
+.hero-left p {
   margin: 0 0 22px;
   font-size: 1.12rem;
   color: var(--muted);
@@ -357,8 +329,7 @@ header {
   box-shadow: var(--shadow);
 }
 
-.hero-form form,
-.loan-form form {
+.hero-form form {
   width: 100%;
 }
 
@@ -389,8 +360,7 @@ header {
 .hero-form textarea:focus,
 .loan-form input:focus,
 .loan-form select:focus,
-.loan-form textarea:focus,
-#chatInput:focus {
+.loan-form textarea:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 4px rgba(31, 122, 61, 0.12);
 }
@@ -408,33 +378,18 @@ header {
   box-shadow: var(--shadow-soft);
 }
 
-.micro,
-.trust-line,
-.zip-note,
+.hero-zip-note,
 .loan-zip-note {
-  text-align: center;
-  margin: 12px 0 0;
+  margin-top: 12px;
   font-size: 0.92rem;
   line-height: 1.55;
-}
-
-.micro {
-  color: #475569;
-  font-weight: 600;
-}
-
-.trust-line {
-  color: var(--primary);
-  font-weight: 700;
-}
-
-.zip-note,
-.loan-zip-note {
   color: var(--muted);
   font-weight: 600;
 }
 
-/* Shared sections */
+/* =========================
+   SHARED SECTION STYLES
+========================= */
 
 .info-strip,
 .offers-intro-strip,
@@ -469,7 +424,9 @@ header {
   line-height: 1.75;
 }
 
-/* Offers intro */
+/* =========================
+   OFFERS INTRO
+========================= */
 
 .offers-intro-strip {
   padding: 24px 16px 72px;
@@ -530,7 +487,9 @@ header {
   object-fit: cover;
 }
 
-/* Cost guide */
+/* =========================
+   COST GUIDE
+========================= */
 
 .cost-guide-section {
   padding: 32px 16px 72px;
@@ -658,7 +617,9 @@ header {
   margin-top: 20px;
 }
 
-/* Services */
+/* =========================
+   SERVICES
+========================= */
 
 .services-carousel {
   padding: 20px 0 80px;
@@ -714,7 +675,9 @@ header {
   color: rgba(255, 255, 255, 0.92);
 }
 
-/* Featured offers */
+/* =========================
+   FEATURED OFFERS
+========================= */
 
 .featured-offers-home {
   padding: 78px 16px;
@@ -791,7 +754,9 @@ header {
   color: var(--muted);
 }
 
-/* Testimonials */
+/* =========================
+   TESTIMONIALS
+========================= */
 
 .testimonials {
   padding: 76px 16px;
@@ -887,7 +852,9 @@ header {
   line-height: 1.7;
 }
 
-/* Gallery preview */
+/* =========================
+   GALLERY PREVIEW
+========================= */
 
 .gallery-preview-section {
   padding: 72px 20px;
@@ -1003,7 +970,9 @@ header {
   padding: 24px 0;
 }
 
-/* Loan section */
+/* =========================
+   LOAN SECTION
+========================= */
 
 .loan-section {
   padding: 78px 16px;
@@ -1098,10 +1067,11 @@ header {
   color: var(--muted);
   font-size: 0.95rem;
   font-weight: 700;
-  text-align: center;
 }
 
-/* Selling */
+/* =========================
+   SELLING SECTION
+========================= */
 
 .selling-section {
   padding: 40px 16px 78px;
@@ -1143,7 +1113,9 @@ header {
   object-fit: cover;
 }
 
-/* Partners */
+/* =========================
+   PARTNERS
+========================= */
 
 .partners-section {
   padding: 80px 16px;
@@ -1182,10 +1154,6 @@ header {
   color: #334155;
   font-weight: 700;
   line-height: 1.7;
-}
-
-.zip-access-note {
-  margin-top: 14px;
 }
 
 .partners-pricing-card {
@@ -1279,7 +1247,9 @@ header {
   text-align: center;
 }
 
-/* Chat */
+/* =========================
+   CHAT WIDGET
+========================= */
 
 #chatWidget {
   position: fixed;
@@ -1427,6 +1397,11 @@ header {
   outline: none;
 }
 
+#chatInput:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(31, 122, 61, 0.12);
+}
+
 #chatReopen {
   position: fixed;
   right: 20px;
@@ -1465,7 +1440,9 @@ header {
   font-size: 0.8rem;
 }
 
-/* Footer */
+/* =========================
+   FOOTER
+========================= */
 
 .site-footer {
   background: #0f172a;
@@ -1525,7 +1502,9 @@ header {
   font-size: 0.92rem;
 }
 
-/* Responsive */
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media (max-width: 1100px) {
   .services-grid-home,
@@ -1543,11 +1522,14 @@ header {
 }
 
 @media (max-width: 980px) {
+  .main-nav {
+    justify-content: space-between;
+  }
+
   .nav-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-left: auto;
   }
 
   .nav-links {
@@ -1688,12 +1670,12 @@ header {
 }
 
 @media (max-width: 520px) {
-  .brand-logo span {
-    font-size: 1rem;
-  }
-
-  .brand-logo img {
-    height: 34px;
+  .hero-left h1,
+  .offers-intro-copy h2,
+  .loan-text h2,
+  .partners-copy h2,
+  .selling-text h2 {
+    letter-spacing: -0.03em;
   }
 
   .hero-form,
@@ -1725,39 +1707,4 @@ header {
   .chat-reopen-text {
     display: none;
   }
-}
-
-.article-layout {
-  display: flex;
-  gap: 40px;
-  align-items: flex-start;
-}
-
-.article-main {
-  flex: 3;
-}
-
-.article-sidebar {
-  flex: 1;
-  background: #f8f9fb;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.sidebar-links {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar-links li {
-  margin-bottom: 12px;
-}
-
-.sidebar-links a {
-  text-decoration: none;
-  color: #333;
-}
-
-.sidebar-links a:hover {
-  color: #0073ff;
 }
