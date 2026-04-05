@@ -4,7 +4,6 @@
   <link rel="icon" href="/nestnudge.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>NestNudge Offers</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -12,49 +11,51 @@
 <body class="offers-page">
 
 <header>
-  <nav class="main-nav">
-    <a href="/">Home</a>
+  <div class="nav-shell">
+    <nav class="main-nav">
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
 
-    <div class="dropdown">
-      <button class="dropbtn">Services ▼</button>
-      <div class="dropdown-content">
-        <a href="/#services">All Services</a>
-        <a href="/#cost-guide">Home Estimator</a>
-        <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
+      <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+
+        <div class="dropdown">
+          <button class="dropbtn" type="button">Services ▼</button>
+          <div class="dropdown-content">
+            <a href="/#services">All Services</a>
+            <a href="/#cost-guide">Home Estimator</a>
+            <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
+            <a href="/offers.html">Offers</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropbtn" type="button">Get Quotes ▼</button>
+          <div class="dropdown-content">
+            <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
+            <a href="/#cost-guide">Project Estimator</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropbtn" type="button">Partners ▼</button>
+          <div class="dropdown-content">
+            <a href="/contractor-login.php">Partner Login</a>
+            <a href="/contractor-signup.php">Create Account</a>
+          </div>
+        </div>
+
         <a href="/offers.html">Offers</a>
+        <a class="cta-button" href="/roof-quotes-miami-fort-lauderdale.html">Get My Quote</a>
       </div>
-    </div>
-
-    <div class="dropdown">
-      <button class="dropbtn">Get Quotes ▼</button>
-      <div class="dropdown-content">
-        <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
-        <a href="/#cost-guide">Project Estimator</a>
-      </div>
-    </div>
-
-    <div class="dropdown">
-      <button class="dropbtn">Partners ▼</button>
-      <div class="dropdown-content">
-        <a href="/contractor-login.php">Partner Login</a>
-        <a href="/contractor-signup.php">Create Account</a>
-      </div>
-    </div>
-
-    <a href="/offers.html">Offers</a>
-    <a class="cta-button" href="/roof-quotes-miami-fort-lauderdale.html">Get My Quote</a>
-  </nav>
+    </nav>
+  </div>
 </header>
 
-<!-- HERO -->
 <section class="offers-hero">
   <div class="offers-hero-inner">
-
-    <div>
+    <div class="offers-hero-copy">
       <span class="offers-kicker">NestNudge Smart Offers</span>
-
       <h1>Smarter ways to save while improving your financial position</h1>
-
       <p>
         Compare financial and home-related options designed to reduce costs and improve your financial outcomes.
       </p>
@@ -65,143 +66,103 @@
     </div>
 
     <div class="offers-hero-card">
-      <img src="image/repairs-loan.png" alt="NestNudge offers">
+      <img src="/image/repairs-loan.png" alt="Financial and home upgrade offers">
     </div>
-
   </div>
 </section>
 
-<!-- OFFERS -->
 <section class="offers-section" id="top-offers">
   <div class="offers-wrap">
+    <div class="offers-heading">
+      <h2>Featured Offers</h2>
+      <p>Explore curated financial and home-related options that may help reduce costs and improve flexibility.</p>
+    </div>
 
     <div class="offers-grid">
 
-      <!-- PERSONAL LOANS -->
       <article class="offer-card">
-        <img src="image/lower-your-debt-payment.png">
-
+        <img src="/image/lower-your-debt-payment.png" alt="Personal loans and debt consolidation">
         <div class="offer-card-content">
           <span class="offer-badge">Lower Payments</span>
           <h3>Personal Loans / Debt Consolidation</h3>
-
           <p>Combine multiple debts into one simple payment.</p>
-
           <ul>
             <li>✔ Lower payments</li>
             <li>✔ Simplify finances</li>
             <li>✔ Improve cash flow</li>
           </ul>
-
-          <!-- AFFILIATE -->
-          <a href="AFFILIATE_LINK_HERE" class="offers-btn">
-            Check My Rate
-          </a>
-
-          <!-- ARTICLE -->
-          <a href="/guides/personal-loans-debt-consolidation.html" class="offer-learn-more">
-            Learn More
-          </a>
+          <div class="offer-actions">
+            <a href="AFFILIATE_LINK_HERE" class="offers-btn" target="_blank" rel="nofollow sponsored noopener">Check My Rate</a>
+            <a href="/guides/personal-loans-debt-consolidation.html" class="offer-learn-more">Learn More</a>
+          </div>
         </div>
       </article>
 
-      <!-- SOLAR -->
       <article class="offer-card">
-        <img src="/image/featured-solar-savings.jpg">
-
+        <img src="/image/featured-solar-savings.jpg" alt="Solar installation for homeowners">
         <div class="offer-card-content">
           <span class="offer-badge">Home Upgrade</span>
           <h3>Solar Installation</h3>
-
           <p>Reduce energy costs and increase home value.</p>
-
           <ul>
             <li>✔ Lower bills</li>
             <li>✔ Increase value</li>
           </ul>
-
-          <a href="AFFILIATE_LINK_HERE" class="offers-btn">
-            Check Solar Options
-          </a>
-
-          <a href="/guides/solar-installation-homeowners.html" class="offer-learn-more">
-            Learn More
-          </a>
+          <div class="offer-actions">
+            <a href="AFFILIATE_LINK_HERE" class="offers-btn" target="_blank" rel="nofollow sponsored noopener">Check Solar Options</a>
+            <a href="/guides/solar-installation-homeowners.html" class="offer-learn-more">Learn More</a>
+          </div>
         </div>
       </article>
 
-      <!-- INSURANCE -->
       <article class="offer-card">
-        <img src="/image/realtor1.jpg">
-
+        <img src="/image/realtor1.jpg" alt="Insurance options for homeowners">
         <div class="offer-card-content">
           <span class="offer-badge">Protection</span>
           <h3>Insurance Options</h3>
-
           <p>Compare coverage and save.</p>
-
           <ul>
             <li>✔ Better coverage</li>
             <li>✔ Lower costs</li>
           </ul>
-
-          <a href="AFFILIATE_LINK_HERE" class="offers-btn">
-            Compare Options
-          </a>
-
-          <a href="/guides/insurance-protection-homeowners.html" class="offer-learn-more">
-            Learn More
-          </a>
+          <div class="offer-actions">
+            <a href="AFFILIATE_LINK_HERE" class="offers-btn" target="_blank" rel="nofollow sponsored noopener">Compare Options</a>
+            <a href="/guides/insurance-protection-homeowners.html" class="offer-learn-more">Learn More</a>
+          </div>
         </div>
       </article>
 
-      <!-- HOME EQUITY -->
       <article class="offer-card">
-        <img src="/image/hloc-1.webp">
-
+        <img src="/image/hloc-1.webp" alt="Mortgage refinance and HELOC options">
         <div class="offer-card-content">
           <span class="offer-badge">Homeowner Favorite</span>
           <h3>Mortgage / Refinance / HELOC</h3>
-
           <p>Use your home equity smarter.</p>
-
           <ul>
             <li>✔ Lower payments</li>
             <li>✔ Access equity</li>
           </ul>
-
-          <a href="AFFILIATE_LINK_HERE" class="offers-btn">
-            Explore Options
-          </a>
-
-          <a href="/guides/home-equity-options.html" class="offer-learn-more">
-            Learn More
-          </a>
+          <div class="offer-actions">
+            <a href="AFFILIATE_LINK_HERE" class="offers-btn" target="_blank" rel="nofollow sponsored noopener">Explore Options</a>
+            <a href="/guides/home-equity-options.html" class="offer-learn-more">Learn More</a>
+          </div>
         </div>
       </article>
 
-      <!-- CREDIT -->
-      <article class="offer-card offer-card-wide">
-        <img src="/image/articles/credit-score-review.jpg">
-
+      <article class="offer-card">
+        <img src="/image/articles/credit-score-review.jpg" alt="Credit score and credit tools">
         <div class="offer-card-content">
           <span class="offer-badge">Financial Foundation</span>
-          <h3>Credit Score & Tools</h3>
-
+          <h3>Credit Score &amp; Tools</h3>
           <p>Improve your credit to unlock better options.</p>
-
           <ul>
             <li>✔ Monitor score</li>
             <li>✔ Improve profile</li>
           </ul>
-
-          <a href="AFFILIATE_LINK_HERE" class="offers-btn">
-            Check My Credit
-          </a>
-
-          <a href="/guides/credit-tools-homeowners.html" class="offer-learn-more">
-            Learn More
-          </a>
+          <div class="offer-actions">
+            <a href="AFFILIATE_LINK_HERE" class="offers-btn" target="_blank" rel="nofollow sponsored noopener">Check My Credit</a>
+            <a href="/guides/credit-tools-homeowners.html" class="offer-learn-more">Learn More</a>
+          </div>
         </div>
       </article>
 
@@ -210,8 +171,29 @@
 </section>
 
 <footer class="offers-footer">
-  <p>© NestNudge</p>
+  <div class="offers-footer-inner">
+    <p>© NestNudge. All rights reserved.</p>
+  </div>
 </footer>
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+  }
+
+  document.querySelectorAll('.dropdown > .dropbtn').forEach(button => {
+    button.addEventListener('click', () => {
+      if (window.innerWidth <= 980) {
+        button.parentElement.classList.toggle('open');
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
