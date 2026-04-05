@@ -7,172 +7,664 @@
 
   <title>NestNudge Offers | Smart Money, Solar, Insurance, Credit & Home Funding</title>
   <meta name="description" content="Explore NestNudge offers for personal loans, solar, insurance, mortgage options, and credit tools designed to help homeowners and families save money and improve their financial options.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://www.nestnudge.com/offers.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="NestNudge Offers | Explore Smart Ways to Save">
+  <meta property="og:description" content="Compare high-value offers including loans, solar, insurance, mortgage options, and credit tools.">
+  <meta property="og:url" content="https://www.nestnudge.com/offers.html">
+  <meta property="og:site_name" content="NestNudge">
+  <meta property="og:image" content="https://www.nestnudge.com/image/NestNudge-Logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NestNudge Offers | Explore Smart Ways to Save">
+  <meta name="twitter:description" content="Find personalized offers that may help lower payments, reduce energy bills, and improve your financial profile.">
+  <meta name="twitter:image" content="https://www.nestnudge.com/image/NestNudge-Logo.png">
 
   <link rel="stylesheet" href="style.css">
-</head>
 
+  <style>
+    .offers-page {
+      background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%);
+    }
+
+    .offers-hero {
+      padding: 70px 20px 50px;
+      background: linear-gradient(135deg, #ecfdf3 0%, #eff6ff 60%, #ffffff 100%);
+    }
+
+    .offers-hero-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .offers-kicker {
+      display: inline-block;
+      background: #dff7e8;
+      color: #155724;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .offers-hero h1 {
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 1.05;
+      margin-bottom: 16px;
+      color: #0f172a;
+    }
+
+    .offers-hero p {
+      font-size: 1.08rem;
+      color: #475569;
+      margin-bottom: 22px;
+      max-width: 620px;
+    }
+
+    .offers-hero-points {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .offers-hero-points li {
+      color: #1e293b;
+      font-weight: 600;
+    }
+
+    .offers-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .offers-btn,
+    .offers-btn-outline {
+      display: inline-block;
+      padding: 14px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .offers-btn {
+      background: #2E7D32;
+      color: #fff;
+    }
+
+    .offers-btn:hover {
+      background: #25682a;
+    }
+
+    .offers-btn-outline {
+      border: 2px solid #2E7D32;
+      color: #2E7D32;
+      background: #fff;
+    }
+
+    .offers-btn-outline:hover {
+      background: #f0fdf4;
+    }
+
+    .offers-hero-card {
+      background: #fff;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .offers-hero-card img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .offers-section {
+      padding: 64px 20px;
+    }
+
+    .offers-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .offers-section-title {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 34px;
+    }
+
+    .offers-section-title h2 {
+      font-size: clamp(1.9rem, 3vw, 2.8rem);
+      margin-bottom: 12px;
+      color: #0f172a;
+    }
+
+    .offers-section-title p {
+      color: #64748b;
+      font-size: 1.02rem;
+    }
+
+    .offers-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .offer-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.08);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .offer-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .offer-card-content {
+      padding: 24px;
+    }
+
+    .offer-badge {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #eefbf2;
+      color: #1f6f35;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .offer-card-content h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+
+    .offer-payout {
+      font-weight: 700;
+      color: #2E7D32;
+      margin-bottom: 12px;
+    }
+
+    .offer-card-content p {
+      color: #475569;
+      margin-bottom: 14px;
+    }
+
+    .offer-card-content ul {
+      padding-left: 18px;
+      margin: 0 0 20px;
+      color: #1f2937;
+    }
+
+    .offer-card-content li {
+      margin-bottom: 8px;
+    }
+
+    .offer-card-wide {
+      grid-column: 1 / -1;
+    }
+
+    .offers-hub-grid,
+    .offers-trust-grid,
+    .offers-faq-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .offers-hub-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .offers-trust-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 26px;
+    }
+
+    .offers-faq-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hub-box,
+    .trust-box,
+    .faq-box,
+    .offers-cta-box {
+      background: #fff;
+      border-radius: 18px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+    }
+
+    .hub-box,
+    .trust-box,
+    .faq-box {
+      padding: 24px;
+    }
+
+    .hub-box h3,
+    .trust-box h3,
+    .faq-box h3 {
+      color: #0f172a;
+      margin-bottom: 12px;
+    }
+
+    .hub-box ul {
+      padding-left: 18px;
+      margin: 0;
+      color: #475569;
+    }
+
+    .hub-box li {
+      margin-bottom: 8px;
+    }
+
+    .trust-box p,
+    .faq-box p {
+      color: #64748b;
+      margin: 0;
+    }
+
+    .offers-cta-box {
+      padding: 40px 26px;
+      background: linear-gradient(135deg, #1f4d28 0%, #2E7D32 55%, #4caf50 100%);
+      color: #fff;
+      text-align: center;
+    }
+
+    .offers-cta-box h2 {
+      font-size: clamp(2rem, 3vw, 3rem);
+      margin-bottom: 12px;
+    }
+
+    .offers-cta-box p {
+      max-width: 760px;
+      margin: 0 auto 22px;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .offers-cta-box .offers-btn-outline {
+      border-color: #fff;
+      color: #fff;
+      background: transparent;
+    }
+
+    .offers-cta-box .offers-btn-outline:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .offers-footer {
+      text-align: center;
+      padding: 26px 20px 40px;
+      color: #64748b;
+    }
+
+    @media (max-width: 980px) {
+      .offers-hero-inner,
+      .offers-grid,
+      .offers-hub-grid,
+      .offers-trust-grid,
+      .offers-faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .offer-card-wide {
+        grid-column: auto;
+      }
+
+      .offers-hero-card img {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
 <body class="offers-page">
 
-<header>
-  <nav class="main-nav">
-    <a href="/">Home</a>
-    <a href="/offers.html">Offers</a>
-    <a href="/#contact-form">Contact</a>
-    <a class="cta-button" href="/roof-quotes-miami-fort-lauderdale.html">Get My Quote</a>
-  </nav>
-</header>
+  <header>
+    <nav class="main-nav">
+      <a href="/">Home</a>
 
-<section class="offers-hero">
-  <div class="offers-hero-inner">
+      <div class="dropdown">
+        <button class="dropbtn">Services ▼</button>
+        <div class="dropdown-content">
+          <a href="/#services">All Services</a>
+          <a href="/#cost-guide">Home Estimator</a>
+          <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
+          <a href="/offers.html">Offers</a>
+        </div>
+      </div>
 
-    <div>
-      <span class="offers-kicker">NestNudge Smart Offers</span>
+      <div class="dropdown">
+        <button class="dropbtn">Get Quotes ▼</button>
+        <div class="dropdown-content">
+          <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
+          <a href="/#contact-form">Request Estimate</a>
+          <a href="/#cost-guide">Project Estimator</a>
+        </div>
+      </div>
 
-      <h1>Smarter ways to save while increasing your return on every home decision</h1>
+      <div class="dropdown">
+        <button class="dropbtn">Partners ▼</button>
+        <div class="dropdown-content">
+          <a href="/contractor-login.php">Partner Login</a>
+          <a href="/contractor-signup.php">Create Account</a>
+        </div>
+      </div>
 
-      <p>
-        From debt relief and solar to insurance, mortgage options, and credit tools,
-        NestNudge helps you compare smart next steps built around your household goals.
-      </p>
+      <a href="/offers.html">Offers</a>
+      <a href="/#contact-form">Contact</a>
+      <a class="cta-button" href="/roof-quotes-miami-fort-lauderdale.html">Get My Quote</a>
+    </nav>
+  </header>
 
-      <div class="offers-hero-actions">
-        <a href="#top-offers" class="offers-btn">Check your options</a>
-        <a href="/#loan-section" class="offers-btn-outline">See financing options</a>
+  <section class="offers-hero">
+    <div class="offers-hero-inner">
+      <div>
+        <span class="offers-kicker">NestNudge Smart Offers</span>
+        <h1>Smarter ways to save while increasing your return on every home decision</h1>
+        <p>
+          From debt relief and solar to insurance, mortgage options, and credit tools,
+          NestNudge helps you compare smart next steps built around your household goals.
+        </p>
+
+        <ul class="offers-hero-points">
+          <li>✔ Lower monthly payments</li>
+          <li>✔ Reduce utility costs</li>
+          <li>✔ Compare offers built around real homeowner needs</li>
+        </ul>
+
+        <div class="offers-hero-actions">
+          <a href="#top-offers" class="offers-btn">Check your options</a>
+          <a href="/#loan-section" class="offers-btn-outline">See financing options</a>
+        </div>
+      </div>
+
+      <div class="offers-hero-card">
+        <img src="image/repairs-loan.png" alt="NestNudge offers and savings options">
       </div>
     </div>
+  </section>
 
-    <div class="offers-hero-card">
-      <img src="image/repairs-loan.png" alt="NestNudge offers and savings options">
-    </div>
+  <section class="offers-section" id="top-offers">
+    <div class="offers-wrap">
+      <div class="offers-section-title">
+        <h2>Top 5 Smart Ways to Save</h2>
+    <p>
+  These offers are built around real homeowner needs—helping you reduce costs, improve your home, 
+  and explore better financial options with confidence.
+   </p>
+      </div>
 
+      <div class="offers-grid">
+       <article class="offer-card">
+  <img src="image/personal-loans-and debt-consolidation1.png" alt="Personal loans and debt consolidation">
+  <img src="image/featured-credit-tools.jpg" alt="Personal loans and debt consolidation">
+  <div class="offer-card-content">
+    <span class="offer-badge">Lower Payments</span>
+    <h3>🏡 Personal Loans / Debt Consolidation</h3>
+    <div class="offer-payout">Simplify Your Finances</div>
+
+    <p>
+      Personal loans and debt consolidation can help you combine multiple balances into one simple monthly payment.
+      This can make it easier to manage your finances while potentially lowering your overall interest costs.
+    </p>
+
+    <ul>
+      <li>✔ Lower your monthly payments</li>
+      <li>✔ Combine debts into one simple payment</li>
+      <li>✔ Pay off balances faster with better rates</li>
+      <li>✔ Reduce financial stress and stay organized</li>
+    </ul>
+
+    <p>
+      If you are comparing options for debt relief, this is often one of the easiest ways to start exploring what may work for your current situation.
+    </p>
+
+    <a href="/#loan-section" class="offers-btn">Check your rate in 60 seconds</a>
+    <a href="/lower-your-monthly-payments.html" class="offer-learn-more">Learn More...</a>
   </div>
-</section>
+</article>
+<article class="offer-card">
+  <img src="/image/home-evaluation1.png" alt="Solar savings">
+  <img src="/image/Solar3-.jpeg" alt="Solar savings">
+  <div class="offer-card-content">
+    <span class="offer-badge">Home Upgrade</span>
+    <h3>☀️ Solar Installation</h3>
 
-<section class="offers-section" id="top-offers">
-  <div class="offers-wrap">
+    <p>
+      Solar installation helps homeowners take control of rising energy costs by turning sunlight into a long-term savings solution.
+      Many homes may qualify for programs that reduce upfront costs while lowering monthly utility bills.
+    </p>
 
-    <div class="offers-section-title">
-      <h2>Top 5 Smart Ways to Save</h2>
-      <p>
-        These offers are built around real homeowner needs—helping you reduce costs,
-        improve your home, and explore better financial options with confidence.
-      </p>
-    </div>
+    <ul>
+      <li>✔ Lower your monthly energy bills</li>
+      <li>✔ Reduce reliance on utility companies</li>
+      <li>✔ Increase your home’s efficiency</li>
+      <li>✔ Explore available incentives and savings programs</li>
+    </ul>
 
-    <div class="offers-grid">
+    <p>
+      Solar can be especially attractive for homeowners planning to stay in their home and looking for more predictable long-term energy costs.
+    </p>
 
-      <!-- PERSONAL LOANS -->
-      <article class="offer-card">
-        <img src="image/featured-credit-tools.jpg">
-        <div class="offer-card-content">
-          <span class="offer-badge">Lower Payments</span>
-          <h3>🏡 Personal Loans / Debt Consolidation</h3>
-
-          <p>
-            Personal loans and debt consolidation can help you combine multiple balances into one simple monthly payment.
-          </p>
-
-          <ul>
-            <li>✔ Lower your monthly payments</li>
-            <li>✔ Combine debts into one simple payment</li>
-            <li>✔ Pay off balances faster with better rates</li>
-          </ul>
-
-          <a href="/#loan-section" class="offers-btn">Check your rate in 60 seconds</a>
-          <a href="/lower-your-monthly-payments.html" class="offer-learn-more">Learn More...</a>
-        </div>
-      </article>
-
-      <!-- SOLAR -->
-      <article class="offer-card">
-        <img src="/image/Solar3-.jpeg">
-        <div class="offer-card-content">
-          <span class="offer-badge">Home Upgrade</span>
-          <h3>☀️ Solar Installation</h3>
-
-          <p>
-            Solar installation helps homeowners reduce energy costs and increase home value.
-          </p>
-
-          <ul>
-            <li>✔ Lower your monthly energy bills</li>
-            <li>✔ Increase your home’s efficiency</li>
-          </ul>
-
-          <a href="/#contact-form" class="offers-btn">See if your home qualifies</a>
-          <a href="/cut-your-energy-bill-with-solar.html" class="offer-learn-more">Learn More...</a>
-        </div>
-      </article>
-
-      <!-- INSURANCE -->
-      <article class="offer-card">
-        <img src="/image/realtor1.jpg">
-        <div class="offer-card-content">
-          <span class="offer-badge">Protection</span>
-          <h3>🛡️ Insurance Options</h3>
-
-          <p>
-            Compare providers and potentially lower your insurance premiums.
-          </p>
-
-          <ul>
-            <li>✔ Protect your home and family</li>
-            <li>✔ Compare multiple providers</li>
-          </ul>
-
-          <a href="/#contact-form" class="offers-btn">Compare quotes</a>
-          <a href="/compare-insurance-options-and-save.html" class="offer-learn-more">Learn More...</a>
-        </div>
-      </article>
-
-      <!-- HOME EQUITY -->
-      <article class="offer-card">
-        <img src="/image/hloc-1.webp">
-        <div class="offer-card-content">
-          <span class="offer-badge">Homeowner Favorite</span>
-          <h3>🏠 Mortgage / Refinance / HELOC</h3>
-
-          <p>
-            Explore options to lower payments or access your home equity.
-          </p>
-
-          <ul>
-            <li>✔ Lower payments</li>
-            <li>✔ Access equity</li>
-          </ul>
-
-          <a href="/#loan-section" class="offers-btn">See today’s rates</a>
-          <a href="/home-improvement-financing-guide.html" class="offer-learn-more">Learn More...</a>
-        </div>
-      </article>
-
-      <!-- CREDIT -->
-      <article class="offer-card offer-card-wide">
-        <div class="offer-card-content">
-          <span class="offer-badge">Financial Foundation</span>
-          <h3>🧾 Credit Score & Credit Tools</h3>
-
-          <p>
-            Monitor and improve your credit to unlock better financial opportunities.
-          </p>
-
-          <ul>
-            <li>✔ Check your credit score</li>
-            <li>✔ Improve your financial profile</li>
-          </ul>
-
-          <a href="/#loan-section" class="offers-btn">Check your credit score</a>
-          <a href="/unlock-better-financial-options-with-credit-tools.html" class="offer-learn-more">Learn More...</a>
-        </div>
-      </article>
-
-    </div>
+    <a href="/#contact-form" class="offers-btn">See if your home qualifies for solar savings</a>
+    <a href="/cut-your-energy-bill-with-solar.html" class="offer-learn-more">Learn More...</a>
   </div>
-</section>
+</article>
 
-<footer class="offers-footer">
-  <p>© NestNudge</p>
-</footer>
+        <article class="offer-card">
+  <img src="/image/realtor1.jpg" alt="Insurance comparison">
+  <div class="offer-card-content">
+    <span class="offer-badge">Protection</span>
+    <h3>🛡️ Insurance Options</h3>
+    <div class="offer-payout">Protect What Matters Most</div>
+
+    <p>
+      Comparing insurance options can help you find better coverage while potentially lowering your monthly premiums.
+      Whether it is home, auto, or life insurance, even small updates can lead to meaningful savings.
+    </p>
+
+    <ul>
+      <li>✔ Protect your home and family</li>
+      <li>✔ Compare multiple providers in one place</li>
+      <li>✔ Find better coverage for your needs</li>
+      <li>✔ Identify opportunities to reduce monthly costs</li>
+    </ul>
+
+    <p>
+      Reviewing quotes regularly can help you avoid overpaying and make sure your coverage still matches your household needs.
+    </p>
+
+    <a href="/#contact-form" class="offers-btn">Compare quotes in 2 minutes</a>
+    <a href="/compare-insurance-options-and-save.html" class="offer-learn-more">Learn More...</a>
+  </div>
+</article>
+
+        <article class="offer-card">
+  <img src="/image/hloc-1.webp" alt="Mortgage refinance and HELOC">
+  <div class="offer-card-content">
+    <span class="offer-badge">Homeowner Favorite</span>
+    <h3>🏠 Mortgage / Refinance / HELOC</h3>
+    <div class="offer-payout">Use Your Home’s Equity Smarter</div>
+
+    <p>
+      Mortgage and refinance options allow homeowners to explore lower payments or access equity for renovations,
+      debt consolidation, or major household expenses.
+    </p>
+
+    <ul>
+      <li>✔ Lower your monthly mortgage payment</li>
+      <li>✔ Tap into your home equity</li>
+      <li>✔ Fund upgrades or large expenses</li>
+      <li>✔ Adjust your loan to fit your current goals</li>
+    </ul>
+
+    <p>
+      For homeowners with equity, refinancing or using a HELOC may create more flexibility than higher-interest borrowing.
+    </p>
+
+    <a href="/#loan-section" class="offers-btn">See today’s rates</a>
+    <a href="/home-improvement-financing-guide.html" class="offer-learn-more">Learn More...</a>
+  </div>
+</article>
+
+       <article class="offer-card offer-card-wide">
+  <div class="offer-card-content">
+    <span class="offer-badge">Financial Foundation</span>
+    <h3>🧾 Credit Score & Credit Tools</h3>
+    <div class="offer-payout">Unlock Better Financial Options</div>
+
+    <p>
+      Your credit profile plays a major role in the rates and offers you qualify for.
+      Monitoring and improving your credit can open the door to better loans, cards, and financial opportunities.
+    </p>
+
+    <ul>
+      <li>✔ Check and monitor your credit score</li>
+      <li>✔ Improve your financial profile over time</li>
+      <li>✔ Unlock better loan and credit card rates</li>
+      <li>✔ Build a stronger foundation for future approvals</li>
+    </ul>
+
+    <p>
+      Strong credit gives you more control across every major money decision, from borrowing to refinancing to everyday savings.
+    </p>
+
+    <a href="/#loan-section" class="offers-btn">Check your credit score for free</a>
+    <a href="/unlock-better-financial-options-with-credit-tools.html" class="offer-learn-more">Learn More...</a>
+  </div>
+</article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="offers-section">
+    <div class="offers-wrap">
+      <div class="offers-section-title">
+        <h2>Smart Money Hub</h2>
+        <p>
+          This layout helps NestNudge organize offers into simple, conversion-friendly buckets.
+        </p>
+      </div>
+
+      <div class="offers-hub-grid">
+        <div class="hub-box">
+          <h3>💰 Save Money</h3>
+          <ul>
+            <li>Loans</li>
+            <li>Debt consolidation</li>
+            <li>Credit repair</li>
+            <li>Credit cards</li>
+          </ul>
+        </div>
+
+        <div class="hub-box">
+          <h3>🏡 Home Optimization</h3>
+          <ul>
+            <li>Solar</li>
+            <li>Insurance</li>
+            <li>Home warranties later</li>
+          </ul>
+        </div>
+
+        <div class="hub-box">
+          <h3>📈 Build Wealth</h3>
+          <ul>
+            <li>Better credit positioning</li>
+            <li>Future investing offers</li>
+            <li>Premium card offers later</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="offers-trust-grid">
+        <div class="trust-box">
+          <h3>Simple comparison process</h3>
+          <p>Use softer calls to action like “Check your options” and “See if you qualify” to lift conversions.</p>
+        </div>
+        <div class="trust-box">
+          <h3>Fits your existing funnel</h3>
+          <p>These offers work naturally beside your roof, funding, realtor, and home value planning flows.</p>
+        </div>
+        <div class="trust-box">
+          <h3>No inventory required</h3>
+          <p>Everything can be monetized through affiliate offers, direct leads, or future local partnerships.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="offers-section">
+    <div class="offers-wrap">
+      <div class="offers-section-title">
+        <h2>Frequently Asked Questions</h2>
+        <p>Keep this section short and trust-building.</p>
+      </div>
+
+      <div class="offers-faq-grid">
+        <div class="faq-box">
+          <h3>How does NestNudge work?</h3>
+          <p>NestNudge helps visitors compare practical money-saving and home-related offers in one place.</p>
+        </div>
+
+        <div class="faq-box">
+          <h3>Does checking options affect my credit?</h3>
+          <p>Some providers begin with quote-style or soft-check steps first. Final impact depends on the provider.</p>
+        </div>
+
+        <div class="faq-box">
+          <h3>Which offer should I start with?</h3>
+          <p>If the goal is lower payments, start with loans. For lower bills, look at solar. For better approval strength, start with credit tools.</p>
+        </div>
+
+        <div class="faq-box">
+          <h3>Why are these offers on NestNudge?</h3>
+          <p>They align with home savings, financial flexibility, and homeowner-focused decision making.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="offers-section">
+    <div class="offers-wrap">
+      <div class="offers-cta-box">
+        <h2>Start with the offers that move the needle</h2>
+        <p>
+          Focus first on loans, solar, insurance, and credit tools. These are the strongest
+          fit for NestNudge and the easiest categories to build into your current lead flow.
+        </p>
+        <div class="offers-hero-actions" style="justify-content:center;">
+          <a href="/#loan-section" class="offers-btn">Get personalized offers</a>
+          <a href="/" class="offers-btn-outline">Back to home</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="offers-footer">
+    <p>© NestNudge</p>
+  </footer>
 
 </body>
 </html>
