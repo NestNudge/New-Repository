@@ -1761,3 +1761,52 @@ header {
 .sidebar-links a:hover {
   color: #0073ff;
 }
+/* FORCE CONSISTENT CARD LAYOUT */
+.offer-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* LOCK IMAGE SIZE */
+.offer-card img {
+  width: 100%;
+  height: 200px; /* fixed height */
+  object-fit: cover;
+}
+
+/* CONTROL CONTENT AREA */
+.offer-card-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* KEEP TEXT BALANCED */
+.offer-card-content p {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* LIMIT BULLETS */
+.offer-card-content ul {
+  margin-bottom: 16px;
+}
+
+/* PUSH BUTTONS TO BOTTOM */
+.offer-card-content a {
+  margin-top: auto;
+}
+
+/* BUTTON SPACING FIX */
+.offer-card-content .offers-btn {
+  margin-bottom: 8px;
+}
+
+/* GRID FIX (IMPORTANT) */
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
