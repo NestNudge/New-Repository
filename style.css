@@ -57,9 +57,7 @@ button {
   max-width: 100%;
 }
 
-/* =========================
-   HEADER / NAV
-========================= */
+/* Header / Nav */
 
 header {
   position: sticky;
@@ -81,9 +79,27 @@ header {
   min-height: 78px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 12px;
   position: relative;
+}
+
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  font-weight: 800;
+  font-size: 1.18rem;
+  color: var(--primary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.brand-logo img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
 }
 
 .nav-toggle {
@@ -101,6 +117,7 @@ header {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-left: auto;
 }
 
 .nav-links > a,
@@ -231,10 +248,16 @@ header {
 
 .gallery-preview-btn-outline,
 .offers-intro-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  border-radius: 999px;
   background: #fff;
   color: var(--primary);
   border: 2px solid var(--primary);
   padding: 0 18px;
+  font-weight: 700;
 }
 
 .offers-intro-btn-outline:hover,
@@ -252,9 +275,7 @@ header {
   border-radius: 0;
 }
 
-/* =========================
-   HERO
-========================= */
+/* Hero */
 
 .hero-split {
   position: relative;
@@ -287,14 +308,22 @@ header {
 }
 
 .hero-left h1 {
-  font-size: clamp(2.4rem, 5vw, 4.8rem);
-  line-height: 0.98;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 0.97;
   letter-spacing: -0.04em;
-  margin: 0 0 18px;
-  max-width: 11ch;
+  margin: 0 0 12px;
+  max-width: 10ch;
 }
 
-.hero-left p {
+.hero-left h2 {
+  margin: 0 0 18px;
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  line-height: 1.2;
+  color: #334155;
+  font-weight: 700;
+}
+
+.hero-sub {
   margin: 0 0 22px;
   font-size: 1.12rem;
   color: var(--muted);
@@ -328,7 +357,8 @@ header {
   box-shadow: var(--shadow);
 }
 
-.hero-form form {
+.hero-form form,
+.loan-form form {
   width: 100%;
 }
 
@@ -359,7 +389,8 @@ header {
 .hero-form textarea:focus,
 .loan-form input:focus,
 .loan-form select:focus,
-.loan-form textarea:focus {
+.loan-form textarea:focus,
+#chatInput:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 4px rgba(31, 122, 61, 0.12);
 }
@@ -377,18 +408,33 @@ header {
   box-shadow: var(--shadow-soft);
 }
 
-.hero-zip-note,
+.micro,
+.trust-line,
+.zip-note,
 .loan-zip-note {
-  margin-top: 12px;
+  text-align: center;
+  margin: 12px 0 0;
   font-size: 0.92rem;
   line-height: 1.55;
+}
+
+.micro {
+  color: #475569;
+  font-weight: 600;
+}
+
+.trust-line {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.zip-note,
+.loan-zip-note {
   color: var(--muted);
   font-weight: 600;
 }
 
-/* =========================
-   SHARED SECTION STYLES
-========================= */
+/* Shared sections */
 
 .info-strip,
 .offers-intro-strip,
@@ -423,9 +469,7 @@ header {
   line-height: 1.75;
 }
 
-/* =========================
-   OFFERS INTRO
-========================= */
+/* Offers intro */
 
 .offers-intro-strip {
   padding: 24px 16px 72px;
@@ -486,9 +530,7 @@ header {
   object-fit: cover;
 }
 
-/* =========================
-   COST GUIDE
-========================= */
+/* Cost guide */
 
 .cost-guide-section {
   padding: 32px 16px 72px;
@@ -616,9 +658,7 @@ header {
   margin-top: 20px;
 }
 
-/* =========================
-   SERVICES
-========================= */
+/* Services */
 
 .services-carousel {
   padding: 20px 0 80px;
@@ -674,9 +714,7 @@ header {
   color: rgba(255, 255, 255, 0.92);
 }
 
-/* =========================
-   FEATURED OFFERS
-========================= */
+/* Featured offers */
 
 .featured-offers-home {
   padding: 78px 16px;
@@ -753,9 +791,7 @@ header {
   color: var(--muted);
 }
 
-/* =========================
-   TESTIMONIALS
-========================= */
+/* Testimonials */
 
 .testimonials {
   padding: 76px 16px;
@@ -851,9 +887,7 @@ header {
   line-height: 1.7;
 }
 
-/* =========================
-   GALLERY PREVIEW
-========================= */
+/* Gallery preview */
 
 .gallery-preview-section {
   padding: 72px 20px;
@@ -969,9 +1003,7 @@ header {
   padding: 24px 0;
 }
 
-/* =========================
-   LOAN SECTION
-========================= */
+/* Loan section */
 
 .loan-section {
   padding: 78px 16px;
@@ -1066,11 +1098,10 @@ header {
   color: var(--muted);
   font-size: 0.95rem;
   font-weight: 700;
+  text-align: center;
 }
 
-/* =========================
-   SELLING SECTION
-========================= */
+/* Selling */
 
 .selling-section {
   padding: 40px 16px 78px;
@@ -1112,9 +1143,7 @@ header {
   object-fit: cover;
 }
 
-/* =========================
-   PARTNERS
-========================= */
+/* Partners */
 
 .partners-section {
   padding: 80px 16px;
@@ -1153,6 +1182,10 @@ header {
   color: #334155;
   font-weight: 700;
   line-height: 1.7;
+}
+
+.zip-access-note {
+  margin-top: 14px;
 }
 
 .partners-pricing-card {
@@ -1246,9 +1279,7 @@ header {
   text-align: center;
 }
 
-/* =========================
-   CHAT WIDGET
-========================= */
+/* Chat */
 
 #chatWidget {
   position: fixed;
@@ -1396,11 +1427,6 @@ header {
   outline: none;
 }
 
-#chatInput:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(31, 122, 61, 0.12);
-}
-
 #chatReopen {
   position: fixed;
   right: 20px;
@@ -1439,9 +1465,7 @@ header {
   font-size: 0.8rem;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* Footer */
 
 .site-footer {
   background: #0f172a;
@@ -1501,9 +1525,7 @@ header {
   font-size: 0.92rem;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* Responsive */
 
 @media (max-width: 1100px) {
   .services-grid-home,
@@ -1521,14 +1543,11 @@ header {
 }
 
 @media (max-width: 980px) {
-  .main-nav {
-    justify-content: space-between;
-  }
-
   .nav-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    margin-left: auto;
   }
 
   .nav-links {
@@ -1669,12 +1688,12 @@ header {
 }
 
 @media (max-width: 520px) {
-  .hero-left h1,
-  .offers-intro-copy h2,
-  .loan-text h2,
-  .partners-copy h2,
-  .selling-text h2 {
-    letter-spacing: -0.03em;
+  .brand-logo span {
+    font-size: 1rem;
+  }
+
+  .brand-logo img {
+    height: 34px;
   }
 
   .hero-form,
