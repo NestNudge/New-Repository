@@ -1726,3 +1726,38 @@ header {
     display: none;
   }
 }
+
+.article-layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.article-main {
+  flex: 3;
+}
+
+.article-sidebar {
+  flex: 1;
+  background: #f8f9fb;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-links li {
+  margin-bottom: 12px;
+}
+
+.sidebar-links a {
+  text-decoration: none;
+  color: #333;
+}
+
+.sidebar-links a:hover {
+  color: #0073ff;
+}
