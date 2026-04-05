@@ -254,3 +254,55 @@ header {
     height: 250px;
   }
 }
+/* =========================
+   OFFERS PAGE SAFE FIX ONLY
+   (WILL NOT AFFECT OTHER PAGES)
+========================= */
+
+/* FIX HERO STRETCH */
+.offers-page header {
+  position: relative !important;
+}
+
+/* FIX HERO IMAGE */
+.offers-page .offers-hero-card img {
+  height: 320px !important;
+  object-fit: cover;
+}
+
+/* FIX GRID */
+.offers-page .offers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* FIX CARDS */
+.offers-page .offer-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* FIX CARD IMAGES */
+.offers-page .offer-card img {
+  height: 200px !important;
+  object-fit: cover;
+}
+
+/* FIX CONTENT FLOW */
+.offers-page .offer-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* KEEP BUTTONS ALIGNED */
+.offers-page .offer-card-content a {
+  margin-top: auto;
+}
+
+/* MOBILE FIX */
+@media (max-width: 900px) {
+  .offers-page .offers-grid {
+    grid-template-columns: 1fr;
+  }
+}
