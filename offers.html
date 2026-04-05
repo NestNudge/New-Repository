@@ -5,34 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>NestNudge Offers | Smart Money, Solar, Insurance, Credit & Home Funding</title>
-  <meta name="description" content="Explore NestNudge offers for personal loans, solar, insurance, mortgage options, and credit tools.">
-
+  <title>NestNudge Offers</title>
   <link rel="stylesheet" href="style.css">
-
-  <style>
-    .offers-page { background: linear-gradient(180deg,#f7f9fc 0%,#ffffff 100%); }
-    .offers-hero { padding:70px 20px 50px; background:linear-gradient(135deg,#ecfdf3 0%,#eff6ff 60%,#ffffff 100%); }
-    .offers-hero-inner { max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.05fr 0.95fr;gap:32px;align-items:center; }
-    .offers-kicker { background:#dff7e8;color:#155724;padding:8px 14px;border-radius:999px;font-weight:700;margin-bottom:16px;display:inline-block;}
-    .offers-hero h1 { font-size:clamp(2.2rem,4vw,4rem);margin-bottom:16px;color:#0f172a;}
-    .offers-hero p { color:#475569;margin-bottom:22px;}
-    .offers-hero-actions { display:flex;gap:12px; }
-    .offers-btn { background:#2E7D32;color:#fff;padding:14px 20px;border-radius:999px;text-decoration:none;font-weight:700;}
-    .offers-btn-outline { border:2px solid #2E7D32;color:#2E7D32;padding:14px 20px;border-radius:999px;text-decoration:none;font-weight:700;}
-    .offers-hero-card img { width:100%;height:420px;object-fit:cover;border-radius:20px;}
-    .offers-section { padding:64px 20px;}
-    .offers-wrap { max-width:1180px;margin:0 auto;}
-    .offers-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
-    .offer-card { background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,0.08);}
-    .offer-card img { width:100%;height:230px;object-fit:cover;}
-    .offer-card-content { padding:24px;}
-    .offer-badge { background:#eefbf2;color:#1f6f35;padding:6px 12px;border-radius:999px;font-weight:700;font-size:.8rem;}
-    .offer-card-content h3 { margin:10px 0;}
-    .offer-card-content ul { padding-left:18px;}
-    .offer-card-wide { grid-column:1/-1;}
-    .offers-footer { text-align:center;padding:40px;color:#64748b;}
-  </style>
 </head>
 
 <body class="offers-page">
@@ -40,8 +14,34 @@
 <header>
   <nav class="main-nav">
     <a href="/">Home</a>
+
+    <div class="dropdown">
+      <button class="dropbtn">Services ▼</button>
+      <div class="dropdown-content">
+        <a href="/#services">All Services</a>
+        <a href="/#cost-guide">Home Estimator</a>
+        <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
+        <a href="/offers.html">Offers</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Get Quotes ▼</button>
+      <div class="dropdown-content">
+        <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
+        <a href="/#cost-guide">Project Estimator</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Partners ▼</button>
+      <div class="dropdown-content">
+        <a href="/contractor-login.php">Partner Login</a>
+        <a href="/contractor-signup.php">Create Account</a>
+      </div>
+    </div>
+
     <a href="/offers.html">Offers</a>
-    <a href="/#contact-form">Contact</a>
     <a class="cta-button" href="/roof-quotes-miami-fort-lauderdale.html">Get My Quote</a>
   </nav>
 </header>
@@ -52,15 +52,15 @@
 
     <div>
       <span class="offers-kicker">NestNudge Smart Offers</span>
-      <h1>Smarter ways to save while increasing your return on every home decision</h1>
+
+      <h1>Smarter ways to save while improving your financial position</h1>
 
       <p>
-        Compare smart financial and home-related options designed to reduce costs and improve your financial position.
+        Compare financial and home-related options designed to reduce costs and improve your financial outcomes.
       </p>
 
       <div class="offers-hero-actions">
-        <a href="#top-offers" class="offers-btn">Check your options</a>
-        <a href="/#loan-section" class="offers-btn-outline">See financing options</a>
+        <a href="#top-offers" class="offers-btn">Explore Offers</a>
       </div>
     </div>
 
@@ -80,80 +80,128 @@
       <!-- PERSONAL LOANS -->
       <article class="offer-card">
         <img src="image/lower-your-debt-payment.png">
+
         <div class="offer-card-content">
           <span class="offer-badge">Lower Payments</span>
-          <h3>🏡 Personal Loans / Debt Consolidation</h3>
+          <h3>Personal Loans / Debt Consolidation</h3>
+
           <p>Combine multiple debts into one simple payment.</p>
+
           <ul>
             <li>✔ Lower payments</li>
             <li>✔ Simplify finances</li>
             <li>✔ Improve cash flow</li>
           </ul>
-          <a href="/#loan-section" class="offers-btn">Check your rate</a>
-          <a href="/lower-your-monthly-payments.html">Learn More</a>
+
+          <!-- AFFILIATE -->
+          <a href="AFFILIATE_LINK_HERE" class="offers-btn">
+            Check My Rate
+          </a>
+
+          <!-- ARTICLE -->
+          <a href="/guides/personal-loans-debt-consolidation.html" class="offer-learn-more">
+            Learn More
+          </a>
         </div>
       </article>
 
       <!-- SOLAR -->
       <article class="offer-card">
         <img src="/image/featured-solar-savings.jpg">
+
         <div class="offer-card-content">
           <span class="offer-badge">Home Upgrade</span>
-          <h3>☀️ Solar Installation</h3>
+          <h3>Solar Installation</h3>
+
           <p>Reduce energy costs and increase home value.</p>
+
           <ul>
             <li>✔ Lower bills</li>
             <li>✔ Increase value</li>
           </ul>
-          <a href="/#contact-form" class="offers-btn">Check solar options</a>
-          <a href="/cut-your-energy-bill-with-solar.html">Learn More</a>
+
+          <a href="AFFILIATE_LINK_HERE" class="offers-btn">
+            Check Solar Options
+          </a>
+
+          <a href="/guides/solar-installation-homeowners.html" class="offer-learn-more">
+            Learn More
+          </a>
         </div>
       </article>
 
       <!-- INSURANCE -->
       <article class="offer-card">
         <img src="/image/realtor1.jpg">
+
         <div class="offer-card-content">
           <span class="offer-badge">Protection</span>
-          <h3>🛡️ Insurance Options</h3>
+          <h3>Insurance Options</h3>
+
           <p>Compare coverage and save.</p>
+
           <ul>
             <li>✔ Better coverage</li>
             <li>✔ Lower costs</li>
           </ul>
-          <a href="/#contact-form" class="offers-btn">Compare quotes</a>
-          <a href="/compare-insurance-options-and-save.html">Learn More</a>
+
+          <a href="AFFILIATE_LINK_HERE" class="offers-btn">
+            Compare Options
+          </a>
+
+          <a href="/guides/insurance-protection-homeowners.html" class="offer-learn-more">
+            Learn More
+          </a>
         </div>
       </article>
 
       <!-- HOME EQUITY -->
       <article class="offer-card">
         <img src="/image/hloc-1.webp">
+
         <div class="offer-card-content">
           <span class="offer-badge">Homeowner Favorite</span>
-          <h3>🏠 Mortgage / Refinance / HELOC</h3>
+          <h3>Mortgage / Refinance / HELOC</h3>
+
           <p>Use your home equity smarter.</p>
+
           <ul>
             <li>✔ Lower payments</li>
             <li>✔ Access equity</li>
           </ul>
-          <a href="/#loan-section" class="offers-btn">See rates</a>
-          <a href="/home-improvement-financing-guide.html">Learn More</a>
+
+          <a href="AFFILIATE_LINK_HERE" class="offers-btn">
+            Explore Options
+          </a>
+
+          <a href="/guides/home-equity-options.html" class="offer-learn-more">
+            Learn More
+          </a>
         </div>
       </article>
 
       <!-- CREDIT -->
       <article class="offer-card offer-card-wide">
+        <img src="/image/articles/credit-score-review.jpg">
+
         <div class="offer-card-content">
           <span class="offer-badge">Financial Foundation</span>
-          <h3>🧾 Credit Score & Tools</h3>
+          <h3>Credit Score & Tools</h3>
+
           <p>Improve your credit to unlock better options.</p>
+
           <ul>
             <li>✔ Monitor score</li>
             <li>✔ Improve profile</li>
           </ul>
-          <a href="/#loan-section" class="offers-btn">Check credit</a>
-          <a href="/unlock-better-financial-options-with-credit-tools.html">Learn More</a>
+
+          <a href="AFFILIATE_LINK_HERE" class="offers-btn">
+            Check My Credit
+          </a>
+
+          <a href="/guides/credit-tools-homeowners.html" class="offer-learn-more">
+            Learn More
+          </a>
         </div>
       </article>
 
