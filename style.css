@@ -4983,3 +4983,7 @@ header {
   margin-right: auto; /* pushes it left */
 }
 
+.nn-socials a {
+  color: #fff; /* make them white */
+}
+
