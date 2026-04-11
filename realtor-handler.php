@@ -1,30 +1,65 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+declare(strict_types=1);
 
-  $name = trim($_POST["name"] ?? "Unknown");
-  $email = trim($_POST["email"] ?? "");
-  $phone = trim($_POST["phone"] ?? "");
-  $zip = trim($_POST["zip"] ?? "");
-  $leadType = trim($_POST["lead_type"] ?? "realtor");
-  $source = trim($_POST["source"] ?? "NestNudge Realtor Form");
+require_once __DIR__ . '/lead-dispatch.php';
 
-  if (empty($name) || empty($email) || empty($phone) || empty($zip)) {
-    http_response_code(400);
-    echo "Missing required fields for realtor form";
-    exit;
-  }
+$dataDir = __DIR__ . '/data';
+$leadsFile = $dataDir . '/realtor-leads.json';
 
-  $entry = date("Y-m-d H:i:s") . " | " .
-           $name . " | " .
-           $email . " | " .
-           $phone . " | " .
-           $zip . " | " .
-           $leadType . " | " .
-           $source . "\n";
-
-  file_put_contents("realtor-leads.txt", $entry, FILE_APPEND);
-
-  header("Location: /thank-you.html");
-  exit;
+if (!is_dir($dataDir)) {
+    mkdir($dataDir, 0775, true);
 }
+if (!file_exists($leadsFile)) {
+    file_put_contents($leadsFile, json_encode([], JSON_PRETTY_PRINT));
+}
+
+function loadLeadFile(string $file): array
+{
+    if (!file_exists($file)) {
+        return [];
+    }
+
+    $raw = file_get_contents($file);
+    $data = json_decode($raw ?: '[]', true);
+
+    return is_array($data) ? $data : [];
+}
+
+function saveLeadFile(string $file, array $data): void
+{
+    file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+}
+
+function normalizeZip(string $zip): string
+{
+    return substr(preg_replace('/\D+/', '', trim($zip)), 0, 5);
+}
+
+$name = trim((string)($_POST['name'] ?? ''));
+$email = trim((string)($_POST['email'] ?? ''));
+$phone = trim((string)($_POST['phone'] ?? ''));
+$zip = normalizeZip((string)($_POST['zip'] ?? ''));
+$source = trim((string)($_POST['source'] ?? 'Realtor Form'));
+
+$leadRecord = [
+    'id' => uniqid('realtor_', true),
+    'name' => $name,
+    'email' => $email,
+    'phone' => $phone,
+    'zip' => $zip,
+    'project_type' => 'realtor',
+    'lead_type' => 'realtor',
+    'request_label' => 'Speak with an Expert regarding Realtor Guidance',
+    'source' => $source,
+    'submitted_at' => date('c')
+];
+
+$allLeads = loadLeadFile($leadsFile);
+$allLeads[] = $leadRecord;
+saveLeadFile($leadsFile, $allLeads);
+
+dispatchLeadOpportunity($leadRecord);
+
+header('Location: /thank-you.html');
+exit;
 ?>
