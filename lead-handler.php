@@ -1,44 +1,96 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+declare(strict_types=1);
 
-  $name = trim($_POST["name"] ?? "Unknown");
-  $address = trim($_POST["address"] ?? "");
-  $zip = trim($_POST["zip"] ?? "");
-  $email = trim($_POST["email"] ?? "");
-  $phone = trim($_POST["phone"] ?? "");
-  $project = trim($_POST["project_type"] ?? "");
-  $source = trim($_POST["source"] ?? "NestNudge");
+require_once __DIR__ . '/lead-dispatch.php';
 
-  // Validation by form type
-  if ($project === "estimator") {
-    if (empty($address) || empty($zip)) {
-      http_response_code(400);
-      echo "Missing required fields for estimator form";
-      exit;
-    }
-  } else {
-    // For funding and other non-address forms
-    if (empty($email) || empty($zip)) {
-      http_response_code(400);
-      echo "Missing required fields for funding form";
-      exit;
-    }
-  }
+$dataDir = __DIR__ . '/data';
+$leadsFile = $dataDir . '/homeowner-leads.json';
 
-  // Save lead
-  $entry = date("Y-m-d H:i:s") . " | " .
-           $name . " | " .
-           $address . " | " .
-           $zip . " | " .
-           $email . " | " .
-           $phone . " | " .
-           $project . " | " .
-           $source . "\n";
-
-  file_put_contents("leads.txt", $entry, FILE_APPEND);
-
-  // Redirect after success
-  header("Location: /thank-you.html");
-  exit;
+if (!is_dir($dataDir)) {
+    mkdir($dataDir, 0775, true);
 }
+if (!file_exists($leadsFile)) {
+    file_put_contents($leadsFile, json_encode([], JSON_PRETTY_PRINT));
+}
+
+function loadLeadFile(string $file): array
+{
+    if (!file_exists($file)) {
+        return [];
+    }
+
+    $raw = file_get_contents($file);
+    $data = json_decode($raw ?: '[]', true);
+
+    return is_array($data) ? $data : [];
+}
+
+function saveLeadFile(string $file, array $data): void
+{
+    file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+}
+
+function normalizeZip(string $zip): string
+{
+    return substr(preg_replace('/\D+/', '', trim($zip)), 0, 5);
+}
+
+function normalizeLeadType(string $projectType, string $source): string
+{
+    $value = strtolower(trim($projectType . ' ' . $source));
+
+    if (str_contains($value, 'roof')) return 'roof';
+    if (str_contains($value, 'loan')) return 'loan';
+    if (str_contains($value, 'fund')) return 'loan';
+    if (str_contains($value, 'debt')) return 'loan';
+    if (str_contains($value, 'payment')) return 'loan';
+    if (str_contains($value, 'realtor')) return 'realtor';
+    if (str_contains($value, 'buy')) return 'realtor';
+    if (str_contains($value, 'sell')) return 'realtor';
+
+    return 'roof';
+}
+
+function requestLabelFromLeadType(string $leadType): string
+{
+    $map = [
+        'roof' => 'Speak with an Expert regarding a Free Roof Inspection',
+        'loan' => 'Speak with an Expert regarding Personal Loan Options',
+        'realtor' => 'Speak with an Expert regarding Realtor Guidance'
+    ];
+
+    return $map[$leadType] ?? 'Speak with an Expert';
+}
+
+$name = trim((string)($_POST['name'] ?? ''));
+$email = trim((string)($_POST['email'] ?? ''));
+$phone = trim((string)($_POST['phone'] ?? ''));
+$zip = normalizeZip((string)($_POST['zip'] ?? ''));
+$projectType = trim((string)($_POST['project_type'] ?? ''));
+$source = trim((string)($_POST['source'] ?? 'Website Form'));
+
+$leadType = normalizeLeadType($projectType, $source);
+$requestLabel = requestLabelFromLeadType($leadType);
+
+$leadRecord = [
+    'id' => uniqid('lead_', true),
+    'name' => $name,
+    'email' => $email,
+    'phone' => $phone,
+    'zip' => $zip,
+    'project_type' => $projectType,
+    'lead_type' => $leadType,
+    'request_label' => $requestLabel,
+    'source' => $source,
+    'submitted_at' => date('c')
+];
+
+$allLeads = loadLeadFile($leadsFile);
+$allLeads[] = $leadRecord;
+saveLeadFile($leadsFile, $allLeads);
+
+dispatchLeadOpportunity($leadRecord);
+
+header('Location: /thank-you.html');
+exit;
 ?>
