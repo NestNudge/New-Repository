@@ -129,30 +129,43 @@
 
         <div class="hero-right">
           <div class="hero-form" id="hero-form">
-            <form action="/lead-handler.php" method="POST">
-              <h3>Check Your Options</h3>
+            <form action="/lead-handler.php" method="POST" id="heroLeadForm">
+  <h3>Check Your Options</h3>
 
-              <input type="text" name="name" placeholder="Full Name" required>
-              <input type="text" name="zip" id="zip" placeholder="ZIP Code" required inputmode="numeric" pattern="[0-9]{5}">
-              <input type="email" name="email" placeholder="Email Address" required>
+  <input type="text" name="name" placeholder="Full Name" required>
+  <input type="tel" name="phone" placeholder="Phone Number" required>
+  <input type="text" name="zip" id="zip" placeholder="ZIP Code" required inputmode="numeric" pattern="[0-9]{5}">
+  <input type="email" name="email" placeholder="Email Address" required>
 
-              <input type="hidden" name="project_type" value="lead">
-              <input type="hidden" name="source" value="Hero Form">
+  <select name="project_type" id="heroProjectType" required onchange="handleHeroProjectChange()">
+    <option value="">Select Service</option>
+    <option value="bathroom-remodeling">Bathroom Remodeling</option>
+    <option value="roof-repair">Roof Repair</option>
+    <option value="roof-replacement">Roof Replacement</option>
+    <option value="entry-door">Entry Door</option>
+    <option value="impact-windows">Impact Windows</option>
+    <option value="kitchen-remodeling">Kitchen Remodeling</option>
+    <option value="landscaping">Landscaping</option>
+    <option value="loan-assistance">Loan Assistance</option>
+    <option value="realtor">Realtor</option>
+  </select>
 
-              <button type="submit">Check My Options</button>
+  <input type="hidden" name="source" value="Hero Form">
 
-              <p class="micro">
-                No pressure. No commitment. Just smarter options.
-              </p>
+  <button type="submit">Check My Options</button>
 
-              <p class="trust-line">
-                Trusted by homeowners exploring smarter home upgrades nationwide.
-              </p>
+  <p class="micro">
+    No pressure. No commitment. Just smarter options.
+  </p>
 
-              <p class="zip-note">
-                Your ZIP helps us match better local options.
-              </p>
-            </form>
+  <p class="trust-line">
+    Trusted by homeowners exploring smarter home upgrades nationwide.
+  </p>
+
+  <p class="zip-note">
+    Your ZIP helps us match better local options.
+  </p>
+</form>
           </div>
         </div>
       </div>
