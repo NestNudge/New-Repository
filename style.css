@@ -3015,3 +3015,43 @@ document.addEventListener("DOMContentLoaded", () => {
   initForm();
   initChat();
 });
+
+/* VA SCROLLING BANNER */
+.va-banner {
+  display: block;
+  width: 100%;
+  background: linear-gradient(90deg, #002868, #bf0a30);
+  color: #fff;
+  overflow: hidden;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  z-index: 9999;
+}
+
+.va-banner-track {
+  display: inline-block;
+  white-space: nowrap;
+  padding: 12px 0;
+  animation: scrollBanner 20s linear infinite;
+  font-size: 16px;
+}
+
+@keyframes scrollBanner {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.va-banner {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.85; }
+  100% { opacity: 1; }
+}
+
+.va-banner:hover .va-banner-track {
+  animation-play-state: paused;
+}
