@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VA Home Loan Savings Review | NestNudge</title>
+  <meta
+    name="description"
+    content="NestNudge helps eligible veteran homeowners review VA refinance options, compare monthly payment, closing costs, and low-cash-to-close scenarios."
+  />
+  <link rel="icon" type="image/x-icon" href="/nestnudge.ico" />
+  <style>
+    :root {
+      --nn-green: #2e7d32;
+      --nn-green-2: #1f6b3c;
+      --nn-green-soft: #edf8ee;
+      --nn-blue: #123c66;
+      --nn-blue-soft: #eef5fb;
+      --nn-gold: #d4a72c;
+      --nn-text: #17212f;
+      --nn-muted: #5f6b7a;
+      --nn-border: #dbe4ee;
+      --nn-bg: #f5f8fb;
+      --nn-card: #ffffff;
+      --nn-shadow: 0 18px 42px rgba(15, 23, 42, 0.09);
+      --nn-radius: 24px;
+      --nn-max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--nn-text);
+      background: linear-gradient(180deg, #f8fbff 0%, #edf4f9 100%);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .nn-shell {
+      width: min(calc(100% - 32px), var(--nn-max));
+      margin: 0 auto;
+    }
+
+    .nn-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nn-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .nn-btn-primary {
+      background: linear-gradient(135deg, var(--nn-green), var(--nn-green-2));
+      color: #fff;
+      box-shadow: var(--nn-shadow);
+    }
+
+    .nn-btn-secondary {
+      background: #fff;
+      border: 1px solid var(--nn-border);
+      color: var(--nn-blue);
+    }
+
+    .nn-btn-phone {
+      background: linear-gradient(135deg, var(--nn-green), var(--nn-green-2));
+      color: #fff;
+      box-shadow: 0 14px 34px rgba(31, 107, 60, 0.22);
+      padding-inline: 24px;
+    }
+
+    .nn-btn svg {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 18px;
+    }
+
+    .nn-topbar {
+      padding: 16px 0;
+      background: rgba(255,255,255,0.84);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(18, 60, 102, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+    }
+
+    .nn-topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nn-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--nn-blue);
+      letter-spacing: -0.03em;
+    }
+
+    .nn-brand span {
+      color: var(--nn-green);
+    }
+
+    .nn-nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--nn-muted);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .nn-nav a:hover {
+      color: var(--nn-blue);
+    }
+
+    .nn-hero {
+      padding: 68px 0 34px;
+    }
+
+    .nn-hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nn-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(46, 125, 50, 0.09);
+      color: var(--nn-green-2);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 18px;
+    }
+
+    .nn-hero h1 {
+      margin: 0 0 14px;
+      font-size: clamp(40px, 6vw, 66px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      color: var(--nn-blue);
+    }
+
+    .nn-hero p {
+      margin: 0 0 22px;
+      font-size: 19px;
+      color: var(--nn-muted);
+      max-width: 680px;
+    }
+
+    .nn-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .nn-proof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .nn-proof span {
+      background: #fff;
+      border: 1px solid var(--nn-border);
+      color: var(--nn-muted);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nn-hero-card {
+      background: var(--nn-card);
+      border: 1px solid var(--nn-border);
+      border-radius: 30px;
+      padding: 28px;
+      box-shadow: var(--nn-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nn-hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 8px;
+      background: linear-gradient(90deg, var(--nn-green), var(--nn-gold), var(--nn-blue));
+    }
+
+    .nn-kicker {
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--nn-green-2);
+      margin-bottom: 10px;
+    }
+
+    .nn-highlight-amount {
+      font-size: 44px;
+      line-height: 1;
+      font-weight: 900;
+      color: var(--nn-blue);
+      margin: 0 0 10px;
+    }
+
+    .nn-hero-card p {
+      margin: 0 0 18px;
+      color: var(--nn-muted);
+      font-size: 16px;
+    }
+
+    .nn-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .nn-mini-stat {
+      border-radius: 18px;
+      padding: 16px;
+      background: var(--nn-bg);
+      border: 1px solid var(--nn-border);
+    }
+
+    .nn-mini-stat span {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      color: var(--nn-muted);
+      margin-bottom: 6px;
+    }
+
+    .nn-mini-stat strong {
+      font-size: 22px;
+      color: var(--nn-blue);
+    }
+
+    .nn-section {
+      padding: 26px 0 68px;
+    }
+
+    .nn-section-head {
+      max-width: 760px;
+      margin-bottom: 26px;
+    }
+
+    .nn-section-head h2 {
+      margin: 0 0 10px;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.08;
+      color: var(--nn-blue);
+    }
+
+    .nn-section-head p {
+      margin: 0;
+      color: var(--nn-muted);
+      font-size: 18px;
+    }
+
+    .nn-benefits {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .nn-benefit {
+      background: #fff;
+      border: 1px solid var(--nn-border);
+      border-radius: var(--nn-radius);
+      padding: 24px;
+      box-shadow: var(--nn-shadow);
+    }
+
+    .nn-benefit h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      color: var(--nn-blue);
+    }
+
+    .nn-benefit p {
+      margin: 0;
+      color: var(--nn-muted);
+    }
+
+    .nn-options-wrap {
+      background: #fff;
+      border: 1px solid var(--nn-border);
+      border-radius: 32px;
+      padding: 26px;
+      box-shadow: var(--nn-shadow);
+    }
+
+    .nn-options-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .nn-options-note {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: var(--nn-blue-soft);
+      color: var(--nn-blue);
+      font-weight: 800;
+      max-width: 360px;
+    }
+
+    .nn-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .nn-card {
+      border: 1px solid var(--nn-border);
+      border-radius: 24px;
+      padding: 22px;
+      background: #fbfdff;
+      position: relative;
+    }
+
+    .nn-card.featured {
+      background: linear-gradient(180deg, #f8fbff 0%, #eef7f0 100%);
+      border: 2px solid var(--nn-green);
+      box-shadow: 0 16px 40px rgba(31, 107, 60, 0.12);
+      transform: translateY(-4px);
+    }
+
+    .nn-ribbon {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      background: var(--nn-green);
+      color: #fff;
+      font-weight: 900;
+      font-size: 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .nn-card-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--nn-muted);
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .nn-card h3 {
+      margin: 0 0 6px;
+      font-size: 28px;
+      color: var(--nn-blue);
+    }
+
+    .nn-rate {
+      font-size: 42px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--nn-blue);
+      margin-bottom: 6px;
+    }
+
+    .nn-card .nn-sub {
+      margin: 0 0 16px;
+      color: var(--nn-muted);
+      font-size: 15px;
+    }
+
+    .nn-list {
+      display: grid;
+      gap: 10px;
+      margin: 0 0 16px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nn-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px dashed #d7dfef;
+      padding-bottom: 10px;
+      color: var(--nn-muted);
+    }
+
+    .nn-list strong {
+      color: var(--nn-text);
+      text-align: right;
+    }
+
+    .nn-foot {
+      margin: 0;
+      color: var(--nn-muted);
+      font-size: 15px;
+    }
+
+    .nn-break-even {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 14px;
+    }
+
+    .nn-info-box {
+      padding: 20px;
+      border-radius: 20px;
+      border: 1px solid var(--nn-border);
+      background: var(--nn-bg);
+    }
+
+    .nn-info-box h4 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      color: var(--nn-blue);
+    }
+
+    .nn-info-box p,
+    .nn-info-box ul {
+      margin: 0;
+      color: var(--nn-muted);
+    }
+
+    .nn-info-box ul {
+      padding-left: 18px;
+    }
+
+    .nn-steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .nn-step {
+      background: #fff;
+      border: 1px solid var(--nn-border);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--nn-shadow);
+    }
+
+    .nn-step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--nn-green);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .nn-step h3 {
+      margin: 0 0 8px;
+      color: var(--nn-blue);
+      font-size: 20px;
+    }
+
+    .nn-step p {
+      margin: 0;
+      color: var(--nn-muted);
+    }
+
+    .nn-faq {
+      display: grid;
+      gap: 14px;
+    }
+
+    .nn-faq details {
+      background: #fff;
+      border: 1px solid var(--nn-border);
+      border-radius: 18px;
+      padding: 18px 20px;
+      box-shadow: var(--nn-shadow);
+    }
+
+    .nn-faq summary {
+      cursor: pointer;
+      font-weight: 900;
+      color: var(--nn-blue);
+    }
+
+    .nn-faq p {
+      margin: 12px 0 0;
+      color: var(--nn-muted);
+    }
+
+    .nn-lead-wrap {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 22px;
+      align-items: start;
+      background: linear-gradient(135deg, var(--nn-blue) 0%, #234f7c 100%);
+      border-radius: 30px;
+      padding: 30px;
+      color: #fff;
+      box-shadow: var(--nn-shadow);
+    }
+
+    .nn-lead-copy h2 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.08;
+    }
+
+    .nn-lead-copy p {
+      margin: 0 0 16px;
+      color: rgba(255,255,255,0.88);
+      font-size: 18px;
+    }
+
+    .nn-lead-points {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nn-lead-points li {
+      color: rgba(255,255,255,0.92);
+      font-weight: 700;
+    }
+
+    .nn-form-card {
+      background: #fff;
+      color: var(--nn-text);
+      border-radius: 24px;
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .nn-form-card h3 {
+      margin: 0 0 8px;
+      color: var(--nn-blue);
+      font-size: 24px;
+    }
+
+    .nn-form-card p {
+      margin: 0 0 14px;
+      color: var(--nn-muted);
+      font-size: 15px;
+    }
+
+    .nn-form-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .nn-form-grid input,
+    .nn-form-grid select {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid var(--nn-border);
+      border-radius: 14px;
+      padding: 0 14px;
+      font-size: 15px;
+      color: var(--nn-text);
+      background: #fff;
+    }
+
+    .nn-form-grid input:focus,
+    .nn-form-grid select:focus {
+      outline: none;
+      border-color: var(--nn-green);
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+    }
+
+    .nn-form-note {
+      margin-top: 12px;
+      color: var(--nn-muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .nn-disclaimer {
+      padding: 18px 0 60px;
+      color: var(--nn-muted);
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 16px 0 50px;
+      color: var(--nn-muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 1080px) {
+      .nn-hero-grid,
+      .nn-cards,
+      .nn-benefits,
+      .nn-steps,
+      .nn-break-even,
+      .nn-lead-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .nn-hero {
+        padding-top: 52px;
+      }
+
+      .nn-card.featured {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nn-topbar-inner,
+      .nn-options-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nn-nav {
+        display: none;
+      }
+
+      .nn-hero h1 {
+        font-size: 40px;
+      }
+
+      .nn-hero p,
+      .nn-section-head p,
+      .nn-lead-copy p {
+        font-size: 17px;
+      }
+
+      .nn-highlight-amount {
+        font-size: 36px;
+      }
+
+      .nn-mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nn-section {
+        padding-bottom: 54px;
+      }
+
+      .nn-hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nn-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nn-topbar">
+    <div class="nn-shell nn-topbar-inner">
+      <a href="/" class="nn-brand">Nest<span>Nudge</span></a>
+
+      <nav class="nn-nav">
+        <a href="#benefits">Benefits</a>
+        <a href="#compare">Compare Options</a>
+        <a href="#process">How It Works</a>
+        <a href="#lead-form">Talk to NestNudge</a>
+      </nav>
+
+      <a href="#lead-form" class="nn-btn nn-btn-phone">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6.6 10.8c1.8 3.6 4.8 6.6 8.4 8.4l2.8-2.8c.3-.3.8-.4 1.2-.3 1 .3 2 .5 3 .5.7 0 1.2.5 1.2 1.2V22c0 .7-.5 1.2-1.2 1.2C10.5 23.2.8 13.5.8 1.8.8 1.1 1.3.6 2 .6h4.2c.7 0 1.2.5 1.2 1.2 0 1 .2 2 .5 3 .1.4 0 .9-.3 1.2l-3 2.8Z" fill="currentColor"/>
+        </svg>
+        Talk to NestNudge
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="nn-hero">
+      <div class="nn-shell nn-hero-grid">
+        <div>
+          <div class="nn-eyebrow">For eligible veteran homeowners</div>
+          <h1>VA Home Loan Savings Review</h1>
+          <p>
+            NestNudge helps eligible veteran homeowners compare refinance options clearly,
+            so they can better understand monthly payment, closing costs, and low-cash-to-close scenarios before making a move.
+          </p>
+
+          <div class="nn-hero-actions">
+            <a href="#lead-form" class="nn-btn nn-btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6.6 10.8c1.8 3.6 4.8 6.6 8.4 8.4l2.8-2.8c.3-.3.8-.4 1.2-.3 1 .3 2 .5 3 .5.7 0 1.2.5 1.2 1.2V22c0 .7-.5 1.2-1.2 1.2C10.5 23.2.8 13.5.8 1.8.8 1.1 1.3.6 2 .6h4.2c.7 0 1.2.5 1.2 1.2 0 1 .2 2 .5 3 .1.4 0 .9-.3 1.2l-3 2.8Z" fill="currentColor"/>
+              </svg>
+              Talk to NestNudge
+            </a>
+            <a href="#compare" class="nn-btn nn-btn-secondary">View Example Comparison</a>
+          </div>
+
+          <div class="nn-proof">
+            <span>Transparent comparison</span>
+            <span>Veteran-friendly guidance</span>
+            <span>No obligation</span>
+            <span>Trust-first review</span>
+          </div>
+        </div>
+
+        <aside class="nn-hero-card">
+          <div class="nn-kicker">Example veteran scenario</div>
+          <div class="nn-highlight-amount">$500 cash needed</div>
+          <p>
+            In this example, all three refinance paths keep cash needed at closing low,
+            while changing the balance between monthly payment and total closing costs.
+          </p>
+          <div class="nn-mini-grid">
+            <div class="nn-mini-stat">
+              <span>Recommended fit</span>
+              <strong>Option 2</strong>
+            </div>
+            <div class="nn-mini-stat">
+              <span>APR</span>
+              <strong>5.190%</strong>
+            </div>
+            <div class="nn-mini-stat">
+              <span>Monthly payment</span>
+              <strong>$3,391</strong>
+            </div>
+            <div class="nn-mini-stat">
+              <span>Closing costs</span>
+              <strong>$21,228</strong>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="nn-section" id="benefits">
+      <div class="nn-shell">
+        <div class="nn-section-head">
+          <h2>Why this page fits the NestNudge brand</h2>
+          <p>
+            Veteran homeowners often want a clearer way to compare monthly savings, rate tradeoffs,
+            and cash needed before speaking with a lender or specialist.
+          </p>
+        </div>
+
+        <div class="nn-benefits">
+          <article class="nn-benefit">
+            <h3>Clear side-by-side choices</h3>
+            <p>
+              Show rate, APR, monthly payment, closing costs, and cash needed in one place so the homeowner can quickly understand the tradeoffs.
+            </p>
+          </article>
+
+          <article class="nn-benefit">
+            <h3>Trust-first positioning</h3>
+            <p>
+              NestNudge can guide veterans without sounding like a hard-sell lender page, which helps preserve credibility and improve lead quality.
+            </p>
+          </article>
+
+          <article class="nn-benefit">
+            <h3>Strong lead opportunity</h3>
+            <p>
+              Veterans looking to improve cash flow or reduce upfront costs are a natural fit for a focused page with a clear personalized review CTA.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="nn-section" id="compare">
+      <div class="nn-shell">
+        <div class="nn-options-wrap">
+          <div class="nn-options-top">
+            <div class="nn-section-head" style="margin:0;">
+              <h2>Example VA refinance comparison</h2>
+              <p>
+                This sample scenario shows how an eligible veteran homeowner could compare three 30-year fixed VA refinance options.
+              </p>
+            </div>
+            <div class="nn-options-note">
+              NestNudge fit: Option 2 offers the strongest balance of payment and upfront cost.
+            </div>
+          </div>
+
+          <div class="nn-cards">
+            <article class="nn-card">
+              <div class="nn-card-label">Option 1</div>
+              <h3>Lowest Rate</h3>
+              <div class="nn-rate">4.750%</div>
+              <p class="nn-sub">APR 5.020% • VA 30yr Fixed</p>
+              <ul class="nn-list">
+                <li><span>Loan Amount</span><strong>$539,086</strong></li>
+                <li><span>Total Monthly Payment</span><strong>$3,335.14</strong></li>
+                <li><span>Total Closing Costs</span><strong>$25,996</strong></li>
+                <li><span>Cash Needed</span><strong>$500</strong></li>
+              </ul>
+              <p class="nn-foot">Best for homeowners focused on the lowest rate and longer-term savings.</p>
+            </article>
+
+            <article class="nn-card featured">
+              <div class="nn-ribbon">Recommended</div>
+              <div class="nn-card-label">Option 2</div>
+              <h3>Best Balance</h3>
+              <div class="nn-rate">5.000%</div>
+              <p class="nn-sub">APR 5.190% • VA 30yr Fixed</p>
+              <ul class="nn-list">
+                <li><span>Loan Amount</span><strong>$534,314</strong></li>
+                <li><span>Total Monthly Payment</span><strong>$3,391.32</strong></li>
+                <li><span>Total Closing Costs</span><strong>$21,228</strong></li>
+                <li><span>Cash Needed</span><strong>$500</strong></li>
+              </ul>
+              <p class="nn-foot"><strong>Most aligned with NestNudge:</strong> a smart middle-ground option that supports trust and clarity.</p>
+            </article>
+
+            <article class="nn-card">
+              <div class="nn-card-label">Option 3</div>
+              <h3>Lowest Upfront Cost</h3>
+              <div class="nn-rate">5.250%</div>
+              <p class="nn-sub">APR 5.300% • VA 30yr Fixed</p>
+              <ul class="nn-list">
+                <li><span>Loan Amount</span><strong>$525,828</strong></li>
+                <li><span>Total Monthly Payment</span><strong>$3,426.65</strong></li>
+                <li><span>Total Closing Costs</span><strong>$12,755</strong></li>
+                <li><span>Cash Needed</span><strong>$500</strong></li>
+              </ul>
+              <p class="nn-foot">Best for homeowners who want to minimize upfront costs today.</p>
+            </article>
+          </div>
+
+          <div class="nn-break-even">
+            <div class="nn-info-box">
+              <h4>How NestNudge frames the decision</h4>
+              <ul>
+                <li><strong>Long-term:</strong> the lower rate may save more over time.</li>
+                <li><strong>Mid-term:</strong> the balanced option often gives the strongest tradeoff.</li>
+                <li><strong>Short-term:</strong> lower upfront cost may matter more than the absolute lowest rate.</li>
+              </ul>
+            </div>
+
+            <div class="nn-info-box">
+              <h4>What this example shows</h4>
+              <p>
+                All three options keep cash needed at closing at $500, while changing the balance between monthly payment and total closing costs.
+                That is exactly the kind of comparison NestNudge should make easier to understand.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="nn-section" id="process">
+      <div class="nn-shell">
+        <div class="nn-section-head">
+          <h2>How the NestNudge veteran review works</h2>
+          <p>
+            The page is designed to guide veteran homeowners through a clear, low-friction decision process.
+          </p>
+        </div>
+
+        <div class="nn-steps">
+          <article class="nn-step">
+            <div class="nn-step-num">1</div>
+            <h3>Share your basics</h3>
+            <p>Tell us a few details so we understand what type of VA savings review may fit you best.</p>
+          </article>
+
+          <article class="nn-step">
+            <div class="nn-step-num">2</div>
+            <h3>Compare side by side</h3>
+            <p>Review refinance structures based on payment, closing costs, and cash needed.</p>
+          </article>
+
+          <article class="nn-step">
+            <div class="nn-step-num">3</div>
+            <h3>See the right fit</h3>
+            <p>Understand whether the lowest rate, balanced option, or lower-cost path makes the most sense.</p>
+          </article>
+
+          <article class="nn-step">
+            <div class="nn-step-num">4</div>
+            <h3>Request your review</h3>
+            <p>Move forward only if the numbers support your goals. Keep the process trust-first and transparent.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="nn-section" id="lead-form">
+      <div class="nn-shell">
+        <div class="nn-lead-wrap">
+          <div class="nn-lead-copy">
+            <h2>Talk to NestNudge about your VA savings review</h2>
+            <p>
+              Submit your information and NestNudge will receive it as a lead. Your existing lead system should send it to `leads@nestnudge.com`
+              and then redirect to your thank-you page.
+            </p>
+
+            <ul class="nn-lead-points">
+              <li>✔ Veteran-friendly guidance</li>
+              <li>✔ Simple first-step review</li>
+              <li>✔ Better clarity on payment and closing cost tradeoffs</li>
+              <li>✔ No-pressure NestNudge experience</li>
+            </ul>
+          </div>
+
+          <div class="nn-form-card">
+            <h3>Request Your Review</h3>
+            <p>Fill this out and we’ll route it through your live NestNudge lead system.</p>
+
+            <form action="/lead-handler.php" method="POST" class="nn-form-grid">
+              <input type="text" name="name" placeholder="Full Name" required>
+              <input type="email" name="email" placeholder="Email Address" required>
+              <input type="tel" name="phone" placeholder="Phone Number" required>
+              <input type="text" name="zip" placeholder="ZIP Code" required inputmode="numeric" pattern="[0-9]{5}">
+
+              <select name="project_type" required>
+                <option value="">What are you looking for?</option>
+                <option value="loan-assistance">VA Loan Review</option>
+                <option value="loan-assistance">Refinance Savings Review</option>
+                <option value="loan-assistance">Monthly Payment Review</option>
+              </select>
+
+              <input type="hidden" name="source" value="VA Home Loan Page">
+
+              <button type="submit" class="nn-btn nn-btn-phone">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6.6 10.8c1.8 3.6 4.8 6.6 8.4 8.4l2.8-2.8c.3-.3.8-.4 1.2-.3 1 .3 2 .5 3 .5.7 0 1.2.5 1.2 1.2V22c0 .7-.5 1.2-1.2 1.2C10.5 23.2.8 13.5.8 1.8.8 1.1 1.3.6 2 .6h4.2c.7 0 1.2.5 1.2 1.2 0 1 .2 2 .5 3 .1.4 0 .9-.3 1.2l-3 2.8Z" fill="currentColor"/>
+                </svg>
+                Talk to NestNudge
+              </button>
+            </form>
+
+            <div class="nn-form-note">
+              By submitting, you’re asking NestNudge to review your request and follow up with next-step guidance.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="nn-section" id="faq">
+      <div class="nn-shell">
+        <div class="nn-section-head">
+          <h2>Frequently asked questions</h2>
+          <p>Use these answers to keep the page informative and reassuring for veteran homeowners.</p>
+        </div>
+
+        <div class="nn-faq">
+          <details open>
+            <summary>Who is this page for?</summary>
+            <p>This page is for eligible veteran homeowners who want to understand whether a VA refinance may lower their payment, reduce their rate, or keep cash needed at closing low.</p>
+          </details>
+
+          <details>
+            <summary>Why does NestNudge recommend the middle option?</summary>
+            <p>Option 2 matches the NestNudge brand best because it avoids pushing only the highest upfront-cost option or only the highest-rate option. It supports a balanced, trust-first recommendation.</p>
+          </details>
+
+          <details>
+            <summary>Is the example a guaranteed offer?</summary>
+            <p>No. The example is for illustration only. Final loan approval, rate, APR, payment, and fees depend on credit, property, occupancy, loan amount, and lender guidelines.</p>
+          </details>
+
+          <details>
+            <summary>Will submitting this form create a NestNudge lead?</summary>
+            <p>Yes. This updated page posts into your live NestNudge lead handler so the request can be logged, emailed, and redirected through your thank-you flow.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <div class="nn-shell nn-disclaimer">
+      <strong>Disclaimer:</strong> Example shown for illustration only. Loan approval, rate, APR, payment, closing costs, and eligibility depend on credit, property, occupancy, loan balance, and lender guidelines. VA funding fee, when applicable, may not be included in all examples.
+    </div>
+  </main>
+
+  <footer>
+    VA Home Loan Savings Review • NestNudge
+  </footer>
+</body>
+</html>
