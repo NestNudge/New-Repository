@@ -133,3 +133,13 @@ function selectOption(type) {
   // Scroll to form
   document.getElementById("address").scrollIntoView({ behavior: "smooth" });
 }
+
+const popupData = [
+  {name:"Michael B.", location:"FL", action:"Signed up as a Partner", icon:"🤝"},
+  {name:"Sarah K.", location:"TX", action:"Requested Roof Quote", icon:"🏠"},
+  {name:"James T.", location:"CA", action:"Checked Financing Options", icon:"💰"},
+  {name:"Emily R.", location:"NY", action:"Viewed Impact Windows", icon:"🪟"},
+  {name:"Chris D.", location:"AZ", action:"Joined NestNudge", icon:"✅"},
+  {name:"Daniel R.", location:"FL", action:"Compared Roofing Options", icon:"🧱"},
+  {name:"Melissa T.", location:"TX", action:"Explored Home Savings", icon:"📊"}
+];
