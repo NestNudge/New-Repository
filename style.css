@@ -6418,7 +6418,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   .va-preview-actions {
     flex-direction: column;
-  }/* =========================
+  }
+  
+  /* =========================
    HEADER + LOGO (FINAL CLEAN VERSION)
 ========================= */
 
