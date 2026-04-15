@@ -3256,3 +3256,25 @@ document.addEventListener("DOMContentLoaded", () => {
     object-fit: contain;
     filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.15));
 }
+
+/* HEADER */
+.site-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+/* LOGO CONTAINER */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+/* LOGO IMAGE — THIS IS THE FIX */
+.logo-container img {
+    height: 70px;        /* control size here */
+    width: auto;         /* prevents squishing */
+    max-width: 100%;     /* keeps it responsive */
+    object-fit: contain; /* ensures full logo shows */
+    display: block;
+}
