@@ -57,8 +57,11 @@
     <div class="nav-shell">
       <nav class="main-nav" aria-label="Primary navigation">
         <a href="/" class="brand-logo" aria-label="NestNudge Home">
-          <img src="nest_nudge_header.png" alt="Nest Nudge Logo"> width="180" height="48">
-          <span>NestNudge</span>
+         <a href="/" class="brand-logo" aria-label="NestNudge Home">
+  <img src="nest_nudge_logo_transparent.png" alt="Nest Nudge Logo" class="logo-img">
+  <span>NestNudge</span>
+</a>
+          <span>Smarter Money. Better Homes.</span>
         </a>
 
         <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="siteNavLinks">☰</button>
@@ -1495,5 +1498,49 @@
       }
     });
   </script>
+  <div id="activity-popup" class="activity-popup">
+  <div class="popup-content">
+    <span id="popup-icon">🏠</span>
+    <div>
+      <strong id="popup-name">Michael B.</strong> from <span id="popup-location">FL</span><br>
+      <span id="popup-action">Signed up as a Partner</span><br>
+      <small id="popup-time">5 minutes ago</small>
+    </div>
+  </div>
+</div>
+<script>
+const popupData = [
+  {name:"Michael B.", location:"FL", action:"Signed up as a Partner", icon:"🤝"},
+  {name:"Sarah K.", location:"TX", action:"Requested Roof Quote", icon:"🏠"},
+  {name:"James T.", location:"CA", action:"Checked Financing Options", icon:"💰"},
+  {name:"Emily R.", location:"NY", action:"Viewed Impact Windows", icon:"🪟"},
+  {name:"Chris D.", location:"AZ", action:"Joined Nest Nudge", icon:"✅"}
+];
+
+function showActivityPopup() {
+  const popup = document.getElementById("activity-popup");
+  if (!popup) return;
+
+  const data = popupData[Math.floor(Math.random() * popupData.length)];
+
+  document.getElementById("popup-name").innerText = data.name;
+  document.getElementById("popup-location").innerText = data.location;
+  document.getElementById("popup-action").innerText = data.action;
+  document.getElementById("popup-icon").innerText = data.icon;
+  document.getElementById("popup-time").innerText =
+    Math.floor(Math.random() * 8 + 2) + " minutes ago";
+
+  popup.style.display = "block";
+
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 5000);
+}
+
+// Random interval (10–20 sec)
+setInterval(() => {
+  showActivityPopup();
+}, Math.random() * 10000 + 10000);
+</script>
 </body>
 </html>
