@@ -3480,3 +3480,19 @@ footer img {
   object-fit: contain;
   filter: brightness(0) invert(1); /* makes icons white */
 }
+
+  .footer-social a,
+.footer-social i,
+.footer-social svg {
+  color: #fff !important;
+  fill: #fff !important;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 18px;
+  font-size: 28px;
+  text-decoration: none;
+}
