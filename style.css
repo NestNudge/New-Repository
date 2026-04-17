@@ -3452,3 +3452,20 @@ document.addEventListener("DOMContentLoaded", () => {
     justify-content: center;
   }
 }
+
+  /* 🚨 FORCE FIX — DO NOT REMOVE */
+.nn-socials svg,
+.nn-socials a svg {
+  width: 18px !important;
+  height: 18px !important;
+  max-width: 18px !important;
+  max-height: 18px !important;
+  flex-shrink: 0 !important;
+}
+
+.nn-contact svg {
+  width: 16px !important;
+  height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+}
