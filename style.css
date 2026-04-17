@@ -3391,6 +3391,10 @@ document.addEventListener("DOMContentLoaded", () => {
   100% { box-shadow: 0 0 0 rgba(46,125,50,0.4); }
 }
 
+/* =========================
+   FOOTER SOCIAL + CONTACT (CLEAN FINAL)
+========================= */
+
 .nn-socials {
   display: flex;
   align-items: center;
@@ -3400,14 +3404,19 @@ document.addEventListener("DOMContentLoaded", () => {
   flex-wrap: wrap;
 }
 
-/* phone + email group */
+/* phone + email */
 .nn-contact {
   display: flex;
   align-items: center;
   gap: 8px;
-  text-decoration: none;
   color: #fff;
   font-size: 14px;
+}
+
+/* 🔥 FORCE ICON SIZE (fixes big icons permanently) */
+.nn-socials svg {
+  width: 18px !important;
+  height: 18px !important;
 }
 
 .nn-contact svg {
@@ -3415,15 +3424,19 @@ document.addEventListener("DOMContentLoaded", () => {
   height: 16px !important;
 }
 
-/* icons */
-.nn-socials svg {
-  width: 18px !important;
-  height: 18px !important;
+/* links */
+.nn-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
 }
 
 /* hover */
 .nn-socials a:hover {
   opacity: 0.7;
+  transform: translateY(-2px);
 }
 
 /* 📱 MOBILE */
@@ -3434,5 +3447,8 @@ document.addEventListener("DOMContentLoaded", () => {
     text-align: center;
   }
 
-  
-
+  .nn-contact {
+    width: 100%;
+    justify-content: center;
+  }
+}
