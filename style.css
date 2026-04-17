@@ -1,35 +1,31 @@
 /* =========================
-   ROOT / RESET
+   RESET
 ========================= */
-:root {
-  --primary: #1f7a3d;
-  --primary-dark: #155c2d;
-  --primary-light: #eaf6ee;
-  --text: #0f172a;
-  --muted: #64748b;
-  --border: #e5e7eb;
-  --bg-soft: #f8fafc;
-  --white: #ffffff;
-  --shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
-  --shadow-soft: 0 10px 24px rgba(15, 23, 42, 0.06);
-  --container: 1180px;
-}
-
 *,
 *::before,
-*::after { box-sizing: border-box; }
+*::after {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  color: var(--text);
+  color: #0f172a;
+  line-height: 1.5;
 }
 
-img { max-width: 100%; display: block; }
-a { text-decoration: none; color: inherit; }
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
 /* =========================
-   HEADER
+   HEADER (MATCHES YOUR HTML)
 ========================= */
 header {
   position: sticky;
@@ -40,9 +36,12 @@ header {
   border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-.main-nav {
-  max-width: var(--container);
+.nav-shell {
+  max-width: 1180px;
   margin: 0 auto;
+}
+
+.main-nav {
   min-height: 58px;
   display: flex;
   align-items: center;
@@ -51,32 +50,43 @@ header {
 }
 
 /* LOGO */
-.logo-container img {
-  height: 42px;
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
 }
 
-/* NAV LINKS */
+.logo-img {
+  height: 40px;
+}
+
+/* NAV */
 .nav-links {
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 
-.nav-links a {
+.nav-links a,
+.dropbtn {
   padding: 6px 12px;
   border-radius: 999px;
   font-weight: 600;
+  cursor: pointer;
 }
 
-.nav-links a:hover {
-  background: var(--primary-light);
-  color: var(--primary);
+.nav-links a:hover,
+.dropbtn:hover {
+  background: #eaf6ee;
+  color: #1f7a3d;
 }
 
 /* =========================
-   HERO
+   HERO (SAFE GRID)
 ========================= */
 .hero-container {
-  max-width: var(--container);
+  max-width: 1180px;
   margin: auto;
   padding: 60px 16px;
   display: grid;
@@ -85,23 +95,36 @@ header {
 }
 
 /* =========================
-   SECTIONS (generic)
+   VA SECTION (FIXED)
 ========================= */
-.section {
-  padding: 60px 16px;
+.va-preview-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+.va-preview-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
 
 /* =========================
-   CHAT WIDGET / POPUP
+   CHAT WIDGET
 ========================= */
 #chatWidget {
   position: fixed;
   right: 20px;
   bottom: 20px;
   width: 340px;
+  max-width: calc(100% - 20px);
   background: #fff;
   border-radius: 20px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.15);
   z-index: 2000;
 }
 
@@ -109,7 +132,9 @@ header {
   display: none;
 }
 
-/* POPUP */
+/* =========================
+   POPUP FIX
+========================= */
 .activity-popup {
   display: none;
 }
@@ -128,7 +153,7 @@ header {
 }
 
 .footer-inner {
-  max-width: var(--container);
+  max-width: 1180px;
   margin: auto;
   padding: 60px 16px;
   display: grid;
@@ -160,10 +185,6 @@ header {
 /* =========================
    CONTACT
 ========================= */
-.nn-contact-row {
-  margin-top: 20px;
-}
-
 .nn-contact {
   display: flex;
   align-items: center;
@@ -194,18 +215,16 @@ header {
   justify-content: center;
   border-radius: 8px;
   background: rgba(255,255,255,0.05);
-  transition: 0.2s;
 }
 
 .nn-socials svg {
   width: 16px !important;
   height: 16px !important;
-  fill: #fff !important;
+  fill: #ffffff !important;
 }
 
 .nn-socials a:hover {
   background: rgba(34,197,94,0.2);
-  transform: translateY(-2px);
 }
 
 /* =========================
@@ -220,8 +239,18 @@ header {
 /* =========================
    RESPONSIVE
 ========================= */
-@media (max-width: 768px) {
+@media (max-width: 980px) {
+  .nav-links {
+    display: none;
+  }
 
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
   .hero-container {
     grid-template-columns: 1fr;
   }
@@ -241,5 +270,9 @@ header {
 
   .nn-contact {
     justify-content: center;
+  }
+
+  .va-preview-inner {
+    grid-template-columns: 1fr;
   }
 }
