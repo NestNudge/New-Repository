@@ -3434,3 +3434,10 @@ document.addEventListener("DOMContentLoaded", () => {
     justify-content: center;
   }
 }
+.footer-icons img,
+footer .contact-icon img,
+footer img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
