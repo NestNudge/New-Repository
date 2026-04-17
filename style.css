@@ -2651,78 +2651,72 @@ header {
   }
 }
 
-.nn-socials {
-  display: flex;
-  gap: 18px;
-  justify-content: flex-start; /* left side */
-  align-items: center;
-  margin: 20px 0;
-}
+<footer class="site-footer">
+  <div class="footer-inner">
 
-.nn-socials a {
-  width: 22px;
-  height: 22px;
-  color: #000; /* black */
-  display: inline-flex;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
+    <!-- LEFT: BRAND -->
+    <div class="footer-brand">
+      <h3>NestNudge</h3>
+      <p>
+        Smart money moves, home value planning, and better next steps for homeowners and partners.
+      </p>
 
-.nn-socials a:hover {
-  opacity: 0.6;
-  transform: translateY(-2px);
-}
+      <!-- CONTACT -->
+      <div class="footer-contact">
+        <div class="contact-item">
+          <span class="icon">📞</span>
+          <a href="tel:19545194075">(954) 519-4075</a>
+        </div>
+        <div class="contact-item">
+          <span class="icon">✉️</span>
+          <a href="mailto:Support@nestnudge.com">Support@nestnudge.com</a>
+        </div>
+      </div>
 
-.nn-socials svg {
-  width: 100%;
-  height: 100%;
-}
+      <!-- SOCIALS -->
+      <div class="footer-socials">
+        <a href="https://instagram.com/YOUR_HANDLE">IG</a>
+        <a href="https://facebook.com/YOUR_PAGE">FB</a>
+        <a href="https://x.com/YOUR_HANDLE">X</a>
+        <a href="https://tiktok.com/@YOUR_HANDLE">TT</a>
+      </div>
+    </div>
 
-.footer {
-  display: flex;
-  align-items: center;
-}
+    <!-- RIGHT: LINKS -->
+    <div class="footer-links">
 
-.nn-socials {
-  margin-right: auto; /* pushes it left */
-}
+      <div class="footer-column">
+        <h4>Homeowners</h4>
+        <a href="/">Home</a>
+        <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
+        <a href="/offers.html">Offers</a>
+        <a href="#loan-section">Check Your Rate</a>
+        <a href="/customer-login.php">Gallery</a>
+      </div>
 
-.nn-socials a {
-  color: #fff; /* make them white */
-}
+      <div class="footer-column">
+        <h4>Partners</h4>
+        <a href="/partners.html">Partner Overview</a>
+        <a href="/zip-lock.html">ZIP Lock</a>
+        <a href="/contractor-signup.php">Apply Now</a>
+        <a href="/contractor-login.php">Partner Login</a>
+      </div>
 
-.nn-socials {
-  display: flex;
-  gap: 18px;
-  margin-left: 120px; /* ← adjust this */
-}
+      <div class="footer-column">
+        <h4>Company</h4>
+        <a href="/">About</a>
+        <a href="/offers.html">Explore Offers</a>
+        <a href="/#services">Services</a>
+        <a href="/#testimonials">Testimonials</a>
+      </div>
 
-.nn-socials {
-  display: flex;
-  gap: 18px;
-  margin-left: 120px; /* desktop alignment */
-  margin-top: 20px;
-}
+    </div>
+  </div>
 
-/* ICON SIZE */
-.nn-socials a {
-  width: 22px;
-  height: 22px;
-}
-
-/* 🔥 MOBILE FIX */
-@media (max-width: 768px) {
-  .nn-socials {
-    margin-left: 0;              /* remove desktop offset */
-    justify-content: center;     /* center icons */
-    width: 100%;
-  }
-
-  .nn-socials a {
-    width: 24px;
-    height: 24px;
-  }
-}
-
+  <div class="footer-bottom">
+    <p>© NestNudge. All rights reserved.</p>
+  </div>
+</footer>
 // ===============================
 // CONFIG
 // ===============================
@@ -3453,7 +3447,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 }
 
-  /* 🚨 FORCE FIX — DO NOT REMOVE */
+/* 🚨 FORCE FIX — DO NOT REMOVE */
 .nn-socials svg,
 .nn-socials a svg {
   width: 18px !important;
