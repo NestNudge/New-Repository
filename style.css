@@ -78,11 +78,11 @@ header {
 }
 
 .main-nav {
-  min-height: 78px;
+  min-height: 58px; /* reduced from 78px */
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px; /* slightly tighter */
   position: relative;
 }
 
@@ -1721,6 +1721,7 @@ header {
     transform: none;
   }
 }
+
 .nn-socials svg {
   width: 18px !important;
   height: 18px !important;
