@@ -1565,3 +1565,159 @@ header {
     justify-content: center;
   }
 }
+
+/* =========================
+   PREMIUM FOOTER (UPGRADE)
+========================= */
+
+.site-footer {
+  background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+  color: rgba(255,255,255,0.9);
+  margin-top: 60px;
+}
+
+/* LAYOUT */
+.footer-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 70px 20px 40px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 50px;
+}
+
+/* BRAND */
+.footer-brand h3 {
+  margin-bottom: 12px;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.footer-brand p {
+  color: rgba(255,255,255,0.65);
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+/* CONTACT */
+.nn-contact-row {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nn-contact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.nn-contact a {
+  color: rgba(255,255,255,0.75);
+  transition: color 0.2s ease;
+}
+
+.nn-contact a:hover {
+  color: #22c55e;
+}
+
+/* ICON SIZING (LOCKED) */
+.nn-socials svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.nn-contact svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* SOCIAL ICONS (PREMIUM LOOK) */
+.nn-socials {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.nn-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+
+  transition: all 0.25s ease;
+}
+
+/* ✨ HOVER EFFECT */
+.nn-socials a:hover {
+  background: rgba(34,197,94,0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(34,197,94,0.25);
+}
+
+/* LINKS */
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.footer-column h4 {
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: #fff;
+}
+
+.footer-column a {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  transition: all 0.2s ease;
+}
+
+.footer-column a:hover {
+  color: #22c55e;
+  transform: translateX(3px);
+}
+
+/* BOTTOM */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 25px 20px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+}
+
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr;
+  }
+
+  .nn-contact-row {
+    align-items: center;
+  }
+
+  .nn-socials {
+    justify-content: center;
+  }
+
+  .footer-column a:hover {
+    transform: none;
+  }
+}
