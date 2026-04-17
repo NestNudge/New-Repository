@@ -3459,3 +3459,24 @@ footer img {
   width: 32px;
   filter: brightness(0) invert(1);
 }
+
+  .footer-icons {
+  display: flex;
+  flex-direction: column; /* stack vertically (change to row if you want side-by-side) */
+  gap: 10px;
+}
+
+.footer-icons a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* makes icons white */
+}
