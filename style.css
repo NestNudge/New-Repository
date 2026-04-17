@@ -1,3 +1,18 @@
+/* GLOBAL LAYOUT FIX */
+section {
+  width: 100%;
+  padding: 60px 20px;
+}
+
+section > div,
+.hero-container,
+.loan-container,
+.partners-container,
+.footer-inner {
+  max-width: 1200px;
+  margin: auto;
+}
+
 /* =====================
    RESET
 ===================== */
@@ -374,5 +389,83 @@ body {
   .featured-offers-grid,
   .gallery-preview-grid {
     grid-template-columns: 1fr;
+  }
+}
+.hero-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-left {
+  flex: 1;
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.services-grid-home,
+.featured-offers-grid,
+.gallery-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.service-card,
+.featured-offer-card,
+.gallery-preview-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.2s ease;
+}
+
+.service-card:hover,
+.featured-offer-card:hover,
+.gallery-preview-card:hover {
+  transform: translateY(-5px);
+}
+button,
+.cta-btn,
+.featured-offer-btn,
+.offers-intro-btn {
+  background: #2b6cff;
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+@media (max-width: 980px) {
+
+  .hero-container,
+  .loan-container,
+  .partners-container {
+    flex-direction: column;
+  }
+
+  .services-grid-home,
+  .featured-offers-grid,
+  .gallery-preview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 250px;
+  }
+
+  .nav-links.open {
+    display: flex;
   }
 }
