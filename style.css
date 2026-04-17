@@ -13,3 +13,39 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+/* BASIC LAYOUT (SAFE) */
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.hero-container {
+  display: flex;
+  gap: 30px;
+  padding: 40px;
+}
+
+.hero-left,
+.hero-right {
+  flex: 1;
+}
+
+.services-grid-home {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.service-card {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
