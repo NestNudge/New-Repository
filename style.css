@@ -3441,3 +3441,8 @@ footer img {
   height: 32px;
   object-fit: contain;
 }
+
+  .footer-icon img,
+footer img {
+  filter: brightness(0) invert(1);
+}
