@@ -3410,10 +3410,15 @@ document.addEventListener("DOMContentLoaded", () => {
   font-size: 14px;
 }
 
+.nn-contact svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
 /* icons */
 .nn-socials svg {
-  width: 20px;
-  height: 20px;
+  width: 18px !important;
+  height: 18px !important;
 }
 
 /* hover */
@@ -3429,8 +3434,5 @@ document.addEventListener("DOMContentLoaded", () => {
     text-align: center;
   }
 
-  .nn-contact {
-    width: 100%;
-    justify-content: center;
-  }
-}
+  
+
