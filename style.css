@@ -978,6 +978,11 @@ header {
   background: linear-gradient(180deg, #f8fbf9 0%, #ffffff 100%);
 }
 
+.loan-section {
+  display: flex;
+  justify-content: center;
+}
+
 .loan-container {
   max-width: var(--container);
   margin: 0 auto;
@@ -985,6 +990,20 @@ header {
   grid-template-columns: 1.05fr 0.95fr;
   gap: 32px;
   align-items: start;
+}
+
+/* FIX: VA Loan alignment */
+.loan-container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* Prevent left-shift on smaller screens */
+@media (max-width: 1024px) {
+  .loan-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 .loan-text h2 {
