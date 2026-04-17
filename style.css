@@ -3446,3 +3446,16 @@ footer img {
 footer img {
   filter: brightness(0) invert(1);
 }
+
+  .footer-icons i {
+  color: white;
+}
+
+  .footer-icon {
+  filter: brightness(0) invert(1) contrast(200%);
+}
+
+  footer img {
+  width: 32px;
+  filter: brightness(0) invert(1);
+}
