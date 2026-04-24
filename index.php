@@ -19,7 +19,6 @@ $latestJobStmt = $pdo->query("
 $latestJobPosts = $latestJobStmt->fetchAll();
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,6 +89,7 @@ $latestJobPosts = $latestJobStmt->fetchAll();
       </button>
 
       <div class="nav-links" id="siteNavLinks">
+
         <a href="/">Home</a>
 
         <div class="dropdown">
@@ -97,6 +97,7 @@ $latestJobPosts = $latestJobStmt->fetchAll();
           <div class="dropdown-content">
             <a href="#services">All Services</a>
             <a href="#cost-guide">Home Estimator</a>
+            <a href="/job-board.php">Job Board</a>
             <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
             <a href="/offers.html">Offers</a>
           </div>
@@ -121,9 +122,9 @@ $latestJobPosts = $latestJobStmt->fetchAll();
           </div>
         </div>
 
+        <a href="/job-board.php">Job Board</a>
         <a href="/offers.html">Offers</a>
         <a href="/customer-login.php">Gallery</a>
-        <a href="/zip-lock.html">ZIP Lock</a>
 
         <a class="cta-button" href="/roof-quotes-miami-fort-lauderdale.html">
           Get My Quote
@@ -487,6 +488,73 @@ $latestJobPosts = $latestJobStmt->fetchAll();
       </div>
 
       <button class="testimonial-nav next" type="button" onclick="scrollTestimonials(1)">›</button>
+    </div>
+  </section>
+
+
+  <section class="job-board-preview" id="job-board-preview">
+    <div class="job-board-preview-inner">
+      <div class="job-board-preview-copy">
+        <span class="job-board-badge">New</span>
+        <h2>Job Board</h2>
+        <p>
+          Members can post home project requests for $5. Active NestNudge Partners can send offers directly to matching local jobs.
+        </p>
+
+        <ul>
+          <li>✔ Post a project request in 500 words or less</li>
+          <li>✔ Add up to 5 project photos</li>
+          <li>✔ Include budget, timing, city, state, and ZIP code</li>
+          <li>✔ Accept or deny Partner offers</li>
+        </ul>
+
+        <div class="job-board-actions">
+          <a href="/job-board.php" class="cta-btn">View Job Board</a>
+          <a href="/create-job-post.php" class="cta-btn-outline">Post a Job for $5</a>
+        </div>
+      </div>
+
+      <div class="job-board-latest">
+        <h3>Latest Job Posts</h3>
+
+        <?php if (!$latestJobPosts): ?>
+          <p>No active job posts yet.</p>
+        <?php endif; ?>
+
+        <?php foreach ($latestJobPosts as $post): ?>
+          <article class="latest-job-card">
+            <div class="latest-job-topline">
+              <span><?= e($post['city']) ?>, <?= e($post['state']) ?> <?= e($post['zip']) ?></span>
+
+              <?php if ((int)$post['views_count'] >= 20): ?>
+                <span class="hot-post">🔥 Hot Post</span>
+              <?php endif; ?>
+            </div>
+
+            <h4>
+              <a href="/job-post.php?id=<?= (int)$post['id'] ?>">
+                <?= e($post['title']) ?>
+              </a>
+            </h4>
+
+            <p>
+              Budget:
+              $<?= number_format((float)$post['price_min']) ?> -
+              $<?= number_format((float)$post['price_max']) ?>
+            </p>
+
+            <div class="latest-job-meta">
+              <span>👁 <?= (int)$post['views_count'] ?> views</span>
+              <span>📩 <?= (int)$post['offers_count'] ?> offers</span>
+              <span>⏱ <?= (int)$post['days_live'] ?> days live</span>
+
+              <?php if ((int)$post['days_remaining'] <= 5 && (int)$post['days_remaining'] > 0): ?>
+                <span>⚠ Closing in <?= (int)$post['days_remaining'] ?> days</span>
+              <?php endif; ?>
+            </div>
+          </article>
+        <?php endforeach; ?>
+      </div>
     </div>
   </section>
 
@@ -1002,27 +1070,6 @@ $latestJobPosts = $latestJobStmt->fetchAll();
       });
     }
   </script>
-  
-  <?php
-require_once __DIR__ . '/includes/db.php';
-require_once __DIR__ . '/includes/job-board-functions.php';
-
-expireOldJobPosts($pdo);
-
-$latestJobStmt = $pdo->query("
-    SELECT id, title, city, state, zip, price_min, price_max,
-           views_count, offers_count, created_at, expires_at,
-           DATEDIFF(NOW(), created_at) AS days_live,
-           DATEDIFF(expires_at, NOW()) AS days_remaining
-    FROM job_posts
-    WHERE status = 'open'
-    AND expires_at > NOW()
-    ORDER BY created_at DESC
-    LIMIT 3
-");
-
-$latestJobPosts = $latestJobStmt->fetchAll();
-?>
 
   <script>
     async function loadGalleryPreview() {
