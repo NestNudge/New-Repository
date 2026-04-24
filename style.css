@@ -3640,21 +3640,15 @@ footer img {
   }
 }
 
-/* DIAGONAL RIBBON */
-.job-board-preview {
-  position: relative;
-  overflow: hidden;
-}
-
 .job-board-ribbon {
   position: absolute;
-  top: 25px;
-  left: -60px;
+  top: 45px;        /* moved DOWN */
+  left: -80px;      /* moved LEFT more */
 
-  background: #16a34a; /* your green */
+  background: #16a34a;
   color: #fff;
 
-  padding: 10px 80px;
+  padding: 12px 120px;  /* MORE WIDTH so text fits */
 
   font-weight: 700;
   font-size: 13px;
