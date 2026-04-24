@@ -3640,23 +3640,41 @@ footer img {
   }
 }
 
+/* JOB BOARD RIBBON FIX */
+.job-board-preview {
+  position: relative;
+  overflow: hidden;
+  border-top: 3px solid #e5e7eb;
+  border-bottom: 3px solid #e5e7eb;
+}
+
 .job-board-ribbon {
   position: absolute;
-  top: 45px;        /* moved DOWN */
-  left: -80px;      /* moved LEFT more */
+  top: 48px;
+  left: -95px;
+  z-index: 5;
 
-  background: #16a34a;
-  color: #fff;
+  width: 360px;
+  padding: 10px 0;
 
-  padding: 12px 120px;  /* MORE WIDTH so text fits */
+  background: #1f7a3d;
+  color: #ffffff;
 
-  font-weight: 700;
+  font-weight: 800;
   font-size: 13px;
   text-align: center;
+  letter-spacing: 0.5px;
 
   transform: rotate(-45deg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.22);
+}
 
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-
-  letter-spacing: 0.5px;
+.job-board-badge {
+  display: inline-block;
+  background: #1f7a3d;
+  color: #fff;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 20px;
+  margin-bottom: 10px;
 }
