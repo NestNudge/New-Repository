@@ -505,40 +505,80 @@ $latestJobPosts = [];
       <div class="job-board-latest">
         <h3>Latest Job Posts</h3>
 
-        <?php if (!$latestJobPosts): ?>
-          <p>No active job posts yet.</p>
-        <?php endif; ?>
+       <?php if (!$latestJobPosts): ?>
 
-        <?php foreach ($latestJobPosts as $post): ?>
-          <article class="latest-job-card">
-            <div class="latest-job-topline">
-              <span><?= e($post['city']) ?>, <?= e($post['state']) ?> <?= e($post['zip']) ?></span>
+  <!-- DEMO POST 1 -->
+  <article class="latest-job-card demo-post">
+    <div class="latest-job-topline">
+      <span>Miami, FL 33101</span>
+      <span class="hot-post">🔥 Hot Post</span>
+    </div>
 
-              <?php if ((int)$post['views_count'] >= 20): ?>
-                <span class="hot-post">🔥 Hot Post</span>
-              <?php endif; ?>
-            </div>
+    <h4>
+      <a href="#">Full Roof Replacement Needed</a>
+    </h4>
 
-            <h4>
-              <a href="/job-post.php?id=<?= (int)$post['id'] ?>">
-                <?= e($post['title']) ?>
-              </a>
-            </h4>
+    <p>
+      Budget: $12,000 - $18,000
+    </p>
 
-            <p>
-              Budget:
-              $<?= number_format((float)$post['price_min']) ?> -
-              $<?= number_format((float)$post['price_max']) ?>
-            </p>
+    <div class="latest-job-meta">
+      <span>👁 34 views</span>
+      <span>📩 6 offers</span>
+      <span>⏱ 3 days live</span>
+      <span>⚠ Closing in 2 days</span>
+    </div>
+  </article>
+ <?php if (!$latestJobPosts): ?>
 
-            <div class="latest-job-meta">
-              <span>👁 <?= (int)$post['views_count'] ?> views</span>
-              <span>📩 <?= (int)$post['offers_count'] ?> offers</span>
-              <span>⏱ <?= (int)$post['days_live'] ?> days live</span>
+  <!-- DEMO POST 1 -->
+  <article class="latest-job-card demo-post">
+    <div class="latest-job-topline">
+      <span>Miami, FL 33101</span>
+      <span class="hot-post">🔥 Hot Post</span>
+    </div>
 
-              <?php if ((int)$post['days_remaining'] <= 5 && (int)$post['days_remaining'] > 0): ?>
-                <span>⚠ Closing in <?= (int)$post['days_remaining'] ?> days</span>
-              <?php endif; ?>
+    <h4>
+      <a href="#">Full Roof Replacement Needed</a>
+    </h4>
+
+    <p>
+      Budget: $12,000 - $18,000
+    </p>
+
+    <div class="latest-job-meta">
+      <span>👁 34 views</span>
+      <span>📩 6 offers</span>
+      <span>⏱ 3 days live</span>
+      <span>⚠ Closing in 2 days</span>
+    </div>
+  </article>
+
+  <!-- DEMO POST 2 -->
+  <article class="latest-job-card demo-post">
+    <div class="latest-job-topline">
+      <span>Fort Lauderdale, FL 33304</span>
+    </div>
+
+    <h4>
+      <a href="#">Impact Windows Installation</a>
+    </h4>
+
+    <p>
+      Budget: $9,000 - $15,000
+    </p>
+
+    <div class="latest-job-meta">
+      <span>👁 18 views</span>
+      <span>📩 3 offers</span>
+      <span>⏱ 2 days live</span>
+    </div>
+  </article>
+
+<?php endif; ?>
+
+<?php foreach ($latestJobPosts as $post): ?>
+  <article class="latest-job-card">
             </div>
           </article>
         <?php endforeach; ?>
