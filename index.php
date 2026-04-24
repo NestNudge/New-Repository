@@ -108,7 +108,6 @@
       <a href="/job-board.php">Job Board</a>
       <a href="/offers.html">Offers</a>
       <a href="/customer-login.php">Gallery</a>
-      <a href="/zip-lock.html">ZIP Lock</a>
 
       <!-- CTA BUTTON -->
       <a class="cta-button" href="/roof-quotes-miami-fort-lauderdale.html">
