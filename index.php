@@ -475,8 +475,13 @@ $latestJobPosts = [];
   </section>
 
 
-  <section class="job-board-preview" id="job-board-preview">
-    <div class="job-board-preview-inner">
+ <section class="job-board-preview" id="job-board-preview">
+
+  <div class="job-board-ribbon">
+    🚀 New Service for Contractors
+  </div>
+
+  <div class="job-board-preview-inner">
       <div class="job-board-preview-copy">
         <span class="job-board-badge">New</span>
         <h2>Job Board</h2>
