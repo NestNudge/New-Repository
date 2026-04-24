@@ -1,22 +1,5 @@
 <?php
-require_once __DIR__ . '/includes/db.php';
-require_once __DIR__ . '/includes/job-board-functions.php';
-
-expireOldJobPosts($pdo);
-
-$latestJobStmt = $pdo->query("
-    SELECT id, title, city, state, zip, price_min, price_max,
-           views_count, offers_count, created_at, expires_at,
-           DATEDIFF(NOW(), created_at) AS days_live,
-           DATEDIFF(expires_at, NOW()) AS days_remaining
-    FROM job_posts
-    WHERE status = 'open'
-    AND expires_at > NOW()
-    ORDER BY created_at DESC
-    LIMIT 3
-");
-
-$latestJobPosts = $latestJobStmt->fetchAll();
+$latestJobPosts = [];
 ?>
 
 <!DOCTYPE html>
