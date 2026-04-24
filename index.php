@@ -1,3 +1,25 @@
+<?php
+require_once __DIR__ . '/includes/db.php';
+require_once __DIR__ . '/includes/job-board-functions.php';
+
+expireOldJobPosts($pdo);
+
+$latestJobStmt = $pdo->query("
+    SELECT id, title, city, state, zip, price_min, price_max,
+           views_count, offers_count, created_at, expires_at,
+           DATEDIFF(NOW(), created_at) AS days_live,
+           DATEDIFF(expires_at, NOW()) AS days_remaining
+    FROM job_posts
+    WHERE status = 'open'
+    AND expires_at > NOW()
+    ORDER BY created_at DESC
+    LIMIT 3
+");
+
+$latestJobPosts = $latestJobStmt->fetchAll();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,70 +77,62 @@
 <body>
  
  <header>
- <div class="nav-shell">
-  <nav class="main-nav">
+  <div class="nav-shell">
+    <nav class="main-nav">
 
-    <a href="/" class="brand-logo" aria-label="NestNudge Home">
-      <img src="/image/nest_nudge_logo_transparent.png" alt="Nest Nudge Logo" class="logo-img">
-      <span>NestNudge</span>
-    </a>
-
-    <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="siteNavLinks">
-      ☰
-    </button>
-
-    <div class="nav-links" id="siteNavLinks">
-
-      <a href="/">Home</a>
-
-      <!-- SERVICES DROPDOWN -->
-      <div class="dropdown">
-        <button class="dropbtn" type="button">Services ▼</button>
-        <div class="dropdown-content">
-          <a href="#services">All Services</a>
-          <a href="#cost-guide">Home Estimator</a>
-          <a href="/job-board.php">Job Board</a>
-          <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
-          <a href="/offers.html">Offers</a>
-        </div>
-      </div>
-
-      <!-- GET QUOTES DROPDOWN -->
-      <div class="dropdown">
-        <button class="dropbtn" type="button">Get Quotes ▼</button>
-        <div class="dropdown-content">
-          <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
-          <a href="#loan-section">Check Your Rate</a>
-          <a href="/customer-login.php">Gallery</a>
-        </div>
-      </div>
-
-      <!-- PARTNERS DROPDOWN -->
-      <div class="dropdown">
-        <button class="dropbtn" type="button">Partners ▼</button>
-        <div class="dropdown-content">
-          <a href="/partners.html">Overview</a>
-          <a href="/zip-lock.html">ZIP Lock</a>
-          <a href="/contractor-signup.php">Apply Now</a>
-          <a href="/contractor-login.php">Login</a>
-        </div>
-      </div>
-
-      <!-- DIRECT LINKS -->
-      <a href="/job-board.php">Job Board</a>
-      <a href="/offers.html">Offers</a>
-      <a href="/customer-login.php">Gallery</a>
-
-      <!-- CTA BUTTON -->
-      <a class="cta-button" href="/roof-quotes-miami-fort-lauderdale.html">
-        Get My Quote
+      <a href="/" class="brand-logo" aria-label="NestNudge Home">
+        <img src="/image/nest_nudge_logo_transparent.png" alt="Nest Nudge Logo" class="logo-img">
+        <span>NestNudge</span>
       </a>
 
-    </div>
+      <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="siteNavLinks">
+        ☰
+      </button>
 
-  </nav>
-</div>
-  </header>
+      <div class="nav-links" id="siteNavLinks">
+        <a href="/">Home</a>
+
+        <div class="dropdown">
+          <button class="dropbtn" type="button">Services ▼</button>
+          <div class="dropdown-content">
+            <a href="#services">All Services</a>
+            <a href="#cost-guide">Home Estimator</a>
+            <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
+            <a href="/offers.html">Offers</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropbtn" type="button">Get Quotes ▼</button>
+          <div class="dropdown-content">
+            <a href="/roof-quotes-miami-fort-lauderdale.html">Roof Quotes</a>
+            <a href="#loan-section">Check Your Rate</a>
+            <a href="/customer-login.php">Gallery</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropbtn" type="button">Partners ▼</button>
+          <div class="dropdown-content">
+            <a href="/partners.html">Overview</a>
+            <a href="/zip-lock.html">ZIP Lock</a>
+            <a href="/contractor-signup.php">Apply Now</a>
+            <a href="/contractor-login.php">Login</a>
+          </div>
+        </div>
+
+        <a href="/offers.html">Offers</a>
+        <a href="/customer-login.php">Gallery</a>
+        <a href="/zip-lock.html">ZIP Lock</a>
+
+        <a class="cta-button" href="/roof-quotes-miami-fort-lauderdale.html">
+          Get My Quote
+        </a>
+      </div>
+
+    </nav>
+  </div>
+</header>
   <section class="hero-split">
     <div class="hero-bg"></div>
 
