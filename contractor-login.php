@@ -12,7 +12,7 @@ session_start();
 */
 
 $dbHost = "localhost";
-$dbName = "nestnudge";
+$dbName = "leadbizo_db";
 $dbUser = "root";
 $dbPass = "";
 $dashboardPath = "/partner-dashboard.php";
