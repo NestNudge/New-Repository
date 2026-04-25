@@ -4435,3 +4435,186 @@ footer img {
     width: 100%;
   }
 }
+
+  /* =========================
+   CUSTOMER DASHBOARD
+========================= */
+
+.customer-dashboard-page {
+  background: linear-gradient(180deg, #f8fbf9 0%, #ffffff 100%);
+  padding: 48px 16px 90px;
+}
+
+.customer-dashboard-hero,
+.customer-dashboard-section {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.customer-dashboard-hero {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 38px 30px;
+  box-shadow: var(--shadow);
+  margin-bottom: 30px;
+}
+
+.customer-dashboard-hero h1 {
+  margin: 12px 0;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: 1.05;
+}
+
+.customer-dashboard-hero p {
+  color: var(--muted);
+  max-width: 720px;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.dashboard-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.dashboard-section-heading {
+  margin-bottom: 20px;
+}
+
+.dashboard-section-heading h2 {
+  margin: 0 0 8px;
+  color: var(--primary);
+  font-size: 2rem;
+}
+
+.dashboard-section-heading p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.empty-dashboard-card {
+  background: #fff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: var(--shadow-soft);
+}
+
+.empty-dashboard-card h3 {
+  margin-top: 0;
+  color: var(--text);
+}
+
+.empty-dashboard-card p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.customer-jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.customer-job-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--primary);
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.customer-job-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.customer-job-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.dashboard-status {
+  padding: 6px 11px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.dashboard-status.open {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.dashboard-status.closed {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.customer-job-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.35rem;
+}
+
+.customer-job-card h3 a {
+  color: var(--text);
+}
+
+.customer-job-card p {
+  color: #475569;
+  font-weight: 700;
+}
+
+.customer-job-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 14px;
+}
+
+.customer-job-meta span {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  color: #475569;
+  padding: 7px 10px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.customer-job-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+@media (max-width: 850px) {
+  .customer-jobs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .customer-dashboard-hero {
+    padding: 28px 22px;
+  }
+
+  .customer-job-topline {
+    flex-direction: column;
+  }
+
+  .customer-job-actions .cta-btn,
+  .customer-job-actions .cta-btn-outline {
+    width: 100%;
+  }
+}
