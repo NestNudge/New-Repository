@@ -13,8 +13,8 @@ session_start();
 
 $dbHost = "localhost";
 $dbName = "leadbizo_db";
-$dbUser = "root";
-$dbPass = "";
+$dbUser = "mikeboggus";
+$dbPass = "@0nly1Madden!@__";
 $dashboardPath = "/partner-dashboard.php";
 
 $error = "";
