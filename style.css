@@ -4373,3 +4373,65 @@ footer img {
     margin-right: 0;
   }
 }
+
+  /* =========================
+   JOB OFFERS ON JOB POST PAGE
+========================= */
+
+.job-offers-section {
+  margin-top: 34px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+.job-offers-section h2 {
+  color: var(--primary);
+  margin: 0 0 18px;
+}
+
+.job-offer-card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--primary);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-soft);
+}
+
+.job-offer-card h3 {
+  margin: 0 0 10px;
+  color: var(--text);
+}
+
+.job-offer-card p {
+  color: #475569;
+  line-height: 1.65;
+}
+
+.accepted-partner-contact {
+  margin-top: 16px;
+  padding: 16px;
+  background: var(--primary-light);
+  border: 1px solid rgba(31, 122, 61, 0.18);
+  border-radius: 16px;
+}
+
+.accepted-partner-contact h4 {
+  margin: 0 0 10px;
+  color: var(--primary);
+}
+
+.offer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+@media (max-width: 600px) {
+  .offer-actions .cta-btn,
+  .offer-actions .cta-btn-outline {
+    width: 100%;
+  }
+}
