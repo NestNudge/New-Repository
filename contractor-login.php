@@ -70,12 +70,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             } else {
                 session_regenerate_id(true);
 
-                $_SESSION["contractor"] = [
-                    "id" => $contractor["id"],
-                    "company" => $contractor["company"],
-                    "email" => $contractor["email"],
-                    "plan" => $contractor["plan"] ?: "Starter"
-                ];
+               $_SESSION["contractor"] = [
+    "id" => $contractor["id"],
+    "company" => $contractor["company"],
+    "email" => $contractor["email"],
+    "plan" => $contractor["plan"] ?: "Starter"
+];
+
+$_SESSION["contractor_id"] = $contractor["id"];
+                
+                $_SESSION['partner_id'] = $contractor['id'];
 
                 header("Location: " . $dashboardPath);
                 exit;
