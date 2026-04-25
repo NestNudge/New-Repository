@@ -4618,3 +4618,58 @@ footer img {
     width: 100%;
   }
 }
+
+  /* =========================
+   PROFILE AVATAR (LOGIN PAGE)
+========================= */
+
+.profile-upload-box {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 18px;
+}
+
+/* 🔥 Perfect circular avatar */
+.profile-avatar-wrapper {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #16a34a;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  background: #fff;
+  transition: transform 0.2s ease;
+}
+
+/* Hover effect (premium feel) */
+.profile-avatar-wrapper:hover {
+  transform: scale(1.05);
+}
+
+/* Image behavior */
+.profile-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Input spacing */
+.profile-upload-box input {
+  margin-top: 10px;
+}
+
+.profile-upload-box label {
+  display: block;
+  font-weight: 800;
+  margin-top: 8px;
+}
+
+.profile-upload-box small {
+  display: block;
+  margin-top: 6px;
+  color: #6b7280;
+}
