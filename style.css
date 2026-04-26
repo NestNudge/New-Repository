@@ -4820,3 +4820,8 @@ footer img {
     height: 38px;
   }
 }
+@media (max-width: 640px) {
+  .blog-logo-img {
+    height: 44px;
+  }
+}
