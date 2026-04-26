@@ -1993,11 +1993,6 @@ header {
   line-height: 1.5;
 }
 
-.blog-logo-img {
-  height: 82px;
-  width: auto;
-  object-fit: contain;
-}
 
 .blog-logo-link {
   display: inline-flex;
