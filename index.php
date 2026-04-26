@@ -473,7 +473,25 @@ $latestJobPosts = [];
       <button class="testimonial-nav next" type="button" onclick="scrollTestimonials(1)">›</button>
     </div>
   </section>
+  
+   <section class="homepage-blog-section">
+  <div class="homepage-blog-inner">
 
+    <span class="job-board-badge">NestNudge Blog</span>
+
+    <h2>Homeowner Tips, Guides & Insights</h2>
+
+    <p>
+      Explore expert advice on roofing, home improvement, financing, and smart project planning. 
+      Learn before you hire and make better decisions for your home.
+    </p>
+
+    <div class="homepage-blog-actions">
+      <a href="/blog.html" class="cta-btn">Explore the Blog</a>
+    </div>
+
+  </div>
+</section>
 
  <section class="job-board-preview" id="job-board-preview">
 
@@ -580,8 +598,8 @@ $latestJobPosts = [];
   <?php endif; ?>
 </div>
   </section>
-
-  <section class="gallery-preview-section" id="gallery-preview">
+  
+   <section class="gallery-preview-section" id="gallery-preview">
     <div class="gallery-preview-inner">
       <div class="gallery-preview-heading">
         <h2>Real Projects From Homeowners</h2>
@@ -1613,7 +1631,7 @@ $latestJobPosts = [];
 </div>
 <script>
 const popupData = [
-  {name:"Michael B.", location:"FL", action:"Signed up as a Partner", icon:"🤝"},
+  {name:"Mark B.", location:"FL", action:"Signed up as a Partner", icon:"🤝"},
   {name:"Sarah K.", location:"TX", action:"Requested Roof Quote", icon:"🏠"},
   {name:"James T.", location:"CA", action:"Checked Financing Options", icon:"💰"},
   {name:"Emily R.", location:"NY", action:"Viewed Impact Windows", icon:"🪟"},
