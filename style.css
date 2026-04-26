@@ -2011,7 +2011,7 @@ header {
 }
 
 .nn-blog-page .topbar-inner {
-  min-height: 72px;
+  min-height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2025,6 +2025,17 @@ header {
   font-weight: 800;
   font-size: 1.15rem;
   letter-spacing: 0.02em;
+}
+
+.blog-logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+.blog-logo-link {
+  display: inline-flex;
+  align-items: center;
 }
 
 .nn-blog-page .brand-badge {
@@ -4807,4 +4818,10 @@ footer img {
 
 .homepage-blog-actions {
   margin-top: 16px;
+}
+
+@media (max-width: 640px) {
+  .blog-logo-img {
+    height: 38px;
+  }
 }
