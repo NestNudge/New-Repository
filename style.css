@@ -8437,3 +8437,17 @@ body.nn-blog-page {
     font-size: 18px;
   }
 }
+.featured-post {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+.featured-post img {
+  width: 100%;
+}
+
+.featured-content {
+  padding: 20px;
+}
