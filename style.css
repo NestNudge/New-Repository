@@ -1972,21 +1972,25 @@ header {
    Add class="nn-blog-page" to the outer blog wrapper
    ========================= */
 
-.nn-blog-page {
-  --nn-bg: #f6fbf7;
-  --nn-surface: #ffffff;
-  --nn-surface-alt: #eaf6ee;
-  --nn-text: #0f172a;
-  --nn-muted: #64748b;
-  --nn-line: #dbe8df;
-  --nn-brand: #1f7a3d;
-  --nn-brand-dark: #155c2d;
-  --nn-accent: #16a34a;
-  --nn-footer: #0f172a;
-  --nn-footer-text: #d5d9df;
-  --nn-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-  --nn-radius: 18px;
-  --nn-container: 1200px;
+:root {
+  --bg: #f6fbf7;
+  --surface: #ffffff;
+  --surface-alt: #eaf6ee;
+  --text: #0f172a;
+  --muted: #64748b;
+  --line: #dbe8df;
+
+  --brand: #1f7a3d;        /* primary green */
+  --brand-dark: #155c2d;   /* darker green */
+  --accent: #16a34a;       /* accent green */
+
+  --footer: #0f172a;
+  --footer-text: #d5d9df;
+
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --radius: 18px;
+  --container: 1200px;
+}
 
   background: var(--nn-bg);
   color: var(--nn-text);
@@ -2033,6 +2037,11 @@ header {
   align-items: center;
 }
 
+@media (max-width: 640px) {
+  .blog-logo-img {
+    height: 44px;
+  }
+}
 .nn-blog-page .brand-badge {
   width: 40px;
   height: 40px;
@@ -2722,298 +2731,6 @@ header {
   }
 }
 
-// ===============================
-// CONFIG
-// ===============================
-const API_BASE = "https://lead-marketplace.onrender.com";
-
-// ===============================
-// GLOBALS
-// ===============================
-let selectedAddress = "";
-
-// ===============================
-// PROJECT DATA
-// ===============================
-const upgradeData = {
-  "bathroom-remodeling": {
-    title: "Bathroom Remodeling",
-    costLow: 8000,
-    costHigh: 25000,
-    valueLow: 9000,
-    valueHigh: 22000,
-    type: "project"
-  },
-  "roof-repair": {
-    title: "Roof Repair",
-    costLow: 1500,
-    costHigh: 9000,
-    valueLow: 2000,
-    valueHigh: 10000,
-    type: "project"
-  },
-  "roof-replacement": {
-    title: "Roof Replacement",
-    costLow: 12000,
-    costHigh: 22000,
-    valueLow: 15000,
-    valueHigh: 30000,
-    type: "project"
-  },
-  "entry-door": {
-    title: "Entry Door Upgrade",
-    costLow: 2500,
-    costHigh: 9000,
-    valueLow: 3500,
-    valueHigh: 12000,
-    type: "project"
-  },
-  "impact-windows": {
-    title: "Impact Windows",
-    costLow: 10000,
-    costHigh: 28000,
-    valueLow: 12000,
-    valueHigh: 35000,
-    type: "project"
-  },
-  "kitchen-remodeling": {
-    title: "Kitchen Remodeling",
-    costLow: 15000,
-    costHigh: 50000,
-    valueLow: 18000,
-    valueHigh: 45000,
-    type: "project"
-  },
-  "landscaping": {
-    title: "Landscaping",
-    costLow: 3000,
-    costHigh: 18000,
-    valueLow: 4000,
-    valueHigh: 20000,
-    type: "project"
-  },
-  "loan-assistance": {
-    title: "Loan Assistance",
-    type: "service",
-    message: "Loan assistance does not use a home-upgrade ROI estimate. We’ll help you explore funding options instead."
-  },
-  "realtor": {
-    title: "Realtor Guidance",
-    type: "service",
-    message: "Realtor guidance does not use a home-upgrade ROI estimate. We’ll help connect you with a local expert."
-  }
-};
-
-// ===============================
-// HELPERS
-// ===============================
-function formatMoney(value) {
-  return value.toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0
-  });
-}
-
-function renderEstimator(type) {
-  const item = upgradeData[type];
-  if (!item) return;
-
-  const panel = document.getElementById("resultsPanel");
-  const title = document.getElementById("resultsTitle");
-  const costRange = document.getElementById("costRange");
-  const valueRange = document.getElementById("valueRange");
-  const roiRange = document.getElementById("roiRange");
-  const currentValue = document.getElementById("currentValue");
-  const newValue = document.getElementById("newValue");
-  const valueGain = document.getElementById("valueGain");
-  const currentBar = document.querySelector(".current-bar");
-  const newBar = document.querySelector(".new-bar");
-
-  if (!panel || !title || !costRange || !valueRange || !roiRange || !currentValue || !newValue || !valueGain) {
-    return;
-  }
-
-  panel.style.display = "block";
-  title.textContent = `${item.title} Estimate`;
-
-  if (item.type === "service") {
-    costRange.textContent = "Custom";
-    valueRange.textContent = "N/A";
-    roiRange.textContent = "N/A";
-
-    currentValue.innerHTML = `<strong>Next Step</strong><br>${item.message}`;
-    newValue.innerHTML = `<strong>Recommended Action</strong><br>${
-      type === "loan-assistance"
-        ? "Submit the form to compare financing options."
-        : "Submit the form to connect with a local realtor."
-    }`;
-    valueGain.innerHTML = `<strong>What Happens Next</strong><br>${
-      type === "loan-assistance"
-        ? "We’ll help you explore loan and monthly payment options."
-        : "We’ll connect you with a local real estate expert."
-    }`;
-
-    if (currentBar && newBar) {
-      currentBar.style.height = "70px";
-      newBar.style.height = "70px";
-    }
-
-    return;
-  }
-
-  const avgCost = Math.round((item.costLow + item.costHigh) / 2);
-  const avgValue = Math.round((item.valueLow + item.valueHigh) / 2);
-  const roiLow = Math.round((item.valueLow / item.costHigh) * 100);
-  const roiHigh = Math.round((item.valueHigh / item.costLow) * 100);
-  const avgROI = Math.round((avgValue / avgCost) * 100);
-
-  costRange.textContent = `${formatMoney(item.costLow)} - ${formatMoney(item.costHigh)}`;
-  valueRange.textContent = `${formatMoney(item.valueLow)} - ${formatMoney(item.valueHigh)}`;
-  roiRange.textContent = `${roiLow}% - ${roiHigh}%`;
-
-  currentValue.innerHTML = `<strong>Estimated Project Cost</strong><br>${formatMoney(avgCost)}`;
-  newValue.innerHTML = `<strong>Estimated Value Added</strong><br>${formatMoney(avgValue)}`;
-  valueGain.innerHTML = `<strong>Estimated ROI</strong><br>${avgROI}%`;
-
-  if (currentBar && newBar) {
-    currentBar.style.height = `${Math.max(70, avgCost / 200)}px`;
-    newBar.style.height = `${Math.max(90, avgValue / 200)}px`;
-  }
-}
-
-// ===============================
-// GOOGLE AUTOCOMPLETE
-// ===============================
-function initAutocomplete() {
-  const placeElement = document.querySelector("gmp-place-autocomplete");
-
-  if (!placeElement) {
-    console.warn("Autocomplete element not found");
-    return;
-  }
-
-  placeElement.addEventListener("gmp-placeselect", (event) => {
-    const place = event.detail.place;
-
-    if (place && place.formattedAddress) {
-      selectedAddress = place.formattedAddress;
-      console.log("Address selected:", selectedAddress);
-    }
-  });
-}
-
-// ===============================
-// FORM HANDLER
-// ===============================
-function initForm() {
-  const form = document.getElementById("leadForm");
-  if (!form) {
-    console.error("Form not found");
-    return;
-  }
-
-  const projectTypeField = document.getElementById("projectType");
-
-  if (projectTypeField) {
-    projectTypeField.addEventListener("change", function () {
-      if (this.value) {
-        renderEstimator(this.value);
-      }
-    });
-  }
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const placeElement = document.querySelector("gmp-place-autocomplete");
-    const fallbackAddress = placeElement?.value || "";
-
-    const data = {
-      address: selectedAddress || fallbackAddress,
-      projectType: document.getElementById("projectType")?.value || "",
-      name: document.getElementById("name")?.value.trim() || "",
-      email: document.getElementById("email")?.value.trim() || "",
-      phone: document.getElementById("phone")?.value.trim() || ""
-    };
-
-    if (!data.address || !data.projectType || !data.name || !data.email || !data.phone) {
-      alert("Please complete all fields");
-      return;
-    }
-
-    try {
-      const res = await fetch(`${API_BASE}/submit-lead`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      });
-
-      if (res.ok) {
-        alert("You're matched! Pros will contact you.");
-        form.reset();
-        selectedAddress = "";
-
-        const panel = document.getElementById("resultsPanel");
-        if (panel) {
-          panel.style.display = "none";
-        }
-      } else {
-        const errorText = await res.text();
-        console.error("Server error:", errorText);
-        alert("Submission failed");
-      }
-    } catch (err) {
-      console.error("Network error:", err);
-      alert("Network error — check connection");
-    }
-  });
-}
-
-// ===============================
-// CHAT ASSISTANT
-// ===============================
-function initChat() {
-  const chatButton = document.getElementById("chat-button");
-  if (chatButton) {
-    chatButton.addEventListener("click", () => {
-      document.getElementById("chat-box")?.classList.toggle("hidden");
-    });
-  }
-}
-
-function selectOption(type) {
-  const projectType = document.getElementById("projectType");
-  if (projectType) {
-    projectType.value = type;
-    renderEstimator(type);
-  }
-
-  const response = document.getElementById("chat-response");
-
-  if (response) {
-    response.innerHTML = `
-      <p>Great choice 👍</p>
-      <p>Now enter your address above to get matched instantly.</p>
-    `;
-  }
-
-  document.getElementById("address")?.scrollIntoView({ behavior: "smooth" });
-}
-
-// ===============================
-// INIT APP
-// ===============================
-document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => {
-    initAutocomplete();
-  }, 500);
-
-  initForm();
-  initChat();
-});
 /* =========================
    VA LOANS PREVIEW SECTION
 ========================= */
@@ -4818,10 +4535,5 @@ footer img {
 @media (max-width: 640px) {
   .blog-logo-img {
     height: 38px;
-  }
-}
-@media (max-width: 640px) {
-  .blog-logo-img {
-    height: 44px;
   }
 }
