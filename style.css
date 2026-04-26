@@ -4678,3 +4678,107 @@ footer img {
   color: #6b7280;
 }
 
+/* =========================
+   JOB BOARD MOBILE RESPONSIVE FIX
+========================= */
+
+@media (max-width: 900px) {
+  .job-board-page {
+    padding: 20px 12px 60px;
+  }
+
+  .job-board-page .job-board-preview {
+    margin: 16px auto 0;
+    padding: 70px 16px 28px;
+    border-radius: 22px;
+  }
+
+  .job-board-page .job-board-preview-inner {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .job-board-page .job-board-preview-copy,
+  .job-board-page .job-board-latest {
+    padding: 22px 18px;
+    border-radius: 20px;
+  }
+
+  .job-board-page .job-board-preview-copy h1 {
+    font-size: 2.15rem;
+  }
+
+  .job-board-page .job-board-preview-copy p {
+    font-size: 1rem;
+  }
+
+  .job-board-page .job-board-actions {
+    flex-direction: column;
+  }
+
+  .job-board-page .job-board-actions .cta-btn,
+  .job-board-page .job-board-actions .cta-btn-outline {
+    width: 100%;
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .job-board-page .latest-job-topline {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .job-board-page .latest-job-meta {
+    gap: 8px;
+  }
+
+  .job-board-page .latest-job-meta span {
+    width: 100%;
+    text-align: center;
+  }
+
+  .job-board-page .latest-job-card .cta-btn {
+    width: 100%;
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .job-board-page .job-board-ribbon {
+    top: 34px;
+    left: -112px;
+    width: 340px;
+    font-size: 11px;
+    padding: 8px 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .job-board-page .job-board-preview {
+    padding: 64px 12px 24px;
+    border-radius: 18px;
+  }
+
+  .job-board-page .job-board-preview-copy,
+  .job-board-page .job-board-latest {
+    padding: 18px 14px;
+  }
+
+  .job-board-page .job-board-preview-copy h1 {
+    font-size: 1.85rem;
+  }
+
+  .job-board-page .job-board-latest h2 {
+    font-size: 1.55rem;
+  }
+
+  .job-board-page .latest-job-card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .job-board-page .job-board-ribbon {
+    top: 30px;
+    left: -118px;
+    width: 330px;
+  }
+}
