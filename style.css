@@ -3861,73 +3861,7 @@ footer img {
 }
 
 
-/* =========================
-   BLOG PAGE CLEAN PATCH
-========================= */
 
-.blog-logo-img,
-.topbar img.blog-logo-img {
-  height: 60px !important;
-  max-height: 60px !important;
-  width: auto !important;
-  max-width: 210px !important;
-  object-fit: contain !important;
-}
-
-.blog-logo-link {
-  display: inline-flex !important;
-  align-items: center !important;
-}
-
-.nn-blog-page,
-body.nn-blog-page {
-  background: var(--bg);
-  color: var(--text);
-}
-
-.nn-blog-page .topbar {
-  background: #ffffff;
-  border-bottom: 1px solid var(--border);
-}
-
-.nn-blog-page .nav-cta,
-.nn-blog-page .btn-primary {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  color: #fff !important;
-}
-
-.nn-blog-page .eyebrow {
-  background: var(--primary-light) !important;
-  color: var(--primary-dark) !important;
-}
-
-.nn-blog-page .trend-tag,
-.nn-blog-page .section-link,
-.nn-blog-page .offer-label {
-  color: var(--primary) !important;
-}
-
-.nn-blog-page .offers-section {
-  background: linear-gradient(180deg, #f6fbf7 0%, #ffffff 100%) !important;
-}
-
-.nn-blog-page .offer-card {
-  border: 1px solid rgba(31, 122, 61, 0.12) !important;
-}
-
-.nn-blog-page .newsletter-mini-label,
-.nn-blog-page .agent-badge {
-  color: #bbf7d0 !important;
-}
-
-@media (max-width: 640px) {
-  .blog-logo-img,
-  .topbar img.blog-logo-img {
-    height: 44px !important;
-    max-height: 44px !important;
-    max-width: 160px !important;
-  }
-}
 
 /* =========================
    AI CHAT BOT GREEN PATCH
@@ -3993,4 +3927,252 @@ body.nn-blog-page {
 
 .homepage-blog-actions {
   margin-top: 16px;
+}
+
+/* =========================
+   BLOG PAGE STYLES (NEW)
+========================= */
+
+/* =========================
+   BLOG PAGE STYLES
+========================= */
+
+/* Blog buttons (Fix #2) */
+.blog-post .post-actions a,
+.sidebar-ad a {
+  background: #16a34a; /* NestNudge green */
+  color: #fff;
+}
+
+/* Blog layout */
+.blog-layout {
+  background: #f5f5f5;
+}
+
+/* Blog posts */
+.blog-post {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+/* Sidebars */
+.sidebar {
+  background: #fff;
+}
+
+
+/* =========================
+   BLOG PAGE CLEAN PATCH
+========================= */
+
+.blog-logo-img,
+.topbar img.blog-logo-img {
+  height: 60px !important;
+  max-height: 60px !important;
+  width: auto !important;
+  max-width: 210px !important;
+  object-fit: contain !important;
+}
+
+.blog-logo-link {
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.nn-blog-page,
+body.nn-blog-page {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.nn-blog-page .topbar {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+}
+
+.nn-blog-page .nav-cta,
+.nn-blog-page .btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff !important;
+}
+
+.nn-blog-page .eyebrow {
+  background: var(--primary-light) !important;
+  color: var(--primary-dark) !important;
+}
+
+.nn-blog-page .trend-tag,
+.nn-blog-page .section-link,
+.nn-blog-page .offer-label {
+  color: var(--primary) !important;8
+}
+
+.nn-blog-page .offers-section {
+  background: linear-gradient(180deg, #f6fbf7 0%, #ffffff 100%) !important;
+}
+
+.nn-blog-page .offer-card {
+  border: 1px solid rgba(31, 122, 61, 0.12) !important;
+}
+
+.nn-blog-page .newsletter-mini-label,
+.nn-blog-page .agent-badge {
+  color: #bbf7d0 !important;
+}
+
+@media (max-width: 640px) {
+  .blog-logo-img,
+  .topbar img.blog-logo-img {
+    height: 44px !important;
+    max-height: 44px !important;
+    max-width: 160px !important;
+  }
+}
+
+/* =========================
+   CLEAN GLOBAL FIXES
+========================= */
+
+/* FIX duplicate socials */
+.nn-socials {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.nn-socials a {
+  width: 22px;
+  height: 22px;
+  color: #fff;
+  display: inline-flex;
+  transition: 0.2s;
+}
+
+.nn-socials a:hover {
+  opacity: 0.7;
+  transform: translateY(-2px);
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .nn-socials {
+    margin-left: 0;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+
+/* =========================
+   LOGO (FINAL CLEAN)
+========================= */
+.logo-container img,
+.brand-logo img {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .logo-container img,
+  .brand-logo img {
+    height: 48px;
+  }
+}
+
+
+/* =========================
+   POPUP (CLEAN SINGLE VERSION)
+========================= */
+.activity-popup {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  background: linear-gradient(135deg, #ffffff, #f6fbf7);
+  border: 2px solid var(--primary);
+  border-radius: 14px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  padding: 14px 16px;
+  display: none;
+  z-index: 9999;
+  font-size: 14px;
+  max-width: 300px;
+}
+
+
+/* =========================
+   BLOG PAGE (CLEAN + WORKING)
+========================= */
+
+.blog-page,
+.nn-blog-page {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* layout */
+.blog-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr 300px;
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* posts */
+.blog-post {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.blog-post img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.blog-post h2 {
+  margin: 10px 0;
+}
+
+/* buttons */
+.blog-post .post-actions a,
+.sidebar-ad a {
+  background: var(--primary);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+/* sidebar */
+.sidebar {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* MOBILE BLOG FIX */
+@media (max-width: 900px) {
+  .blog-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+}
+
+
+/* =========================
+   REMOVE DUPLICATE BLOG PATCH BUG
+========================= */
+
+/* FIX TYPO (you had this broken) */
+.nn-blog-page .trend-tag,
+.nn-blog-page .section-link,
+.nn-blog-page .offer-label {
+  color: var(--primary) !important;
 }
