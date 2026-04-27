@@ -4446,3 +4446,51 @@ body.nn-blog-page {
   font-weight: 800;
   letter-spacing: 0.5px;
 }
+
+/* 🔥 NEWS BAR (CNN STYLE) */
+.news-bar {
+  width: 100%;
+  background: #0f172a; /* dark brand (matches your site) */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  height: 42px;
+}
+
+/* LEFT LABEL */
+.news-label {
+  background: #16a34a; /* brand green */
+  padding: 0 16px;
+  font-weight: 800;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* TICKER AREA */
+.news-ticker {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+/* SCROLLING TEXT */
+.news-track {
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 100%;
+  animation: scrollNews 18s linear infinite;
+  font-weight: 600;
+}
+
+/* ANIMATION */
+@keyframes scrollNews {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
