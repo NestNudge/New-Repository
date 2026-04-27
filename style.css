@@ -4494,3 +4494,31 @@ body.nn-blog-page {
     transform: translateX(-100%);
   }
 }
+
+
+/* HEADER CONTAINER (WIDER) */
+.news-header-inner {
+  max-width: 1400px; /* was ~1200 */
+  padding: 18px 20px;
+}
+
+/* LOGO CONTAINER */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* LOGO IMAGE */
+.logo img {
+  height: 48px;  /* 🔥 bigger */
+  width: auto;
+}
+
+/* LOGO TEXT */
+.logo-text {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #111;
+}
