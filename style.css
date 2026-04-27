@@ -4381,3 +4381,36 @@ body.nn-blog-page {
   transform: translateY(-4px);
   box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
+
+.featured-post h1 {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.featured-post p {
+  font-size: 18px;
+  color: #555;
+}
+
+.blog-post h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.blog-post p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.blog-main {
+  gap: 40px;
+}
+
+.blog-layout {
+  gap: 30px;
+}
+
+.sidebar {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
