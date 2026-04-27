@@ -4522,3 +4522,8 @@ body.nn-blog-page {
   letter-spacing: 0.5px;
   color: #111;
 }
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 900;
+}
