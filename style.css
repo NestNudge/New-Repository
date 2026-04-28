@@ -4601,3 +4601,13 @@ body.nn-blog-page {
   position: sticky;
   top: 20px;
 }
+
+.post h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.post p {
+  font-size: 15px;
+  color: #555;
+}
