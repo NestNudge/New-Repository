@@ -4527,3 +4527,62 @@ body.nn-blog-page {
   font-size: 24px;
   font-weight: 900;
 }
+
+
+/* SIDEBAR BASE */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* BOXES */
+.sidebar-box {
+  background: #f8f8f8;
+  padding: 18px;
+  border-radius: 10px;
+}
+
+.sidebar-box h3 {
+  margin-top: 0;
+}
+
+/* LINKS */
+.sidebar-box a {
+  display: block;
+  margin: 8px 0;
+  color: #16a34a;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* PRIMARY OFFER */
+.highlight {
+  background: #16a34a;
+  color: #fff;
+}
+
+.highlight a {
+  color: #fff;
+}
+
+/* BUTTON */
+.sidebar-btn {
+  display: inline-block;
+  margin-top: 10px;
+  background: #000;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+/* AD */
+.sidebar-ad {
+  margin: 10px 0;
+}
+
+/* TRUST */
+.trust ul {
+  padding-left: 18px;
+}
