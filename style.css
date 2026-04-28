@@ -4586,3 +4586,13 @@ body.nn-blog-page {
 .trust ul {
   padding-left: 18px;
 }
+
+.sidebar-box.highlight {
+  background: #16a34a;
+  color: #fff;
+}
+
+.sidebar-box.highlight a {
+  color: #fff;
+  font-weight: bold;
+}
