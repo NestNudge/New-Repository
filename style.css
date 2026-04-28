@@ -4616,3 +4616,7 @@ body.nn-blog-page {
   text-align: center;
   padding: 40px 20px;
 }
+
+.post {
+  cursor: pointer;
+}
